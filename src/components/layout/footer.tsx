@@ -52,7 +52,7 @@ export default function Footer() {
       </div>
 
       <div className="mt-12 text-center text-xs text-gray-400">
-        © {new Date().getFullYear()} Mind & Wholeness. All rights reserved.
+        &copy; {new Date().getFullYear()} Mind & Wholeness. All rights reserved.
       </div>
     </footer>
   );

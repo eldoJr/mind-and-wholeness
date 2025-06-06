@@ -45,7 +45,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo and Branding */}
         <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
-          <img src={logo} alt="Mind & Wholeness Logo" className="h-8 w-8" />
+          <img src={logo} alt="Mind & Wholeness Logo" className="h-14 w-14" />
           <h1 className="text-xl md:text-2xl font-serif font-medium text-gray-900 italic">
             Mind <span className="not-italic">and</span> Wholeness
           </h1>
@@ -172,11 +172,6 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/testimonials" className="hover:text-emerald-700 transition-colors py-2">
-              Testimonials
-            </Link>
-          </li>
-          <li>
             <Link to="/resources" className="hover:text-emerald-700 transition-colors py-2">
               Resources
             </Link>
@@ -191,10 +186,10 @@ export default function Navbar() {
         {/* CTA Button */}
         <div className="hidden lg:block">
           <Link 
-            to="/consultation" 
+            to="/signup" 
             className="px-6 py-3 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
           >
-            Free Consultation
+            SIGN UP
           </Link>
         </div>
 
@@ -299,13 +294,6 @@ export default function Navbar() {
               Blog
             </Link>
             <Link 
-              to="/testimonials" 
-              className="block py-3 px-3 text-gray-800 font-medium hover:bg-emerald-50 rounded-lg transition-colors"
-              onClick={() => setMobileOpen(false)}
-            >
-              Testimonials
-            </Link>
-            <Link 
               to="/resources" 
               className="block py-3 px-3 text-gray-800 font-medium hover:bg-emerald-50 rounded-lg transition-colors"
               onClick={() => setMobileOpen(false)}
@@ -323,11 +311,11 @@ export default function Navbar() {
             {/* Mobile CTA */}
             <div className="pt-4 border-t">
               <Link 
-                to="/consultation" 
+                to="/signup" 
                 className="block w-full py-3 text-center bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
-                Free Consultation
+                SIGN UP
               </Link>
             </div>
           </div>

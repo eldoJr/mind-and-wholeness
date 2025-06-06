@@ -1,9 +1,11 @@
 // src/components/layout/Navbar.tsx
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, ChevronDown } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [programsOpen, setProgramsOpen] = useState(false);
 
@@ -16,45 +18,192 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-emerald-700 shadow-md' : 'bg-emerald-700/90 backdrop-blur-sm'}`}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-emerald-700">Mind & Wholeness</h1>
-        <ul className="hidden md:flex space-x-8 font-medium text-gray-800 relative">
-          <li className="relative" onMouseEnter={() => setAboutOpen(true)} onMouseLeave={() => setAboutOpen(false)}>
-            <button className="flex items-center gap-1 hover:text-emerald-600">
+        {/* Logo */}
+        <Link to="/" className="text-2xl font-bold text-white">
+          Mind & Wholeness
+        </Link>
+
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex space-x-8 font-medium text-white relative">
+          {/* About Dropdown */}
+          <li 
+            className="relative" 
+            onMouseEnter={() => setAboutOpen(true)}
+            onMouseLeave={() => setAboutOpen(false)}
+          >
+            <button className="flex items-center gap-1 hover:text-emerald-200 transition-colors">
               About <ChevronDown size={16} />
             </button>
             {aboutOpen && (
-              <ul className="absolute top-full mt-2 w-56 bg-white shadow-lg border rounded-md">
-                <li className="px-4 py-2 hover:bg-gray-100"><a href="#about">About Mind & Wholeness</a></li>
-                <li className="px-4 py-2 hover:bg-gray-100"><a href="#vision">Vision & Values</a></li>
-                <li className="px-4 py-2 hover:bg-gray-100"><a href="#founder">Founder & Leadership</a></li>
-                <li className="px-4 py-2 hover:bg-gray-100"><a href="#team">Our Team</a></li>
+              <ul className="absolute top-full left-0 mt-2 w-56 bg-white shadow-lg border rounded-md overflow-hidden">
+                <li>
+                  <Link 
+                    to="/about#introduction" 
+                    className="block px-4 py-3 hover:bg-emerald-50 text-emerald-700 border-b"
+                    onClick={() => setAboutOpen(false)}
+                  >
+                    Introduction
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/about#vision" 
+                    className="block px-4 py-3 hover:bg-emerald-50 text-emerald-700 border-b"
+                    onClick={() => setAboutOpen(false)}
+                  >
+                    Vision
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/about#mission" 
+                    className="block px-4 py-3 hover:bg-emerald-50 text-emerald-700 border-b"
+                    onClick={() => setAboutOpen(false)}
+                  >
+                    Mission
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/about#founder" 
+                    className="block px-4 py-3 hover:bg-emerald-50 text-emerald-700"
+                    onClick={() => setAboutOpen(false)}
+                  >
+                    Founder
+                  </Link>
+                </li>
               </ul>
             )}
           </li>
-          <li className="relative" onMouseEnter={() => setProgramsOpen(true)} onMouseLeave={() => setProgramsOpen(false)}>
-            <button className="flex items-center gap-1 hover:text-emerald-600">
+
+          {/* Programs Dropdown */}
+          <li 
+            className="relative"
+            onMouseEnter={() => setProgramsOpen(true)}
+            onMouseLeave={() => setProgramsOpen(false)}
+          >
+            <button className="flex items-center gap-1 hover:text-emerald-200 transition-colors">
               Programs <ChevronDown size={16} />
             </button>
             {programsOpen && (
-              <ul className="absolute top-full mt-2 w-56 bg-white shadow-lg border rounded-md">
-                <li className="px-4 py-2 hover:bg-gray-100"><a href="#healing">Healing Journey</a></li>
-                <li className="px-4 py-2 hover:bg-gray-100"><a href="#leadership">Leadership & Purpose</a></li>
-                <li className="px-4 py-2 hover:bg-gray-100"><a href="#mentorship">Mentorship & Growth</a></li>
-                <li className="px-4 py-2 hover:bg-gray-100"><a href="#retreats">Spiritual Retreats</a></li>
+              <ul className="absolute top-full left-0 mt-2 w-56 bg-white shadow-lg border rounded-md overflow-hidden">
+                <li>
+                  <Link 
+                    to="/programs#healing" 
+                    className="block px-4 py-3 hover:bg-emerald-50 text-emerald-700 border-b"
+                    onClick={() => setProgramsOpen(false)}
+                  >
+                    Healing Journey
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/programs#mentorship" 
+                    className="block px-4 py-3 hover:bg-emerald-50 text-emerald-700 border-b"
+                    onClick={() => setProgramsOpen(false)}
+                  >
+                    Mentorship & Growth
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/programs#retreats" 
+                    className="block px-4 py-3 hover:bg-emerald-50 text-emerald-700"
+                    onClick={() => setProgramsOpen(false)}
+                  >
+                    Spiritual Retreats
+                  </Link>
+                </li>
               </ul>
             )}
           </li>
-          <li><a href="#contact" className="hover:text-emerald-600">Contact</a></li>
+
+          {/* Simple Links */}
+          <li>
+            <Link to="/team" className="hover:text-emerald-200 transition-colors">
+              Team
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" className="hover:text-emerald-200 transition-colors">
+              Contact
+            </Link>
+          </li>
         </ul>
+
+        {/* CTA Button */}
         <div className="hidden md:block">
-          <button className="px-5 py-2 rounded-md bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition">Sign Up</button>
+          <Link 
+            to="/signup" 
+            className="px-5 py-2 rounded-md bg-white text-emerald-700 font-semibold hover:bg-emerald-50 transition-all shadow-md hover:shadow-lg"
+          >
+            Sign Up
+          </Link>
         </div>
-        <button className="md:hidden text-emerald-700">
+
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden text-white"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
           <Menu size={28} />
         </button>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <div className="md:hidden bg-white shadow-lg">
+          <ul className="px-4 py-2 space-y-2">
+            <li>
+              <Link 
+                to="/about" 
+                className="block py-3 px-2 text-emerald-700 font-medium border-b"
+                onClick={() => setMobileOpen(false)}
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/programs" 
+                className="block py-3 px-2 text-emerald-700 font-medium border-b"
+                onClick={() => setMobileOpen(false)}
+              >
+                Programs
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/team" 
+                className="block py-3 px-2 text-emerald-700 font-medium border-b"
+                onClick={() => setMobileOpen(false)}
+              >
+                Team
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/contact" 
+                className="block py-3 px-2 text-emerald-700 font-medium border-b"
+                onClick={() => setMobileOpen(false)}
+              >
+                Contact
+              </Link>
+            </li>
+            <li className="pt-2">
+              <Link 
+                to="/signup" 
+                className="block w-full py-2 text-center bg-emerald-700 text-white rounded-md font-semibold"
+                onClick={() => setMobileOpen(false)}
+              >
+                Sign Up
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }

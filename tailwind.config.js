@@ -1,9 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+module.exports = {
   theme: {
-    extend: {},
-  },
-  plugins: [],
+    extend: {
+      colors: {
+        primary: '#6B8E23', // verde-oliva
+        secondary: '#87CEEB', // azul celeste
+        light: '#FAFAFA' // branco suave
+      },
+      fontFamily: {
+        sans: ['"Open Sans"', 'sans-serif'],
+        serif: ['"Cormorant Garamond"', 'serif'] // sugestão de fonte espiritual
+      }
+    }
+  }
 }
-

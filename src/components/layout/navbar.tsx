@@ -300,7 +300,7 @@ export default function Navbar() {
         {/* CTA Button */}
         <div className="hidden lg:block">
           <Link 
-            to="/signup" 
+            to="/about/join" 
             className="px-6 py-3 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg"
             onClick={closeAllMenus}
           >

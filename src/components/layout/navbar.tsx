@@ -107,8 +107,8 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo and Branding */}
-        <Link 
-          to="/" 
+        <a 
+          href="/" 
           className="flex items-center gap-3 hover:opacity-90 transition-opacity"
           onClick={closeAllMenus}
         >
@@ -116,11 +116,22 @@ export default function Navbar() {
           <h1 className="text-xl md:text-2xl font-serif font-medium text-gray-900 italic">
             Mind <span className="not-italic">and</span> Wholeness
           </h1>
-        </Link>
+        </a>
 
         {/* Desktop Navigation */}
         <ul className="hidden lg:flex space-x-8 font-medium text-gray-800 relative items-center">
           {/* About Dropdown */}
+            <a
+            href="/"
+            className="hover:text-emerald-700 transition-colors py-2"
+            onClick={(e) => {
+              e.preventDefault();
+              closeAllMenus();
+              window.location.href = "/";
+            }}
+          >
+            Home
+          </a>
           <li 
             ref={aboutRef}
             className="relative"
@@ -257,8 +268,6 @@ export default function Navbar() {
               </ul>
             )}
           </li>
-
-          {/* Simple Links */}
           <li>
             <Link 
               to="/blog" 
@@ -314,6 +323,15 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden bg-white shadow-xl border-t animate-in fade-in-80 slide-in-from-top-2">
           <div className="px-4 py-4 space-y-1 max-h-[calc(100vh-80px)] overflow-y-auto">
+            <div className="border-b border-gray-100 pb-2">
+            <a 
+              href="/" 
+              className="hover:text-emerald-700 transition-colors py-2"
+              onClick={closeAllMenus}
+            >
+              Home
+            </a>
+            </div>
             {/* About Section */}
             <div className="border-b border-gray-100 pb-2">
               <button 

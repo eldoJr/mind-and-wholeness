@@ -1,4 +1,5 @@
 import { motion, } from 'framer-motion';
+import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { Play, Sparkles, ArrowRight} from 'lucide-react';
 
@@ -12,14 +13,17 @@ export function Hero() {
 
   return (
     <section className="relative h-full min-h-[600px] sm:min-h-[700px] overflow-hidden px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
-      {/* Background Image with rounded corners and shadow */}
+      {/* Background Image Container with Clipping */}
       <div className="absolute inset-0 mx-4 sm:mx-8 lg:mx-20 mb-2 sm:mb-5 rounded-lg shadow-md overflow-hidden">
-        <img
-          src="/src/assets/images/hero-bg.jpg"
-          alt="Mind and Wholeness background"
-          className="w-full h-full object-cover object-center"
-          style={{ 
-            objectPosition: 'center 35%',
+        {/* Fixed Background Image within Hero bounds */}
+        <div 
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: 'url(/src/assets/images/hero-bg.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 35%',
+            backgroundAttachment: 'fixed',
+            backgroundRepeat: 'no-repeat'
           }}
         />
         
@@ -28,21 +32,21 @@ export function Hero() {
       </div>
 
       {/* Content Container */}
-      <div className="relative h-full flex items-center pt-16 sm:pt-24 lg:pt-32 mx-2 sm:mx-6 lg:mx-10 mb-4 sm:mb-10">
+      <div className="relative h-full flex items-center pt-16 sm:pt-24 lg:pt-32 mx-2 sm:mx-6 lg:mx-10 mb-4 sm:mb-10 z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
           <div className={`max-w-2xl transition-all duration-1000 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             
-            {/* Small Label */}
-            <div className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-emerald-500/20 backdrop-blur-sm border border-emerald-400/30 rounded-full text-emerald-300 text-xs sm:text-sm font-medium mb-4 sm:mb-8 transition-all duration-1000 delay-300 ${
+            {/* Small Label - Usando cores atualizadas */}
+            <div className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-full text-green-200 text-xs sm:text-sm font-medium mb-4 sm:mb-8 transition-all duration-1000 delay-300 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}>
               <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>Transform Your Life Today</span>
             </div>
 
-            {/* Main Heading */}
+            {/* Main Heading - Cores atualizadas */}
             <motion.h1
               variants={{
                 hidden: { opacity: 0, y: 30 },
@@ -54,8 +58,8 @@ export function Hero() {
               }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium leading-tight text-white mb-4 sm:mb-6"
             >
-              From <span className="text-emerald-300">Brokenness</span><br />
-              To <span className="text-amber-200">Sacred Wholeness</span>
+              From <span className="text-green-300">Brokenness</span><br />
+              To <span className="text-orange-300">Sacred Wholeness</span>
             </motion.h1>
 
             {/* Description */}
@@ -68,12 +72,12 @@ export function Hero() {
                   transition: { duration: 0.8, delay: 0.3, ease: "easeOut" }
                 }
               }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-xl leading-relaxed text-emerald-50/90 mb-6 sm:mb-8"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-xl leading-relaxed text-green-50/90 mb-6 sm:mb-8"
             >
               Discover the divine blueprint for your life through our transformative programs bridging mind, body and spirit.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Cores atualizadas */}
             <motion.div
               variants={{
                 hidden: { opacity: 0 },
@@ -84,18 +88,20 @@ export function Hero() {
               }}
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4"
             >
-              <motion.button
-                variants={{
-                  hidden: { opacity: 0, x: -20 },
-                  visible: { opacity: 1, x: 0 }
-                }}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-emerald-500/20 transition-all text-sm sm:text-base"
-              >
-                Begin Your Journey
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.button>
+              <Link to="/begin-journey">
+                <motion.button
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    visible: { opacity: 1, x: 0 }
+                  }}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-green-500/20 transition-all text-sm sm:text-base"
+                >
+                  Begin Your Journey
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.button>
+              </Link>
               
               <motion.button
                 variants={{

@@ -30,7 +30,7 @@ export function TeamSection({ expanded = false }: TeamSectionProps) {
   ];
 
   return (
-    <section className={`py-28 ${expanded ? 'bg-white' : 'bg-gradient-to-b from-white to-emerald-50/30'}`}>
+    <section className={`py-14 ${expanded ? 'bg-white' : 'bg-gradient-to-b from-white to-emerald-50/30'}`}>
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader 
           tagline="Sacred Guardians" 

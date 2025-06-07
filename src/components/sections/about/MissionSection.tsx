@@ -9,7 +9,7 @@ interface MissionSectionProps {
 
 export function MissionSection({ expanded = false }: MissionSectionProps) {
   return (
-    <section className={`relative py-28 ${expanded ? 'bg-white' : 'bg-gradient-to-b from-emerald-50/30 to-white'} overflow-hidden`}>
+    <section className={`relative py-14 ${expanded ? 'bg-white' : 'bg-gradient-to-b from-emerald-50/30 to-white'} overflow-hidden`}>
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader 
           tagline="Our Divine Purpose" 

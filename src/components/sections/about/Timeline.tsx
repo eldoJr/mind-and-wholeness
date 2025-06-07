@@ -27,7 +27,7 @@ export function Timeline() {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-4 bg-white">
       <div className="max-w-4xl mx-auto px-6">
         <div className="relative">
           {/* Timeline line */}

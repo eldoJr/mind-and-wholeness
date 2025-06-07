@@ -1,52 +1,45 @@
 // src/components/sections/about/TeamSection.tsx
 import { motion } from "framer-motion";
 import { Linkedin, Twitter, Mail } from "lucide-react";
+import { SectionHeader } from "../shared/SectionHeader";
 
-const teamMembers = [
-  {
-    name: "Lilian Titus",
-    role: "Founder & Visionary Leader",
-    bio: "Spiritual mentor and author dedicated to restoring divine identity through sacred wisdom.",
-    img: "/images/team/lilian.jpg"
-  },
-  {
-    name: "Viviana Claudia",
-    role: "Chief Operating Officer",
-    bio: "Creates spaces for women to heal and step into their sovereign power.",
-    img: "/images/team/viviana.jpg"
-  },
-  {
-    name: "Michael Mugwenhi",
-    role: "Chief Technology Officer",
-    bio: "Bridges technology and spirituality to empower youth globally.",
-    img: "/images/team/michael.jpg"
-  }
-];
+interface TeamSectionProps {
+  expanded?: boolean;
+}
 
-export function TeamSection() {
+export function TeamSection({ expanded = false }: TeamSectionProps) {
+  const teamMembers = [
+    {
+      name: "Lilian Titus",
+      role: "Founder & Visionary Leader",
+      bio: "Spiritual mentor and author dedicated to restoring divine identity through sacred wisdom.",
+      img: "/images/team/lilian.jpg"
+    },
+    {
+      name: "Viviana Claudia",
+      role: "Chief Operating Officer",
+      bio: "Creates spaces for women to heal and step into their sovereign power.",
+      img: "/images/team/viviana.jpg"
+    },
+    {
+      name: "Michael Mugwenhi",
+      role: "Chief Technology Officer",
+      bio: "Bridges technology and spirituality to empower youth globally.",
+      img: "/images/team/michael.jpg"
+    }
+  ];
+
   return (
-    <section className="py-28 bg-gradient-to-b from-white to-emerald-50/30">
+    <section className={`py-28 ${expanded ? 'bg-white' : 'bg-gradient-to-b from-white to-emerald-50/30'}`}>
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
-          <span className="inline-block px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-4">
-            Sacred Guardians
-          </span>
-          <h2 className="text-4xl md:text-5xl font-serif font-medium text-gray-900 mb-6">
-            Our <span className="text-emerald-600">Divine Team</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-emerald-500 mx-auto" />
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mt-6">
-            Meet the vessels guiding this transformational work
-          </p>
-        </motion.div>
+        <SectionHeader 
+          tagline="Sacred Guardians" 
+          title="Our Divine Team" 
+          highlight="Divine"
+          highlightColor="amber"
+          description={expanded ? undefined : "Meet the vessels guiding this transformational work"}
+        />
 
-        {/* Team Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
             <motion.div
@@ -87,20 +80,21 @@ export function TeamSection() {
           ))}
         </div>
 
-        {/* Join Team CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-center mt-20"
-        >
-          <p className="text-lg text-gray-600 mb-6">
-            Feel called to serve in this work?
-          </p>
-          <button className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all">
-            Explore Opportunities
-          </button>
-        </motion.div>
+        {expanded && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="text-center mt-20"
+          >
+            <p className="text-lg text-gray-600 mb-6">
+              Our extended family of lightworkers includes 47 mentors across 12 countries.
+            </p>
+            <button className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all">
+              Meet All Guides
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   );

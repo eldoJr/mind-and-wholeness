@@ -1,25 +1,23 @@
-
-
 // src/components/sections/about/StorySection.tsx
 import { motion } from "framer-motion";
 import { BookOpen, HeartPulse } from "lucide-react";
+import { SectionHeader } from "../shared/SectionHeader";
 
-export function StorySection() {
+interface StorySectionProps {
+  expanded?: boolean;
+}
+
+export function StorySection({ expanded = false }: StorySectionProps) {
   return (
-    <section className="py-28 bg-gradient-to-b from-white to-emerald-50/30">
+    <section className={`py-28 ${expanded ? 'bg-white' : 'bg-gradient-to-b from-white to-emerald-50/30'}`}>
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <span className="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
-            Our Beginnings
-          </span>
-          <h2 className="text-4xl md:text-5xl font-serif font-medium text-gray-900 mb-6">
-            The <span className="text-emerald-600">Sacred Journey</span> of Mind & Wholeness
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-emerald-500 mx-auto" />
-        </div>
+        <SectionHeader 
+          tagline="Our Beginnings" 
+          title="The Sacred Journey of Mind & Wholeness" 
+          highlight="Sacred"
+          highlightColor="emerald"
+        />
 
-        {/* Content */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
@@ -43,20 +41,23 @@ export function StorySection() {
               </div>
             </div>
 
-            <div className="flex items-start gap-6">
-              <div className="p-3 bg-amber-100 rounded-lg text-amber-600 mt-1">
-                <BookOpen className="w-6 h-6" />
+            {expanded && (
+              <div className="flex items-start gap-6">
+                <div className="p-3 bg-amber-100 rounded-lg text-amber-600 mt-1">
+                  <BookOpen className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-serif font-medium text-gray-900 mb-3">
+                    The First Circle
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Our first gathering in 2017 brought together 12 seekers in Nairobi. Through tears, 
+                    prayers and sacred sharing, we witnessed the first miracles of transformation that 
+                    would become our hallmark.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-2xl font-serif font-medium text-gray-900 mb-3">
-                  Milestones of Transformation
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  From our first healing retreat in 2017 to the launch of the Sacred Wisdom Academy in 2022, 
-                  each step has been guided by divine wisdom and the tangible needs of those seeking wholeness.
-                </p>
-              </div>
-            </div>
+            )}
           </motion.div>
 
           <motion.div
@@ -71,6 +72,13 @@ export function StorySection() {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            {!expanded && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <button className="px-6 py-3 bg-white/90 backdrop-blur-sm text-emerald-700 font-medium rounded-lg shadow-md hover:shadow-lg transition-all">
+                  Explore Full History
+                </button>
+              </div>
+            )}
           </motion.div>
         </div>
       </div>

@@ -12,7 +12,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative h-full min-h-[600px] sm:min-h-[700px] overflow-hidden px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
+    <section className=" relative h-full min-h-[600px] sm:min-h-[700px] overflow-hidden px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
       {/* Background Image Container with Clipping */}
       <div className="absolute inset-0 mx-4 sm:mx-8 lg:mx-20 mb-2 sm:mb-5 rounded-lg shadow-md overflow-hidden">
         {/* Fixed Background Image within Hero bounds */}
@@ -127,7 +127,7 @@ export function Hero() {
           opacity: [0.6, 1, 0.6],
           transition: { duration: 2, repeat: Infinity }
         }}
-        className="absolute bottom-4 sm:bottom-10 left-1/2 transform -translate-x-1/2 text-white"
+        className="pb-6 absolute bottom-4 sm:bottom-10 left-1/2 transform -translate-x-1/2 text-white"
       >
         <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-white/50 rounded-full flex justify-center">
           <motion.div

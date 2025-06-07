@@ -8,6 +8,7 @@ import MissionPage from "../pages/about/mission";
 import TeamPage from "../pages/about/team";
 import JoinPage from "../pages/about/join";
 import BeginJourney from "../pages/BeginJourney";
+import BlogSection from "../pages/blog/blog";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/about/join",
         element: <JoinPage />,
+      },
+      {
+        path: "/blog",
+        element: <BlogSection />,
       },
       {
         path: "*",

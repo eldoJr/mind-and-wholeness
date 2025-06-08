@@ -8,6 +8,10 @@ import MissionPage from "../pages/about/mission";
 import TeamPage from "../pages/about/team";
 import JoinPage from "../pages/about/join";
 import BeginJourney from "../pages/BeginJourney";
+import ProgramsPage from "../components/sections/programs/Podcasts";
+import DailyMeditations from "../components/sections/programs/Meditations";
+import PodcastsPage from "../components/sections/programs/Podcasts";
+import EventsPage from "../components/sections/programs/Events";
 import BlogSection from "../pages/blog/blog";
 import ContactSection from "../pages/Contact";
 import Signup from "../pages/signup/signup";
@@ -43,6 +47,22 @@ export const router = createBrowserRouter([
       {
         path: "/about/join",
         element: <JoinPage />,
+      },
+      {
+        path: "/programs",
+        element: <ProgramsPage />,
+      },
+      {
+        path: "/programs/meditations",
+        element: <DailyMeditations />,
+      },
+      {
+        path: "/programs/podcasts",
+        element: <PodcastsPage />,
+      },
+      {
+        path: "/programs/events",
+        element: <EventsPage />,
       },
       {
         path: "/blog",

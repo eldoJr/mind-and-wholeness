@@ -529,22 +529,20 @@ const ContactSection: React.FC = () => {
             whileHover={{ y: -5 }}
           >
             <div className="max-w-4xl mx-auto">
-              <h3 className="text-4xl font-bold mb-4">Ready to Begin Your Transformation?</h3>
-              <p className="text-xl text-green-100 mb-8 leading-relaxed">
+              <h3 className="text-3xl font-bold mb-4">Ready to Begin Your Transformation?</h3>
+              <p className="text-lg text-green-100 mb-8 leading-relaxed">
                 Join thousands of others who have discovered peace, purpose, and wholeness through our supportive community and expert guidance.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <motion.button 
-                  className="bg-white text-green-600 font-bold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl text-lg"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Start Your Journey Today
-                </motion.button>
-                <div className="flex items-center gap-2 text-green-100">
-                  <Users className="w-5 h-5" />
-                  <span className="text-lg font-semibold">50,000+ Lives Transformed</span>
-                </div>
+                  <a href="/signup/signup">
+                    <motion.button 
+                      className="bg-white text-green-600 font-bold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl text-base"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Start Your Journey Today
+                    </motion.button>
+                  </a>
               </div>
             </div>
           </motion.div>

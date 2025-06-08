@@ -214,7 +214,7 @@ export default function Navbar() {
               aria-expanded={programsOpen}
               aria-haspopup="true"
             >
-              Programs <ChevronDown size={16} className={`transition-transform ${
+              Events & Programs <ChevronDown size={16} className={`transition-transform ${
                 programsOpen ? 'rotate-180' : ''
               }`} />
             </button>
@@ -227,42 +227,42 @@ export default function Navbar() {
               >
                 <li>
                   <Link 
-                    to="/programs/mindfulness" 
+                    to="/programs/meditations" 
                     className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 border-b border-gray-100 transition-colors"
                     onClick={closeAllMenus}
                   >
-                    <div className="font-medium">Mindfulness & Meditation</div>
-                    <div className="text-sm text-gray-600">Develop mindful awareness</div>
+                    <div className="font-medium">Daily Meditations</div>
+                    <div className="text-sm text-gray-600">Guided practices for peace</div>
                   </Link>
                 </li>
                 <li>
                   <Link 
-                    to="/programs/healing" 
+                    to="/programs/podcasts" 
                     className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 border-b border-gray-100 transition-colors"
                     onClick={closeAllMenus}
                   >
-                    <div className="font-medium">Healing Journey</div>
-                    <div className="text-sm text-gray-600">Deep personal transformation</div>
+                    <div className="font-medium">Podcasts</div>
+                    <div className="text-sm text-gray-600">Insights and stories from our community</div>
                   </Link>
                 </li>
                 <li>
                   <Link 
-                    to="/programs/wellness" 
-                    className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 border-b border-gray-100 transition-colors"
-                    onClick={closeAllMenus}
-                  >
-                    <div className="font-medium">Holistic Wellness</div>
-                    <div className="text-sm text-gray-600">Balance mind, body, and spirit</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    to="/programs/retreats" 
+                    to="/programs/events" 
                     className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 transition-colors"
                     onClick={closeAllMenus}
                   >
-                    <div className="font-medium">Transformative Retreats</div>
-                    <div className="text-sm text-gray-600">Immersive growth experiences</div>
+                    <div className="font-medium">Events</div>
+                    <div className="text-sm text-gray-600">Workshops and gatherings</div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/programs/volunteer"
+                    className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 transition-colors"
+                    onClick={closeAllMenus}
+                  >
+                    <div className="font-medium">Volunteer With Us</div>
+                    <div className="text-sm text-gray-600">Join our sacred service</div>
                   </Link>
                 </li>
               </ul>
@@ -278,13 +278,6 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link 
-              to="/resources" 
-              className="hover:text-emerald-700 transition-colors py-2"
-              onClick={closeAllMenus}
-            >
-              Resources
-            </Link>
           </li>
           <li>
             <Link 
@@ -300,7 +293,7 @@ export default function Navbar() {
         {/* CTA Button */}
         <div className="hidden lg:block">
           <Link 
-            to="/about/join" 
+            to="/signup/signup" 
             className="px-6 py-3 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg"
             onClick={closeAllMenus}
           >
@@ -381,39 +374,39 @@ export default function Navbar() {
                 onClick={() => setProgramsOpen(!programsOpen)}
                 aria-expanded={programsOpen}
               >
-                Programs
+                Events & Programs
                 <ChevronDown size={16} className={`transition-transform ${programsOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {programsOpen && (
                 <div className="pl-4 space-y-1 mt-2 animate-in fade-in-80 slide-in-from-top-2">
                   <Link 
-                    to="/programs/mindfulness" 
+                    to="/programs/meditations" 
                     className="block py-2 px-3 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors"
                     onClick={closeAllMenus}
                   >
-                    Mindfulness
+                    Daily Meditations
                   </Link>
                   <Link 
-                    to="/programs/healing" 
+                    to="/programs/podcasts" 
                     className="block py-2 px-3 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors"
                     onClick={closeAllMenus}
                   >
-                    Healing Journey
+                    Podcasts
                   </Link>
                   <Link 
-                    to="/programs/wellness" 
+                    to="/programs/events" 
                     className="block py-2 px-3 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors"
                     onClick={closeAllMenus}
                   >
-                    Holistic Wellness
+                    Events
                   </Link>
                   <Link 
-                    to="/programs/retreats" 
+                    to="/programs/volunteer" 
                     className="block py-2 px-3 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors"
                     onClick={closeAllMenus}
                   >
-                    Retreats
+                    Volunteer With Us
                   </Link>
                 </div>
               )}
@@ -428,13 +421,6 @@ export default function Navbar() {
               Blog
             </Link>
             <Link 
-              to="/resources" 
-              className="block py-3 px-3 text-gray-800 font-medium hover:bg-emerald-50 rounded-lg transition-colors"
-              onClick={closeAllMenus}
-            >
-              Resources
-            </Link>
-            <Link 
               to="/contact" 
               className="block py-3 px-3 text-gray-800 font-medium hover:bg-emerald-50 rounded-lg transition-colors"
               onClick={closeAllMenus}
@@ -445,7 +431,7 @@ export default function Navbar() {
             {/* Mobile CTA */}
             <div className="pt-4 border-t border-gray-100">
               <Link 
-                to="/signup" 
+                to="/signup/signup" 
                 className="block w-full py-3 text-center bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors"
                 onClick={closeAllMenus}
               >

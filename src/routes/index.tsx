@@ -9,6 +9,7 @@ import TeamPage from "../pages/about/team";
 import JoinPage from "../pages/about/join";
 import BeginJourney from "../pages/BeginJourney";
 import BlogSection from "../pages/blog/blog";
+import Signup from "../pages/signup/signup";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: "/blog",
         element: <BlogSection />,
+      },
+      {
+        path: "/signup/signup",
+        element: <Signup />,
       },
       {
         path: "*",

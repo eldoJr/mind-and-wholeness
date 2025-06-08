@@ -162,34 +162,34 @@ export default function Navbar() {
                 onMouseLeave={() => handleAboutHover(false)}
               >
                 <li>
-                  <Link 
-                    to="/about/story" 
+                  <a
+                    href="/about/story"
                     className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 border-b border-gray-100 transition-colors"
                     onClick={closeAllMenus}
                   >
                     <div className="font-medium">Our Story</div>
                     <div className="text-sm text-gray-600">Learn about our journey</div>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link 
-                    to="/about/mission" 
+                  <a
+                    href="/about/mission"
                     className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 border-b border-gray-100 transition-colors"
                     onClick={closeAllMenus}
                   >
                     <div className="font-medium">Mission & Vision</div>
                     <div className="text-sm text-gray-600">Our purpose and future</div>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link 
-                    to="/about/team" 
+                  <a
+                    href="/about/team"
                     className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 transition-colors"
                     onClick={closeAllMenus}
                   >
                     <div className="font-medium">Our Team</div>
                     <div className="text-sm text-gray-600">Meet our guides</div>
-                  </Link>
+                  </a>
                 </li>
               </ul>
             )}
@@ -226,44 +226,44 @@ export default function Navbar() {
                 onMouseLeave={() => handleProgramsHover(false)}
               >
                 <li>
-                  <Link 
-                    to="/programs/meditations" 
+                  <a
+                    href="/programs/meditations"
                     className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 border-b border-gray-100 transition-colors"
                     onClick={closeAllMenus}
                   >
                     <div className="font-medium">Daily Meditations</div>
                     <div className="text-sm text-gray-600">Guided practices for peace</div>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link 
-                    to="/programs/podcasts" 
+                  <a
+                    href="/programs/podcasts"
                     className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 border-b border-gray-100 transition-colors"
                     onClick={closeAllMenus}
                   >
                     <div className="font-medium">Podcasts</div>
                     <div className="text-sm text-gray-600">Insights and stories from our community</div>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link 
-                    to="/programs/events" 
+                  <a
+                    href="/programs/events"
                     className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 transition-colors"
                     onClick={closeAllMenus}
                   >
                     <div className="font-medium">Events</div>
                     <div className="text-sm text-gray-600">Workshops and gatherings</div>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="/programs/volunteer"
+                  <a
+                    href="/begin-journey"
                     className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 transition-colors"
                     onClick={closeAllMenus}
                   >
                     <div className="font-medium">Volunteer With Us</div>
                     <div className="text-sm text-gray-600">Join our sacred service</div>
-                  </Link>
+                  </a>
                 </li>
               </ul>
             )}

@@ -3,8 +3,7 @@ import { Hero } from "../components/layout/hero";
 import Support from "../components/layout/support";
 import Highlights from "../components/layout/highlights";
 import Newsletter from "../components/layout/newsletter";
-import InstagramSection
- from "./InstagramSection";
+import Testimonial from "../components/layout/testimonial";
 
 export default function Home() {
   return (
@@ -13,7 +12,7 @@ export default function Home() {
       <Support />
       <Highlights />
       <Newsletter />
-      <InstagramSection />
+      <Testimonial />
     </>
   );
 }

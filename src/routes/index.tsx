@@ -15,6 +15,7 @@ import EventsPage from "../components/sections/programs/Events";
 import BlogSection from "../pages/blog/blog";
 import ContactSection from "../pages/Contact";
 import Signup from "../pages/signup/signup";
+import NotFound from "../pages/404/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -78,7 +79,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <div>404 - Page Not Found</div>,
+        element: <NotFound />,
       },
     ],
   },

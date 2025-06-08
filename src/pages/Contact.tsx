@@ -185,17 +185,16 @@ const ContactSection: React.FC = () => {
       </motion.div>
 
       {/* Main Content */}
-      <div className="bg-gray-50 py-20 px-6">
+      <div className="bg-white py-8 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-4">
             {/* Contact Info Column */}
             <motion.div 
-              className="bg-white rounded-3xl shadow-2xl border border-gray-100 h-full"
+              className="bg-white rounded-lg  border border-gray-100 h-full"
               variants={itemVariants}
-              whileHover={{ y: -5 }}
             >
               <div className="p-8 lg:p-12 h-full flex flex-col">
-                <div className="mb-8">
+                <div className="mb-6">
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Connect With Us</h3>
                   <p className="text-gray-600 text-base">Choose your preferred way to reach out</p>
                 </div>
@@ -314,11 +313,10 @@ const ContactSection: React.FC = () => {
 
             {/* Contact Form Column */}
             <motion.div 
-              className="bg-white rounded-3xl shadow-2xl border border-gray-100 h-full"
+              className="bg-white rounded-lg border border-gray-100 h-full"
               variants={itemVariants}
-              whileHover={{ y: -5 }}
             >
-              <div className="p-8 lg:p-12 h-full flex flex-col">
+              <div className="p-6 lg:p-12 h-full flex flex-col">
                 <AnimatePresence mode="wait">
                   {isSuccess ? (
                     <motion.div
@@ -522,11 +520,10 @@ const ContactSection: React.FC = () => {
 
           {/* Bottom CTA */}
           <motion.div 
-            className="mt-20 bg-gradient-to-r from-green-600 to-orange-500 rounded-3xl p-12 text-white text-center shadow-2xl"
+            className="mt-20 bg-gradient-to-r from-green-600 to-orange-500 rounded-lg p-12 text-white text-center shadow-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            whileHover={{ y: -5 }}
           >
             <div className="max-w-4xl mx-auto">
               <h3 className="text-3xl font-bold mb-4">Ready to Begin Your Transformation?</h3>

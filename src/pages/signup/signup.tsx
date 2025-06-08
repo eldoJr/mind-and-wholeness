@@ -208,8 +208,8 @@ const Signup: React.FC = () => {
 
   if (isSuccess) {
     return (
-      <div className="flex items-center justify-center min-h-full bg-gradient-to-br from-emerald-50 to-indigo-50 p-6">
-        <div className="max-w-md w-full bg-white rounded-2xl p-8 text-center shadow-xl border border-emerald-100 relative overflow-hidden">
+      <div className="flex items-center justify-center min-h-full bg-gradient-to-br py-40">
+        <div className="max-w-4xl w-full bg-white rounded-2xl p-8 text-center shadow-xl border border-emerald-100 relative overflow-hidden">
           {/* Confetti */}
           <div className="absolute inset-0 pointer-events-none">
             <Confetti active={showConfetti} config={{ elementCount: 100, spread: 90 }} />
@@ -358,7 +358,7 @@ const Signup: React.FC = () => {
                         required
                         onChange={handleChange}
                         value={form.firstName}
-                        className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors hover:border-emerald-400"
+                        className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 text-base focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 focus:bg-white resize-none hover:border-green-300"
                         placeholder="Your first name"
                       />
                     </div>
@@ -371,7 +371,7 @@ const Signup: React.FC = () => {
                         required
                         onChange={handleChange}
                         value={form.lastName}
-                        className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors hover:border-emerald-400"
+                        className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 text-base focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 focus:bg-white resize-none hover:border-green-300"
                         placeholder="Your last name"
                       />
                     </div>
@@ -385,8 +385,8 @@ const Signup: React.FC = () => {
                       required
                       onChange={handleChange}
                       value={form.email}
-                      className={`w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-500 transition-colors ${
-                        emailError ? 'border-red-300 focus:border-red-500' : 'border-gray-300 focus:border-emerald-500 hover:border-emerald-400'
+                      className={`w-full border-2 border-gray-200 rounded-xl px-5 py-4 text-base focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 focus:bg-white resize-none hover:border-green-300 ${
+                        emailError ? 'border-red-300 focus:border-red-500' : 'border-gray-300 focus:border-green-500 hover:border-green-400'
                       }`}
                       placeholder="your@email.com"
                     />
@@ -400,7 +400,7 @@ const Signup: React.FC = () => {
                       required
                       onChange={handleChange}
                       value={form.confirmEmail}
-                      className={`w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-500 transition-colors ${
+                      className={`w-full border-2 border-gray-200 rounded-xl px-5 py-4 text-base focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 focus:bg-white resize-none hover:border-green-300 ${
                         emailError ? 'border-red-300 focus:border-red-500' : 'border-gray-300 focus:border-emerald-500 hover:border-emerald-400'
                       }`}
                       placeholder="Confirm your email"
@@ -489,7 +489,7 @@ const Signup: React.FC = () => {
                       name="healingJourney"
                       value={form.healingJourney}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 hover:border-emerald-400 transition-colors"
+                      className="w-full border-2 border-green-200 rounded-xl px-5 py-4 text-base focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-orange-300 focus:bg-white resize-none hover:border-green-300"
                     >
                       <option value="">Select your journey stage...</option>
                       {healingJourneyOptions.map((option) => (
@@ -593,7 +593,7 @@ const Signup: React.FC = () => {
                           value={item.value}
                           checked={form.interests.includes(item.value)}
                           onChange={handleChange}
-                          className="mt-1 h-5 w-5 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
+                          className="mt-1 h-5 w-5 bg-green text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
                         />
                         <div className="flex items-start gap-3 flex-1">
                           <div className={`mt-1 p-2 rounded-lg ${item.color}`}>

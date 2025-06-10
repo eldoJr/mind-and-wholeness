@@ -6,34 +6,34 @@ import {
   MessageSquare, Repeat, Shuffle,
 } from 'lucide-react';
 
-import { Chapter, Podcast } from './types';
+import EpisodeModal from './EpisodeModal';
+import { Podcast, Chapter } from './types';
 
 const PodcastsPage: React.FC = () => {
-    const [podcasts, setPodcasts] = useState<Podcast[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedType, setSelectedType] = useState('All');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedType, setSelectedType] = useState<string>('All');
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [favorites, setFavorites] = useState<number[]>([]);
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [currentPlaying, setCurrentPlaying] = useState<number | null>(null);
   const [currentChapter, setCurrentChapter] = useState<number>(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(1);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [currentTime, setCurrentTime] = useState<number>(0);
+  const [duration, setDuration] = useState<number>(0);
+  const [volume, setVolume] = useState<number>(0.8); // Volume inicial 0.8
+  const [isMuted, setIsMuted] = useState<boolean>(false);
   const [showShareModal, setShowShareModal] = useState<number | null>(null);
   const [showChapters, setShowChapters] = useState<number | null>(null);
-  const [playbackSpeed, setPlaybackSpeed] = useState(1);
-  const [isRepeat, setIsRepeat] = useState(false);
-  const [isShuffle, setIsShuffle] = useState(false);
+  const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
+  const [isRepeat, setIsRepeat] = useState<boolean>(false);
+  const [isShuffle, setIsShuffle] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [showEpisodeModal, setShowEpisodeModal] = useState<boolean>(false);
+  const [selectedEpisode, setSelectedEpisode] = useState<Podcast | null>(null);
+
   const audioRef = useRef<HTMLAudioElement>(null);
 
-    const getCurrentPodcast = (): Podcast | undefined => {
-    return podcasts.find(p => p.id === currentPlaying);
-  };
-
-  const podcasts = [
+  const podcasts: Podcast[] = [
     {
       id: 1,
       title: "The Mindful Path",
@@ -106,16 +106,24 @@ const PodcastsPage: React.FC = () => {
   const types = ["All", "Audio", "Video"];
   const speeds = [0.5, 0.75, 1, 1.25, 1.5, 2];
 
+  // Efeitos
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     const updateTime = () => setCurrentTime(audio.currentTime);
-    const updateDuration = () => setDuration(audio.duration);
+    const updateDuration = () => {
+      if (!isNaN(audio.duration)) {
+        setDuration(audio.duration);
+      }
+    };
     const handleEnded = () => {
       if (isRepeat) {
         audio.currentTime = 0;
-        audio.play();
+        audio.play().catch(err => {
+          setError('Failed to replay audio');
+          console.error('Replay error:', err);
+        });
       } else {
         handleNextChapter();
       }
@@ -125,59 +133,78 @@ const PodcastsPage: React.FC = () => {
     audio.addEventListener('loadedmetadata', updateDuration);
     audio.addEventListener('ended', handleEnded);
     audio.playbackRate = playbackSpeed;
+    audio.volume = volume;
 
     return () => {
       audio.removeEventListener('timeupdate', updateTime);
       audio.removeEventListener('loadedmetadata', updateDuration);
       audio.removeEventListener('ended', handleEnded);
     };
-  }, [currentPlaying, playbackSpeed, isRepeat]);
+  }, [currentPlaying, playbackSpeed, isRepeat, volume]);
 
-  const toggleFavorite = (id: number) => {
-    setFavorites(prev => 
-      prev.includes(id) 
-        ? prev.filter(favId => favId !== id)
-        : [...prev, id]
-    );
+  const getCurrentPodcast = (): Podcast | undefined => {
+    return podcasts.find(p => p.id === currentPlaying);
   };
 
-  const toggleBookmark = (id: number) => {
-    setBookmarks(prev => 
-      prev.includes(id) 
-        ? prev.filter(bookId => bookId !== id)
-        : [...prev, id]
-    );
+  const getCurrentChapterData = (): Chapter | undefined => {
+    const currentPodcast = getCurrentPodcast();
+    return currentPodcast?.chapters[currentChapter];
   };
 
-  const handlePlay = (podcast: any, chapterIndex: number = 0) => {
-    if (podcast.type === 'video' && chapterIndex === 0) {
-      window.open(podcast.videoLink, '_blank');
-      return;
-    }
+  const formatTime = (time: number) => {
+    if (isNaN(time)) return "0:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
 
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (currentPlaying === podcast.id && currentChapter === chapterIndex) {
-      if (isPlaying) {
-        audio.pause();
-        setIsPlaying(false);
-      } else {
-        audio.play();
-        setIsPlaying(true);
+  // Handlers
+  const handlePlay = async (podcast: Podcast, chapterIndex: number = 0) => {
+    try {
+      if (podcast.type === 'video' && chapterIndex === 0) {
+        window.open(podcast.videoLink, '_blank');
+        return;
       }
-    } else {
-      setCurrentPlaying(podcast.id);
-      setCurrentChapter(chapterIndex);
-      const chapter = podcast.chapters[chapterIndex];
-      audio.src = chapter.audioLink;
-      audio.play();
-      setIsPlaying(true);
+
+      const audio = audioRef.current;
+      if (!audio) throw new Error('Audio element not found');
+
+      if (currentPlaying === podcast.id && currentChapter === chapterIndex) {
+        if (isPlaying) {
+          audio.pause();
+          setIsPlaying(false);
+        } else {
+          await audio.play();
+          setIsPlaying(true);
+          setError(null);
+        }
+      } else {
+        setCurrentPlaying(podcast.id);
+        setCurrentChapter(chapterIndex);
+        const chapter = podcast.chapters[chapterIndex];
+        
+        if (!chapter?.audioLink) throw new Error('Chapter audio not available');
+        
+        audio.src = chapter.audioLink;
+        audio.preload = 'metadata';
+        
+        try {
+          await audio.play();
+          setIsPlaying(true);
+          setError(null);
+        } catch (err) {
+          setError('Playback failed. Please check your audio settings.');
+          console.error('Playback error:', err);
+        }
+      }
+    } catch (err) {
+      setError('An error occurred while playing the podcast');
+      console.error('Play error:', err);
     }
   };
 
   const handleNextChapter = () => {
-    const currentPodcast = podcasts.find(p => p.id === currentPlaying);
+    const currentPodcast = getCurrentPodcast();
     if (!currentPodcast) return;
 
     if (isShuffle) {
@@ -188,11 +215,14 @@ const PodcastsPage: React.FC = () => {
       const nextIndex = currentChapter + 1;
       setCurrentChapter(nextIndex);
       handlePlay(currentPodcast, nextIndex);
+    } else if (isRepeat) {
+      setCurrentChapter(0);
+      handlePlay(currentPodcast, 0);
     }
   };
 
   const handlePrevChapter = () => {
-    const currentPodcast = podcasts.find(p => p.id === currentPlaying);
+    const currentPodcast = getCurrentPodcast();
     if (!currentPodcast) return;
 
     if (currentChapter > 0) {
@@ -207,8 +237,10 @@ const PodcastsPage: React.FC = () => {
     if (!audio) return;
     
     const newTime = (parseFloat(e.target.value) / 100) * duration;
-    audio.currentTime = newTime;
-    setCurrentTime(newTime);
+    if (!isNaN(newTime)) {
+      audio.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
   };
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -233,37 +265,35 @@ const PodcastsPage: React.FC = () => {
     }
   };
 
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  const handleOpenEpisodeModal = (podcast: Podcast) => {
+    setSelectedEpisode(podcast);
+    setShowEpisodeModal(true);
   };
 
-  const handleShare = async (podcast: any) => {
-    const shareData = {
-      title: podcast.title,
-      text: `${podcast.episode} - ${podcast.description}`,
-      url: `${window.location.href}?episode=${podcast.id}`
-    };
+  const handleCloseModal = () => {
+    setShowEpisodeModal(false);
+    setSelectedEpisode(null);
+  };
 
-    if (navigator.share && navigator.canShare(shareData)) {
-      try {
-        await navigator.share(shareData);
-      } catch (err) {
-        console.log('Share cancelled');
-      }
-    } else {
-      try {
-        await navigator.clipboard.writeText(`${shareData.title}\n${shareData.text}\n${shareData.url}`);
-        setShowShareModal(podcast.id);
-        setTimeout(() => setShowShareModal(null), 3000);
-      } catch (err) {
-        console.log('Failed to copy to clipboard');
-      }
-    }
+  const toggleFavorite = (id: number) => {
+    setFavorites(prev => 
+      prev.includes(id) 
+        ? prev.filter(favId => favId !== id)
+        : [...prev, id]
+    );
+  };
+
+  const toggleBookmark = (id: number) => {
+    setBookmarks(prev => 
+      prev.includes(id) 
+        ? prev.filter(bookId => bookId !== id)
+        : [...prev, id]
+    );
   };
 
   const handleDownload = (audioLink: string, title: string) => {
+    if (!audioLink) return;
+    
     const link = document.createElement('a');
     link.href = audioLink;
     link.download = `${title}.mp3`;
@@ -271,7 +301,25 @@ const PodcastsPage: React.FC = () => {
     link.click();
     document.body.removeChild(link);
   };
+  
+  const handleShare = (podcast: Podcast) => {
+    if (!navigator.clipboard) {
+      setError('Clipboard API not supported');
+      return;
+    }
 
+    navigator.clipboard.writeText(podcast.videoLink || podcast.chapters[0]?.audioLink || '')
+      .then(() => {
+        setShowShareModal(podcast.id);
+        setTimeout(() => setShowShareModal(null), 2000);
+      })
+      .catch(err => {
+        setError('Failed to copy link to clipboard');
+        console.error('Share error:', err);
+      });
+  };
+
+  // Filtros
   const filteredPodcasts = podcasts.filter(podcast => {
     const matchesCategory = selectedCategory === 'All' || podcast.category === selectedCategory;
     const matchesType = selectedType === 'All' || podcast.type === selectedType.toLowerCase();
@@ -281,14 +329,30 @@ const PodcastsPage: React.FC = () => {
     return matchesCategory && matchesType && matchesSearch;
   });
 
-  const currentPodcast = podcasts.find(p => p.id === currentPlaying);
-  const currentChapterData = currentPodcast?.chapters[currentChapter];
+  const currentPodcast = getCurrentPodcast();
+  const currentChapterData = getCurrentChapterData();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-orange-50">
       {/* Hidden Audio Element */}
-      <audio ref={audioRef} />
+      <audio ref={audioRef} preload="metadata" />
 
+          {/* Error Message */}
+      {error && (
+        <div className="fixed top-4 right-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-lg shadow-lg z-50 flex items-start gap-3 max-w-md">
+          <div className="flex-1">
+            <p className="font-medium">{error}</p>
+          </div>
+          <button 
+            onClick={() => setError(null)} 
+            className="text-red-500 hover:text-red-700"
+            aria-label="Dismiss error"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+      )}
+      
       {/* Enhanced Header */}
       <div className="bg-gradient-to-r from-green-600 via-emerald-600 to-green-700 py-20 px-6 text-center text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>

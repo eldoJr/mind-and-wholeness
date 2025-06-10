@@ -6,7 +6,10 @@ import {
   MessageSquare, Repeat, Shuffle,
 } from 'lucide-react';
 
+import { Chapter, Podcast } from './types';
+
 const PodcastsPage: React.FC = () => {
+    const [podcasts, setPodcasts] = useState<Podcast[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedType, setSelectedType] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
@@ -25,6 +28,10 @@ const PodcastsPage: React.FC = () => {
   const [isRepeat, setIsRepeat] = useState(false);
   const [isShuffle, setIsShuffle] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+
+    const getCurrentPodcast = (): Podcast | undefined => {
+    return podcasts.find(p => p.id === currentPlaying);
+  };
 
   const podcasts = [
     {

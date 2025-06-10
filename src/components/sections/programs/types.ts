@@ -1,4 +1,3 @@
-// Criar um novo arquivo types.ts
 export interface Chapter {
   id: number;
   title: string;

@@ -66,7 +66,7 @@ export default function Testimonial() {
                   />
                 </div>
                 <div>
-                  <p className="font-serif font-medium text-gray-900">Sarah M.</p>
+                  <p className="font-serif font-medium text-gray-900">John Doe</p>
                   <p className="text-sm text-gray-600">Healing Journey Participant</p>
                 </div>
               </div>
@@ -82,27 +82,6 @@ export default function Testimonial() {
               </div>
             </div>
           </motion.div>
-        </div>
-
-        {/* Floating testimonial cards */}
-        <div className="grid md:grid-cols-3 gap-6 mt-16">
-          {[
-            "After the retreat, my anxiety transformed into deep peace",
-            "I finally forgave my past and embraced my future",
-            "The meditation practices changed my relationships"
-          ].map((testimony, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 + 0.4, duration: 0.5 }}
-              className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all"
-            >
-              <p className="text-gray-700 mb-4">"{testimony}"</p>
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-amber-200 to-transparent my-3" />
-              <p className="text-sm text-gray-500">Anonymous Participant</p>
-            </motion.div>
-          ))}
         </div>
       </div>
     </section>

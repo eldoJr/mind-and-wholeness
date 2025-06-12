@@ -223,8 +223,8 @@ const ContactSection: React.FC = () => {
                     {
                       icon: <MapPin className="w-7 h-5 text-white" />,
                       title: 'Visit Our Center',
-                      description: '123 Wellness Way',
-                      subtitle: 'Peace Valley, CA 90210',
+                      description: 'Parul University, Medical Auditorium',
+                      subtitle: 'Waghodia, Vadodara, Gujarat 391760',
                       href: '#',
                       bgColor: 'bg-gradient-to-r from-green-600 to-orange-500',
                       detail: 'In-person sessions welcome'

@@ -269,24 +269,24 @@ export default function Navbar() {
             )}
           </li>
           <li>
-            <Link 
-              to="/blog" 
+            <a 
+              href="/blog" 
               className="hover:text-emerald-700 transition-colors py-2"
               onClick={closeAllMenus}
             >
               Blog
-            </Link>
+            </a>
           </li>
           <li>
           </li>
           <li>
-            <Link 
-              to="/contact" 
+            <a 
+              href="/contact" 
               className="hover:text-emerald-700 transition-colors py-2"
               onClick={closeAllMenus}
             >
               Contact
-            </Link>
+            </a>
           </li>
         </ul>
 

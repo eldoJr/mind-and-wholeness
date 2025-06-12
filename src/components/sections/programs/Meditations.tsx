@@ -146,42 +146,6 @@ const DailyMeditations: React.FC = () => {
             ))}
           </div>
         </div>
-
-        {/* Benefits Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-r from-green-600 to-green-800 rounded-3xl p-10 text-white mb-16"
-        >
-          <h2 className="text-3xl font-bold mb-8">Benefits of Daily Practice</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Reduced Stress",
-                description: "Lower cortisol levels and improved stress response",
-                icon: "🧘‍♂️"
-              },
-              {
-                title: "Better Focus",
-                description: "Enhanced concentration and mental clarity",
-                icon: "🎯"
-              },
-              {
-                title: "Emotional Balance",
-                description: "Greater emotional resilience and stability",
-                icon: "⚖️"
-              }
-            ].map((benefit, index) => (
-              <div key={index} className="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
-                <div className="text-4xl mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                <p className="text-green-100">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </motion.div>
   );

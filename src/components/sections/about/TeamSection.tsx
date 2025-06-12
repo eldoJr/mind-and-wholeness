@@ -13,19 +13,19 @@ export function TeamSection({ expanded = false }: TeamSectionProps) {
       name: "Lilian Titus",
       role: "Founder & Visionary Leader",
       bio: "Spiritual mentor and author dedicated to restoring divine identity through sacred wisdom.",
-      img: "/images/team/lilian.jpg"
+      img: "/src/assets/images/lilian.jpeg"
     },
     {
       name: "Viviana Claudia",
       role: "Chief Operating Officer",
       bio: "Creates spaces for women to heal and step into their sovereign power.",
-      img: "/images/team/viviana.jpg"
+      img: "/src/assets/images/viviana.jpeg"
     },
     {
       name: "Michael Mugwenhi",
       role: "Chief Technology Officer",
       bio: "Bridges technology and spirituality to empower youth globally.",
-      img: "/images/team/michael.jpg"
+      img: "/src/assets/images/michael.jpeg"
     }
   ];
 

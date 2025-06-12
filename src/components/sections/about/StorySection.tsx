@@ -99,13 +99,13 @@ export function StorySection({ expanded = false }: StorySectionProps) {
                     <Sparkles className="w-5 h-5 text-orange-500" />
                   </div>
                   <p className="text-gray-600 leading-relaxed text-lg lg:text-xl font-light">
-                    In 2025, Lilian Titus received a profound spiritual awakening that revealed the deep need for 
+                    In 2015, Lilian Titus received a profound spiritual awakening that revealed the deep need for 
                     holistic healing in our communities. What began as small prayer gatherings blossomed into 
                     a global movement of transformation and hope.
                   </p>
                   <div className="mt-6 flex items-center gap-2 text-sm text-green-600 font-medium">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    Since 2025
+                    Since 2015
                   </div>
                 </div>
               </div>

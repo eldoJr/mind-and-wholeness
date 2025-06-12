@@ -22,7 +22,7 @@ export function Timeline() {
     {
       year: "2022",
       title: "Global Expansion",
-      description: "Online academy launches with participants from 42 nations"
+      description: "Online academy launches with participants from 10 nations"
     }
   ];
 

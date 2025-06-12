@@ -30,8 +30,8 @@ export function TeamSection({ expanded = false }: TeamSectionProps) {
   ];
 
   return (
-    <section className={`py-14 ${expanded ? 'bg-white' : 'bg-gradient-to-b from-white to-emerald-50/30'}`}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section className={`py-16 ${expanded ? 'bg-white' : 'bg-gradient-to-b from-white to-emerald-50/20'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader 
           tagline="Sacred Guardians" 
           title="Our Divine Team" 
@@ -40,40 +40,70 @@ export function TeamSection({ expanded = false }: TeamSectionProps) {
           description={expanded ? undefined : "Meet the vessels guiding this transformational work"}
         />
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-10 mt-12">
           {teamMembers.map((member, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -8 }}
-              className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                delay: index * 0.15, 
+                duration: 0.6,
+                type: "spring",
+                damping: 10,
+                stiffness: 100
+              }}
+              whileHover={{ 
+                y: -10,
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+              }}
+              className="bg-white rounded-2xl shadow-xl overflow-hidden border border-emerald-50/50 hover:border-emerald-100 transition-all group"
             >
-              <div className="relative h-64 bg-gray-100">
+              <div className="relative h-auto bg-gradient-to-br from-emerald-50/30 to-amber-50/30 overflow-hidden">
                 <img 
                   src={member.img} 
                   alt={member.name} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-serif font-medium text-gray-900 mb-1">
-                  {member.name}
-                </h3>
-                <p className="text-emerald-600 mb-4">{member.role}</p>
-                <p className="text-gray-600 mb-6">{member.bio}</p>
-                <div className="flex gap-3">
-                  <a href="#" className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700 transition-colors">
+              
+              <div className="p-7">
+                <div className="flex flex-col gap-1 mb-3">
+                  <h3 className="text-2xl font-bold font-serif text-gray-900">
+                    {member.name}
+                  </h3>
+                  <p className="text-emerald-600 font-medium">{member.role}</p>
+                </div>
+                
+                <p className="text-gray-600 mb-6 leading-relaxed">{member.bio}</p>
+                
+                <div className="flex gap-2">
+                  <motion.a 
+                    whileHover={{ scale: 1.1, backgroundColor: "#059669" }}
+                    whileTap={{ scale: 0.95 }}
+                    href="#" 
+                    className="p-2 bg-emerald-100 hover:bg-emerald-600 rounded-full text-emerald-600 hover:text-white transition-all"
+                  >
                     <Linkedin className="w-4 h-4" />
-                  </a>
-                  <a href="#" className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700 transition-colors">
+                  </motion.a>
+                  <motion.a 
+                    whileHover={{ scale: 1.1, backgroundColor: "#f97316" }}
+                    whileTap={{ scale: 0.95 }}
+                    href="#" 
+                    className="p-2 bg-amber-100 hover:bg-amber-500 rounded-full text-amber-600 hover:text-white transition-all"
+                  >
                     <Twitter className="w-4 h-4" />
-                  </a>
-                  <a href="#" className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700 transition-colors">
+                  </motion.a>
+                  <motion.a 
+                    whileHover={{ scale: 1.1, backgroundColor: "#6b7280" }}
+                    whileTap={{ scale: 0.95 }}
+                    href="#" 
+                    className="p-2 bg-gray-100 hover:bg-gray-500 rounded-full text-gray-600 hover:text-white transition-all"
+                  >
                     <Mail className="w-4 h-4" />
-                  </a>
+                  </motion.a>
                 </div>
               </div>
             </motion.div>
@@ -82,17 +112,26 @@ export function TeamSection({ expanded = false }: TeamSectionProps) {
 
         {expanded && (
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-center mt-20"
+            className="text-center mt-24"
           >
-            <p className="text-lg text-gray-600 mb-6">
-              Our extended family of lightworkers includes 47 mentors across 12 countries.
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Our extended family of lightworkers includes <span className="font-semibold text-emerald-600">12 mentors</span> across <span className="font-semibold text-amber-600">12 countries</span>.
             </p>
-            <button className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all">
-              Meet All Guides
-            </button>
+            <motion.button
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 10px 15px -3px rgba(5, 150, 105, 0.3)"
+              }}
+              whileTap={{ scale: 0.98 }}
+              className="px-10 py-3.5 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all relative overflow-hidden group"
+            >
+              <span className="relative z-10">Meet All Guides</span>
+              <span className="absolute inset-0 bg-gradient-to-r from-amber-500 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            </motion.button>
           </motion.div>
         )}
       </div>

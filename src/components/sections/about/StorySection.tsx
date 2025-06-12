@@ -190,7 +190,7 @@ export function StorySection({ expanded = false }: StorySectionProps) {
           <motion.div variants={itemVariants} className="lg:sticky lg:top-24">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[800px] lg:h-[860px] group">
               <img 
-                src="/src/assets/images/ceo-profile.jpeg"
+                src="/src/assets/images/lilian.jpeg"
                 alt="Founders in early days - Lilian Titus with early community members"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"

@@ -303,24 +303,9 @@ export function StorySection({ expanded = false }: StorySectionProps) {
                   transition={{ duration: 0.6, delay: 1.1 }}
                   className="flex flex-col sm:flex-row gap-6 justify-center"
                 >
-                  <motion.button
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="group px-10 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-2xl hover:from-green-700 hover:to-green-800 transition-all duration-300 shadow-lg hover:shadow-xl"
-                  >
-                    <span className="flex items-center justify-center gap-3">
-                      Join Our Story
-                      <motion.div
-                        animate={{ rotate: [0, 360] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                        className="group-hover:animate-spin"
-                      >
-                        <Sparkles className="w-5 h-5" />
-                      </motion.div>
-                    </span>
-                  </motion.button>
                   
-                  <motion.button
+                  <a href="/testimonials" className="w-full sm:w-auto">
+                    <motion.button
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     className="group px-10 py-4 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-semibold rounded-2xl hover:from-orange-700 hover:to-orange-800 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -335,6 +320,7 @@ export function StorySection({ expanded = false }: StorySectionProps) {
                       </motion.div>
                     </span>
                   </motion.button>
+                  </a>
                 </motion.div>
               </div>
             </div>

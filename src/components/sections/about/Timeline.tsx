@@ -282,7 +282,8 @@ export function Timeline() {
               Every milestone represents countless transformed lives. Your journey of wholeness 
               could be the next chapter in this sacred story.
             </p>
-            <motion.button
+            <a href="/signup/signup" className="inline-block">
+              <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="px-10 py-4 bg-gradient-to-r from-green-600 to-orange-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
@@ -292,6 +293,7 @@ export function Timeline() {
                 <Sparkles className="w-5 h-5" />
               </span>
             </motion.button>
+            </a>
           </div>
         </motion.div>
       </div>

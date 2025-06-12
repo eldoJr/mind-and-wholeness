@@ -67,7 +67,7 @@ export default function Highlights() {
 
   return (
     <section className="bg-gradient-to-br from-slate-50 via-white to-blue-50/30 py-20 lg:py-28 px-4 sm:px-6">
-      <style jsx global>{`
+      <style>{`
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
@@ -76,6 +76,7 @@ export default function Highlights() {
           display: none;
         }
       `}</style>
+
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div 

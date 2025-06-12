@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 
 interface SectionHeaderProps {
-  tagline: string;
+  tagline?: React.ReactNode; 
   title: string;
   highlight?: string | string[]; 
   highlightColor?: 'emerald' | 'green' | 'orange' | 'indigo' | 'amber';

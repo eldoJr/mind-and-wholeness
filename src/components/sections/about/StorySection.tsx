@@ -163,7 +163,7 @@ export function StorySection({ expanded = false }: StorySectionProps) {
                         className="text-center bg-white/60 rounded-2xl p-6 shadow-lg backdrop-blur-sm border border-white/20"
                       >
                         <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent mb-3">
-                          10,000+
+                          10000+
                         </div>
                         <div className="text-sm font-medium text-gray-700">Lives Transformed</div>
                         <div className="w-12 h-1 bg-green-400 rounded-full mx-auto mt-3" />

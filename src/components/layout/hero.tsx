@@ -2,6 +2,7 @@ import { motion, } from 'framer-motion';
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { Play, Sparkles, ArrowRight} from 'lucide-react';
+import herobg from '/src/assets/images/hero-bg.jpg';
 
 export function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -19,7 +20,7 @@ export function Hero() {
         <div 
           className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: 'url(/src/assets/images/hero-bg.jpg)',
+            backgroundImage: `url(${herobg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center 35%',
             backgroundAttachment: 'fixed',

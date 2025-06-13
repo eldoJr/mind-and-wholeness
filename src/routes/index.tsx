@@ -2,7 +2,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/layout/layout";
 import Home from "../pages/Home";
-import AboutPage from "../pages/about/index";
 import StoryPage from "../pages/about/story";
 import MissionPage from "../pages/about/mission";
 import TeamPage from "../pages/about/team";
@@ -28,10 +27,6 @@ export const router = createBrowserRouter([
       {
         path: "/begin-journey",
         element: <BeginJourney />,
-      },
-      {
-        path: "/about",
-        element: <AboutPage />,
       },
       {
         path: "/about/story",

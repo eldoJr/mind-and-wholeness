@@ -1,6 +1,8 @@
 // src/components/sections/Testimonial.tsx
 import { motion } from "framer-motion";
 import { Quote, Sparkles, ArrowRight } from "lucide-react";
+import supporters from "/src/assets/images/supporters.png";
+import user from "/src/assets/icons/user.png"; 
 
 export default function Testimonial() {
   return (
@@ -32,7 +34,7 @@ export default function Testimonial() {
           >
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent z-10" />
             <img
-              src="/src/assets/images/supporters.png"
+              src={supporters}
               alt="Mind & Wholeness community in healing circle"
               className="w-full h-full object-cover absolute inset-0"
             />
@@ -60,7 +62,7 @@ export default function Testimonial() {
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-full bg-emerald-100 border-2 border-emerald-200 overflow-hidden">
                   <img 
-                    src="/src/assets/icons/user.png" 
+                    src={user} 
                     alt="Sarah M." 
                     className="w-full h-full object-cover"
                   />

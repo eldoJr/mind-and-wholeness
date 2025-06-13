@@ -1,7 +1,10 @@
 // src/components/sections/blog/BlogSection.tsx
 import { motion } from "framer-motion";
 import { ArrowRight, CalendarDays, Clock } from "lucide-react";
-import { SectionHeader } from "../shared/SectionHeader";
+import { SectionHeader } from "../shared/SectionHeader"
+import relationshipsImg from '/src/assets/images/blog-relationships.jpg';
+import feminineImg from '/src/assets/images/blog-feminine.jpg';
+import techImg from '/src/assets/images/blog-tech.jpg';
 
 export function BlogSection() {
   const blogPosts = [
@@ -11,7 +14,7 @@ export function BlogSection() {
       category: "Spirituality",
       date: "May 15, 2023",
       readTime: "8 min read",
-      image: "/src/assets/images/blog-feminine.jpg"
+      image: feminineImg
     },
     {
       title: "The Alchemy of Sacred Relationships",
@@ -19,7 +22,7 @@ export function BlogSection() {
       category: "Relationships",
       date: "June 2, 2023",
       readTime: "12 min read",
-      image: "/src/assets/images/blog-relationships.jpg"
+      image: relationshipsImg
     },
     {
       title: "Technology as a Spiritual Practice",
@@ -27,7 +30,7 @@ export function BlogSection() {
       category: "Conscious Tech",
       date: "June 20, 2023",
       readTime: "6 min read",
-      image: "/src/assets/images/blog-tech.jpg"
+      image: techImg
     }
   ];
 

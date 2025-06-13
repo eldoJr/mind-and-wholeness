@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { BookOpen, HeartPulse, Sparkles, Users, Globe, TrendingUp } from "lucide-react";
 import { SectionHeader } from "../shared/SectionHeader";
-
+import ceoImg from "/src/assets/images/lilian.jpeg"; // Path to the founder's image
 interface StorySectionProps {
   expanded?: boolean;
 }
@@ -190,7 +190,7 @@ export function StorySection({ expanded = false }: StorySectionProps) {
           <motion.div variants={itemVariants} className="lg:sticky lg:top-24">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[800px] lg:h-[860px] group">
               <img 
-                src="/src/assets/images/lilian.jpeg"
+                src={ceoImg}
                 alt="Founders in early days - Lilian Titus with early community members"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"

@@ -422,7 +422,7 @@ export default function Navbar() {
                 }`}>
                   <div className="pl-4 space-y-1 mt-2">
                     <Link 
-                      to="/about" 
+                      to="/about/story" 
                       className="block py-2 px-3 text-gray-700 hover:bg-emerald-50 rounded-lg transition-all duration-200 hover:translate-x-1"
                       onClick={closeAllMenus}
                     >

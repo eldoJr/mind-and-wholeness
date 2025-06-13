@@ -3,6 +3,10 @@ import { motion, useMotionTemplate, useMotionValue, animate } from "framer-motio
 import { Linkedin, Twitter, Mail, Sparkles } from "lucide-react";
 import { SectionHeader } from "../shared/SectionHeader";
 import { useEffect, useMemo } from "react";
+import ceoImg from '/src/assets/images/lilian.jpeg';
+import cooImg from '/src/assets/images/viviana.jpeg';
+import ctoImg from '/src/assets/images/michael.jpeg';
+
 
 interface TeamMember {
   name: string;
@@ -23,21 +27,21 @@ export function TeamSection({ expanded = false }: TeamSectionProps) {
       name: "Lilian Titus",
       role: "Founder & Visionary Leader",
       bio: "Spiritual mentor and author dedicated to restoring divine identity through sacred wisdom.",
-      img: "/src/assets/images/lilian.jpeg",
+      img: ceoImg,
       signatureColor: "#8b5cf6" // violet
     },
     {
       name: "Viviana Claudia",
       role: "Chief Operating Officer",
       bio: "Creates spaces for women to heal and step into their sovereign power.",
-      img: "/src/assets/images/viviana.jpeg",
+      img: cooImg,
       signatureColor: "#ec4899" // pink
     },
     {
       name: "Michael Mugwenhi",
       role: "Chief Technology Officer",
       bio: "Bridges technology and spirituality to empower youth globally.",
-      img: "/src/assets/images/michael.jpeg",
+      img: ctoImg,
       signatureColor: "#0ea5e9" // sky
     }
   ];

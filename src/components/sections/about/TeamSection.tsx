@@ -2,7 +2,7 @@
 import { motion, useMotionTemplate, useMotionValue, animate } from "framer-motion";
 import { Linkedin, Twitter, Mail, Sparkles } from "lucide-react";
 import { SectionHeader } from "../shared/SectionHeader";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 interface TeamMember {
   name: string;
@@ -43,7 +43,7 @@ export function TeamSection({ expanded = false }: TeamSectionProps) {
   ];
 
   // Animated background gradient effect
-  const colors = ["#10b981", "#f59e0b", "#8b5cf6", "#ec4899"];
+  const colors = useMemo(() => ["#10b981", "#f59e0b", "#8b5cf6", "#ec4899"], []);
   const color = useMotionValue(colors[0]);
   const background = useMotionTemplate`radial-gradient(ellipse at 80% 20%, ${color}20 0%, transparent 70%)`;
 
@@ -55,7 +55,7 @@ export function TeamSection({ expanded = false }: TeamSectionProps) {
       ease: "linear"
     });
     return () => animation.stop();
-  }, []);
+  }, [color, colors]);
 
   return (
     <section className={`relative py-20 ${expanded ? 'bg-white' : 'bg-gradient-to-b from-white to-emerald-50/10'}`}>

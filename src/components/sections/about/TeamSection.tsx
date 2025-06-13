@@ -68,7 +68,7 @@ export function TeamSection({ expanded = false }: TeamSectionProps) {
         className="absolute inset-0 pointer-events-none"
         style={{ background }}
       />
-      <div className="absolute inset-0 bg-[url('/src/assets/images/noise.png')] opacity-5 mix-blend-overlay pointer-events-none" />
+      <div className="absolute inset-0 opacity-5 mix-blend-overlay pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader 

@@ -8,7 +8,7 @@ export default function Testimonial() {
   return (
     <section className="relative bg-gradient-to-b from-white to-emerald-50/30 py-28 px-6 overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-[url('/svg/triple-circle.svg')] bg-no-repeat bg-[length:120%] opacity-5" />
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-no-repeat bg-[length:120%] opacity-5" />
       <Sparkles className="absolute bottom-20 left-10 text-amber-200/40 w-16 h-16" />
 
       <div className="max-w-7xl mx-auto">

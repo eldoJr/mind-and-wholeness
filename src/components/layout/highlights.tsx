@@ -117,7 +117,7 @@ export default function Highlights() {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.15, duration: 0.6 }}
+                //transition={{ delay: index * 0.15, duration: 0.6 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -6, scale: 1.01 }}
                 className={`group relative overflow-hidden rounded-xl bg-gradient-to-br ${item.gradient} backdrop-blur-sm border ${item.accent} p-6 shadow-md hover:shadow-lg transition-all duration-400`}

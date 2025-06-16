@@ -217,34 +217,34 @@ export default function Navbar() {
                   onMouseLeave={() => handleAboutHover(false)}
                 >
                   <li>
-                    <a
-                      href="/about/story"
+                    <Link
+                      to="/about/story"
                       className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 border-b border-gray-100 transition-all duration-200 hover:translate-x-1"
                       onClick={closeAllMenus}
                     >
                       <div className="font-medium">Our Story</div>
                       <div className="text-sm text-gray-600">Learn about our journey</div>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/about/mission"
+                    <Link
+                      to="/about/mission"
                       className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 border-b border-gray-100 transition-all duration-200 hover:translate-x-1"
                       onClick={closeAllMenus}
                     >
                       <div className="font-medium">Mission & Vision</div>
                       <div className="text-sm text-gray-600">Our purpose and future</div>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/about/team"
+                    <Link
+                      to="/about/team"
                       className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 transition-all duration-200 hover:translate-x-1"
                       onClick={closeAllMenus}
                     >
                       <div className="font-medium">Our Team</div>
                       <div className="text-sm text-gray-600">Meet our guides</div>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               )}
@@ -282,44 +282,44 @@ export default function Navbar() {
                   onMouseLeave={() => handleProgramsHover(false)}
                 >
                   <li>
-                    <a
-                      href="/programs/meditations"
+                    <Link
+                      to="/programs/meditations"
                       className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 border-b border-gray-100 transition-all duration-200 hover:translate-x-1"
                       onClick={closeAllMenus}
                     >
                       <div className="font-medium">Daily Meditations</div>
                       <div className="text-sm text-gray-600">Guided practices for peace</div>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/programs/podcasts"
+                    <Link
+                      to="/programs/podcasts"
                       className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 border-b border-gray-100 transition-all duration-200 hover:translate-x-1"
                       onClick={closeAllMenus}
                     >
                       <div className="font-medium">Podcasts</div>
                       <div className="text-sm text-gray-600">Insights and stories from our community</div>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/programs/events"
+                    <Link
+                      to="/programs/events"
                       className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 border-b border-gray-100 transition-all duration-200 hover:translate-x-1"
                       onClick={closeAllMenus}
                     >
                       <div className="font-medium">Events</div>
                       <div className="text-sm text-gray-600">Workshops and gatherings</div>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/begin-journey"
+                    <Link
+                      to="/begin-journey"
                       className="block px-6 py-4 hover:bg-emerald-50 text-gray-800 transition-all duration-200 hover:translate-x-1"
                       onClick={closeAllMenus}
                     >
                       <div className="font-medium">Volunteer With Us</div>
                       <div className="text-sm text-gray-600">Join our sacred service</div>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               )}
@@ -327,24 +327,24 @@ export default function Navbar() {
 
             {/* Other Links */}
             <li>
-              <a 
-                href="/blog" 
+              <Link 
+                to="/blog" 
                 className="hover:text-emerald-700 transition-colors py-2 relative group"
                 onClick={closeAllMenus}
               >
                 Blog
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-700 transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a 
-                href="/contact" 
+              <Link 
+                to="/contact" 
                 className="hover:text-emerald-700 transition-colors py-2 relative group"
                 onClick={closeAllMenus}
               >
                 Contact
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-700 transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </Link>
             </li>
           </ul>
 

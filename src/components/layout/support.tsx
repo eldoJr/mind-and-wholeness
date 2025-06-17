@@ -39,7 +39,7 @@ export default function Support() {
     }, 3200);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [words.length]);
 
   const handleMouseMove = (event: React.MouseEvent) => {
     if (!containerRef.current) return;

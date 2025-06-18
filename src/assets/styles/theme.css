@@ -1,0 +1,16 @@
+/* src/assets/styles/theme.css */
+:root {
+  /* Light Theme */
+  --color-bg: #ffffff;
+  --color-text: #333333;
+  --color-primary: #2bbb0e;
+  --color-card: #f9fafb;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme */
+  --color-bg: #1a202c;
+  --color-text: #e2e8f0;
+  --color-primary: #7c3aed;
+  --color-card: #2d3748;
+}

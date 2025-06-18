@@ -2,7 +2,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+// Adjust the import according to the actual export from ThemeContext
+// or, if you need a hook and it's a default export:
 import { useTheme } from '../../context/ThemeContext';
+// or, if the export is named differently, for example:
 import { ThemeToggle } from '../ui/themeToggle';
 import logo from '../../assets/images/logo.svg';
 
@@ -100,7 +103,7 @@ const Dropdown = ({ isOpen, items, onMouseEnter, onMouseLeave, className = '' }:
 };
 
 export default function Navbar() {
-  const { isDarkMode } = useTheme();
+  useTheme();
   
   // State management
   const [state, setState] = useState({

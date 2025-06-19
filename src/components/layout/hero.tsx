@@ -2,7 +2,7 @@ import { motion, } from 'framer-motion';
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { Play, Sparkles, ArrowRight} from 'lucide-react';
-import herobg from '/src/assets/images/hero-bg.jpg';
+import herobg from '/src/assets/images/herobg.jpg';
 
 export function Hero() {
   const [isVisible, setIsVisible] = useState(false);

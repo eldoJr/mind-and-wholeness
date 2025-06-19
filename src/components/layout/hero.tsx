@@ -13,7 +13,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className=" relative h-full min-h-[600px] sm:min-h-[700px] overflow-hidden py-24 px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
+    <section className=" relative h-full min-h-[600px] sm:min-h-[700px] overflow-hidden py-16 px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
       {/* Background Image Container with Clipping */}
       <div className="absolute inset-0 mx-4 sm:mx-8 lg:mx-20 mb-2 sm:mb-5 rounded-lg shadow-md overflow-hidden">
         {/* Fixed Background Image within Hero bounds */}
@@ -33,7 +33,7 @@ export function Hero() {
       </div>
 
       {/* Content Container */}
-      <div className="relative h-full flex items-center pt-16 sm:pt-24 lg:pt-32 mx-2 sm:mx-6 lg:mx-10 mb-4 sm:mb-10 z-10">
+      <div className="relative h-full flex items-center pt-14 sm:pt-24 lg:pt-32 mx-2 sm:mx-6 lg:mx-10 mb-4 sm:mb-10 z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
           <div className={`max-w-2xl transition-all duration-1000 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'

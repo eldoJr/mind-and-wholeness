@@ -216,8 +216,9 @@ export default function Navbar() {
 
   // Cleanup timeouts
   useEffect(() => {
+    const timeouts = { ...timeoutRefs.current };
     return () => {
-      Object.values(timeoutRefs.current).forEach(timeout => timeout && clearTimeout(timeout));
+      Object.values(timeouts).forEach(timeout => timeout && clearTimeout(timeout));
     };
   }, []);
 

@@ -13,7 +13,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className=" relative h-full min-h-[600px] sm:min-h-[700px] overflow-hidden px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
+    <section className=" relative h-full min-h-[600px] sm:min-h-[700px] overflow-hidden py-24 px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
       {/* Background Image Container with Clipping */}
       <div className="absolute inset-0 mx-4 sm:mx-8 lg:mx-20 mb-2 sm:mb-5 rounded-lg shadow-md overflow-hidden">
         {/* Fixed Background Image within Hero bounds */}

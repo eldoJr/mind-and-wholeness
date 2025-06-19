@@ -29,7 +29,7 @@ export function Hero() {
         />
         
         {/* Subtle Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-white/30 to-black/20" />
       </div>
 
       {/* Content Container */}
@@ -59,7 +59,7 @@ export function Hero() {
               }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium leading-tight text-white mb-4 sm:mb-6"
             >
-              From <span className="text-green-300">Brokenness</span><br />
+              From <span className="text-green-500">Brokenness</span><br />
               To <span className="text-orange-300">Sacred Wholeness</span>
             </motion.h1>
 

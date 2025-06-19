@@ -4,7 +4,7 @@ import { ArrowRight, Send, HeartHandshake } from "lucide-react";
 
 export default function Newsletter() {
   return (
-    <section className="relative bg-[#E4E8ED] from-emerald-50 to-indigo-50 py-28 px-6 overflow-hidden">
+    <section className="relative bg-[#FFF9F3] from-emerald-50 to-indigo-50 py-28 px-6 overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-emerald-200 rounded-full filter blur-3xl"></div>

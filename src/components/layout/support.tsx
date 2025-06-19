@@ -1,47 +1,75 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const words = [
-  { text: "healing", color: "text-emerald-500" },
-  { text: "guiding", color: "text-indigo-500" },
-  { text: "restoring", color: "text-orange-500" },
-  { text: "empowering", color: "text-blue-500" }
-];
+const words = ["mind", "spirit", "body"];
 
-export default function HeroTitle() {
+export default function AnimatedHeader() {
   const [index, setIndex] = useState(0);
+  const [displayedWord, setDisplayedWord] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+    const currentWord = words[index];
+    let timeout: number;
+
+    if (isPaused) {
+      timeout = setTimeout(() => {
+        setIsPaused(false);
+        setIsDeleting(true);
+      }, 4000); // pausa mais longa
+    } else if (isDeleting) {
+      if (displayedWord.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayedWord((prev) => currentWord.substring(0, prev.length - 1));
+        }, 150); // deletando lentamente
+      } else {
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % words.length);
+      }
+    } else {
+      if (displayedWord.length < currentWord.length) {
+        timeout = setTimeout(() => {
+          const remaining = currentWord.length - displayedWord.length;
+          setDisplayedWord(currentWord.slice(-remaining));
+        }, 150); // digitando lentamente
+      } else {
+        setIsPaused(true);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayedWord, isDeleting, isPaused, index]);
 
   return (
-    <section className="py-24 px-6 bg-white text-center">
-      <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900">
-        We are&nbsp;
-        <span className="relative inline-block w-[8.5ch]">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className={`absolute inset-0 ${words[index].color}`}
-            >
-              {words[index].text}
-            </motion.span>
-          </AnimatePresence>
-        </span>
-        &nbsp;people toward wholeness.
-      </h1>
+    <section className="py-24 px-6 bg-gradient-to-br from-slate-50 to-emerald-50 text-center">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-gray-900 leading-tight">
+          Healing the{" "}
+          <span className="relative inline-block text-emerald-600 min-w-[120px] mx-2">
+            <span className="relative z-10 font-extrabold">
+              {displayedWord}
+              <span
+                className={`inline-block align-middle w-0.5 h-6 md:h-8 bg-emerald-600 ml-1 transition-opacity duration-300 ${
+                  isPaused ? "animate-pulse" : "opacity-75"
+                }`}
+                aria-hidden="true"
+                role="presentation"
+              />
+            </span>
 
-      <p className="mt-4 text-gray-600 text-lg max-w-xl mx-auto">
-        Mind & Wholeness offers transformative resources to nurture your soul, body and purpose.
-      </p>
+            {/* glow */}
+            <span
+              className="absolute inset-0 blur-sm text-emerald-400/30 font-extrabold pointer-events-none select-none"
+              aria-hidden="true"
+              role="presentation"
+            >
+              {displayedWord}
+            </span>
+          </span>
+
+           transforms lives and communities.
+        </h1>
+      </div>
     </section>
   );
 }

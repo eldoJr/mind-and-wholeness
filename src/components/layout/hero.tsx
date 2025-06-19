@@ -13,7 +13,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className=" relative h-full min-h-[600px] sm:min-h-[700px] overflow-hidden py-16 px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
+    <section className="bg-gradient-to-br from-slate-50 to-emerald-50 relative h-full min-h-[600px] sm:min-h-[700px] overflow-hidden px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
       {/* Background Image Container with Clipping */}
       <div className="absolute inset-0 mx-4 sm:mx-8 lg:mx-20 mb-2 sm:mb-5 rounded-lg shadow-md overflow-hidden">
         {/* Fixed Background Image within Hero bounds */}
@@ -29,7 +29,7 @@ export function Hero() {
         />
         
         {/* Subtle Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-white/30 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/100 via-white/30 to-black/20" />
       </div>
 
       {/* Content Container */}

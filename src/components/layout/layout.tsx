@@ -5,13 +5,12 @@ import Footer from "./footer";
 
 export default function AboutLayout() {
   return (
-  
-      <div className="bg-white text-gray-900">
-        <Navbar />
-        <main className="min-h-screen">
-          <Outlet /> {/* Isso renderizará a página específica */}
-        </main>
-        <Footer />
-      </div>
+    <div className="bg-gradient-to-br from-slate-50 to-emerald-50 text-gray-900">
+      <Navbar />
+      <main className="min-h-screen pt-[54px] sm:pt-[80px] lg:pt-[96px]">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
   );
 }

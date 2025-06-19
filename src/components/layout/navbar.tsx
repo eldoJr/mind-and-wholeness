@@ -91,7 +91,7 @@ const Dropdown = ({ isOpen, items, onMouseEnter, onMouseLeave, className = '' }:
 
   return (
     <div 
-      className={`absolute top-full left-0 mt-2 bg-gradient-to-br from-slate-50 via-white to-emerald-50 backdrop-blur-lg shadow-xl border border-emerald-100/40 rounded-xl overflow-hidden z-50 transition-all duration-300 ease-out
+      className={`absolute top-full left-0 mt-2 bg-white/70 backdrop-blur-lg shadow-xl border border-emerald-100/40 rounded-xl overflow-hidden z-50 transition-all duration-300 ease-out
  ${
         isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2'
       } ${className}`}
@@ -104,7 +104,7 @@ const Dropdown = ({ isOpen, items, onMouseEnter, onMouseLeave, className = '' }:
           <Link
             key={item.to}
             to={item.to}
-            className="group flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700 transition-colors duration-200"
+            className="group flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-200 text-gray-700 transition-colors duration-200"
             role="menuitem"
           >
             <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${item.gradient} opacity-70 group-hover:opacity-100 transition-opacity`} />
@@ -274,7 +274,7 @@ export default function Navbar() {
       {/* Main Navbar */}
       <nav 
         ref={navRef}
-        className={`fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b transition-all duration-300 ${
+        className={`fixed top-0 w-full z-50 bg-gradient-to-br from-slate-50 to-emerald-50 backdrop-blur-md border-b transition-all duration-300 ${
           state.scrolled ? 'border-gray-100 shadow-sm' : 'border-transparent'
         } ${
           state.navVisible ? 'translate-y-0' : '-translate-y-full'

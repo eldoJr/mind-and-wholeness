@@ -125,6 +125,29 @@ const Dropdown = ({ isOpen, items, onMouseEnter, onMouseLeave, className = '' }:
   );
 };
 
+interface AccordionButtonProps {
+  open: boolean;
+  onClick: () => void;
+  label: string;
+}
+
+const AboutAccordionButton: React.FC<AccordionButtonProps> = ({ open, onClick, label }) => (
+  <button 
+    className={`flex justify-between items-center w-full px-3 py-2.5 text-left text-sm font-medium ${
+      open ? 'text-emerald-600' : 'text-gray-700 hover:text-gray-900'
+    }`}
+    onClick={onClick}
+  >
+    <span>{label}</span>
+    <ChevronDown 
+      size={16} 
+      className={`transition-transform duration-200 ${
+        open ? 'rotate-180' : ''
+      }`} 
+    />
+  </button>
+);
+
 export default function Navbar() {
   const location = useLocation();
   const [state, setState] = useState({
@@ -222,12 +245,12 @@ export default function Navbar() {
   }, [updateState]);
 
   const toggleMobileMenu = useCallback(() => {
-    updateState(prev => ({
-      mobileOpen: !prev.mobileOpen,
+    updateState({
+      mobileOpen: !state.mobileOpen,
       aboutOpen: false,
       programsOpen: false
-    }));
-  }, [updateState]);
+    });
+  }, [updateState, state.mobileOpen]);
 
   const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => (
     <Link
@@ -400,49 +423,17 @@ export default function Navbar() {
         >
           <div className="h-full flex flex-col overflow-y-auto">
             {/* Header */}
-            <div className="flex justify-between items-center px-6 py-5 border-b border-gray-200">
-              <Link 
-                to="/" 
-                className="flex items-center"
-                onClick={closeAllMenus}
-              >
-                <img 
-                  src={logo} 
-                  alt="Logo" 
-                  className="h-7 w-auto" 
-                />
-                <span className="ml-2 text-lg font-serif font-semibold text-gray-800">
-                  Mind & Wholeness
-                </span>
-              </Link>
-              <button 
-                className="p-1 rounded-md hover:bg-gray-100"
-                onClick={closeAllMenus}
-              >
-                <X size={20} className="text-gray-500" />
-              </button>
-            </div>
-
             {/* Content */}
             <div className="flex-1 px-4 py-6 space-y-2">
               <NavLink to="/">Home</NavLink>
 
               {/* About Accordion */}
               <div className="border-b border-gray-100 pb-2">
-                <button 
-                  className={`flex justify-between items-center w-full px-3 py-2.5 text-left text-sm font-medium ${
-                    state.aboutOpen ? 'text-emerald-600' : 'text-gray-700 hover:text-gray-900'
-                  }`}
-                  onClick={() => updateState(prev => ({ aboutOpen: !prev.aboutOpen, programsOpen: false }))}
-                >
-                  <span>About</span>
-                  <ChevronDown 
-                    size={16} 
-                    className={`transition-transform duration-200 ${
-                      state.aboutOpen ? 'rotate-180' : ''
-                    }`} 
-                  />
-                </button>
+                <AboutAccordionButton
+                  open={state.aboutOpen}
+                  onClick={() => updateState({ aboutOpen: !state.aboutOpen, programsOpen: false })}
+                  label="About"
+                />
                 
                 {state.aboutOpen && (
                   <div className="pl-4 mt-1 space-y-1">
@@ -466,7 +457,7 @@ export default function Navbar() {
                   className={`flex justify-between items-center w-full px-3 py-2.5 text-left text-sm font-medium ${
                     state.programsOpen ? 'text-emerald-600' : 'text-gray-700 hover:text-gray-900'
                   }`}
-                  onClick={() => updateState(prev => ({ programsOpen: !prev.programsOpen, aboutOpen: false }))}
+                  onClick={() => updateState({ programsOpen: !state.programsOpen, aboutOpen: false })}
                 >
                   <span>Programs</span>
                   <ChevronDown 
@@ -511,6 +502,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </>
+      </>
   );
 }

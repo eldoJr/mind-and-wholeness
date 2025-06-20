@@ -33,23 +33,33 @@ const highlights = [
 export default function Highlights() {
   return (
     <section className="bg-gradient-to-br from-slate-50 to-emerald-50 pb-24 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto text-center">
+      <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {highlights.map((item, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center text-center px-4 group transition-all duration-300"
+              className="group transition-all duration-300 
+                         flex sm:flex-col sm:items-center sm:text-center text-left gap-4"
             >
-              <div className="rounded-full p-5 mb-4 transform transition-transform duration-300 group-hover:-translate-y-1">
+              {/* Icon container */}
+              <div className="flex-shrink-0 sm:rounded-full p-3 sm:p-5 transform transition-transform duration-300 group-hover:-translate-y-1">
                 <img
                   src={item.icon}
                   alt={`${item.title} Icon`}
-                  className="w-36 h-45 transition-transform duration-300 cursor-pointer"
-                  onClick={() => window.location.href = item.to} // Redirect on click
+                  className="w-12 h-12 sm:w-24 sm:h-24 cursor-pointer hover:scale-105 transition-transform"
+                  onClick={() => window.location.href = item.to}
                 />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-              <p className="text-sm text-gray-600">{item.description}</p>
+
+              {/* Textual content */}
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-600 leading-snug sm:text-center sm:px-2">
+                  {item.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

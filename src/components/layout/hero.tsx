@@ -5,7 +5,7 @@ import herobg from '/src/assets/images/herobg.jpg';
 
 export function Hero() {
   return (
-    <section className="relative w-full h-screen min-h-[600px] max-h-[900px] overflow-hidden bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
+    <section className="relative w-full h-screen min-h-[600px] max-h-[800px] overflow-hidden bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
       {/* Background Image Container with Original Shape */}
       <div className="absolute inset-0 mx-4 sm:mx-8 lg:mx-20 mb-2 sm:mb-5 rounded-lg shadow-md overflow-hidden">
         <motion.div
@@ -26,7 +26,7 @@ export function Hero() {
       </div>
 
       {/* Content Container */}
-      <div className="relative h-full flex items-center pt-14 sm:pt-24 lg:pt-32 mx-2 sm:mx-6 lg:mx-10 mb-4 sm:mb-10 z-10">
+      <div className="relative h-full flex items-center pt-11 sm:pt-24 lg:pt-32 mx-2 sm:mx-6 lg:mx-10 mb-4 sm:mb-10 z-10">
         <motion.div 
           className="container mx-auto px-4 sm:px-6 lg:px-12"
           initial="hidden"

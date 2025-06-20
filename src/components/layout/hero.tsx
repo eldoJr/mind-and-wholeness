@@ -5,7 +5,7 @@ import herobg from '/src/assets/images/herobg.jpg';
 
 export function Hero() {
   return (
-    <section className="relative w-full h-screen min-h-[600px] max-h-[800px] overflow-hidden bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
+    <section className="relative w-full h-[500px] sm:h-screen min-h-[500px] max-h-[800px] overflow-hidden bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
       {/* Background Image Container with Original Shape */}
       <div className="absolute inset-0 mx-4 sm:mx-8 lg:mx-20 mb-2 sm:mb-5 rounded-lg shadow-md overflow-hidden">
         <motion.div

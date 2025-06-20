@@ -2,13 +2,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/layout/layout";
 import Home from "../pages/Home";
-import StoryPage from "../pages/about/story";
 import MissionPage from "../pages/about/mission";
-import TeamPage from "../pages/about/team";
 import JoinPage from "../pages/about/join";
 import BeginJourney from "../pages/BeginJourney";
 import ProgramsPage from "../components/sections/programs/Podcasts";
 import DailyMeditations from "../components/sections/programs/Meditations";
+import AboutPage from "../pages/about/about";
 import PodcastsPage from "../components/sections/programs/Podcasts";
 import EventsPage from "../components/sections/programs/Events";
 import BlogSection from "../pages/blog/blog";
@@ -29,24 +28,16 @@ export const router = createBrowserRouter([
         element: <BeginJourney />,
       },
       {
-        path: "/about/story",
-        element: <StoryPage />,
-      },
-      {
-        path: "/about/mission",
-        element: <MissionPage />,
-      },
-      {
-        path: "/about/team",
-        element: <TeamPage />,
-      },
-      {
         path: "/about/join",
         element: <JoinPage />,
       },
       {
         path: "/programs",
         element: <ProgramsPage />,
+      },
+      {
+        path: "/about/about",
+        element: <AboutPage />,
       },
       {
         path: "/programs/meditations",
@@ -71,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup/signup",
         element: <Signup />,
+      },
+      {
+        path: "/about/mission",
+        element: <MissionPage />,
       },
       {
         path: "*",

@@ -32,6 +32,12 @@ const throttle = <T extends (...args: unknown[]) => void>(
 const NAVIGATION = {
   about: [
     {
+      title: "About Us",
+      description: "Learn more about our mission and values",
+      to: "/about/about",
+      gradient: "from-emerald-500 to-cyan-500"
+    },
+    {
       title: "Our Story",
       description: "Discover our journey and values",
       to: "/about/story",

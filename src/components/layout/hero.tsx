@@ -131,7 +131,7 @@ export function Hero() {
           opacity: [0.6, 1, 0.6],
           transition: { duration: 2, repeat: Infinity }
         }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
+        className="pb-10 absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
       >
         <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
           <motion.div

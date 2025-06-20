@@ -425,15 +425,18 @@ export default function Navbar() {
 
         {/* Panel */}
         <div 
-          className={`absolute top-0 right-0 h-full w-80 max-w-[90vw] bg-white shadow-xl transform transition-transform duration-300 ease-out ${
+          className={`absolute top-0 right-0 h-full w-80 max-w-[90vw] bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
             state.mobileOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
           <div className="h-full flex flex-col overflow-y-auto">
             {/* Header */}
             {/* Content */}
-            <div className="flex-1 px-4 py-6 space-y-2">
-              <NavLink to="/">Home</NavLink>
+            <div className="flex-1 px-4 py-20 space-y-2">
+              <div className="border-b border-gray-100 pb-2">
+                  <NavLink to="/">Home</NavLink>
+              </div>
+
 
               {/* About Accordion */}
               <div className="border-b border-gray-100 pb-2">
@@ -492,8 +495,13 @@ export default function Navbar() {
                 )}
               </div>
 
-              <NavLink to="/blog">Blog</NavLink>
-              <NavLink to="/contact">Contact</NavLink>
+              <div className="border-b border-gray-100 pb-2">
+                <NavLink to="/blog">Blog</NavLink>
+              </div>
+
+              <div className="border-b border-gray-100 pb-2">
+                <NavLink to="/contact">Contact</NavLink>
+              </div>
             </div>
 
             {/* Footer */}

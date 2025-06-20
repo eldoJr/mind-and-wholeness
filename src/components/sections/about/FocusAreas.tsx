@@ -58,7 +58,7 @@ const FocusAreas = () => {
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-gray-50 to-stone-50 py-24 px-4 sm:px-8 lg:px-20">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-blue-400 via-purple-400 to-pink-400 animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-purple-400 to-pink-400 animate-pulse"></div>
       </div>
       
       <div className="relative max-w-7xl mx-auto">
@@ -130,7 +130,7 @@ const FocusAreas = () => {
         {/* Bottom Statement */}
         <div className="text-center">
           <div className="relative max-w-5xl mx-auto p-8 bg-white/50 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/60">
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-50 via-blue-50 via-purple-50 to-pink-50 opacity-50 rounded-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-50 via-blue-50 to-pink-50 opacity-50 rounded-3xl"></div>
             
             <p className="relative text-xl sm:text-2xl text-gray-700 font-light leading-relaxed">
               <span className="bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent font-semibold italic">Mind & Wholeness</span> bridges the connection between thought, identity, and action to create lasting transformation in individuals and communities worldwide.

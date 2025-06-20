@@ -26,7 +26,7 @@ export function Hero() {
       </div>
 
       {/* Content Container */}
-      <div className="relative h-full flex items-center pt-11 sm:pt-24 lg:pt-32 mx-2 sm:mx-6 lg:mx-10 mb-4 sm:mb-10 z-10">
+      <div className="relative h-full flex items-center pt- sm:pt-24 lg:pt-32 mx-2 sm:mx-6 lg:mx-10 mb-4 sm:mb-10 z-10">
         <motion.div 
           className="container mx-auto px-4 sm:px-6 lg:px-12"
           initial="hidden"

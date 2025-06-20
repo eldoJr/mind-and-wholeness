@@ -32,7 +32,7 @@ const highlights = [
 
 export default function Highlights() {
   return (
-    <section className="bg-gradient-to-br from-slate-50 to-emerald-50 pb-24 px-4 sm:px-6">
+    <section className="bg-gradient-to-br from-slate-50 to-emerald-50 pb-16 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {highlights.map((item, idx) => (

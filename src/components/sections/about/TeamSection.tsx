@@ -1,233 +1,290 @@
-// src/components/sections/about/TeamSection.tsx
-import { motion, useMotionTemplate, useMotionValue, animate } from "framer-motion";
-import { Linkedin, Twitter, Mail, Sparkles } from "lucide-react";
-import { SectionHeader } from "../shared/SectionHeader";
-import { useEffect, useMemo } from "react";
+import { useState, useEffect } from 'react';
+import { Users, Sparkles, Heart, Star, Award, Target, Zap, Crown, ArrowRight, Globe, BookOpen, Lightbulb, Shield, Compass } from 'lucide-react';
 import ceoImg from '/src/assets/images/lilian.jpeg';
 import cooImg from '/src/assets/images/viviana.jpeg';
 import ctoImg from '/src/assets/images/michael.jpeg';
 
+const TeamSection = () => {
+  const [hoveredMember, setHoveredMember] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState(0);
+  const [animationClass, setAnimationClass] = useState('');
 
-interface TeamMember {
-  name: string;
-  role: string;
-  bio: string;
-  img: string;
-  signatureColor: string;
-}
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationClass('animate-fade-in');
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
-
-interface TeamSectionProps {
-  expanded?: boolean;
-}
-
-export function TeamSection({ expanded = false }: TeamSectionProps) {
-  const teamMembers: TeamMember[] = [
+  const teamMembers = [
     {
       name: "Lilian Titus",
       role: "Founder & Visionary Leader",
-      bio: "Spiritual mentor and author dedicated to restoring divine identity through sacred wisdom.",
-      img: ceoImg,
-      signatureColor: "#8b5cf6" // violet
+      subtitle: "Transformational Pioneer",
+      description: "Founded Mind and Wholeness out of a deep calling to restore balance and purpose. Background in counseling and spiritual mentorship. Accomplished author and motivational speaker who has impacted thousands of lives globally.",
+      detailedDescription: "With over 15 years of experience in transformational leadership, Lilian has dedicated her life to helping individuals discover their divine blueprint and live with authentic purpose.",
+      image: ceoImg,
+      attributes: [
+        { text: "Visionary Leadership", icon: Crown, description: "Pioneering new paradigms in personal transformation" },
+        { text: "Spiritual Mentorship", icon: Heart, description: "Guiding souls toward their highest potential" },
+        { text: "Social Transformation", icon: Sparkles, description: "Creating ripple effects of positive change" }
+      ],
+      achievements: ["10,000+ Lives Transformed", "5 Published Books", "Global Speaking Engagements"],
+      color: "emerald" as ColorType,
+      gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+      glowColor: "shadow-emerald-500/30"
     },
     {
       name: "Viviana Claudia",
-      role: "Chief Operating Officer",
-      bio: "Creates spaces for women to heal and step into their sovereign power.",
-      img: cooImg,
-      signatureColor: "#ec4899" // pink
+      role: "Chief Operating Officer (COO)",
+      subtitle: "Excellence Orchestrator",
+      description: "Mentored by Lilian Titus, organizes and coordinates events with excellence. Passionate about complete healing and empowering women to live purposeful lives with unwavering dedication.",
+      detailedDescription: "Viviana's operational genius ensures every Mind & Wholeness initiative runs seamlessly, creating transformative experiences that leave lasting impacts on participants.",
+      image: cooImg,
+      attributes: [
+        { text: "Operational Excellence", icon: Target, description: "Delivering flawless execution in every detail" },
+        { text: "Event Coordination", icon: Star, description: "Creating memorable transformational experiences" },
+        { text: "Women Empowerment", icon: Heart, description: "Championing feminine leadership and strength" }
+      ],
+      achievements: ["100+ Events Organized", "Women's Leadership Advocate", "Operational Innovation"],
+      color: "purple" as ColorType,
+      gradient: "from-purple-500 via-pink-500 to-rose-500",
+      glowColor: "shadow-purple-500/30"
     },
     {
       name: "Michael Mugwenhi",
-      role: "Chief Technology Officer",
-      bio: "Bridges technology and spirituality to empower youth globally.",
-      img: ctoImg,
-      signatureColor: "#0ea5e9" // sky
+      role: "Chief Technology Officer (CTO)",
+      subtitle: "Innovation Catalyst",
+      description: "Mentored by Lilian Titus, creates and manages technological innovation with precision. Passionate about empowering youth through purpose-driven solutions and cutting-edge digital experiences.",
+      detailedDescription: "Michael bridges the gap between spiritual transformation and technological advancement, creating digital platforms that amplify Mind & Wholeness's global impact.",
+      image: ctoImg,
+      attributes: [
+        { text: "Tech Innovation", icon: Zap, description: "Building tomorrow's transformation tools today" },
+        { text: "Youth Empowerment", icon: Users, description: "Inspiring the next generation of leaders" },
+        { text: "Digital Solutions", icon: Award, description: "Crafting technology that serves humanity" }
+      ],
+      achievements: ["Digital Platform Development", "Youth Mentorship Programs", "Innovation Leadership"],
+      color: "blue" as ColorType,
+      gradient: "from-blue-500 via-indigo-500 to-violet-500",
+      glowColor: "shadow-blue-500/30"
     }
   ];
 
-  // Animated background gradient effect
-  const colors = useMemo(() => ["#10b981", "#f59e0b", "#8b5cf6", "#ec4899"], []);
-  const color = useMotionValue(colors[0]);
-  const background = useMotionTemplate`radial-gradient(ellipse at 80% 20%, ${color}20 0%, transparent 70%)`;
-
-  useEffect(() => {
-    const animation = animate(color, colors, {
-      repeat: Infinity,
-      repeatType: "mirror",
-      duration: 15,
-      ease: "linear"
-    });
-    return () => animation.stop();
-  }, [color, colors]);
+  type ColorType = 'emerald' | 'purple' | 'blue';
+  const getColorClasses = (color: ColorType) => {
+    const colors = {
+      emerald: {
+        bg: "bg-emerald-500",
+        text: "text-emerald-600",
+        border: "border-emerald-300",
+        hover: "hover:border-emerald-400",
+        light: "bg-emerald-50",
+        ring: "ring-emerald-200"
+      },
+      purple: {
+        bg: "bg-purple-500",
+        text: "text-purple-600",
+        border: "border-purple-300",
+        hover: "hover:border-purple-400",
+        light: "bg-purple-50",
+        ring: "ring-purple-200"
+      },
+      blue: {
+        bg: "bg-blue-500",
+        text: "text-blue-600",
+        border: "border-blue-300",
+        hover: "hover:border-blue-400",
+        light: "bg-blue-50",
+        ring: "ring-blue-200"
+      }
+    };
+    return colors[color];
+  };
 
   return (
-    <section className={`relative py-20 ${expanded ? 'bg-white' : 'bg-gradient-to-b from-white to-emerald-50/10'}`}>
-      {/* Animated background elements */}
-      <motion.div 
-        className="absolute inset-0 pointer-events-none"
-        style={{ background }}
-      />
-      <div className="absolute inset-0 opacity-5 mix-blend-overlay pointer-events-none" />
+    <section className="relative bg-gradient-to-br from-slate-50 via-white to-emerald-50 py-24 px-4 sm:px-8 lg:px-20 overflow-hidden">
+      {/* Enhanced animated background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-10 left-5 w-96 h-96 bg-gradient-to-r from-emerald-200 to-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute top-40 right-5 w-80 h-80 bg-gradient-to-r from-purple-200 to-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute -bottom-20 left-1/3 w-72 h-72 bg-gradient-to-r from-blue-200 to-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
+        
+        {/* Floating elements */}
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-emerald-400 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-3/4 right-1/4 w-2 h-2 bg-purple-400 rounded-full animate-ping" style={{animationDelay: '3s'}}></div>
+        <div className="absolute top-1/2 left-3/4 w-2 h-2 bg-blue-400 rounded-full animate-ping" style={{animationDelay: '5s'}}></div>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <SectionHeader 
-          tagline={
-            <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2"
-            >
-              <Sparkles className="w-4 h-4 text-amber-400" />
-              Sacred Guardians
-            </motion.span>
-          } 
-          title="Our Divine Team" 
-          highlight="Divine"
-          highlightColor="amber"
-          description={expanded ? undefined : "Meet the vessels guiding this transformational work"}
-        />
+      <div className={`relative max-w-7xl mx-auto ${animationClass}`}>
+        {/* Premium Header */}
+        <div className="text-center mb-24">
+          <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-100 via-teal-100 to-cyan-100 text-emerald-700 rounded-full text-sm font-semibold mb-8 shadow-lg border border-emerald-200">
+            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+            <Sparkles className="w-4 h-4" />
+            <span>Meet Our Extraordinary Leadership</span>
+            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+          </div>
+          
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
+            Visionaries of{' '}
+            <span className="relative">
+              <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+                Transformation
+              </span>
+              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full opacity-50"></div>
+            </span>
+          </h2>
+          
+          <p className="text-xl text-gray-600 max-w-5xl mx-auto leading-relaxed mb-8">
+            At <strong className="text-emerald-600 font-semibold">Mind & Wholeness</strong>, our leadership team represents a powerful convergence of wisdom, innovation, and unwavering commitment to human flourishing. Each leader brings distinctive gifts that synergistically advance our mission to renew minds, restore hearts, and transform communities worldwide.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
+            <div className="flex items-center gap-2">
+              <Globe className="w-4 h-4 text-emerald-500" />
+              <span>Global Impact</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Lightbulb className="w-4 h-4 text-purple-500" />
+              <span>Innovative Approach</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4 text-blue-500" />
+              <span>Proven Results</span>
+            </div>
+          </div>
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12 mt-16">
+        {/* Premium Team Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-24">
           {teamMembers.map((member, index) => {
-            const hoverColor = member.signatureColor;
+            const colorClasses = getColorClasses(member.color);
+            const isHovered = hoveredMember === index;
+            const isActive = activeTab === index;
+            
             return (
-              <motion.div
+              <div 
                 key={index}
-                initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ 
-                  delay: index * 0.15,
-                  duration: 0.8,
-                  type: "spring",
-                  bounce: 0.4
-                }}
-                whileHover={{ 
-                  y: -12,
-                  boxShadow: `0 25px 50px -12px ${hoverColor}20`
-                }}
-                className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden border border-white/20 hover:border-white/40 transition-all group relative"
+                className={`group relative bg-white/90 backdrop-blur-lg p-8 rounded-3xl border-2 ${colorClasses.border} ${colorClasses.hover} transition-all duration-700 hover:shadow-2xl ${member.glowColor} hover:-translate-y-4 cursor-pointer overflow-hidden ${isActive ? 'ring-4 ' + colorClasses.ring : ''}`}
+                onMouseEnter={() => setHoveredMember(index)}
+                onMouseLeave={() => setHoveredMember(null)}
+                onClick={() => setActiveTab(index)}
               >
-                {/* Glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                {/* Dynamic background gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${member.gradient} opacity-0 group-hover:opacity-10 transition-all duration-700 rounded-3xl`}></div>
                 
-                {/* Member image with parallax effect */}
-                <div className="relative h-80 overflow-hidden">
-                  <motion.img 
-                    src={member.img} 
-                    alt={member.name}
-                    initial={{ scale: 1 }}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.5 }}
-                    className="w-full h-auto object-cover origin-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <motion.span 
-                      initial={{ backgroundColor: "#ffffff20" }}
-                      whileHover={{ 
-                        backgroundColor: hoverColor,
-                        scale: 1.05
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className="inline-block px-3 py-1 text-xs font-semibold text-white rounded-full backdrop-blur-md border border-white/20"
-                    >
-                      {member.role}
-                    </motion.span>
+                {/* Floating accent */}
+                <div className={`absolute top-4 right-4 w-3 h-3 ${colorClasses.bg} rounded-full opacity-60 group-hover:opacity-100 transition-all duration-300`}></div>
+                
+                {/* Profile Section */}
+                <div className="relative flex flex-col items-center text-center mb-8">
+                  <div className={`relative w-32 h-32 rounded-full overflow-hidden border-4 ${colorClasses.border} mb-6 group-hover:scale-110 group-hover:shadow-xl transition-all duration-500`}>
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${member.gradient} opacity-0 group-hover:opacity-30 transition-opacity duration-500`}></div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-bold text-gray-900">{member.name}</h3>
+                    <p className={`${colorClasses.text} font-semibold text-lg`}>{member.role}</p>
+                    <p className="text-gray-500 text-sm font-medium">{member.subtitle}</p>
                   </div>
                 </div>
-                
-                <div className="p-6 lg:p-8">
-                  <div className="flex flex-col gap-2 mb-4">
-                    <motion.h3 
-                      whileHover={{ color: hoverColor }}
-                      transition={{ duration: 0.3 }}
-                      className="text-2xl lg:text-3xl font-bold font-serif text-gray-900"
-                    >
-                      {member.name}
-                    </motion.h3>
-                    <div className="h-px w-12 bg-gradient-to-r from-emerald-400 to-amber-400 my-1" />
-                  </div>
-                  
-                  <motion.p 
-                    whileHover={{ x: 2 }}
-                    className="text-gray-600 mb-6 leading-relaxed"
-                  >
-                    {member.bio}
-                  </motion.p>
-                  
-                  <div className="flex gap-3">
-                    {[
-                      { icon: Linkedin, color: "#0a66c2" },
-                      { icon: Twitter, color: "#1d9bf0" },
-                      { icon: Mail, color: "#ea4335" }
-                    ].map((social, i) => (
-                      <motion.a
-                        key={i}
-                        initial={{ backgroundColor: "#f3f4f6" }}
-                        whileHover={{ 
-                          backgroundColor: social.color,
-                          scale: 1.1,
-                          rotate: [0, 10, -10, 0],
-                          transition: { duration: 0.5 }
-                        }}
-                        whileTap={{ scale: 0.9 }}
-                        href="#"
-                        className="p-2 rounded-full text-gray-600 hover:text-white transition-all"
+
+                {/* Description */}
+                <p className="text-gray-600 mb-8 leading-relaxed text-center">
+                  {member.description}
+                </p>
+
+                {/* Attributes Grid */}
+                <div className="space-y-4 mb-8">
+                  {member.attributes.map((attr, i) => {
+                    const IconComponent = attr.icon;
+                    return (
+                      <div 
+                        key={i} 
+                        className={`flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r ${colorClasses.light} to-white group-hover:shadow-md transition-all duration-500 ${isHovered ? 'transform translate-x-3' : ''}`}
+                        style={{transitionDelay: `${i * 150}ms`}}
                       >
-                        <social.icon className="w-4 h-4" />
-                      </motion.a>
+                        <div className={`w-12 h-12 rounded-xl ${colorClasses.bg} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
+                          <IconComponent className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="flex-grow">
+                          <span className="text-gray-800 font-semibold block">{attr.text}</span>
+                          <span className="text-gray-500 text-sm">{attr.description}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Achievements */}
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Key Achievements</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {member.achievements.map((achievement, i) => (
+                      <span key={i} className={`px-3 py-1 text-xs font-medium ${colorClasses.light} ${colorClasses.text} rounded-full border ${colorClasses.border}`}>
+                        {achievement}
+                      </span>
                     ))}
                   </div>
                 </div>
-              </motion.div>
+
+                {/* Hover indicator */}
+                <div className={`absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0`}>
+                  <ArrowRight className={`w-5 h-5 ${colorClasses.text}`} />
+                </div>
+              </div>
             );
           })}
         </div>
 
-        {expanded && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6, duration: 0.8, type: "spring" }}
-            className="text-center mt-28"
-          >
-            <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Our extended family of <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-amber-500">lightworkers</span> includes <span className="font-bold text-emerald-600">47 mentors</span> across <span className="font-bold text-amber-600">12 countries</span>.
-            </p>
-            <motion.button
-              initial={{ boxShadow: "0 4px 6px -1px rgba(5, 150, 105, 0.1)" }}
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 10px 25px -5px rgba(5, 150, 105, 0.3)",
-                y: -3
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="px-12 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold rounded-xl shadow-md transition-all relative overflow-hidden group"
-            >
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                Meet All Guides
-                <motion.span
-                  initial={{ x: 0 }}
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ 
-                    repeat: Infinity, 
-                    repeatType: "reverse",
-                    duration: 1.5
-                  }}
-                >
-                  <Sparkles className="w-4 h-4" />
-                </motion.span>
-              </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-amber-500 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay" />
-              <span className="absolute inset-0 bg-gradient-to-r from-emerald-600/30 via-transparent to-transparent" />
-            </motion.button>
-          </motion.div>
-        )}
+        {/* Enhanced Collective Impact Section */}
+        <div className="relative">
+          <div className="bg-gradient-to-r from-emerald-50 via-white to-teal-50 p-12 rounded-3xl border-2 border-emerald-200 shadow-2xl shadow-emerald-500/10">
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-emerald-500/30 transform hover:scale-110 transition-transform duration-300">
+                  <Users className="w-10 h-10 text-white" />
+                </div>
+              </div>
+              
+              <div className="flex-grow text-center lg:text-left">
+                <h3 className="text-4xl font-bold text-gray-900 mb-6">
+                  United in Purpose,{' '}
+                  <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+                    Infinite in Impact
+                  </span>
+                </h3>
+                
+                <p className="text-xl text-gray-600 leading-relaxed mb-6">
+                  Under Lilian's visionary leadership, our team operates as a harmonious ecosystem where each member's unique strengths amplify the collective power. We don't just teach transformation—we embody it, creating ripple effects that extend far beyond our immediate reach.
+                </p>
+                
+                <div className="flex flex-wrap justify-center lg:justify-start gap-6 text-sm">
+                  <div className="flex items-center gap-2">
+                    <Compass className="w-4 h-4 text-emerald-500" />
+                    <span className="text-gray-600">Guided by Purpose</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <BookOpen className="w-4 h-4 text-teal-500" />
+                    <span className="text-gray-600">Continuous Learning</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Heart className="w-4 h-4 text-cyan-500" />
+                    <span className="text-gray-600">Heart-Centered Service</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default TeamSection;

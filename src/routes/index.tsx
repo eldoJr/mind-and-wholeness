@@ -2,11 +2,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/layout/layout";
 import Home from "../pages/Home";
-import JoinPage from "../pages/about/join";
+import JoinPage from "../pages/about/practice";
 import BeginJourney from "../pages/BeginJourney";
 import AboutPage from "../pages/about/about";
 import TeamPage from "../pages/about/team";
 import FocusAreasPage from "../pages/about/focus-areas";
+import PracticePage from "../pages/about/practice";
 import ProgramsPage from "../components/sections/programs/Podcasts";
 import DailyMeditations from "../components/sections/programs/Meditations";
 import PodcastsPage from "../components/sections/programs/Podcasts";
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
       {
         path: "/about/focus-areas",
         element: <FocusAreasPage />,
+      },
+      {
+        path: "/about/practice",
+        element: <PracticePage />,
       },
       {
         path: "/programs/meditations",

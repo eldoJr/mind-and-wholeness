@@ -38,16 +38,22 @@ const NAVIGATION = {
       gradient: "from-emerald-500 to-cyan-500"
     },
     {
-      title: "Team",
+      title: "Leadership Team",
       description: "Meet our dedicated team", 
       to: "/about/team",
       gradient: "from-blue-500 to-indigo-500"
     },
     {
       title: "Focus Areas",
-      description: "Explore our key focus areas",
+      description: "Explore our key focus areas", 
       to: "/about/focus-areas",
       gradient: "from-purple-500 to-pink-500"
+    },
+    {
+      title: "Practice With Us",
+      description: "Engage in our community practices",
+      to: "/about/practice",
+      gradient: "from-pink-500 to-rose-500"
     }
   ],
   programs: [

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Users, Sparkles, Heart, Star, Award, Target, Zap, Crown, ArrowRight, Globe, BookOpen, Lightbulb, Shield, Compass } from 'lucide-react';
+import { Users, Sparkles, Heart, Star, Award, Target, Zap, Crown, ArrowRight, Globe, Lightbulb, Shield } from 'lucide-react';
 import ceoImg from '/src/assets/images/lilian.jpeg';
 import cooImg from '/src/assets/images/viviana.jpeg';
 import ctoImg from '/src/assets/images/michael.jpeg';
@@ -125,7 +125,7 @@ const TeamSection = () => {
             <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
           </div>
           
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
+          <h2 className="text-5xl sm:text-6xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
             Visionaries of{' '}
             <span className="relative">
               <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
@@ -240,47 +240,6 @@ const TeamSection = () => {
               </div>
             );
           })}
-        </div>
-
-        {/* Enhanced Collective Impact Section */}
-        <div className="relative">
-          <div className="bg-gradient-to-r from-emerald-50 via-white to-teal-50 p-12 rounded-3xl border-2 border-emerald-200 shadow-2xl shadow-emerald-500/10">
-            <div className="flex flex-col lg:flex-row items-center gap-8">
-              <div className="flex-shrink-0">
-                <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-emerald-500/30 transform hover:scale-110 transition-transform duration-300">
-                  <Users className="w-10 h-10 text-white" />
-                </div>
-              </div>
-              
-              <div className="flex-grow text-center lg:text-left">
-                <h3 className="text-4xl font-bold text-gray-900 mb-6">
-                  United in Purpose,{' '}
-                  <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
-                    Infinite in Impact
-                  </span>
-                </h3>
-                
-                <p className="text-xl text-gray-600 leading-relaxed mb-6">
-                  Under Lilian's visionary leadership, our team operates as a harmonious ecosystem where each member's unique strengths amplify the collective power. We don't just teach transformation—we embody it, creating ripple effects that extend far beyond our immediate reach.
-                </p>
-                
-                <div className="flex flex-wrap justify-center lg:justify-start gap-6 text-sm">
-                  <div className="flex items-center gap-2">
-                    <Compass className="w-4 h-4 text-emerald-500" />
-                    <span className="text-gray-600">Guided by Purpose</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <BookOpen className="w-4 h-4 text-teal-500" />
-                    <span className="text-gray-600">Continuous Learning</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Heart className="w-4 h-4 text-cyan-500" />
-                    <span className="text-gray-600">Heart-Centered Service</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

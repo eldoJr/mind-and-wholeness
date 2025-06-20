@@ -23,14 +23,15 @@ export default function NewsletterSection() {
           </a>
         </div>
 
-        {/* Right Image */}
-        <div className="w-full h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-md">
+        {/* Image - now edge-to-edge inside its column */}
+        <div className="h-[400px] sm:h-[450px] lg:h-[500px] w-full">
           <img
             src={newsletterImage}
-            alt="Mindful reflection"
-            className="w-full h-full object-cover"
+            alt="Lilian Titus, Founder of Mind & Wholeness"
+            className="w-full h-full object-cover object-center"
           />
         </div>
+
       </div>
       <div className="py-28 pb-2 px-6 sm:px-8 lg:px-12 text-center">
         <blockquote className="text-2xl sm:text-3xl font-serif text-gray-800 leading-relaxed max-w-4xl mx-auto">

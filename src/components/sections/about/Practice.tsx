@@ -10,8 +10,8 @@ export default function PracticeWithUs() {
             <ChevronRight className="w-4 h-4" />
             <span className="text-gray-900 underline">Practice With Us</span>
         </nav>
-        
-        <div className="max-w-6xl mx-auto ">
+
+        <div className="max-w-7xl mx-auto ">
         {/* Header */}
         <div className="mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-6">

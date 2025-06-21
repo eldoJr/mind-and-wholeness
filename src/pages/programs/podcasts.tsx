@@ -1,4 +1,4 @@
-import PodcastsPage from "../../components/sections/programs/Podcasts";
+import PodcastsPage from "../../components/sections/programs/podcasts/Podcasts";
 
 export default function Podcasts() {
   return (

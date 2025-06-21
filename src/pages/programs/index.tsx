@@ -1,6 +1,6 @@
-import DailyMeditations from "../../components/sections/programs/Meditations";
-import PodcastsPage from "../../components/sections/programs/Podcasts";
-import EventsPage from "../../components/sections/programs/Events";
+import DailyMeditations from "../../components/sections/programs/meditations/Meditations";
+import PodcastsPage from "../../components/sections/programs/podcasts/Podcasts";
+import EventsPage from "../../components/sections/programs/events/Events";
 
 export default function ProgramsPage() {
   return (

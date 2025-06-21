@@ -1,5 +1,5 @@
 // src/pages/about/team.tsx
-import DailyMeditations from "../../components/sections/programs/Meditations";
+import DailyMeditations from "../../components/sections/programs/meditations/Meditations";
 
 export default function TeamPage() {
   return (

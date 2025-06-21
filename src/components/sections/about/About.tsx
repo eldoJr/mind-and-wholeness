@@ -207,7 +207,7 @@ const AboutSection = () => {
           <div className="mx-auto max-w-7xl">
             <div className="relative flex flex-col md:flex-row">
               {/* Text Content - Left Side with beige background */}
-              <div className="md:flex-1 p-8 md:p-12 flex flex-col justify-center bg-white">
+              <div className="md:flex-1 p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-slate-50 to-emerald-50 backdrop-blur-md border-b transition-all duration-300">
                 <div className="space-y-5 max-w-xl">
                   <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase">
                     Meet Our Founder

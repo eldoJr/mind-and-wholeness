@@ -18,12 +18,12 @@ export default function Footer() {
 
           {/* Brand Column */}
           <div className="space-y-4 sm:space-y-6 col-span-1 sm:col-span-2 lg:col-span-1 text-center sm:text-left">
+            <div className="flex flex-col sm:flex-row items-center sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
               <img 
                 src={logo} 
                 alt="Mind & Wholeness logo" 
-                className="pl-8 h-10 sm:h-24 w-auto"
+                className="h-10 sm:h-12 w-auto"
               />
-            <div className="flex flex-col sm:flex-row items-center sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
               <div>
                 <h3 className="font-bold text-base sm:text-lg">
                   Mind & Wholeness
@@ -151,7 +151,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-emerald-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 text-xs sm:text-sm text-emerald-200">
             <p>
               © {new Date().getFullYear()} Mind & Wholeness. All rights reserved.

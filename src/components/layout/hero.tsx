@@ -61,7 +61,7 @@ export function Hero() {
                 transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] }
               }
             }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-medium leading-tight text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight text-white mb-6"
           >
             From <span className="text-green-400">Brokenness</span><br />
             To <span className="text-amber-300">Sacred Wholeness</span>

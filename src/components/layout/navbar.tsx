@@ -81,7 +81,7 @@ const Dropdown = ({ isOpen, items, onMouseEnter, onMouseLeave, className = '' }:
 
   return (
     <div 
-      className={`absolute top-full left-0 mt-2 bg-white/50 backdrop-blur-lg shadow-xl border border-emerald-100/40 overflow-hidden z-50 transition-all duration-300 ease-out
+      className={`absolute top-full left-0 mt-2 bg-white/95 backdrop-blur-lg shadow-xl border border-emerald-100/40 overflow-hidden z-50 transition-all duration-300 ease-out
  ${
         isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2'
       } ${className}`}

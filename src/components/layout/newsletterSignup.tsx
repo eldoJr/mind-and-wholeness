@@ -26,7 +26,7 @@ const itemVariants = {
 export default function NewsletterSignup() {
   return (
     <motion.section 
-      className="py-12 md:py-24 px-4 sm:px-6 lg:px-8 text-center font-serif"
+      className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 text-center font-serif"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}

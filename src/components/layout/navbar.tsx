@@ -33,27 +33,15 @@ const NAVIGATION = {
   about: [
     {
       title: "About Us",
-      description: "Learn more about our mission and values",
       to: "/about/about",
-      gradient: "from-emerald-500 to-cyan-500"
     },
     {
       title: "Leadership Team",
-      description: "Meet our dedicated team", 
       to: "/about/team",
-      gradient: "from-blue-500 to-indigo-500"
-    },
-    {
-      title: "Focus Areas",
-      description: "Explore our key focus areas", 
-      to: "/about/focus-areas",
-      gradient: "from-purple-500 to-pink-500"
     },
     {
       title: "Practice With Us",
-      description: "Engage in our community practices",
       to: "/about/practice",
-      gradient: "from-pink-500 to-rose-500"
     }
   ],
   programs: [
@@ -61,25 +49,21 @@ const NAVIGATION = {
       title: "Meditations",
       description: "Guided mindfulness practices",
       to: "/programs/meditations",
-      gradient: "from-emerald-500 to-cyan-500"
     },
     {
       title: "Podcasts",
       description: "Insights and conversations",
       to: "/programs/podcasts",
-      gradient: "from-violet-500 to-purple-500"
     },
     {
       title: "Events",
       description: "Workshops and gatherings",
       to: "/programs/events",
-      gradient: "from-orange-500 to-red-500"
     },
     {
       title: "Volunteer",
       description: "Join our community",
       to: "/programs/volunteer",
-      gradient: "from-pink-500 to-rose-500"
     }
   ]
 };
@@ -97,7 +81,7 @@ const Dropdown = ({ isOpen, items, onMouseEnter, onMouseLeave, className = '' }:
 
   return (
     <div 
-      className={`absolute top-full left-0 mt-2 bg-white/70 backdrop-blur-lg shadow-xl border border-emerald-100/40 rounded-xl overflow-hidden z-50 transition-all duration-300 ease-out
+      className={`absolute top-full left-0 mt-2 bg-white/50 backdrop-blur-lg shadow-xl border border-emerald-100/40 overflow-hidden z-50 transition-all duration-300 ease-out
  ${
         isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2'
       } ${className}`}
@@ -110,17 +94,12 @@ const Dropdown = ({ isOpen, items, onMouseEnter, onMouseLeave, className = '' }:
           <Link
             key={item.to}
             to={item.to}
-            className="group flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-200 text-gray-700 transition-colors duration-200"
+            className="group flex items-center gap-1 px-4 py-2 hover:bg-slate-200 text-gray-700 transition-colors duration-200"
             role="menuitem"
           >
-            <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${item.gradient} opacity-70 group-hover:opacity-100 transition-opacity`} />
-            
             <div className="flex-1 min-w-0">
               <div className="font-medium text-gray-900 group-hover:text-emerald-700">
                 {item.title}
-              </div>
-              <div className="text-xs text-gray-500 mt-0.5">
-                {item.description}
               </div>
             </div>
             

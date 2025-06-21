@@ -85,9 +85,9 @@ const AboutSection = () => {
       case "beliefs":
         return (
           <div className="mt-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-serif text-gray-900 mb-6 text-center">What We Believe</h2>
-              <p className="text-base text-gray-700 mb-8 text-center leading-relaxed max-w-3xl mx-auto">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-4xl font-serif text-gray-900 mb-6 text-center">What We Believe</h2>
+              <p className="text-base text-gray-700 mb-8 text-center leading-relaxed max-w-5xl mx-auto">
                 We believe that every person has the capacity for renewal and wholeness. By uncovering root causes and reshaping mindsets, individuals can live in balance and purpose.
               </p>
               
@@ -122,7 +122,7 @@ const AboutSection = () => {
               <ChevronRight className="w-4 h-4" />
               <span className="text-gray-900 underline">About Us</span>
           </nav>
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <div className="text-left mb-12">
             <h1 className="text-3xl sm:text-4xl font-serif text-gray-900 mb-6 leading-tight">
@@ -213,10 +213,10 @@ const AboutSection = () => {
                     Meet Our Founder
                   </p>
                   <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-gray-900 leading-snug">
-                    Lilian M. Njeri
+                    Lilian Titus
                   </h2>
                   <p className="text-gray-700 text-base sm:text-lg">
-                    Lilian is a visionary leader with a passion for transforming lives through the power of awareness and practical wisdom. With a background in psychology and community development, she has dedicated her career to empowering individuals and communities to achieve wholeness.
+                    Lilian founded Mind and Wholeness out of a deep calling to restore balance and purpose in the lives of young people. With a background in counseling and spiritual mentorship, she leads the organization with passion and clarity. As an accomplished author, motivational speaker, and advocate for social transformation, her vision is to see communities transformed through renewed minds and restored hearts.
                   </p>
                   <div className="flex space-x-4">
                     <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">

@@ -20,14 +20,14 @@ const TeamSection = () => {
       role: "Chief Operating Officer (COO)",
       subtitle: "Chief Operating Officer",
       image: cooImg,
-      description: "Being mentored by Lilian Titus herself, she is a brilliant and goal-oriented individual who organizes and coordinates events with excellence and precision. She is passionate about complete healing and empowering ladies to live purposeful lives."
+      description: "She is a brilliant and goal-oriented individual who organizes and coordinates events with excellence and precision. She is passionate about complete healing and empowering ladies to live purposeful lives."
     },
     {
       name: "Michael Mugwenhi",
       role: "Chief Technology Officer (CTO)",
       subtitle: "Chief Technology Officer",
       image: ctoImg,
-      description: "Being mentored by Lilian Titus herself, Michael is a brilliant and goal-oriented individual who creates and manages technological innovation with excellence and precision. He is passionate about complete healing and empowering youth through purpose-driven solutions."
+      description: "Michael is a brilliant and goal-oriented individual who creates and manages technological innovation with excellence and precision. He is passionate about complete healing and empowering youth through purpose-driven solutions."
     }
   ];
 

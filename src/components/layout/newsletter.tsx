@@ -3,7 +3,6 @@ import newsletterImage from '/src/assets/images/newsletter-mind.jpg'; // Altere 
 export default function NewsletterSection() {
   return (
     <section className="py-28">
-      {/* CEO Content */}
 <div className="py-16 space-y-6">
         <div className="mx-auto max-w-7xl">
     <div className="flex flex-col md:flex-row min-h-[400px]">

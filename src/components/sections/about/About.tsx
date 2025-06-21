@@ -2,6 +2,9 @@ import ceoImg from "/src/assets/images/ceo.png";
 import { useState } from "react";
 import { Globe, Target, Heart, ChevronDown } from "lucide-react";
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
 
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState("vision-mission");
@@ -112,123 +115,130 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="bg-white py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
-        {/* Header Section */}
-        <div className="text-left mb-12">
-          <h1 className="text-3xl sm:text-4xl font-serif text-gray-900 mb-6 leading-tight">
-            About Mind & Wholeness
-          </h1>
-          <p className="text-base text-gray-700 leading-relaxed mb-6 max-w-4xl">
-            We support those seeking healing within themselves and in the world around them through everyday Christian contemplative wisdom and practices.
-          </p>
-        </div>
-
-        {/* Introduction Content */}
-        <div className="mb-12">
-          <div className={`space-y-4 overflow-hidden transition-all duration-500 ${expanded ? 'max-h-[1000px]' : 'max-h-[200px]'}`}>
-            <p className="text-base leading-relaxed text-gray-700">
-              At <strong>Mind and Wholeness</strong>, we believe that transformation begins with learning to see and love the world as it is. Through everyday Christian contemplative wisdom and practices, we support those seeking healing—within themselves and in the world around them.
+    <section className="bg-white px-4 sm:px-8 lg:px-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8 ">
+              <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
+              <ChevronRight className="w-4 h-4" />
+              <span className="text-gray-900 underline">About Us</span>
+          </nav>
+        <div className="max-w-5xl mx-auto">
+          {/* Header Section */}
+          <div className="text-left mb-12">
+            <h1 className="text-3xl sm:text-4xl font-serif text-gray-900 mb-6 leading-tight">
+              About Mind & Wholeness
+            </h1>
+            <p className="text-base text-gray-700 leading-relaxed mb-6 max-w-4xl">
+              We support those seeking healing within themselves and in the world around them through everyday Christian contemplative wisdom and practices.
             </p>
-            
-            <div className={expanded ? 'block space-y-4' : 'hidden'}>
-              <p className="text-base leading-relaxed text-gray-700">
-                Founded by Lilian Titus, our work is rooted in a long tradition of Christian contemplation but presented in ways that meet people where they are today. Whether through teachings, practices, or community engagement, our goal is to help people live out this wisdom in practical ways—so that they become instruments of love, peacemaking, and positive change in the world.
-              </p>
-              
-              <p className="text-base leading-relaxed text-gray-700">
-                Our communities bear witness to the consequences of a fragmented mindset—pain, struggles, and discontent that ripple through generations, particularly affecting the youth and emerging leaders of tomorrow. As an organization, we recognize that every outcome has a root cause.
-              </p>
-              
-              <p className="text-base leading-relaxed text-gray-700">
-                We believe that recognizing a problem is the first significant step toward its resolution. This conviction drives our mission: to inspire a paradigm shift that empowers individuals to embrace practical wisdom, renew their mindsets, and rediscover their identity and purpose.
-              </p>
-            </div>
           </div>
-          
-          {/* Read More Button */}
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="mt-4 flex items-center gap-2 text-emerald-600 hover:text-emerald-800 font-medium transition-colors"
-          >
-            {expanded ? (
-              <>
-                <span>Read Less</span>
-                <ChevronDown className="w-4 h-4 transform rotate-180" />
-              </>
-            ) : (
-              <>
-                <span>Read More</span>
-                <ChevronDown className="w-4 h-4" />
-              </>
-            )}
-          </button>
-        </div>
 
-        {/* Navigation Tabs */}
-        <div className="flex flex-wrap gap-8 mb-6 border-b border-gray-200">
-          {["vision-mission", "values", "beliefs"].map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`pb-3 text-sm font-medium transition-all duration-300 border-b-2 bg-transparent uppercase tracking-wide
-                ${
-                  activeTab === tab
-                    ? "text-gray-900 border-gray-900"
-                    : "text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300"
-                }`}
-            >
-              {tab === "vision-mission"
-                ? "VISION & MISSION"
-                : tab === "values"
-                ? "VALUES"
-                : "WHAT WE BELIEVE"}
-            </button>
-          ))}
-        </div>
-
-        {/* Tab Content */}
-        <div className="min-h-[400px]">
-          {renderContent()}
-        </div>
-      </div>
-
-      {/* CEO Content */}
-      <div className="py-16 space-y-6">
-        <div className="mx-auto max-w-7xl">
-          <div className="relative flex flex-col md:flex-row">
-            {/* Text Content - Left Side with beige background */}
-            <div className="md:flex-1 p-8 md:p-12 flex flex-col justify-center bg-white">
-              <div className="space-y-5 max-w-xl">
-                <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase">
-                  Meet Our Founder
+          {/* Introduction Content */}
+          <div className="mb-12">
+            <div className={`space-y-4 overflow-hidden transition-all duration-500 ${expanded ? 'max-h-[1000px]' : 'max-h-[200px]'}`}>
+              <p className="text-base leading-relaxed text-gray-700">
+                At <strong>Mind and Wholeness</strong>, we believe that transformation begins with learning to see and love the world as it is. Through everyday Christian contemplative wisdom and practices, we support those seeking healing—within themselves and in the world around them.
+              </p>
+              
+              <div className={expanded ? 'block space-y-4' : 'hidden'}>
+                <p className="text-base leading-relaxed text-gray-700">
+                  Founded by Lilian Titus, our work is rooted in a long tradition of Christian contemplation but presented in ways that meet people where they are today. Whether through teachings, practices, or community engagement, our goal is to help people live out this wisdom in practical ways—so that they become instruments of love, peacemaking, and positive change in the world.
                 </p>
-                <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-gray-900 leading-snug">
-                  Lilian M. Njeri
-                </h2>
-                <p className="text-gray-700 text-base sm:text-lg">
-                  Lilian is a visionary leader with a passion for transforming lives through the power of awareness and practical wisdom. With a background in psychology and community development, she has dedicated her career to empowering individuals and communities to achieve wholeness.
+                
+                <p className="text-base leading-relaxed text-gray-700">
+                  Our communities bear witness to the consequences of a fragmented mindset—pain, struggles, and discontent that ripple through generations, particularly affecting the youth and emerging leaders of tomorrow. As an organization, we recognize that every outcome has a root cause.
                 </p>
-                <div className="flex space-x-4">
-                  <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
-                    <Facebook size={24} />
-                  </a>
-                  <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
-                    <Instagram size={24} />
-                  </a>
-                  <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
-                    <Linkedin size={24} />
-                  </a>
-              </div>
+                
+                <p className="text-base leading-relaxed text-gray-700">
+                  We believe that recognizing a problem is the first significant step toward its resolution. This conviction drives our mission: to inspire a paradigm shift that empowers individuals to embrace practical wisdom, renew their mindsets, and rediscover their identity and purpose.
+                </p>
               </div>
             </div>
-            {/* Image - Right Side (full height, touching edges) */}
-            <div className="w-full md:w-auto md:flex-[0_0_auto] h-[300px] md:h-auto">
-              <img
-                src={ceoImg}
-                alt="Mindful reflection"
-                className="w-full h-full object-cover"
-              />
+            
+            {/* Read More Button */}
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="mt-4 flex items-center gap-2 text-emerald-600 hover:text-emerald-800 font-medium transition-colors"
+            >
+              {expanded ? (
+                <>
+                  <span>Read Less</span>
+                  <ChevronDown className="w-4 h-4 transform rotate-180" />
+                </>
+              ) : (
+                <>
+                  <span>Read More</span>
+                  <ChevronDown className="w-4 h-4" />
+                </>
+              )}
+            </button>
+          </div>
+
+          {/* Navigation Tabs */}
+          <div className="flex flex-wrap gap-8 mb-6 border-b border-gray-200">
+            {["vision-mission", "values", "beliefs"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`pb-3 text-sm font-medium transition-all duration-300 border-b-2 bg-transparent uppercase tracking-wide
+                  ${
+                    activeTab === tab
+                      ? "text-gray-900 border-gray-900"
+                      : "text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300"
+                  }`}
+              >
+                {tab === "vision-mission"
+                  ? "VISION & MISSION"
+                  : tab === "values"
+                  ? "VALUES"
+                  : "WHAT WE BELIEVE"}
+              </button>
+            ))}
+          </div>
+
+          {/* Tab Content */}
+          <div className="min-h-[400px]">
+            {renderContent()}
+          </div>
+        </div>
+
+        {/* CEO Content */}
+        <div className="py-16 space-y-6">
+          <div className="mx-auto max-w-7xl">
+            <div className="relative flex flex-col md:flex-row">
+              {/* Text Content - Left Side with beige background */}
+              <div className="md:flex-1 p-8 md:p-12 flex flex-col justify-center bg-white">
+                <div className="space-y-5 max-w-xl">
+                  <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase">
+                    Meet Our Founder
+                  </p>
+                  <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-gray-900 leading-snug">
+                    Lilian M. Njeri
+                  </h2>
+                  <p className="text-gray-700 text-base sm:text-lg">
+                    Lilian is a visionary leader with a passion for transforming lives through the power of awareness and practical wisdom. With a background in psychology and community development, she has dedicated her career to empowering individuals and communities to achieve wholeness.
+                  </p>
+                  <div className="flex space-x-4">
+                    <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
+                      <Facebook size={24} />
+                    </a>
+                    <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
+                      <Instagram size={24} />
+                    </a>
+                    <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
+                      <Linkedin size={24} />
+                    </a>
+                </div>
+                </div>
+              </div>
+              {/* Image - Right Side (full height, touching edges) */}
+              <div className="w-full md:w-auto md:flex-[0_0_auto] h-[300px] md:h-auto">
+                <img
+                  src={ceoImg}
+                  alt="Mindful reflection"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>

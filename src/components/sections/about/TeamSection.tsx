@@ -2,6 +2,9 @@ import ceoImg from '/src/assets/images/ceo.png';
 import cooImg from '/src/assets/images/viviana.jpeg';
 import ctoImg from '/src/assets/images/michael.jpeg';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
 
 const TeamSection = () => {
   const teamMembers = [
@@ -29,7 +32,13 @@ const TeamSection = () => {
   ];
 
   return (
-    <section className="bg-white py-24 px-4 sm:px-8 lg:px-20">
+    <section className="bg-white px-4 sm:px-8 lg:px-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8 ">
+            <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-gray-900 underline">Our Team</span>
+        </nav>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-16">
@@ -109,6 +118,8 @@ const TeamSection = () => {
           ))}
         </div>
       </div>
+      </div>
+      
     </section>
   );
 };

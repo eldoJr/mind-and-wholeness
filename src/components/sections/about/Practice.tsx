@@ -1,7 +1,17 @@
+import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
 export default function PracticeWithUs() {
   return (
-    <section className="px-4 sm:px-6 lg:px-20 py-20 bg-white font-serif text-gray-900">
-      <div className="max-w-6xl mx-auto">
+    <section className=" bg-white px-4 sm:px-8 lg:px-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
+            <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-gray-900 underline">Practice With Us</span>
+        </nav>
+        
+        <div className="max-w-6xl mx-auto ">
         {/* Header */}
         <div className="mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-6">
@@ -38,51 +48,54 @@ export default function PracticeWithUs() {
         </div>
 
         {/* Title section above the list */}
-<div className="mt-20">
-  <h2 className="text-2xl sm:text-3xl font-serif font-medium mb-4">
-    Explore Our Collection of Contemplative Practices
-  </h2>
-  <p className="text-base sm:text-lg text-gray-700 max-w-3xl">
-    Contemplation gradually rewires our brains to meet and respond to reality as it is, without judgment or comparison.
-    <a href="/contemplative-practices" className="underline text-gray-900 hover:text-emerald-700 font-medium">
-      There are many ways to practice contemplation
-    </a>
-    , from chanting to breath work, sitting in silence or moving with intention. We hope you will use these resources
-    to discover ways to hold everything—both joy and sorrow—together in love.
-  </p>
-</div>
+        <div className="mt-20">
+          <h2 className="text-2xl sm:text-3xl font-serif font-medium mb-4">
+            Explore Our Collection of Contemplative Practices
+          </h2>
+          <p className="text-base sm:text-lg text-gray-700 max-w-3xl">
+            Contemplation gradually rewires our brains to meet and respond to reality as it is, without judgment or comparison.
+            <a href="/contemplative-practices" className="underline text-gray-900 hover:text-emerald-700 font-medium">
+              There are many ways to practice contemplation
+            </a>
+            , from chanting to breath work, sitting in silence or moving with intention. We hope you will use these resources
+            to discover ways to hold everything—both joy and sorrow—together in love.
+          </p>
+        </div>
 
-{/* Practice entries */}
-<div className="mt-16 space-y-12 text-gray-900 font-serif">
+        {/* Practice entries */}
+        <div className="mt-16 space-y-12 text-gray-900 font-serif">
 
-  {/* Practice Item 1 */}
-  <div className="md:ml-auto md:w-2/3">
-    <h3 className="text-xl sm:text-2xl font-medium mb-2">
-      Divine Feminine Blessing <span className="text-base text-gray-600">(3:31)</span>
-    </h3>
-    <p className="text-base sm:text-lg leading-relaxed text-gray-800">
-      Recorded in 2022 by author and teacher Mirabai Starr, the Divine Feminine Blessing invites us to discover breath
-      as an inner pathway to connection with the indwelling presence of the divine feminine. Focus on our breathing
-      creates deeper awareness of ourselves, while also evoking the intimacy and presence of Spirit. Return to this
-      practice whenever you yearn for guidance from our fierce and tender mother wisdom.
-    </p>
-  </div>
+          {/* Practice Item 1 */}
+          <div className="md:ml-auto md:w-2/3">
+            <h3 className="text-xl sm:text-2xl font-medium mb-2">
+              Divine Feminine Blessing <span className="text-base text-gray-600">(3:31)</span>
+            </h3>
+            <p className="text-base sm:text-lg leading-relaxed text-gray-800">
+              Recorded in 2022 by author and teacher Mirabai Starr, the Divine Feminine Blessing invites us to discover breath
+              as an inner pathway to connection with the indwelling presence of the divine feminine. Focus on our breathing
+              creates deeper awareness of ourselves, while also evoking the intimacy and presence of Spirit. Return to this
+              practice whenever you yearn for guidance from our fierce and tender mother wisdom.
+            </p>
+          </div>
 
-  {/* Practice Item 2 */}
-  <div className="md:ml-auto md:w-2/3">
-    <h3 className="text-xl sm:text-2xl font-medium mb-2">
-      Litany of the Holy Spirit <span className="italic text-base text-gray-600">(12:32)</span>
-    </h3>
-    <p className="text-base sm:text-lg leading-relaxed text-gray-800">
-      This litany invites you to call upon the many dimensions of the Holy Spirit, invoking guidance, strength,
-      compassion, and love in your contemplative life. Let it become part of your daily rhythm or return to it
-      anytime your spirit needs renewing.
-    </p>
-  </div>
+          {/* Practice Item 2 */}
+          <div className="md:ml-auto md:w-2/3">
+            <h3 className="text-xl sm:text-2xl font-medium mb-2">
+              Litany of the Holy Spirit <span className="italic text-base text-gray-600">(12:32)</span>
+            </h3>
+            <p className="text-base sm:text-lg leading-relaxed text-gray-800">
+              This litany invites you to call upon the many dimensions of the Holy Spirit, invoking guidance, strength,
+              compassion, and love in your contemplative life. Let it become part of your daily rhythm or return to it
+              anytime your spirit needs renewing.
+            </p>
+          </div>
 
-</div>
+        </div>        
 
       </div>
+      </div>
+
+      
     </section>
   );
 }

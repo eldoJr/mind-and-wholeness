@@ -41,6 +41,8 @@ const DailyMeditations = () => {
         <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
           <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
           <ChevronRight className="w-4 h-4" />
+          <Link to="/programs/podcasts" className="hover:text-gray-900 transition-colors">Programs</Link>
+          <ChevronRight className="w-4 h-4" />
           <span className="text-gray-900 underline">Daily Meditations</span>
         </nav>
 

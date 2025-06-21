@@ -1,219 +1,167 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Headphones, PlayCircle, Clock, Mic2, Share2, Heart } from 'lucide-react';
+import { ChevronRight } from "lucide-react";
+import { Link } from 'react-router-dom';
+import pod1Img from '/src/assets/images/podcasts/pod1.png';
+import pod2Img from '/src/assets/images/podcasts/pod2.png';
+import pod3Img from '/src/assets/images/podcasts/pod3.png';
 
-const PodcastsPage: React.FC = () => {
-  const podcasts = [
-    {
-      title: "The Mindful Path",
-      episode: "Episode 42: Finding Stillness",
-      duration: "38 min",
-      description: "Exploring techniques to find calm in chaotic times",
-      category: "Mindfulness",
-      image: "/podcast1.jpg"
-    },
-    {
-      title: "Healing Conversations",
-      episode: "Overcoming Anxiety with Dr. Sarah Lin",
-      duration: "52 min",
-      description: "A psychiatrist shares practical tools for anxiety management",
-      category: "Mental Health",
-      image: "/podcast2.jpg"
-    },
-    {
-      title: "Daily Wisdom",
-      episode: "The Power of Gratitude",
-      duration: "25 min",
-      description: "How cultivating thankfulness transforms your brain",
-      category: "Personal Growth",
-      image: "/podcast3.jpg"
-    },
-    {
-      title: "Sleep Stories",
-      episode: "The Peaceful Valley",
-      duration: "45 min",
-      description: "A calming narrative to guide you into deep sleep",
-      category: "Sleep",
-      image: "/podcast4.jpg"
-    },
-    {
-      title: "Mind & Body",
-      episode: "Yoga for Mental Health",
-      duration: "41 min",
-      description: "Integrating movement and mindfulness",
-      category: "Wellness",
-      image: "/podcast5.jpg"
-    },
-    {
-      title: "Community Voices",
-      episode: "Stories of Resilience",
-      duration: "63 min",
-      description: "Members share their personal journeys",
-      category: "Community",
-      image: "/podcast6.jpg"
-    }
-  ];
+import PodcastSeries from './Series';
+import StartSection from './StartSection';
+import NewsletterSignup from '../../../layout/newsletterSignup';
+interface PodcastsProps {
+  className?: string;
+}
 
-  const categories = ["All", "Mindfulness", "Mental Health", "Sleep", "Wellness", "Community"];
-
+const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gradient-to-b from-blue-50 to-white"
-    >
-      {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 py-20 px-6 text-center text-white">
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="max-w-4xl mx-auto"
-        >
-          <h1 className="text-5xl font-bold mb-6">Podcasts</h1>
-          <p className="text-xl text-blue-100">
-            Insights and stories from our community of practitioners and experts
-          </p>
-        </motion.div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto py-16 px-6">
-        {/* Featured Podcast */}
-        <motion.div
-          initial={{ scale: 0.95, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="bg-white rounded-3xl shadow-xl overflow-hidden mb-16 border border-blue-100"
-        >
-          <div className="md:flex">
-            <div className="md:w-2/5 bg-blue-500 p-8 flex items-center justify-center">
-              <Headphones className="w-20 h-20 text-white" />
-            </div>
-            <div className="md:w-3/5 p-8">
-              <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
-                <Mic2 className="w-4 h-4" />
-                <span>Featured Episode</span>
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">The Science of Meditation</h2>
-              <p className="text-lg text-gray-600 mb-6">
-                Neuroscientist Dr. Emma Richardson shares groundbreaking research on how meditation 
-                physically changes your brain structure and function.
+    <section className={`bg-white ${className}`}>
+          {/* Header */}
+          <div className="bg-gradient-to-r from-blue-400 to-blue-800 py-20 text-center text-white">
+            <motion.div
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="max-w-4xl mx-auto"
+            >
+              <h1 className="text-5xl font-bold mb-6">Podcasts</h1>
+              <p className="text-xl text-blue-100">
+                Conversations That Inspire Mindful Living
               </p>
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center gap-2 text-gray-700">
-                  <Clock className="w-5 h-5 text-blue-600" />
-                  <span>48 min</span>
-                </div>
-                <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-3 px-6 rounded-full transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
-                  <PlayCircle className="w-5 h-5" />
-                  <span>Listen Now</span>
-                </button>
-                <button className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-2">
-                  <Share2 className="w-5 h-5" />
-                  <span>Share</span>
-                </button>
-              </div>
-            </div>
+            </motion.div>
           </div>
-        </motion.div>
-
-        {/* Category Filters */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-12"
-        >
-          <div className="flex flex-wrap gap-3">
-            {categories.map((category, index) => (
-              <motion.button
-                key={index}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${index === 0 ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-800 hover:bg-blue-200'}`}
-              >
-                {category}
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Podcast Library */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+              <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8 ">
+                  <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
+                  <ChevronRight className="w-4 h-4" />
+                  <Link to="/programs/podcasts" className="hover:text-gray-900 transition-colors">Programs</Link>
+                  <ChevronRight className="w-4 h-4" />
+                  <span className="text-gray-900 underline">Podcasts</span>
+              </nav>
+              <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">All Episodes</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {podcasts.map((podcast, index) => (
-              <motion.div
-                key={index}
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2 + index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 hover:border-blue-200 transition-all duration-300"
-              >
-                <div className="h-40 bg-blue-500 flex items-center justify-center">
-                  <Headphones className="w-12 h-12 text-white" />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-sm font-medium text-blue-600 uppercase tracking-wider">
-                      {podcast.category}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{podcast.title}</h3>
-                  <p className="text-blue-600 font-medium text-sm mb-3">{podcast.episode}</p>
-                  <p className="text-gray-600 mb-4">{podcast.description}</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-gray-500">
-                      <Clock className="w-4 h-4" />
-                      <span>{podcast.duration}</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <button className="text-blue-600 hover:text-blue-700">
-                        <Heart className="w-5 h-5" />
-                      </button>
-                      <button className="text-blue-600 hover:text-blue-700">
-                        <PlayCircle className="w-5 h-5" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <p className="text-base text-gray-700 leading-relaxed max-w-5xl">
+            Explore thought-provoking conversations that invite you to cultivate inner peace, embrace wholeness, and live more mindfully. 
+            Rooted in mindfulness practices and holistic wellness traditions, the Mind and Wholeness podcast series offer insights and 
+            practical guidance to nurture mental clarity and spiritual well-being—within yourself and your community.
+          </p>
         </div>
 
-        {/* Subscribe Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl p-10 text-white text-center"
-        >
-          <h2 className="text-3xl font-bold mb-6">Never Miss an Episode</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Subscribe to our podcast on your favorite platform and get new episodes delivered automatically.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {["Spotify", "Apple Podcasts", "Google Podcasts", "Amazon Music"].map((platform, index) => (
-              <motion.button
-                key={index}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-blue-600 font-medium py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition-all"
-              >
-                {platform}
-              </motion.button>
-            ))}
+        {/* Latest Episodes */}
+        <div className="mb-8">
+          <h4 className="text-2xl sm:text-3xl font-serif text-gray-900 mb-8">
+            Latest Episodes
+          </h4>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Episode 1 */}
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
+                  MINDFUL PRESENCE
+                </p>
+                <div className="relative">
+                  <img 
+                    src={pod1Img} 
+                    alt="Mindful Presence podcast episode"
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+              </div>
+              
+              <h5 className="text-xl font-serif text-gray-900 leading-tight">
+                The Art of Being Present: A Journey into Mindful Awareness
+              </h5>
+              
+              <p className="text-gray-700 text-sm leading-relaxed">
+                What happens when we truly embrace the present moment? In this transformative episode, 
+                we explore practices that ground us in awareness and cultivate a deeper connection to 
+                our inner wisdom and the world around us...
+              </p>
+              
+              <button className="text-gray-900 font-medium border-b-2 border-emerald-500 pb-1 hover:text-emerald-600 transition-colors text-sm">
+                Learn More
+              </button>
+            </div>
+
+            {/* Episode 2 */}
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
+                  EMOTIONAL WELLNESS
+                </p>
+                <div className="relative">
+                  <img 
+                    src={pod2Img} 
+                    alt="Emotional Wellness podcast episode"
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+              </div>
+              
+              <h5 className="text-xl font-serif text-gray-900 leading-tight">
+                Sarah Chen: Navigating Emotional Landscapes
+              </h5>
+              
+              <p className="text-gray-700 text-sm leading-relaxed">
+                In this episode, therapist Sarah Chen shares wisdom on emotional regulation and 
+                self-compassion. We explore how to honor our feelings while maintaining inner balance. 
+                Connect with us: This podcast is made possible...
+              </p>
+              
+              <button className="text-gray-900 font-medium border-b-2 border-emerald-500 pb-1 hover:text-emerald-600 transition-colors text-sm">
+                Learn More
+              </button>
+            </div>
+
+            {/* Episode 3 */}
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
+                  HOLISTIC HEALING
+                </p>
+                <div className="relative">
+                  <img 
+                    src={pod3Img}
+                    alt="Holistic Healing podcast episode"
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+              </div>
+              
+              <h5 className="text-xl font-serif text-gray-900 leading-tight">
+                Healing the Whole Person with Dr. Maria Santos
+              </h5>
+              
+              <p className="text-gray-700 text-sm leading-relaxed">
+                How can we integrate mind, body, and spirit in our healing journey? 
+                In this episode, Dr. Maria Santos and co-host David Kim explore holistic 
+                approaches to wellness that honor our complete human experience...
+              </p>
+              
+              <button className="text-gray-900 font-medium border-b-2 border-emerald-500 pb-1 hover:text-emerald-600 transition-colors text-sm">
+                Learn More
+              </button>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+     </div>
+
+    <div>
+      <PodcastSeries />
+    </div>
+
+    <div>
+      <StartSection />
+    </div>
+
+    <div>
+      <NewsletterSignup />
+    </div>
+    </section>
   );
 };
 
-export default PodcastsPage;
+export default Podcasts;

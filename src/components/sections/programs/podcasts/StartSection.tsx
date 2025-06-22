@@ -297,7 +297,7 @@ const StartSection = () => {
         ))}
       </div>
 
-      {/* CTA melhorado */}
+      {/* CTA  */}
       <div className="mt-8 md:mt-12 text-center">
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-lg md:rounded-xl p-4 md:p-6">
           <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2 md:mb-3">

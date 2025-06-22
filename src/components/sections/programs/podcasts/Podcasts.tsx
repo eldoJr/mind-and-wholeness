@@ -41,7 +41,7 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
               <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12">
-          <p className="text-base text-gray-700 leading-relaxed max-w-5xl">
+          <p className="text-base text-gray-700 leading-relaxed max-w-7xl">
             Explore thought-provoking conversations that invite you to cultivate inner peace, embrace wholeness, and live more mindfully. 
             Rooted in mindfulness practices and holistic wellness traditions, the Mind and Wholeness podcast series offer insights and 
             practical guidance to nurture mental clarity and spiritual well-being—within yourself and your community.

@@ -49,7 +49,7 @@ const DailyMeditations = () => {
         {/* Header */}
         <div className="mb-12">
 
-          <p className="text-base text-gray-700 leading-relaxed max-w-4xl">
+          <p className="text-base text-gray-700 leading-relaxed max-w-7xl">
             Rooted in Christian contemplative traditions, the Daily Meditations offer reflections from Lilian Titus, 
             Mind & Wholeness faculty, and guest teachers to help you deepen your spiritual practice and embody 
             transformation in the world.

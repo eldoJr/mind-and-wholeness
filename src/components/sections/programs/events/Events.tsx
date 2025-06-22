@@ -2,6 +2,7 @@ import { Calendar, MapPin, Users, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ChevronRight } from "lucide-react";
 import { Link } from 'react-router-dom';
+import NewsletterSignup from '../../../layout/newsletterSignup';
 
 const EventsPage = () => {
   const events = [
@@ -67,16 +68,15 @@ const EventsPage = () => {
               for deep healing and authentic wholeness.
             </p>
         </div>
+        <h2 className="text-2xl sm:text-3xl font-serif text-gray-900 mb-8">
+          Upcoming Events
+        </h2>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white">
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-serif text-gray-900 mb-8">
-              Upcoming Events
-            </h2>
-            
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:py-6 bg-white">
+          <div className="mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
               {events.map((event) => (
-                <div key={event.id} className="bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+                <div key={event.id} className="bg-white shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
                   {/* Event Image */}
                   <div className={`h-48 md:h-56 bg-gradient-to-br ${event.gradient} relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-black/20"></div>
@@ -158,6 +158,9 @@ const EventsPage = () => {
             </div>
           </div>
       </div>
+    </div>
+    <div>
+      <NewsletterSignup />
     </div>    
     </motion.div>
   );

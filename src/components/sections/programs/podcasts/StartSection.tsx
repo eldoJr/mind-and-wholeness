@@ -1,5 +1,6 @@
 import { Play, Pause, Share, Bookmark, Volume2, Download, SkipBack, SkipForward } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
+import pod1 from '/src/assets/audio/pod1.mp3'
 
 // Componente AudioPlayer melhorado e mais compacto
 type Podcast = {
@@ -20,33 +21,42 @@ const AudioPlayer = ({ podcast }: { podcast: Podcast }) => {
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(new Audio(podcast.audioUrl));
+
+  // Configurar os event listeners uma vez quando o componente montar
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    const updateMetaData = () => {
+      setDuration(audio.duration);
+    };
+
+    const updateTime = () => {
+      const progressPercent = (audio.currentTime / audio.duration) * 100;
+      setProgress(progressPercent);
+      setCurrentTime(audio.currentTime);
+    };
+
+    const handleEnded = () => {
+      setIsPlaying(false);
+      setProgress(0);
+      setCurrentTime(0);
+    };
+
+    audio.addEventListener('loadedmetadata', updateMetaData);
+    audio.addEventListener('timeupdate', updateTime);
+    audio.addEventListener('ended', handleEnded);
+
+    // Limpeza quando o componente desmontar
+    return () => {
+      audio.pause();
+      audio.removeEventListener('loadedmetadata', updateMetaData);
+      audio.removeEventListener('timeupdate', updateTime);
+      audio.removeEventListener('ended', handleEnded);
+    };
+  }, []);
 
   const handlePlayPause = () => {
-    if (!audioRef.current) {
-      audioRef.current = new Audio(podcast.audioUrl);
-      
-      audioRef.current.addEventListener('loadedmetadata', () => {
-        if (audioRef.current) {
-          setDuration(audioRef.current.duration);
-        }
-      });
-
-      audioRef.current.addEventListener('timeupdate', () => {
-        if (audioRef.current) {
-          const progressPercent = (audioRef.current.currentTime / audioRef.current.duration) * 100;
-          setProgress(progressPercent);
-          setCurrentTime(audioRef.current.currentTime);
-        }
-      });
-
-      audioRef.current.addEventListener('ended', () => {
-        setIsPlaying(false);
-        setProgress(0);
-        setCurrentTime(0);
-      });
-    }
-
     if (isPlaying) {
       audioRef.current.pause();
     } else {
@@ -57,31 +67,17 @@ const AudioPlayer = ({ podcast }: { podcast: Podcast }) => {
     setIsPlaying(!isPlaying);
   };
 
-  const handleSeek = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (audioRef.current) {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const pos = (e.clientX - rect.left) / rect.width;
-      const newTime = pos * duration;
-      audioRef.current.currentTime = newTime;
-      setProgress(pos * 100);
-      setCurrentTime(newTime);
-    }
+
+    const handleSeek = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / rect.width;
+    const newTime = pos * duration;
+    audioRef.current.currentTime = newTime;
+    setProgress(pos * 100);
+    setCurrentTime(newTime);
   };
 
-  useEffect(() => {
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.src = '';
-      }
-    };
-  }, []);
-
-  interface FormatTime {
-    (seconds: number): string;
-  }
-
-  const formatTime: FormatTime = (seconds) => {
+  const formatTime: (seconds: number) => string = (seconds) => {
     if (!seconds || isNaN(seconds)) return '0:00';
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
@@ -90,7 +86,7 @@ const AudioPlayer = ({ podcast }: { podcast: Podcast }) => {
 
   return (
     <div className="flex-1 p-3 md:p-4">
-      <div className={`bg-gradient-to-br ${podcast.bgGradient} border border-white/40 rounded-lg md:rounded-xl p-3 md:p-4 h-full flex flex-col justify-between backdrop-blur-sm`}>
+      <div className={`bg-gradient-to-br ${podcast.bgGradient} border border-white/40 p-3 md:p-4 h-full flex flex-col justify-between backdrop-blur-sm`}>
         
         {/* Header compacto */}
         <div className="mb-3">
@@ -106,7 +102,7 @@ const AudioPlayer = ({ podcast }: { podcast: Podcast }) => {
         <div className="mb-3">
           {/* Waveform simplificado e menor */}
           <div className="mb-3 relative">
-            <div className="h-8 md:h-10 bg-white/50 rounded-lg flex items-center justify-center overflow-hidden relative cursor-pointer" onClick={handleSeek}>
+            <div className="h-8 md:h-10 bg-white/50 flex items-center justify-center overflow-hidden relative cursor-pointer" onClick={handleSeek}>
               <div className="flex items-end gap-px h-full px-2 absolute inset-0">
                 {Array.from({length: 40}).map((_, i) => {
                   const height = Math.sin(i * 0.2) * 15 + Math.random() * 20 + 10;
@@ -130,7 +126,7 @@ const AudioPlayer = ({ podcast }: { podcast: Podcast }) => {
             </div>
             
             {/* Barra de progresso mais fina */}
-            <div className="mt-2 h-1 bg-gray-200 rounded-full overflow-hidden cursor-pointer" onClick={handleSeek}>
+            <div className="mt-2 h-1 bg-gray-200 overflow-hidden cursor-pointer" onClick={handleSeek}>
               <div 
                 className="h-full bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 ease-out rounded-full"
                 style={{width: `${progress}%`}}
@@ -179,7 +175,7 @@ const AudioPlayer = ({ podcast }: { podcast: Podcast }) => {
               <span className="hidden sm:inline">Save</span>
             </button>
           </div>
-          <button className="flex items-center gap-1 px-2 py-1 md:px-3 md:py-1.5 bg-white/70 hover:bg-white border border-gray-200 rounded-md text-xs text-gray-700 hover:text-gray-900 transition-all duration-200 shadow-sm hover:shadow-md">
+          <button className="flex items-center gap-1 px-2 py-1 md:px-3 md:py-1.5 bg-white/70 hover:bg-white border border-gray-200  text-xs text-gray-700 hover:text-gray-900 transition-all duration-200 shadow-sm hover:shadow-md">
             <Download className="w-3 h-3" />
             <span className="hidden sm:inline font-medium">Download</span>
           </button>
@@ -203,7 +199,7 @@ const PodcastCover = ({ podcast }: { podcast: Podcast }) => (
         </div>
       </div>
       <div className="absolute -bottom-4 -right-4 w-12 h-12 md:w-16 md:h-16 bg-white/15 rounded-full blur-xl"></div>
-      <div className="absolute -top-3 -left-3 w-8 h-8 md:w-10 md:h-10 bg-white/10 rounded-full blur-lg"></div>
+      <div className="absolute -top-3 -left-3 w-8 h-8 md:w-10 md:h-10 bg-white/10 blur-lg"></div>
     </div>
   </div>
 );
@@ -215,7 +211,7 @@ const PodcastItem = ({ podcast, index }: { podcast: Podcast; index: number }) =>
       <div className="flex items-center gap-2 md:gap-3 mb-2">
         <h3 className="text-lg md:text-xl font-semibold text-gray-900">{podcast.title}</h3>
         <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent"></div>
-        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
+        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5">
           #{index + 1}
         </span>
       </div>
@@ -223,7 +219,7 @@ const PodcastItem = ({ podcast, index }: { podcast: Podcast; index: number }) =>
     </div>
     
     {/* Player e Cover - layout melhorado */}
-    <div className="bg-white rounded-lg md:rounded-xl shadow-md md:shadow-lg overflow-hidden border border-gray-100">
+    <div className="bg-white shadow-md md:shadow-lg overflow-hidden border border-gray-100">
       <div className="flex flex-col md:flex-row">
         <AudioPlayer podcast={podcast} />
         <PodcastCover podcast={podcast} />
@@ -237,11 +233,11 @@ const StartSection = () => {
   const podcasts = [
     {
       id: 'mindful-healing',
-      title: 'Mindful Healing',
+      title: 'Humans Are ... Trees?',
       description: 'A therapeutic deep dive into mindfulness-based healing through the lens of contemplative practice.',
-      host: 'Dr. Sarah Chen',
-      episode: 'Introduction to Mindful Presence in Therapy',
-      audioUrl: 'https://afp-597195-injected.calisto.simplecastaudio.com/695767b0-cd40-4ea6c-ac8c-ac6bc0df77ee/episodes/a861acdf-2382-4508-b42e-d6038a0472e5/audio/128/default.mp3?awCollectionId=695767b0-cd40-4e6c-ac8c-ac6bc0df77ee&awEpisodeId=a861acdf-2382-4508-b42e-d6038a0472e5',
+      host: 'Tim & Jon',
+      episode: 'Humans and trees are found together at most of the hinge points in the biblical story.',
+      audioUrl: pod1,
       gradient: 'from-emerald-400 via-emerald-500 to-teal-600',
       bgGradient: 'from-emerald-50 to-teal-50',
       textColor: 'text-emerald-800',
@@ -274,13 +270,9 @@ const StartSection = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12 lg:py-16 ">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-10 lg:py-12 ">
       {/* Cabeçalho melhorado */}
       <div className="mb-8 md:mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full text-xs md:text-sm font-medium mb-4">
-          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
-          Getting Started
-        </div>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif text-gray-900 mb-3 md:mb-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
           Where to Start?
         </h1>
@@ -299,7 +291,7 @@ const StartSection = () => {
 
       {/* CTA  */}
       <div className="mt-8 md:mt-12 text-center">
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-lg md:rounded-xl p-4 md:p-6">
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 md:rounded-xl p-4 md:p-6">
           <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2 md:mb-3">
             Ready to dive deeper?
           </h3>
@@ -307,7 +299,7 @@ const StartSection = () => {
             Explore our complete catalog and join our community of mindful listeners.
           </p>
           <div className="flex flex-col sm:flex-row gap-2 md:gap-3 justify-center">
-            <button className="px-4 py-2 md:px-6 md:py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg text-sm md:text-base font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none">
+            <button className="px-4 py-2 md:px-6 md:py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-sm md:text-base font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none">
               Browse All Episodes
             </button>
           </div>

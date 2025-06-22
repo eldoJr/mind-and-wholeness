@@ -274,9 +274,9 @@ const StartSection = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12 lg:py-16 ">
       {/* Cabeçalho melhorado */}
-      <div className="mb-8 md:mb-12 text-center">
+      <div className="mb-8 md:mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full text-xs md:text-sm font-medium mb-4">
           <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
           Getting Started
@@ -284,7 +284,7 @@ const StartSection = () => {
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif text-gray-900 mb-3 md:mb-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
           Where to Start?
         </h1>
-        <p className="text-sm md:text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
+        <p className="text-sm md:text-base text-gray-600 leading-relaxed max-w-7xl mx-auto">
           Sometimes it can be hard to know where to jump in – especially if you are new to our podcast network. 
           We've curated the perfect entry points for each series.
         </p>
@@ -309,9 +309,6 @@ const StartSection = () => {
           <div className="flex flex-col sm:flex-row gap-2 md:gap-3 justify-center">
             <button className="px-4 py-2 md:px-6 md:py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg text-sm md:text-base font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none">
               Browse All Episodes
-            </button>
-            <button className="px-4 py-2 md:px-6 md:py-2.5 bg-white border border-gray-200 text-gray-700 rounded-lg text-sm md:text-base font-semibold hover:bg-gray-50 transition-colors duration-200 focus:outline-none">
-              Join Newsletter
             </button>
           </div>
         </div>

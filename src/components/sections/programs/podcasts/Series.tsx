@@ -82,9 +82,6 @@ const PodcastSeries = () => {
             Podcast Series
           </h1>
         </div>
-      </section>
-
-      <section className="bg-gradient-to-br from-slate-50 to-emerald-100">
         <div className="max-w-7xl mx-auto px-6 pb-16">
           {podcastSeries.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -104,10 +101,6 @@ const PodcastSeries = () => {
                 <p className="text-gray-600 text-sm leading-relaxed mb-8">
                   We're working on bringing you amazing podcast series.
                 </p>
-                
-                <button className="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-6 py-2 rounded transition-colors">
-                  Subscribe for Updates
-                </button>
               </div>
             </div>
           )}

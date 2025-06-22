@@ -1,6 +1,5 @@
 import { Play, Pause, Share, Bookmark, Volume2, Download, SkipBack, SkipForward } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import pod1 from '/src/assets/audio/pod1.mp3'
 
 // Componente AudioPlayer melhorado e mais compacto
 type Podcast = {
@@ -237,7 +236,7 @@ const StartSection = () => {
       description: 'A therapeutic deep dive into mindfulness-based healing through the lens of contemplative practice.',
       host: 'Tim & Jon',
       episode: 'Humans and trees are found together at most of the hinge points in the biblical story.',
-      audioUrl: pod1,
+      audioUrl: 'https://afp-597195-injected.calisto.simplecastaudio.com/695767b0-cd40-4e6c-ac8c-ac6bc0df77ee/episodes/c3965584-6829-4453-9982-6ca58fdfabc7/audio/128/default.mp3/default.mp3_ywr3ahjkcgo_b55a1ee0fb2ec19167108f5156225af4_64621220.mp3?awCollectionId=695767b0-cd40-4e6c-ac8c-ac6bc0df77ee&awEpisodeId=c3965584-6829-4453-9982-6ca58fdfabc7&hash_redirect=1&x-total-bytes=64621220&x-ais-classified=streaming&listeningSessionID=0CD_382_172__ee4c5c6ac86e6c41dc24dfd8612ff305bb6e1e4d',
       gradient: 'from-emerald-400 via-emerald-500 to-teal-600',
       bgGradient: 'from-emerald-50 to-teal-50',
       textColor: 'text-emerald-800',
@@ -249,7 +248,7 @@ const StartSection = () => {
       description: 'Explore the wisdom of discernment and spiritual direction through contemplative listening.',
       host: 'Maria Rodriguez',
       episode: 'Finding Your Sacred Direction',
-      audioUrl: 'https://afp-597195-injected.calisto.simplecastaudio.com/695767b0-cd40-4ea6c-ac8c-ac6bc0df77ee/episodes/a861acdf-2382-4508-b42e-d6038a0472e5/audio/128/default.mp3?awCollectionId=695767b0-cd40-4e6c-ac8c-ac6bc0df77ee&awEpisodeId=a861acdf-2382-4508-b42e-d6038a0472e5',
+      audioUrl: 'https://afp-597195-injected.calisto.simplecastaudio.com/695767b0-cd40-4e6c-ac8c-ac6bc0df77ee/episodes/c3965584-6829-4453-9982-6ca58fdfabc7/audio/128/default.mp3/default.mp3_ywr3ahjkcgo_b55a1ee0fb2ec19167108f5156225af4_64621220.mp3?awCollectionId=695767b0-cd40-4e6c-ac8c-ac6bc0df77ee&awEpisodeId=c3965584-6829-4453-9982-6ca58fdfabc7&hash_redirect=1&x-total-bytes=64621220&x-ais-classified=streaming&listeningSessionID=0CD_382_172__ee4c5c6ac86e6c41dc24dfd8612ff305bb6e1e4d',
       gradient: 'from-blue-400 via-blue-500 to-indigo-600',
       bgGradient: 'from-blue-50 to-indigo-50',
       textColor: 'text-blue-800',

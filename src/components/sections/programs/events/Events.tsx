@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ChevronRight } from "lucide-react";
 import { Link } from 'react-router-dom';
 import NewsletterSignup from '../../../layout/newsletterSignup';
+import ListEvents from './ListEvents';
 
 const EventsPage = () => {
   const events = [
@@ -35,10 +36,10 @@ const EventsPage = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gradient-to-b from-purple-50 to-white"
+      className="min-h-screen bg-gradient-to-b"
     >
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-purple-800 py-20 px-6 text-center text-white">
+      <div className="bg-gradient-to-r from-purple-400 to-purple-800 py-20 px-6 text-center text-white">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -158,10 +159,16 @@ const EventsPage = () => {
             </div>
           </div>
       </div>
+      <div className='mb-8 py-12'>
+        <p>Event details are subject to change. <a className='font-serif underline' href="./signup/signup">Subscribe to our newsletter</a> and be the first to know about upcoming Mind & Wholeness events.</p>
+      </div>
     </div>
     <div>
       <NewsletterSignup />
-    </div>    
+    </div> 
+    <div>
+      <ListEvents />
+    </div>   
     </motion.div>
   );
 };

@@ -474,11 +474,12 @@ export default function Navbar() {
                   </div>
                 )}
               </div>
-
               <div className="border-b border-gray-100 pb-2">
-                <NavLink to="/blog">Blog</NavLink>
+                <NavLink to="/articles/articles">Articles</NavLink>
               </div>
-
+              <div className="border-b border-gray-100 pb-2">
+                <NavLink to="/bookstore/bookstore">Bookstore</NavLink>
+              </div>
               <div className="border-b border-gray-100 pb-2">
                 <NavLink to="/contact">Contact</NavLink>
               </div>

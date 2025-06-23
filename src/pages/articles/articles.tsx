@@ -1,9 +1,9 @@
-import { BlogSection } from "../../components/sections/blog/BlogSection";
+import ArticlesSection from "../../components/sections/articles/ArticlesSection";
 
 export default function BlogPage() {
   return (
     <div className="space-y-28">
-      <BlogSection />
+      <ArticlesSection />
     </div>
   );
 }

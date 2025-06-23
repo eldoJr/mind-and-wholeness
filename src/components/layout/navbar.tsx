@@ -355,7 +355,7 @@ export default function Navbar() {
                 />
               </li>
 
-              <li><NavLink to="/blog">Blog</NavLink></li>
+              <li><NavLink to="/blog/blog">Blog</NavLink></li>
               <li><NavLink to="/contact">Contact</NavLink></li>
             </ul>
 

@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
         element: <EventsPage />,
       },
       {
-        path: "/blog",
+        path: "/blog/blog",
         element: <BlogSection />,
       },
       {

@@ -11,7 +11,7 @@ import ProgramsPage from "../components/sections/programs/podcasts/Podcasts";
 import DailyMeditations from "../components/sections/programs/meditations/Meditations";
 import PodcastsPage from "../components/sections/programs/podcasts/Podcasts";
 import EventsPage from "../components/sections/programs/events/Events";
-import BlogSection from "../pages/blog/blog";
+import BlogSection from "../pages/articles/articles";
 import ContactSection from "../pages/Contact";
 import Signup from "../pages/signup/signup";
 import NotFound from "../pages/404/NotFound";
@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
         element: <EventsPage />,
       },
       {
-        path: "/blog/blog",
+        path: "/articles/articles",
         element: <BlogSection />,
       },
       {

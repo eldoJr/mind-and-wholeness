@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Instagram, Facebook, Send, MapPin, Phone, Heart, CheckCircle2, Users, Clock, Loader2 } from 'lucide-react';
+import { Mail, Send, MapPin, Phone, Heart, CheckCircle2, Clock, Loader2, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Confetti from 'react-confetti';
 import { createAvatar } from '@dicebear/core';
 import { initials } from '@dicebear/collection';
+import EmailSignup from '../components/layout/emailSignup';
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -142,7 +144,7 @@ const ContactSection: React.FC = () => {
             }}
           />
           <motion.div 
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-white rounded-full blur-3xl"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-white blur-3xl"
             animate={{
               scale: [1, 1.5, 1],
               opacity: [0.05, 0.1, 0.05]
@@ -183,6 +185,15 @@ const ContactSection: React.FC = () => {
           </motion.p>
         </div>
       </motion.div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {/* Breadcrumb */}
+          <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
+            <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-gray-900 underline">Get In Touch</span>
+          </nav>
+
+        </div>
 
       {/* Main Content */}
       <div className="bg-white py-8 px-4">
@@ -190,7 +201,7 @@ const ContactSection: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-4">
             {/* Contact Info Column */}
             <motion.div 
-              className="bg-white rounded-lg  border border-gray-100 h-full"
+              className="bg-white border border-gray-100 h-full"
               variants={itemVariants}
             >
               <div className="p-8 lg:p-12 h-full flex flex-col">
@@ -233,7 +244,7 @@ const ContactSection: React.FC = () => {
                     <motion.a
                       key={idx}
                       href={item.href}
-                      className="group block bg-gray-50 hover:bg-white border-2 border-gray-100 hover:border-green-200 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl"
+                      className="group block bg-gradient-to-br from-slate-50 to-emerald-50 hover:bg-white border-2 border-gray-100 hover:border-green-200 p-6 duration-300 hover:shadow-xl"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       variants={itemVariants}
@@ -256,64 +267,13 @@ const ContactSection: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Social Media Section */}
-                <motion.div 
-                  className="mt-8 pt-8 border-t border-gray-200"
-                  variants={itemVariants}
-                >
-                  <h4 className="text-lg font-bold text-gray-900 mb-6">Follow Our Journey</h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    {[
-                      {
-                        icon: <Instagram className="w-6 h-6" />,
-                        title: 'Instagram',
-                        handle: '@mind.wholeness',
-                        stats: '25.4k followers',
-                        href: 'https://instagram.com/mind.wholeness',
-                        bgGradient: 'from-orange-400 to-orange-600',
-                        hoverColor: 'hover:from-orange-500 hover:to-orange-700'
-                      },
-                      {
-                        icon: <Facebook className="w-6 h-6" />,
-                        title: 'Facebook',
-                        handle: 'Mind & Wholeness',
-                        stats: '156k members',
-                        href: 'https://facebook.com/mindandwholeness',
-                        bgGradient: 'from-green-500 to-green-600',
-                        hoverColor: 'hover:from-green-600 hover:to-green-700'
-                      }
-                    ].map((social, idx) => (
-                      <motion.a
-                        key={idx}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group relative overflow-hidden rounded-2xl p-5 text-center hover:scale-105 transition-all duration-300 bg-gray-50 hover:bg-white border border-gray-200 hover:border-green-300 hover:shadow-lg"
-                        whileHover={{ y: -3 }}
-                        variants={itemVariants}
-                      >
-                        <motion.div 
-                          className={`w-12 h-12 bg-gradient-to-br ${social.bgGradient} ${social.hoverColor} rounded-xl flex items-center justify-center text-white mx-auto mb-3 shadow-lg transition-all duration-300`}
-                          whileHover={{ rotate: 10 }}
-                        >
-                          {social.icon}
-                        </motion.div>
-                        <h5 className="font-bold text-gray-900 text-sm mb-1">{social.title}</h5>
-                        <p className="text-xs text-gray-600 mb-1">{social.handle}</p>
-                        <div className="flex items-center justify-center gap-1 text-xs text-green-600 font-semibold">
-                          <Users className="w-3 h-3" />
-                          <span>{social.stats}</span>
-                        </div>
-                      </motion.a>
-                    ))}
-                  </div>
-                </motion.div>
+                
               </div>
             </motion.div>
 
             {/* Contact Form Column */}
             <motion.div 
-              className="bg-white rounded-lg border border-gray-100 h-full"
+              className="bg-white border border-gray-100 h-full"
               variants={itemVariants}
             >
               <div className="p-6 lg:p-12 h-full flex flex-col">
@@ -342,7 +302,7 @@ const ContactSection: React.FC = () => {
                           <motion.img
                             src={userAvatar}
                             alt="User avatar"
-                            className="w-20 h-20 rounded-full absolute -top-24 left-1/2 transform -translate-x-1/2 border-4 border-white shadow-lg"
+                            className="w-20 h-20 absolute -top-24 left-1/2 transform -translate-x-1/2 border-4 border-white shadow-lg"
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: 0.3 }}
@@ -518,29 +478,14 @@ const ContactSection: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Bottom CTA */}
+          {/* Buttom */}
           <motion.div 
-            className="mt-20 bg-gradient-to-r from-green-600 to-orange-500 rounded-lg p-12 text-white text-center shadow-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <div className="max-w-4xl mx-auto">
-              <h3 className="text-3xl font-bold mb-4">Ready to Begin Your Transformation?</h3>
-              <p className="text-lg text-green-100 mb-8 leading-relaxed">
-                Join thousands of others who have discovered peace, purpose, and wholeness through our supportive community and expert guidance.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <a href="/signup/signup">
-                    <motion.button 
-                      className="bg-white text-green-600 font-bold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl text-base"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Start Your Journey Today
-                    </motion.button>
-                  </a>
-              </div>
+            <div>
+                  <EmailSignup />
             </div>
           </motion.div>
         </div>

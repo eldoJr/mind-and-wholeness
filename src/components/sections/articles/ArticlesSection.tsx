@@ -29,7 +29,7 @@ const ArticlesSection = () => {
 
         {/* Main content section */}
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Articles</h1>
+          <h1 className="text-2xl sm:text-3xl font-serif text-gray-900 mb-8">Articles</h1>
           <span className="text-gray-600 text-sm sm:text-base">Mind and Wholeness Resources</span>
         </div>
 
@@ -37,7 +37,7 @@ const ArticlesSection = () => {
           {/* Main Articles Section */}
           <div className="lg:col-span-2 space-y-6">
             {/* Enhanced empty state */}
-            <div className="flex flex-col items-center justify-center py-16 px-6 bg-gray-50 rounded-xl">
+            <div className="flex flex-col items-center justify-center py-16 px-6 bg-gray-50">
               <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center mb-6">
                 <BookOpen className="w-16 h-16 text-blue-500" />
               </div>
@@ -62,7 +62,7 @@ const ArticlesSection = () => {
           {/* Popular Articles Sidebar */}
           <div className="space-y-6">
             <h2 className="text-xl font-bold text-gray-900">Most Popular</h2>
-            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-8 text-center border border-gray-200">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 text-center border border-gray-200">
               <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto mb-4 shadow-sm">
                 <Sparkles className="w-8 h-8 text-purple-500" />
               </div>

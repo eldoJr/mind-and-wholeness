@@ -2,19 +2,36 @@ import { motion } from 'framer-motion';
 import { Link } from "react-router-dom";
 import { Play, Sparkles, ArrowRight } from 'lucide-react';
 import herobg from '/src/assets/images/herobg.jpg';
+import { useEffect, useState } from 'react';
 
 export function Hero() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Preload the image
+  useEffect(() => {
+    const img = new Image();
+    img.src = herobg;
+    img.onload = () => setImageLoaded(true);
+  }, []);
+
   return (
     <section className="relative w-full h-[500px] sm:h-screen min-h-[500px] max-h-[800px] overflow-hidden bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-8 lg:px-20 pb-4 sm:pb-10">
       {/* Background Image Container with Original Shape */}
       <div className="absolute inset-0 mx-4 sm:mx-8 lg:mx-20 mb-2 sm:mb-5 rounded-lg shadow-md overflow-hidden">
+        {/* Fallback gradient background while image loads */}
+        {!imageLoaded && (
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-300 to-emerald-300 animate-pulse" />
+        )}
+        
         <motion.div
           className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: `url(${herobg})`,
+            backgroundImage: imageLoaded ? `url(${herobg})` : 'none',
             backgroundSize: 'cover',
             backgroundPosition: 'center 35%',
-            backgroundRepeat: 'no-repeat'
+            backgroundRepeat: 'no-repeat',
+            opacity: imageLoaded ? 1 : 0,
+            transition: 'opacity 0.5s ease-out'
           }}
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -25,7 +42,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
       </div>
 
-      {/* Content Container */}
+      {/* Content Container - shown immediately while image loads */}
       <div className="relative h-full flex items-center pt- sm:pt-24 lg:pt-32 mx-2 sm:mx-6 lg:mx-10 mb-4 sm:mb-10 z-10">
         <motion.div 
           className="container mx-auto px-4 sm:px-6 lg:px-12"

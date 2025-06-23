@@ -141,6 +141,7 @@ export function Hero() {
         </motion.div>
       </div>
       
+      
       {/* Scrolling Indicator */}
       <motion.div
         animate={{

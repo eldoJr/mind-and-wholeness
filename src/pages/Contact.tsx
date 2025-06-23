@@ -167,22 +167,6 @@ const ContactSection: React.FC = () => {
             <Heart className="w-5 h-5" />
             <span>Let's Connect & Transform Lives Together</span>
           </motion.div>
-          <motion.h2 
-            className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            Get in Touch
-          </motion.h2>
-          <motion.p 
-            className="text-lg text-green-100 max-w-3xl mx-auto leading-relaxed"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            We're here to support your journey to wholeness. Reach out and let's create something beautiful together.
-          </motion.p>
         </div>
       </motion.div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -190,13 +174,18 @@ const ContactSection: React.FC = () => {
           <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
             <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 underline">Get In Touch</span>
+            <span className="text-gray-900 underline">Contact Us</span>
           </nav>
 
+          <div className="mb-12">
+            <p className="text-base text-gray-700 leading-relaxed max-w-7xl">
+              We're here to support your journey to wholeness. Reach out and let's create something beautiful together.
+            </p>
+          </div>
         </div>
 
       {/* Main Content */}
-      <div className="bg-white py-8 px-4">
+      <div className="bg-white py-4 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-4">
             {/* Contact Info Column */}
@@ -211,7 +200,7 @@ const ContactSection: React.FC = () => {
                 </div>
 
                 {/* Contact Cards */}
-                <div className="space-y-4 flex-grow">
+                <div className="space-y-11 flex-grow">
                   {[
                     {
                       icon: <Mail className="w-7 h-5 text-white" />,
@@ -448,7 +437,7 @@ const ContactSection: React.FC = () => {
                         <motion.button
                           type="submit"
                           disabled={isSubmitting}
-                          className="w-full bg-gradient-to-r from-green-600 to-orange-500 hover:from-green-700 hover:to-orange-600 text-white font-bold py-5 px-8 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 text-base mt-8"
+                          className="w-full bg-gradient-to-r from-green-600 to-orange-500 hover:from-green-700 hover:to-orange-600 text-white font-bold py-5 px-8 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 text-base mt-8"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                           variants={itemVariants}

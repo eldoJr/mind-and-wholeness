@@ -1,17 +1,17 @@
 import ceoImg from "/src/assets/images/ceo.png";
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 import { 
   BookOpen, 
   Heart, 
   ArrowRight, 
   CheckCircle, 
   Play,
-  Calendar,
   MessageCircle,
   Download,
   Sparkles,
   Globe,
-  Target,
+  Users,
   Shield,
   ChevronRight,
   Facebook,
@@ -74,39 +74,39 @@ export default function BeginJourney() {
   ];
 
   const quickActions = [
-    {
-      title: 'Wholeness Assessment',
-      description: 'Discover your current state of mind-body-spirit alignment',
-      icon: Target,
-      action: 'Begin Assessment',
-      color: 'green',
-      badge: 'Free'
-    },
-    {
-      title: 'Sacred Introduction',
-      description: 'Experience our vision for global transformation',
-      icon: Play,
-      action: 'Watch Sacred Video',
-      color: 'orange',
-      badge: '5 min'
-    },
-    {
-      title: 'Soul Consultation',
-      description: 'Book a sacred 20-minute discovery session',
-      icon: Calendar,
-      action: 'Schedule Soul Talk',
-      color: 'blue',
-      badge: 'Popular'
-    },
-    {
-      title: 'Sacred Practices Guide',
-      description: 'Receive "Path to Wholeness" sacred practices',
-      icon: Download,
-      action: 'Download Wisdom',
-      color: 'purple',
-      badge: 'New'
-    }
-  ];
+  {
+    title: 'Mind & Soul Evaluation',
+    description: 'Assess your current state of wholeness across mind, body and spirit',
+    icon: BookOpen,
+    action: 'Start Evaluation',
+    color: 'green',
+    badge: 'First Step'
+  },
+  {
+    title: 'Our Story',
+    description: 'Learn how Mind & Wholeness began this transformative movement',
+    icon: Play,
+    action: 'Watch Story',
+    color: 'orange',
+    badge: 'Inspiration'
+  },
+  {
+    title: 'Transformation Session',
+    description: 'Begin your journey with a guided introductory session',
+    icon: Users,
+    action: 'Book Session',
+    color: 'blue',
+    badge: 'Recommended'
+  },
+  {
+    title: 'Wholeness Starter Kit',
+    description: 'Get our free guide to beginning your transformation',
+    icon: Download,
+    action: 'Get Resources',
+    color: 'purple',
+    badge: 'Free Gift'
+  }
+];
 
   interface ColorClasses {
     bg: string;
@@ -163,7 +163,7 @@ export default function BeginJourney() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <nav className="flex items-center justify-between">
           <div className="flex items-center space-x-2 text-sm text-gray-600">
-            <button className="hover:text-gray-900 transition-colors">Home</button>
+            <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
             <span className="text-gray-900 font-medium">Begin Journey</span>
           </div>
@@ -186,7 +186,7 @@ export default function BeginJourney() {
             <span>Your Sacred Transformation Begins</span>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium text-gray-900 mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-4xl lg:text-4xl xl:text-5xl font-serif font-medium text-gray-900 mb-6 leading-tight">
             Begin Your Sacred Journey to
             <br className="hidden sm:block" />
             <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent"> Wholeness</span>
@@ -199,22 +199,22 @@ export default function BeginJourney() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="w-full sm:w-auto px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+            <Link to='/signup/signup' className="w-full sm:w-auto px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
               Start Your Journey
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 bg-white text-gray-700 font-semibold rounded-xl border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-lg">
+            </Link>
+            <Link to='/about/about' className="w-full sm:w-auto px-8 py-4 bg-white text-gray-700 font-semibold rounded-xl border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-lg">
               Learn More
-            </button>
+            </Link>
           </div>
         </div>
 
         {/* Journey Paths */}
         <div className="mb-16 lg:mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-gray-900 mb-4">
+          <div className="mb-12">
+            <h2 className="text-3xl sm:text-4xl font-serif text-gray-900 mb-6 leading-tight">
               Choose Your Sacred Path
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base text-gray-700 leading-relaxed mb-6 max-w-4xl">
               Each path is designed to guide you through a unique aspect of your spiritual transformation
             </p>
           </div>
@@ -228,7 +228,7 @@ export default function BeginJourney() {
               return (
                 <div
                   key={path.id}
-                  className={`group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer border-2 transform hover:-translate-y-2 ${
+                  className={`group relative bg-white shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer border-2 transform hover:-translate-y-2 ${
                     isSelected 
                       ? `${colors.border} ${colors.shadow} scale-105` 
                       : 'border-gray-100 hover:border-gray-200'
@@ -282,7 +282,7 @@ export default function BeginJourney() {
         </div>
 
         {/* Quick Actions */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 lg:p-8 mb-16 lg:mb-20">
+        <div className="bg-white shadow-lg p-6 lg:p-8 mb-16 lg:mb-20">
           <div className="text-center mb-8 lg:mb-12">
             <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4">
               Seeking Divine Guidance?
@@ -334,7 +334,7 @@ export default function BeginJourney() {
         </div>
 
         {/* CEO Section */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16 lg:mb-20">
+        <div className="bg-white shadow-lg overflow-hidden mb-16 lg:mb-20">
           <div className="flex flex-col lg:flex-row">
             {/* Text Content */}
             <div className="lg:flex-1 p-8 lg:p-12 flex flex-col justify-center">

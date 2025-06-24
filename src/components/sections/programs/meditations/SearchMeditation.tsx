@@ -7,10 +7,10 @@ interface SearchMeditationProps {
 
 const SearchMeditation: React.FC<SearchMeditationProps> = ({ className = '' }) => {
   return (
-    <section className={`py-16 sm:px-4 lg:px-3 bg-white ${className}`}>
+    <section className={`py-8 sm:px-4 lg:px-3 bg-white ${className}`}>
       {/* Search Section */}
         <div>
-          <h3 className="text-2xl sm:text-4xl font-serif text-gray-900 mb-8">
+          <h3 className="text-2xl sm:text-3xl font-serif text-gray-900 mb-8">
             Search the Mind and Wholeness Archives
           </h3>
           

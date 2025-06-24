@@ -1,31 +1,40 @@
 import React from 'react';
-import { ArrowLeft, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Compass } from 'lucide-react';
 
 const NotFound: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white px-6 py-20">
-      <div className="max-w-xl text-center">
-        <div className="flex justify-center mb-6">
-          <div className="bg-red-100 text-red-600 p-4 rounded-full">
-            <AlertTriangle className="w-10 h-10" />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-white px-6 py-20">
+      <div className="max-w-md text-center">
+        <div className="flex justify-center mb-8">
+          <div className="bg-emerald-50 text-emerald-600 p-5 rounded-full">
+            <Compass className="w-12 h-12" strokeWidth={1.5} />
           </div>
         </div>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">404 – Page Not Found</h1>
-        <p className="text-gray-600 mb-6">
-          The page you’re looking for might have been moved, removed, or doesn’t exist.
+        <h1 className="text-3xl font-serif font-medium text-gray-800 mb-3">Path Not Found</h1>
+        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+          The journey you're seeking may have shifted direction. 
+          Let's guide you back to meaningful paths of transformation.
         </p>
 
-        <a
-          href="/"
-          className="inline-flex items-center gap-2 text-white bg-green-600 hover:bg-green-700 px-6 py-3 rounded-md transition"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Return to Home
-        </a>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="/"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors duration-200"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Return Home
+          </a>
+          <a
+            href="/resources"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-gray-200 hover:border-emerald-300 text-gray-700 hover:text-emerald-700 rounded-lg transition-all duration-200"
+          >
+            Explore Resources
+          </a>
+        </div>
 
-        <p className="text-xs text-gray-400 mt-6">
-          Mind and Wholeness © {new Date().getFullYear()}
+        <p className="text-sm text-gray-400 mt-12">
+          Mind and Wholeness © {new Date().getFullYear()} — Journey Toward Wholeness
         </p>
       </div>
     </div>

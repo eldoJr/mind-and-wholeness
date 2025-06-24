@@ -12,7 +12,7 @@ export default function MeditativeThemes() {
 
   return (
     <section className="py-4 sm:py-16">
-      <div className="bg-white py-8 px-4 sm:px-8 max-w-7xl mx-auto">
+      <div className="bg-white shadow-lg py-8 px-4 sm:px-8 max-w-7xl mx-auto">
         <div className="mb-10">
           <h2 className="text-2xl sm:text-3xl font-serif text-gray-900">
             Read the Meditations

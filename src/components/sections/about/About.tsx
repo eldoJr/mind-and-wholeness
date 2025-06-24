@@ -115,7 +115,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="bg-white px-4 sm:px-8 lg:px-20">
+    <section className=" bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-8 lg:px-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8 ">
               <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
@@ -205,9 +205,9 @@ const AboutSection = () => {
         {/* CEO Content */}
         <div className="py-16 space-y-6">
           <div className="mx-auto max-w-7xl">
-            <div className="relative flex flex-col md:flex-row">
+            <div className="relative flex flex-col md:flex-row shadow-lg">
               {/* Text Content - Left Side with beige background */}
-              <div className="md:flex-1 p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-slate-50 to-emerald-50 backdrop-blur-md border-b transition-all duration-300">
+              <div className="md:flex-1 p-8 md:p-12 flex flex-col justify-center bg-white backdrop-blur-md border-b transition-all duration-300">
                 <div className="space-y-5 max-w-xl">
                   <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase">
                     Meet Our Founder

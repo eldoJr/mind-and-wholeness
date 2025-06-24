@@ -32,14 +32,14 @@ const TeamSection = () => {
   ];
 
   return (
-    <section className="bg-white px-4 sm:px-8 lg:px-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <section className="bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-8 lg:px-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24">
           <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8 ">
             <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
             <span className="text-gray-900 underline">Our Team</span>
         </nav>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto sha">
         {/* Header */}
         <div className="mb-16">
           <h2 className="text-4xl font-serif text-gray-900 mb-6">
@@ -71,7 +71,7 @@ const TeamSection = () => {
                 <img 
                   src={member.image} 
                   alt={member.name}
-                  className="w-full aspect-square object-cover rounded-none grayscale hover:grayscale-0 transition-all duration-300"
+                  className="w-full shadow-lg aspect-square object-cover rounded-none grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
               
@@ -119,7 +119,7 @@ const TeamSection = () => {
         </div>
       </div>
       </div>
-      
+      <div className="w-full h-px bg-gray-400 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 "></div>
     </section>
   );
 };

@@ -8,7 +8,7 @@ export default function Layout() {
   return (
     <div className="bg-gradient-to-br from-slate-50 to-emerald-50 text-gray-900">
       <Navbar />
-      <main className="min-h-screen pt-[64px] sm:pt-[84px] lg:pt-[84px]">
+      <main className="min-h-screen pt-[64px] sm:pt-[64px] lg:pt-[64px]">
         <ScrollToTop />
         <Outlet />
       </main>

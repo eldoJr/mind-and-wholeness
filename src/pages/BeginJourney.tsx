@@ -1,8 +1,7 @@
-import { motion } from 'framer-motion';
+import ceoImg from "/src/assets/images/ceo.png";
 import { useState } from 'react';
 import { 
   BookOpen, 
-  Users, 
   Heart, 
   ArrowRight, 
   CheckCircle, 
@@ -10,276 +9,416 @@ import {
   Calendar,
   MessageCircle,
   Download,
-  Sparkles
+  Sparkles,
+  Globe,
+  Target,
+  Shield,
+  ChevronRight,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Menu,
+  X
 } from 'lucide-react';
 
 export default function BeginJourney() {
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const journeyPaths = [
     {
-      id: 'self-discovery',
-      title: 'Self-Discovery Path',
-      subtitle: 'Uncover Your True Identity',
-      description: 'Start with understanding who you are beneath the surface. Explore your authentic self and discover your unique purpose.',
+      id: 'soul-awareness',
+      title: 'Soul Awareness Path',
+      subtitle: 'Discover Your Divine Design',
+      description: 'Explore the profound connection between your soul, spirit, and body to uncover your authentic divine purpose.',
       icon: Heart,
       color: 'green',
+      gradient: 'from-green-50 to-emerald-50',
       steps: [
-        'Complete our Identity Assessment',
-        'Receive your personalized roadmap',
-        'Access exclusive self-discovery resources',
-        'Join our supportive community'
+        'Complete our Wholeness Assessment',
+        'Receive your spiritual identity profile',
+        'Access sacred self-discovery practices',
+        'Join guided meditation sessions'
       ]
     },
     {
-      id: 'mindset-renewal',
-      title: 'Mindset Renewal',
-      subtitle: 'Transform Your Thinking',
-      description: 'Address the root causes of limiting beliefs and embrace practical wisdom that leads to lasting transformation.',
+      id: 'mind-renewal',
+      title: 'Mind Renewal Process',
+      subtitle: 'Transform Limiting Beliefs',
+      description: 'Identify and replace generational thought patterns with wisdom that aligns with your true identity.',
       icon: BookOpen,
       color: 'orange',
+      gradient: 'from-orange-50 to-amber-50',
       steps: [
-        'Identify your thought patterns',
-        'Learn proven renewal techniques',
-        'Practice daily transformation exercises',
-        'Track your progress and growth'
+        'Diagnose your mindset patterns',
+        'Learn sacred renewal techniques',
+        'Daily transformational exercises',
+        'Track your spiritual growth'
       ]
     },
     {
-      id: 'community-connection',
-      title: 'Community Connection',
-      subtitle: 'Find Your Tribe',
-      description: 'Connect with like-minded individuals on the same journey toward wholeness and purpose-driven living.',
-      icon: Users,
-      color: 'green',
+      id: 'sacred-community',
+      title: 'Sacred Community',
+      subtitle: 'Join Our Global Movement',
+      description: 'Connect with souls on the same sacred journey toward wholeness and divine purpose.',
+      icon: Globe,
+      color: 'blue',
+      gradient: 'from-blue-50 to-indigo-50',
       steps: [
-        'Join our welcome community',
-        'Participate in group discussions',
-        'Attend virtual meetups',
-        'Find local community groups'
+        'Join our global prayer community',
+        'Participate in wisdom circles',
+        'Attend sacred gatherings',
+        'Find local soul family'
       ]
     }
   ];
 
   const quickActions = [
     {
-      title: 'Free Assessment',
-      description: 'Discover where you are on your journey to wholeness',
-      icon: CheckCircle,
-      action: 'Take Assessment',
-      color: 'green'
+      title: 'Wholeness Assessment',
+      description: 'Discover your current state of mind-body-spirit alignment',
+      icon: Target,
+      action: 'Begin Assessment',
+      color: 'green',
+      badge: 'Free'
     },
     {
-      title: 'Watch Introduction',
-      description: 'Meet Lilian Titus and learn about our mission',
+      title: 'Sacred Introduction',
+      description: 'Experience our vision for global transformation',
       icon: Play,
-      action: 'Watch Video',
-      color: 'orange'
+      action: 'Watch Sacred Video',
+      color: 'orange',
+      badge: '5 min'
     },
     {
-      title: 'Schedule Consultation',
-      description: 'Book a free 15-minute discovery call',
+      title: 'Soul Consultation',
+      description: 'Book a sacred 20-minute discovery session',
       icon: Calendar,
-      action: 'Book Call',
-      color: 'green'
+      action: 'Schedule Soul Talk',
+      color: 'blue',
+      badge: 'Popular'
     },
     {
-      title: 'Download Guide',
-      description: 'Get our "First Steps to Wholeness" guide',
+      title: 'Sacred Practices Guide',
+      description: 'Receive "Path to Wholeness" sacred practices',
       icon: Download,
-      action: 'Download Free',
-      color: 'orange'
+      action: 'Download Wisdom',
+      color: 'purple',
+      badge: 'New'
     }
   ];
 
+  interface ColorClasses {
+    bg: string;
+    text: string;
+    button: string;
+    border: string;
+    shadow: string;
+    hover: string;
+  }
+
+  type ColorKey = 'green' | 'orange' | 'blue' | 'purple';
+
+  const getColorClasses = (color: ColorKey): ColorClasses => {
+    const colorMap: Record<ColorKey, ColorClasses> = {
+      green: {
+        bg: 'bg-green-100',
+        text: 'text-green-600',
+        button: 'bg-green-600 hover:bg-green-700',
+        border: 'border-green-500',
+        shadow: 'shadow-green-100',
+        hover: 'hover:bg-green-50'
+      },
+      orange: {
+        bg: 'bg-orange-100',
+        text: 'text-orange-600',
+        button: 'bg-orange-600 hover:bg-orange-700',
+        border: 'border-orange-500',
+        shadow: 'shadow-orange-100',
+        hover: 'hover:bg-orange-50'
+      },
+      blue: {
+        bg: 'bg-blue-100',
+        text: 'text-blue-600',
+        button: 'bg-blue-600 hover:bg-blue-700',
+        border: 'border-blue-500',
+        shadow: 'shadow-blue-100',
+        hover: 'hover:bg-blue-50'
+      },
+      purple: {
+        bg: 'bg-purple-100',
+        text: 'text-purple-600',
+        button: 'bg-purple-600 hover:bg-purple-700',
+        border: 'border-purple-500',
+        shadow: 'shadow-purple-100',
+        hover: 'hover:bg-purple-50'
+      }
+    };
+    return colorMap[color] || colorMap.green;
+  };
+
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-50 to-white py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 rounded-full text-green-700 text-sm font-medium mb-6">
-            <Sparkles className="w-4 h-4" />
-            <span>Your Transformation Starts Here</span>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50">
+      {/* Navigation */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <nav className="flex items-center justify-between">
+          <div className="flex items-center space-x-2 text-sm text-gray-600">
+            <button className="hover:text-gray-900 transition-colors">Home</button>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-gray-900 font-medium">Begin Journey</span>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium text-gray-900 mb-6">
-            Begin Your Journey to
-            <span className="text-green-600"> Wholeness</span>
+          {/* Mobile menu button */}
+          <button 
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </nav>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        {/* Hero Section */}
+        <div className="text-center mb-16 lg:mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-100 to-emerald-100 rounded-full text-green-700 text-sm font-medium mb-8 shadow-sm">
+            <Sparkles className="w-4 h-4" />
+            <span>Your Sacred Transformation Begins</span>
+          </div>
+          
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium text-gray-900 mb-6 leading-tight">
+            Begin Your Sacred Journey to
+            <br className="hidden sm:block" />
+            <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent"> Wholeness</span>
           </h1>
           
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Take the first step toward transforming your mind, discovering your purpose, 
-            and creating the life you were meant to live. Choose your path below.
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+            Take the first sacred step toward renewing your mind, awakening your divine purpose, 
+            and embodying the wholeness you were created to experience.
           </p>
-        </motion.div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button className="w-full sm:w-auto px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+              Start Your Journey
+            </button>
+            <button className="w-full sm:w-auto px-8 py-4 bg-white text-gray-700 font-semibold rounded-xl border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-lg">
+              Learn More
+            </button>
+          </div>
+        </div>
 
         {/* Journey Paths */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid md:grid-cols-3 gap-8 mb-16"
-        >
-          {journeyPaths.map((path) => {
-            const Icon = path.icon;
-            const isSelected = selectedPath === path.id;
-            
-            return (
-              <motion.div
-                key={path.id}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className={`bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer border-2 ${
-                  isSelected 
-                    ? path.color === 'green' 
-                      ? 'border-green-500 shadow-green-100' 
-                      : 'border-orange-500 shadow-orange-100'
-                    : 'border-gray-100 hover:border-gray-200'
-                }`}
-                onClick={() => setSelectedPath(isSelected ? null : path.id)}
-              >
-                <div className="p-8">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl mb-6 ${
-                    path.color === 'green' ? 'bg-green-100' : 'bg-orange-100'
-                  }`}>
-                    <Icon className={`w-8 h-8 ${
-                      path.color === 'green' ? 'text-green-600' : 'text-orange-600'
-                    }`} />
+        <div className="mb-16 lg:mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-serif font-medium text-gray-900 mb-4">
+              Choose Your Sacred Path
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Each path is designed to guide you through a unique aspect of your spiritual transformation
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
+            {journeyPaths.map((path) => {
+              const Icon = path.icon;
+              const isSelected = selectedPath === path.id;
+              const colors = getColorClasses(path.color as ColorKey);
+              
+              return (
+                <div
+                  key={path.id}
+                  className={`group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer border-2 transform hover:-translate-y-2 ${
+                    isSelected 
+                      ? `${colors.border} ${colors.shadow} scale-105` 
+                      : 'border-gray-100 hover:border-gray-200'
+                  }`}
+                  onClick={() => setSelectedPath(isSelected ? null : path.id)}
+                >
+                  {/* Gradient Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${path.gradient} opacity-0 group-hover:opacity-50 transition-opacity duration-300`} />
+                  
+                  <div className="relative p-6 lg:p-8">
+                    {/* Icon */}
+                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl mb-6 ${colors.bg} group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className={`w-8 h-8 ${colors.text}`} />
+                    </div>
+                    
+                    {/* Content */}
+                    <h3 className="text-xl lg:text-2xl font-semibold text-gray-900 mb-2">
+                      {path.title}
+                    </h3>
+                    
+                    <p className={`text-sm font-medium mb-4 ${colors.text}`}>
+                      {path.subtitle}
+                    </p>
+                    
+                    <p className="text-gray-600 mb-6 leading-relaxed">
+                      {path.description}
+                    </p>
+                    
+                    {/* Expandable Steps */}
+                    {isSelected && (
+                      <div className="space-y-3 mb-6 animate-in slide-in-from-top duration-300">
+                        {path.steps.map((step, stepIndex) => (
+                          <div key={stepIndex} className="flex items-start gap-3">
+                            <CheckCircle className={`w-5 h-5 mt-0.5 ${colors.text} flex-shrink-0`} />
+                            <span className="text-sm text-gray-700">{step}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    
+                    {/* Action Button */}
+                    <button className={`w-full py-3 px-4 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 text-white ${colors.button} group-hover:shadow-lg`}>
+                      <span>Begin Sacred Path</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
                   </div>
-                  
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {path.title}
-                  </h3>
-                  
-                  <p className={`text-sm font-medium mb-4 ${
-                    path.color === 'green' ? 'text-green-600' : 'text-orange-600'
-                  }`}>
-                    {path.subtitle}
-                  </p>
-                  
-                  <p className="text-gray-600 mb-6">
-                    {path.description}
-                  </p>
-                  
-                  {isSelected && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      transition={{ duration: 0.3 }}
-                      className="space-y-3 mb-6"
-                    >
-                      {path.steps.map((step, stepIndex) => (
-                        <div key={stepIndex} className="flex items-center gap-3">
-                          <CheckCircle className={`w-5 h-5 ${
-                            path.color === 'green' ? 'text-green-500' : 'text-orange-500'
-                          }`} />
-                          <span className="text-sm text-gray-700">{step}</span>
-                        </div>
-                      ))}
-                    </motion.div>
-                  )}
-                  
-                  <button className={`w-full py-3 px-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 ${
-                    path.color === 'green'
-                      ? 'bg-green-600 hover:bg-green-700 text-white'
-                      : 'bg-orange-600 hover:bg-orange-700 text-white'
-                  }`}>
-                    <span>Start This Path</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
                 </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+              );
+            })}
+          </div>
+        </div>
 
         {/* Quick Actions */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-white rounded-2xl shadow-lg p-8 mb-16"
-        >
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Not Sure Where to Start?
+        <div className="bg-white rounded-2xl shadow-lg p-6 lg:p-8 mb-16 lg:mb-20">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4">
+              Seeking Divine Guidance?
             </h2>
-            <p className="text-gray-600">
-              Try one of these quick actions to begin your transformation today
+            <p className="text-gray-600 text-lg">
+              These sacred entry points will connect you to your wholeness journey
             </p>
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {quickActions.map((action, actionIndex) => {
               const Icon = action.icon;
+              const colors = getColorClasses(action.color as ColorKey);
               
               return (
-                <motion.div
+                <div
                   key={actionIndex}
-                  whileHover={{ scale: 1.05 }}
-                  className="text-center p-6 rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all duration-300 cursor-pointer"
+                  className="group relative text-center p-6 lg:p-8 rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
                 >
-                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg mb-4 ${
-                    action.color === 'green' ? 'bg-green-100' : 'bg-orange-100'
-                  }`}>
-                    <Icon className={`w-6 h-6 ${
-                      action.color === 'green' ? 'text-green-600' : 'text-orange-600'
-                    }`} />
+                  {/* Badge */}
+                  {action.badge && (
+                    <div className={`absolute -top-2 -right-2 px-2 py-1 ${colors.bg} ${colors.text} text-xs font-medium rounded-full`}>
+                      {action.badge}
+                    </div>
+                  )}
+                  
+                  {/* Icon */}
+                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-lg mb-4 ${colors.bg} group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className={`w-7 h-7 ${colors.text}`} />
                   </div>
                   
-                  <h3 className="font-semibold text-gray-900 mb-2">
+                  {/* Content */}
+                  <h3 className="font-semibold text-gray-900 mb-2 text-lg">
                     {action.title}
                   </h3>
                   
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
                     {action.description}
                   </p>
                   
-                  <button className={`text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-300 ${
-                    action.color === 'green'
-                      ? 'text-green-600 hover:bg-green-50'
-                      : 'text-orange-600 hover:bg-orange-50'
-                  }`}>
+                  {/* Action Button */}
+                  <button className={`text-sm font-medium px-4 py-2 rounded-lg transition-all duration-300 ${colors.text} ${colors.hover} group-hover:shadow-md`}>
                     {action.action}
                   </button>
-                </motion.div>
+                </div>
               );
             })}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center bg-gradient-to-r from-green-600 to-green-700 rounded-2xl p-12 text-white"
-        >
-          <h2 className="text-3xl font-semibold mb-4">
-            Ready to Transform Your Life?
-          </h2>
-          <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
-            Join thousands who have already begun their journey from brokenness to wholeness. 
-            Your transformation starts with a single step.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-white text-green-600 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-2">
-              <MessageCircle className="w-5 h-5" />
-              <span>Get Personal Guidance</span>
-            </button>
-            <button className="px-8 py-4 bg-green-800 text-white font-semibold rounded-lg hover:bg-green-900 transition-all duration-300 flex items-center justify-center gap-2">
-              <Users className="w-5 h-5" />
-              <span>Join Community</span>
-            </button>
+        {/* CEO Section */}
+        <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16 lg:mb-20">
+          <div className="flex flex-col lg:flex-row">
+            {/* Text Content */}
+            <div className="lg:flex-1 p-8 lg:p-12 flex flex-col justify-center">
+              <div className="space-y-6 max-w-xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 rounded-full text-emerald-700 text-sm font-medium w-fit">
+                  <Heart className="w-4 h-4" />
+                  <span>Meet Our Founder</span>
+                </div>
+                
+                <h2 className="text-3xl lg:text-4xl font-serif font-semibold text-gray-900 leading-tight">
+                  Lilian Titus
+                </h2>
+                
+                <p className="text-gray-700 text-base lg:text-lg leading-relaxed">
+                  Lilian founded Mind and Wholeness out of a deep calling to restore balance and purpose in the lives of young people. With a background in counseling and spiritual mentorship, she leads the organization with passion and clarity. As an accomplished author, motivational speaker, and advocate for social transformation, her vision is to see communities transformed through renewed minds and restored hearts.
+                </p>
+                
+                <div className="flex space-x-4">
+                  <button className="p-3 rounded-full bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-colors">
+                    <Facebook size={20} />
+                  </button>
+                  <button className="p-3 rounded-full bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-colors">
+                    <Instagram size={20} />
+                  </button>
+                  <button className="p-3 rounded-full bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-colors">
+                    <Linkedin size={20} />
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            {/* Image Placeholder */}
+              <div className="w-full md:w-auto md:flex-[0_0_auto] h-[300px] md:h-auto">
+                <img
+                  src={ceoImg}
+                  alt="Mindful reflection"
+                  className="w-full h-full object-cover"
+                />
+              </div>
           </div>
-        </motion.div>
+        </div>
+
+        {/* Final CTA */}
+        <div className="text-center bg-gradient-to-r from-green-600 via-emerald-600 to-green-700 rounded-2xl p-8 lg:p-12 text-white relative overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <svg className="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse">
+                  <circle cx="50" cy="50" r="2" fill="white" />
+                </pattern>
+              </defs>
+              <rect width="100" height="100" fill="url(#grain)" />
+            </svg>
+          </div>
+          
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-800 rounded-full text-green-100 text-sm font-medium mb-6">
+              <Shield className="w-4 h-4" />
+              <span>You Are Called To Wholeness</span>
+            </div>
+
+            <h2 className="text-3xl lg:text-4xl font-semibold mb-4">
+              Ready For Divine Transformation?
+            </h2>
+            
+            <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Join our global movement of souls transitioning from fragmentation to sacred wholeness. 
+              Your awakening begins now.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="px-8 py-4 bg-white text-green-600 font-semibold rounded-xl hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                <MessageCircle className="w-5 h-5" />
+                <span>Receive Sacred Guidance</span>
+              </button>
+              <button className="px-8 py-4 bg-green-800 text-white font-semibold rounded-xl hover:bg-green-900 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                <Globe className="w-5 h-5" />
+                <span>Join Global Community</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

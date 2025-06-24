@@ -2,12 +2,14 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./footer";
+import ScrollToTop from "../ScrollToTop";
 
 export default function Layout() {
   return (
     <div className="bg-gradient-to-br from-slate-50 to-emerald-50 text-gray-900">
       <Navbar />
       <main className="min-h-screen pt-[64px] sm:pt-[84px] lg:pt-[84px]">
+        <ScrollToTop />
         <Outlet />
       </main>
       <Footer />

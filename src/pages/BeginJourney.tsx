@@ -1,4 +1,5 @@
 import ceoImg from "/src/assets/images/ceo.png";
+import joinImg from "/src/assets/images/begin_join.png";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { 
@@ -7,12 +8,10 @@ import {
   ArrowRight, 
   CheckCircle, 
   Play,
-  MessageCircle,
   Download,
   Sparkles,
   Globe,
   Users,
-  Shield,
   ChevronRight,
   Facebook,
   Instagram,
@@ -158,7 +157,7 @@ export default function BeginJourney() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50">
       {/* Navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <nav className="flex items-center justify-between">
@@ -331,8 +330,17 @@ export default function BeginJourney() {
               );
             })}
           </div>
-        </div>
 
+        </div>
+          <div className="py-16 pb-16 px-6 sm:px-8 lg:px-12 text-center">
+          <blockquote className="text-2xl sm:text-3xl font-serif text-gray-800 leading-relaxed max-w-6xl mx-auto">
+            “There is a deep relationship between the inner revolution of prayer and the transformation of social structures and social consciousness. Our hope lies in the fact that meditation is going to change the society that we live in, just as it has changed us.”
+            <br />
+            <cite className="block mt-6 text-sm tracking-widest font-medium text-gray-600 uppercase">
+              — RICHARD ROHR
+            </cite>
+          </blockquote>
+        </div>
         {/* CEO Section */}
         <div className="bg-white shadow-lg overflow-hidden mb-16 lg:mb-20">
           <div className="flex flex-col lg:flex-row">
@@ -377,47 +385,55 @@ export default function BeginJourney() {
           </div>
         </div>
 
+        <div className="py-16 pb-16 px-6 sm:px-8 lg:px-12 text-center">
+          <blockquote className="text-2xl sm:text-3xl font-serif text-gray-800 leading-relaxed max-w-5xl mx-auto">
+            “Contemplation embodies compassion. The more we are transformed in compassion, the more we act with compassion toward others.”
+            <br />
+            <cite className="block mt-6 text-sm tracking-widest font-medium text-gray-600 uppercase">
+              — JAMES FINLEY
+            </cite>
+          </blockquote>
+        </div>
+
         {/* Final CTA */}
-        <div className="text-center bg-gradient-to-r from-green-600 via-emerald-600 to-green-700 rounded-2xl p-8 lg:p-12 text-white relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <svg className="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse">
-                  <circle cx="50" cy="50" r="2" fill="white" />
-                </pattern>
-              </defs>
-              <rect width="100" height="100" fill="url(#grain)" />
-            </svg>
-          </div>
-          
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-800 rounded-full text-green-100 text-sm font-medium mb-6">
-              <Shield className="w-4 h-4" />
-              <span>You Are Called To Wholeness</span>
+        <div className="bg-white shadow-lg overflow-hidden mb-16 lg:mb-20">
+          <div className="flex flex-col lg:flex-row">
+            {/* Image - Left Side */}
+            <div className="w-full lg:w-auto lg:flex-[0_0_40%] h-[300px] lg:h-auto">
+              <img
+                src={joinImg}
+                alt="Lilian Titus, Founder of Mind and Wholeness"
+                className="w-full h-full object-cover"
+              />
             </div>
 
-            <h2 className="text-3xl lg:text-4xl font-semibold mb-4">
-              Ready For Divine Transformation?
-            </h2>
-            
-            <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Join our global movement of souls transitioning from fragmentation to sacred wholeness. 
-              Your awakening begins now.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-white text-green-600 font-semibold rounded-xl hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                <MessageCircle className="w-5 h-5" />
-                <span>Receive Sacred Guidance</span>
-              </button>
-              <button className="px-8 py-4 bg-green-800 text-white font-semibold rounded-xl hover:bg-green-900 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                <Globe className="w-5 h-5" />
-                <span>Join Global Community</span>
-              </button>
+            {/* Text Content - Right Side */}
+            <div className="lg:flex-1 p-8 lg:p-12 flex flex-col justify-center">
+              <div className="space-y-6 max-w-xl">
+                <div className="text-sm font-semibold text-emerald-600 tracking-wide uppercase">
+                  <span>You Are Called To Wholeness</span>
+                </div>
+
+                <h2 className="text-3xl lg:text-4xl font-serif font-semibold text-gray-900 leading-tight">
+                  Ready For Divine Transformation?
+                </h2>
+                
+                <p className="text-gray-700 text-base lg:text-lg leading-relaxed">
+                  Join our global movement of souls transitioning from fragmentation to sacred wholeness. 
+                  Your awakening begins now.
+                </p>
+                
+                <div className="flex space-x-4">
+                    <button className="px-8 py-4 bg-green-800 text-white font-semibold rounded-xl hover:bg-green-900 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                      <Globe className="w-5 h-5" />
+                    <span>Join Global Community</span>
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
         </div>
+      </div>
+      
       </div>
     </div>
   );

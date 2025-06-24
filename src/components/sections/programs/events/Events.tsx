@@ -73,7 +73,7 @@ const EventsPage = () => {
           Upcoming Events
         </h2>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:py-6 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:py-6">
           <div className="mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
               {events.map((event) => (
@@ -159,15 +159,12 @@ const EventsPage = () => {
             </div>
           </div>
       </div>
-      <div className='mb-8 py-12'>
-        <p>Event details are subject to change. <a className='font-serif underline' href="./signup/signup">Subscribe to our newsletter</a> and be the first to know about upcoming Mind & Wholeness events.</p>
-      </div>
     </div>
     <div>
-      <NewsletterSignup />
+      <ListEvents />
     </div> 
     <div>
-      <ListEvents />
+      <NewsletterSignup />
     </div>   
     </motion.div>
   );

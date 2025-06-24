@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Sparkles,
   Loader2,
   Mail,
   Heart,
@@ -10,13 +9,9 @@ import {
   Award,
   Handshake,
   MessageCircle,
-  Star,
   Gift,
   ChevronRight,
   ChevronLeft,
-  Leaf,
-  Sun,
-  Moon,
   Sunrise,
   Clock,
   Smile,
@@ -24,6 +19,17 @@ import {
   Globe,
   Shield,
 } from 'lucide-react';
+import {
+  Leaf,
+  Flower2,
+  Sun,
+  Moon,
+  Star,
+  Bird,
+  Sparkles,
+  SunMedium,
+} from 'lucide-react';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import Confetti from 'react-dom-confetti';
 
@@ -43,12 +49,21 @@ const Signup: React.FC = () => {
   const [emailError, setEmailError] = useState('');
   const [step, setStep] = useState(1);
   const [showConfetti, setShowConfetti] = useState(false);
-  const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState<React.ReactNode>(null);
 
   // Generate a random avatar based on name
   useEffect(() => {
     if (form.firstName) {
-      const avatars = ['🌿', '🌸', '🌻', '🌼', '🌞', '🌙', '🌟', '🕊️'];
+      const avatars = [
+        <Leaf />,
+        <Flower2 />,
+        <Sun />,
+        <SunMedium />,
+        <Moon />,
+        <Star />,
+        <Sparkles />,
+        <Bird />,
+      ];
       const randomIndex = Math.floor(Math.random() * avatars.length);
       setAvatar(avatars[randomIndex]);
     }

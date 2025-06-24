@@ -32,7 +32,7 @@ export default function NewsletterSignup() {
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
     >
-      <div className="max-w-3xl mx-auto space-y-6 md:space-y-10">
+      <div className="max-w-5xl mx-auto space-y-6 md:space-y-10">
         <motion.p 
           className="text-sm font-semibold tracking-widest text-emerald-600 uppercase"
           variants={itemVariants}

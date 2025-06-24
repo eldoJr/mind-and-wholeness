@@ -1,5 +1,6 @@
 import ceoImg from "/src/assets/images/ceo.png";
 import joinImg from "/src/assets/images/begin_join.png";
+import NewsletterSignup from "../components/layout/newsletterSignup";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { 
@@ -164,7 +165,7 @@ export default function BeginJourney() {
           <div className="flex items-center space-x-2 text-sm text-gray-600">
             <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 font-medium">Begin Journey</span>
+            <span className="text-gray-900 font-medium underline">Begin Journey</span>
           </div>
           
           {/* Mobile menu button */}
@@ -433,7 +434,7 @@ export default function BeginJourney() {
             </div>
         </div>
       </div>
-      
+      <NewsletterSignup />
       </div>
     </div>
   );

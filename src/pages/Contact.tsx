@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Confetti from 'react-confetti';
 import { createAvatar } from '@dicebear/core';
 import { initials } from '@dicebear/collection';
-import EmailSignup from '../components/layout/emailSignup';
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -473,9 +472,6 @@ const ContactSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <div>
-                  <EmailSignup />
-            </div>
           </motion.div>
         </div>
       </div>

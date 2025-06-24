@@ -1,101 +1,151 @@
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Play, Download, Clock, Sparkles } from 'lucide-react';
 import { Link } from "react-router-dom";
 
 export default function PracticeWithUs() {
   return (
-    <section className=" bg-white px-4 sm:px-8 lg:px-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
-            <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 underline">Practice With Us</span>
+    <section className="bg-gradient-to-b from-white to-emerald-50 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+      <div className="max-w-7xl mx-auto">
+        {/* Breadcrumb Navigation */}
+        <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8 sm:mb-12">
+          <Link to="/" className="hover:text-emerald-700 transition-colors">Home</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-emerald-700 font-medium">Sacred Practices</span>
         </nav>
 
-        <div className="max-w-7xl mx-auto ">
-        {/* Header */}
-        <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-6">
-            Practice With Us
+        {/* Header Section */}
+        <div className="mb-16 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-gray-900 mb-6">
+            Sacred Practices for <span className="text-emerald-600">Transformation</span>
           </h2>
-          <p className="text-xl sm:text-2xl leading-relaxed mb-6">
-            Discover contemplative wisdom and practices that are easy to understand and apply to your everyday life.
-          </p>
-          <p className="text-base sm:text-lg text-gray-700">
-            Contemplation is the practice of being fully present—in heart, mind, and body—to <em>what is</em> in a way that deepens awareness, encourages oneness, and strengthens compassion.
-            A committed daily contemplative practice doesn’t have to be long or complex—it simply needs to allow deep listening to open your heart to love.
-          </p>
-          <p className="text-base sm:text-lg text-gray-700 mt-4">
-            Discover ways to embody the contemplative life with this collection of practices that help us align actions and values, re-engage with our True Self, and show up in service to the world.
-          </p>
-        </div>
-
-        {/* Featured Practice Box */}
-        <div className="bg-amber-50 px-6 sm:px-10 py-10 rounded-md shadow-sm flex flex-col md:flex-row items-start gap-8">
-          {/* Optional image or left content can go here */}
-
-          <div className="md:pl-10">
-            <p className="uppercase text-sm tracking-widest text-gray-500 mb-3">Featured Practice</p>
-            <h3 className="text-2xl sm:text-3xl italic">
-              <span className="not-italic">I </span>
-              <em>Love You</em> <span className="not-italic">Prayer (5:41)</span>
-            </h3>
-            <p className="mt-4 text-base sm:text-lg text-gray-800">
-              Christian meditation shifts us from ego to oneness, learning to see God in everyone and everything—including in ourselves.
-              Recorded in 2022 at the Living School Symposium, CAC faculty James Finley, Ph.D., invites us to slow down and listen for God’s silent <em>I love you</em> in each breath.
-              Return to this meditation anytime you feel called to surrender to Love with childlike sincerity.
+          
+          <div className="space-y-6 max-w-7xl">
+            <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+              Discover contemplative wisdom and sacred practices that bridge mind, body and spirit—designed to help you embody your divine purpose.
+              At Mind & Wholeness, we believe sacred practice is the art of being fully present—awakening your heart, renewing your mind, and aligning your body with your soul's calling.
+              These transformational practices don't require perfection—only your authentic presence as you journey toward sacred wholeness.
             </p>
           </div>
         </div>
 
-        {/* Title section above the list */}
-        <div className="mt-20">
-          <h2 className="text-2xl sm:text-3xl font-serif font-medium mb-4">
-            Explore Our Collection of Contemplative Practices
+        {/* Featured Practice */}
+        <div className="bg-gradient-to-r from-emerald-50 to-amber-50 px-6 sm:px-10 py-10 shadow-lg border border-emerald-100 mb-16 sm:mb-20">
+          <div className="flex flex-col md:flex-row gap-8 items-start">
+            <div className="w-full md:w-1/3 aspect-video bg-emerald-100 overflow-hidden flex items-center justify-center">
+              <Play className="w-12 h-12 text-emerald-600" />
+            </div>
+            
+            <div className="md:pl-6 flex-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white text-xs font-medium text-emerald-700 mb-4">
+                <Sparkles className="w-3 h-3" />
+                <span>FEATURED PRACTICE</span>
+              </div>
+              
+              <h3 className="text-2xl sm:text-3xl font-serif font-medium mb-4">
+                Sacred Breath Meditation <span className="text-base font-sans text-gray-600">(7:22)</span>
+              </h3>
+              
+              <p className="text-base sm:text-lg text-gray-700 mb-6">
+                This guided meditation helps you connect with your divine essence through the sacred rhythm of breath. 
+                Recorded during our 2023 Wholeness Retreat, this practice invites you to release limiting patterns and 
+                embrace your true identity in Spirit.
+              </p>
+              
+              <div className="flex flex-wrap gap-3">
+                <button className="flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white transition-colors">
+                  <Play className="w-4 h-4" />
+                  <span>Begin Practice</span>
+                </button>
+                <button className="flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 hover:border-emerald-300 text-gray-700 transition-colors">
+                  <Download className="w-4 h-4" />
+                  <span>Download Audio</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Practice Collection */}
+        <div className="mb-16 sm:mb-20">
+          <h2 className="text-2xl sm:text-3xl font-serif font-medium text-gray-900 mb-6">
+            Explore Our <span className="text-emerald-600">Sacred Practice</span> Collection
           </h2>
-          <p className="text-base sm:text-lg text-gray-700 max-w-3xl">
-            Contemplation gradually rewires our brains to meet and respond to reality as it is, without judgment or comparison.
-            <a href="/contemplative-practices" className="underline text-gray-900 hover:text-emerald-700 font-medium">
-              There are many ways to practice contemplation
-            </a>
-            , from chanting to breath work, sitting in silence or moving with intention. We hope you will use these resources
-            to discover ways to hold everything—both joy and sorrow—together in love.
+          
+          <p className="text-base sm:text-lg text-gray-700 max-w-4xl mb-10">
+            These transformational practices help rewire your consciousness to experience divine connection in daily life. 
+            Whether through meditation, movement, or mindful awareness, each practice is a doorway to deeper wholeness.
           </p>
+          
+          <div className="space-y-12">
+            {/* Practice 1 */}
+            <div className="group flex flex-col md:flex-row gap-6 md:gap-10 p-6 hover:bg-orange-50 shadow-sm transition-colors">
+              <div className="w-full md:w-1/3 aspect-video bg-amber-100 rounded-lg overflow-hidden flex items-center justify-center">
+                <Play className="w-10 h-10 text-amber-600 group-hover:text-amber-700 transition-colors" />
+              </div>
+              
+              <div className="flex-1">
+                <div className="flex items-center gap-3 text-sm text-gray-500 mb-2">
+                  <Clock className="w-4 h-4" />
+                  <span>14:35</span>
+                  <span>•</span>
+                  <span>Morning Practice</span>
+                </div>
+                
+                <h3 className="text-xl sm:text-2xl font-serif font-medium mb-3">
+                  Divine Feminine Awakening
+                </h3>
+                
+                <p className="text-base text-gray-700 mb-4">
+                  Connect with sacred feminine wisdom through this guided visualization that helps heal generational patterns 
+                  and awaken your intuitive knowing.
+                </p>
+                
+                <div className="flex flex-wrap gap-3">
+                  <button className="text-sm px-4 py-1.5 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors">
+                    Self-Discovery
+                  </button>
+                  <button className="text-sm px-4 py-1.5 bg-amber-100 hover:bg-amber-200 text-amber-700 rounded-full transition-colors">
+                    Inner Healing
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Practice 2 */}
+            <div className="group flex flex-col md:flex-row gap-6 md:gap-10 p-6 hover:bg-purple-50 shadow-sm transition-colors">
+              <div className="w-full md:w-1/3 aspect-video bg-purple-100 rounded-lg overflow-hidden flex items-center justify-center">
+                <Play className="w-10 h-10 text-purple-600 group-hover:text-purple-700 transition-colors" />
+              </div>
+              
+              <div className="flex-1">
+                <div className="flex items-center gap-3 text-sm text-gray-500 mb-2">
+                  <Clock className="w-4 h-4" />
+                  <span>22:10</span>
+                  <span>•</span>
+                  <span>Evening Practice</span>
+                </div>
+                
+                <h3 className="text-xl sm:text-2xl font-serif font-medium mb-3">
+                  Soul Integration Meditation
+                </h3>
+                
+                <p className="text-base text-gray-700 mb-4">
+                  A transformative evening practice that helps reconcile your daily experiences with your soul's purpose, 
+                  bringing closure and peace to each day.
+                </p>
+                
+                <div className="flex flex-wrap gap-3">
+                  <button className="text-sm px-4 py-1.5 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors">
+                    Mind Renewal
+                  </button>
+                  <button className="text-sm px-4 py-1.5 bg-purple-100 hover:bg-purple-200 text-purple-700 rounded-full transition-colors">
+                    Daily Integration
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        {/* Practice entries */}
-        <div className="mt-16 space-y-12 text-gray-900 font-serif">
-
-          {/* Practice Item 1 */}
-          <div className="md:ml-auto md:w-2/3">
-            <h3 className="text-xl sm:text-2xl font-medium mb-2">
-              Divine Feminine Blessing <span className="text-base text-gray-600">(3:31)</span>
-            </h3>
-            <p className="text-base sm:text-lg leading-relaxed text-gray-800">
-              Recorded in 2022 by author and teacher Mirabai Starr, the Divine Feminine Blessing invites us to discover breath
-              as an inner pathway to connection with the indwelling presence of the divine feminine. Focus on our breathing
-              creates deeper awareness of ourselves, while also evoking the intimacy and presence of Spirit. Return to this
-              practice whenever you yearn for guidance from our fierce and tender mother wisdom.
-            </p>
-          </div>
-
-          {/* Practice Item 2 */}
-          <div className="md:ml-auto md:w-2/3">
-            <h3 className="text-xl sm:text-2xl font-medium mb-2">
-              Litany of the Holy Spirit <span className="italic text-base text-gray-600">(12:32)</span>
-            </h3>
-            <p className="text-base sm:text-lg leading-relaxed text-gray-800">
-              This litany invites you to call upon the many dimensions of the Holy Spirit, invoking guidance, strength,
-              compassion, and love in your contemplative life. Let it become part of your daily rhythm or return to it
-              anytime your spirit needs renewing.
-            </p>
-          </div>
-
-        </div>        
-
       </div>
-      </div>
-
-      
     </section>
   );
 }

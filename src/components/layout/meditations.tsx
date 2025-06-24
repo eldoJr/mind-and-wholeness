@@ -37,7 +37,7 @@ export default function MeditativeThemes() {
               <img
                 src={theme.image}
                 alt={theme.title}
-                className="w-full h-72 object-cover opacity-70 group-hover:opacity-90 transition duration-300"
+                className="w-full h-82 object-cover opacity-70 group-hover:opacity-90 transition duration-300"
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="bg-white/90 px-6 py-3 text-xl font-serif text-gray-800 transition group-hover:scale-105">

@@ -2,10 +2,10 @@ import newsletterImage from '/src/assets/images/newsletter-mind.jpg'; // Altere 
 
 export default function NewsletterSection() {
   return (
-    <section className="py-28">
-      <div className="py-16 space-y-6">
+    <section className="py-16">
+      <div className="py-12 space-y-6">
               <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row min-h-[400px]">
+          <div className="flex flex-col md:flex-row min-h-[500px]">
             {/* Text Content - Left Side */}
             <div className="flex-1 bg-white px-8 md:px-16 py-12 md:py-16 flex flex-col justify-center">
               <div className="space-y-6 max-w-lg">

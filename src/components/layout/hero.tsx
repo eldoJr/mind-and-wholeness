@@ -2,42 +2,147 @@ import { motion } from 'framer-motion';
 import { Link } from "react-router-dom";
 import { Play, Sparkles, ArrowRight } from 'lucide-react';
 import herobg from '/src/assets/images/herobg.jpg';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export function Hero() {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const imageRef = useRef<HTMLDivElement | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    const img = new Image();
-    img.src = herobg;
-    img.onload = () => setImageLoaded(true);
+    // Preload da imagem com otimizações
+    const preloadImage = () => {
+      const img = new Image();
+      
+      // Otimizações de carregamento
+      img.decoding = 'async';
+      img.loading = 'eager';
+      
+      // Handlers de evento
+      img.onload = () => {
+        setImageLoaded(true);
+        setImageError(false);
+      };
+      
+      img.onerror = () => {
+        setImageError(true);
+        setImageLoaded(false);
+      };
+      
+      // Iniciar carregamento
+      img.src = herobg;
+    };
+
+    // Intersection Observer para lazy loading inteligente
+    const setupIntersectionObserver = () => {
+      if (!observerRef.current && 'IntersectionObserver' in window) {
+        observerRef.current = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                preloadImage();
+                observerRef.current?.disconnect();
+              }
+            });
+          },
+          { 
+            rootMargin: '50px',
+            threshold: 0.1 
+          }
+        );
+      }
+      
+      if (imageRef.current && observerRef.current) {
+        observerRef.current.observe(imageRef.current);
+      }
+    };
+
+    // Verificar se a imagem já está em cache
+    const checkImageCache = () => {
+      const tempImg = new Image();
+      tempImg.src = herobg;
+      
+      if (tempImg.complete && tempImg.naturalWidth > 0) {
+        setImageLoaded(true);
+        return true;
+      }
+      return false;
+    };
+
+    // Estratégia de carregamento
+    if (checkImageCache()) {
+      // Imagem já está em cache
+      return;
+    } else if (window.requestIdleCallback) {
+      // Usar idle callback se disponível
+      window.requestIdleCallback(preloadImage, { timeout: 1000 });
+    } else {
+      // Fallback para intersection observer
+      setupIntersectionObserver();
+    }
+
+    // Cleanup
+    return () => {
+      observerRef.current?.disconnect();
+    };
   }, []);
 
+  // CSS-in-JS otimizado para background
+  const backgroundStyle = {
+    backgroundImage: imageLoaded && !imageError ? `url(${herobg})` : 'none',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center 35%',
+    backgroundRepeat: 'no-repeat',
+    transform: 'translateZ(0)', // Force hardware acceleration
+    backfaceVisibility: 'hidden' as 'hidden' | 'visible',
+    perspective: '1000px',
+    willChange: imageLoaded ? 'auto' : 'opacity',
+  };
+
   return (
-    <section className="relative w-full h-[500px] sm:h-screen min-h-[500px] max-h-[800px] overflow-hidden bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-6 lg:px-12 pb-4 sm:pb-8">
+    <section 
+      ref={imageRef}
+      className="relative w-full h-[500px] sm:h-screen min-h-[500px] max-h-[800px] overflow-hidden bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-6 lg:px-12 pb-4 sm:pb-8"
+    >
       {/* Background Image Container */}
       <div className="absolute inset-0 mx-4 sm:mx-6 lg:mx-12 mb-2 sm:mb-4 rounded-xl shadow-lg overflow-hidden">
-        {/* Fallback gradient */}
-        {!imageLoaded && (
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-emerald-200 animate-pulse" />
+        {/* Skeleton loader otimizado */}
+        {!imageLoaded && !imageError && (
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-200 via-emerald-100 to-emerald-200">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" 
+                 style={{
+                   backgroundSize: '200% 100%',
+                   animation: 'shimmer 1.5s infinite linear'
+                 }} 
+            />
+          </div>
         )}
         
-        {/* Main background image */}
+        {/* Fallback em caso de erro */}
+        {imageError && (
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-600 via-emerald-600 to-emerald-700" />
+        )}
+        
+        {/* Main background image com otimizações */}
         <motion.div
           className="absolute inset-0 w-full h-full"
-          style={{
-            backgroundImage: imageLoaded ? `url(${herobg})` : 'none',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 35%',
-            backgroundRepeat: 'no-repeat',
-            opacity: imageLoaded ? 1 : 0,
-            transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)'
+          style={backgroundStyle}
+          initial={{ 
+            scale: 1.05,
+            opacity: 0 
           }}
-          initial={{ scale: 1.05 }}
-          animate={{ scale: 1 }}
+          animate={{ 
+            scale: 1,
+            opacity: imageLoaded && !imageError ? 1 : 0 
+          }}
           transition={{ 
-            duration: 1.8, 
-            ease: [0.16, 1, 0.3, 1] 
+            duration: imageLoaded ? 1.2 : 0, 
+            ease: [0.16, 1, 0.3, 1],
+            opacity: { 
+              duration: imageLoaded ? 0.8 : 0,
+              delay: imageLoaded ? 0.1 : 0 
+            }
           }}
         />
         
@@ -56,8 +161,8 @@ export function Hero() {
             visible: { 
               opacity: 1,
               transition: { 
-                staggerChildren: 0.15, 
-                delayChildren: 0.2 
+                staggerChildren: 0.12, 
+                delayChildren: 0.1 
               }
             }
           }}
@@ -65,12 +170,12 @@ export function Hero() {
           {/* Premium Label */}
           <motion.div
             variants={{
-              hidden: { opacity: 0, y: 15 },
+              hidden: { opacity: 0, y: 12 },
               visible: { 
                 opacity: 1, 
                 y: 0,
                 transition: { 
-                  duration: 0.6, 
+                  duration: 0.5, 
                   ease: [0.16, 1, 0.3, 1] 
                 }
               }
@@ -84,12 +189,12 @@ export function Hero() {
           {/* Main Heading */}
           <motion.h1
             variants={{
-              hidden: { opacity: 0, y: 20 },
+              hidden: { opacity: 0, y: 15 },
               visible: { 
                 opacity: 1, 
                 y: 0,
                 transition: { 
-                  duration: 0.8, 
+                  duration: 0.6, 
                   ease: [0.16, 1, 0.3, 1] 
                 }
               }
@@ -103,13 +208,13 @@ export function Hero() {
           {/* Description */}
           <motion.p
             variants={{
-              hidden: { opacity: 0, y: 15 },
+              hidden: { opacity: 0, y: 12 },
               visible: { 
                 opacity: 1, 
                 y: 0,
                 transition: { 
-                  duration: 0.8, 
-                  delay: 0.15, 
+                  duration: 0.6, 
+                  delay: 0.1, 
                   ease: [0.16, 1, 0.3, 1] 
                 }
               }
@@ -126,8 +231,8 @@ export function Hero() {
               visible: { 
                 opacity: 1,
                 transition: { 
-                  staggerChildren: 0.1, 
-                  delayChildren: 0.3 
+                  staggerChildren: 0.08, 
+                  delayChildren: 0.2 
                 }
               }
             }}
@@ -136,12 +241,12 @@ export function Hero() {
             <Link to="/begin-journey">
               <motion.button
                 variants={{
-                  hidden: { opacity: 0, x: -15 },
+                  hidden: { opacity: 0, x: -12 },
                   visible: { 
                     opacity: 1, 
                     x: 0,
                     transition: { 
-                      duration: 0.6,
+                      duration: 0.5,
                       ease: [0.16, 1, 0.3, 1] 
                     }
                   }
@@ -160,13 +265,13 @@ export function Hero() {
             
             <motion.button
               variants={{
-                hidden: { opacity: 0, x: -15 },
+                hidden: { opacity: 0, x: -12 },
                 visible: { 
                   opacity: 1, 
                   x: 0,
                   transition: { 
-                    duration: 0.6,
-                    delay: 0.1,
+                    duration: 0.5,
+                    delay: 0.08,
                     ease: [0.16, 1, 0.3, 1] 
                   }
                 }
@@ -213,6 +318,17 @@ export function Hero() {
           />
         </div>
       </motion.div>
+
+      {/* CSS para animação shimmer */}
+      <style>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .animate-shimmer {
+          animation: shimmer 1.5s infinite linear;
+        }
+      `}</style>
     </section>
   );
 }

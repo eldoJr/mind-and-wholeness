@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { ShoppingCart, X, Plus, Minus, Trash2 } from 'lucide-react';
 import AboutAuthor from './AboutAuthor';
+import NewsletterSignup from '../../layout/newsletterSignup';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -148,7 +149,7 @@ export default function BookStore() {
   return (
     <>
       <motion.section 
-        className="py-20 px-4 sm:px-6 lg:px-8 font-serif bg-gray-50 relative"
+        className="py-20 px-4 sm:px-6 lg:px-8 font-serif relative"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -374,6 +375,7 @@ export default function BookStore() {
           </>
         )}
       </AnimatePresence>
+      <NewsletterSignup />
     </>
   );
 }

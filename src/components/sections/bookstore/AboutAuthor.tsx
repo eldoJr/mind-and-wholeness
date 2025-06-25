@@ -93,7 +93,7 @@ export default function AboutAuthor() {
             variants={itemVariants}
           >
             <img
-              src={authorImg} // Replace with your image path
+              src={authorImg} 
               alt="Author Lilian Titus"
               className="w-full h-full object-cover"
             />

@@ -105,7 +105,6 @@ const ContactSection: React.FC = () => {
 
   return (
     <motion.section 
-      className="bg-white"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -184,7 +183,7 @@ const ContactSection: React.FC = () => {
         </div>
 
       {/* Main Content */}
-      <div className="bg-white py-4 px-4">
+      <div className="py-4 px-4 pb-24">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-4">
             {/* Contact Info Column */}

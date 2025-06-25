@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { ShoppingCart, X, Plus, Minus, Trash2 } from 'lucide-react';
+import AboutAuthor from './AboutAuthor';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -246,6 +247,10 @@ export default function BookStore() {
           </motion.div>
         </div>
       </motion.section>
+
+      <div>
+        <AboutAuthor />
+      </div>
 
       {/* Cart Sidebar */}
       <AnimatePresence>

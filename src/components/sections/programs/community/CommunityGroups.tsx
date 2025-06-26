@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from "react-router-dom";
 import homeImg from "/src/assets/images/home-mosaic-grid-image.webp";
 import meditationsImg from "/src/assets/images/meditations.webp";
+import vivianaImg from "/src/assets/images/viviana.jpeg";
 import EmailSignup from "../../../layout/emailSignup";
 
 const CommunityGroups = () => {
@@ -214,7 +215,7 @@ const CommunityGroups = () => {
               
               <div className="w-90 md:w-96 md:flex-[0_0_auto] h-[300px] md:h-auto">
                 <img
-                  src={meditationsImg}
+                  src={vivianaImg}
                   alt="Community connection"
                   className="w-full h-full object-cover"
                 />

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from "react-router-dom";
 import homeImg from "/src/assets/images/home-mosaic-grid-image.webp";
 import meditationsImg from "/src/assets/images/meditations.webp";
+import michealImg from "/src/assets/images/michael.jpeg";
 import EmailSignup from "../../../layout/emailSignup";
 
 const WellnessCourses = () => {
@@ -245,7 +246,7 @@ const WellnessCourses = () => {
               
               <div className="w-90 md:w-96 md:flex-[0_0_auto] h-[300px] md:h-auto">
                 <img
-                  src={meditationsImg}
+                  src={michealImg}
                   alt="Learning and growth"
                   className="w-full h-full object-cover"
                 />

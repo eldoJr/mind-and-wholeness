@@ -139,9 +139,9 @@ const ContactSection: React.FC = () => {
       animate="visible"
       variants={containerVariants}
     >
-      {/* Header with different background */}
+      {/* Header with enhanced background */}
       <motion.div 
-        className="bg-gradient-to-br from-green-600 via-green-700 to-green-800 py-20 px-6 relative overflow-hidden"
+        className="bg-gradient-to-br from-emerald-500 via-teal-600 to-cyan-700 py-24 px-6 relative overflow-hidden"
         variants={itemVariants}
       >
         {/* Background Pattern */}
@@ -195,6 +195,22 @@ const ContactSection: React.FC = () => {
             <Heart className="w-5 h-5" />
             <span>Let's Connect & Transform Lives Together</span>
           </motion.div>
+          <motion.h1 
+            className="text-5xl font-bold text-white mb-4"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            Get in Touch
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-white/90 max-w-2xl mx-auto"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            We're here to support your journey to wholeness
+          </motion.p>
         </div>
       </motion.div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -218,7 +234,7 @@ const ContactSection: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-4">
             {/* Contact Info Column */}
             <motion.div 
-              className="bg-white border border-gray-100 h-full"
+              className="bg-white rounded-2xl shadow-xl border border-gray-100 h-full"
               variants={itemVariants}
             >
               <div className="p-8 lg:p-12 h-full flex flex-col">
@@ -233,23 +249,23 @@ const ContactSection: React.FC = () => {
                     <motion.a
                       key={idx}
                       href={item.href}
-                      className="group block bg-gradient-to-br from-slate-50 to-emerald-50 hover:bg-white border-2 border-gray-100 hover:border-green-200 p-6 duration-300 hover:shadow-xl"
+                      className="group block bg-gradient-to-br from-slate-50 to-emerald-50 hover:bg-white border-2 border-gray-100 hover:border-emerald-300 rounded-xl p-6 duration-300 hover:shadow-xl"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       variants={itemVariants}
                     >
                       <div className="flex items-start gap-5">
                         <motion.div 
-                          className={`${item.bgColor} w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all`}
+                          className={`${item.bgColor} w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all`}
                           whileHover={{ rotate: 5, scale: 1.1 }}
                         >
                           {item.icon}
                         </motion.div>
                         <div className="flex-1">
-                          <h4 className="font-bold text-gray-900 text-base mb-1 group-hover:text-green-600 transition-colors">{item.title}</h4>
+                          <h4 className="font-bold text-gray-900 text-lg mb-1 group-hover:text-emerald-600 transition-colors">{item.title}</h4>
                           <p className="text-gray-800 font-semibold text-base mb-1">{item.description}</p>
                           <p className="text-gray-600 text-sm mb-2">{item.subtitle}</p>
-                          <p className="text-green-600 text-xs font-medium">{item.detail}</p>
+                          <p className="text-emerald-600 text-sm font-medium">{item.detail}</p>
                         </div>
                       </div>
                     </motion.a>
@@ -262,7 +278,7 @@ const ContactSection: React.FC = () => {
 
             {/* Contact Form Column */}
             <motion.div 
-              className="bg-white border border-gray-100 h-full"
+              className="bg-white rounded-2xl shadow-xl border border-gray-100 h-full"
               variants={itemVariants}
             >
               <div className="p-6 lg:p-12 h-full flex flex-col">
@@ -338,8 +354,8 @@ const ContactSection: React.FC = () => {
                       className="space-y-6 flex-grow"
                     >
                       <div className="mb-8">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Send us a Message</h3>
-                        <p className="text-gray-600 text-base">We'd love to hear from you and support your journey</p>
+                        <h3 className="text-3xl font-bold text-gray-900 mb-4">Send us a Message</h3>
+                        <p className="text-gray-600 text-lg">We'd love to hear from you and support your journey</p>
                       </div>
 
                       <form onSubmit={handleSubmit}>
@@ -348,14 +364,14 @@ const ContactSection: React.FC = () => {
                             className="space-y-3"
                             variants={itemVariants}
                           >
-                            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wide">Full Name *</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
                             <input
                               type="text"
                               name="name"
                               value={formData.name}
                               onChange={handleInputChange}
                               required
-                              className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 text-base focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 focus:bg-white hover:border-green-300"
+                              className="w-full border-2 border-gray-200 rounded-xl px-6 py-4 text-base focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-gray-50 focus:bg-white hover:border-emerald-300 shadow-sm focus:shadow-md"
                               placeholder="Enter your full name"
                             />
                             {errors.name && (
@@ -372,14 +388,14 @@ const ContactSection: React.FC = () => {
                             className="space-y-3"
                             variants={itemVariants}
                           >
-                            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wide">Email Address *</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
                             <input
                               type="email"
                               name="email"
                               value={formData.email}
                               onChange={handleInputChange}
                               required
-                              className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 text-base focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 focus:bg-white hover:border-green-300"
+                              className="w-full border-2 border-gray-200 rounded-xl px-6 py-4 text-base focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-gray-50 focus:bg-white hover:border-emerald-300 shadow-sm focus:shadow-md"
                               placeholder="your@email.com"
                             />
                             {errors.email && (
@@ -398,13 +414,13 @@ const ContactSection: React.FC = () => {
                           className="space-y-3 mt-6"
                           variants={itemVariants}
                         >
-                          <label className="block text-xs font-bold text-gray-700 uppercase tracking-wide">Phone Number</label>
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
                           <input
                             type="tel"
                             name="phone"
                             value={formData.phone}
                             onChange={handleInputChange}
-                            className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 text-base focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 focus:bg-white hover:border-green-300"
+                            className="w-full border-2 border-gray-200 rounded-xl px-6 py-4 text-base focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-gray-50 focus:bg-white hover:border-emerald-300 shadow-sm focus:shadow-md"
                             placeholder="(+91) 123-4567"
                           />
                         </motion.div>
@@ -413,14 +429,14 @@ const ContactSection: React.FC = () => {
                           className="space-y-3 mt-6"
                           variants={itemVariants}
                         >
-                          <label className="block text-xs font-bold text-gray-700 uppercase tracking-wide">Your Message *</label>
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">Your Message *</label>
                           <textarea
                             name="message"
                             value={formData.message}
                             onChange={handleInputChange}
                             rows={6}
                             required
-                            className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 text-base focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 focus:bg-white resize-none hover:border-green-300"
+                            className="w-full border-2 border-gray-200 rounded-xl px-6 py-4 text-base focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-gray-50 focus:bg-white resize-none hover:border-emerald-300 shadow-sm focus:shadow-md"
                             placeholder="Tell us how we can help you on your journey to wholeness..."
                           />
                           {errors.message && (
@@ -437,7 +453,7 @@ const ContactSection: React.FC = () => {
                         <motion.button
                           type="submit"
                           disabled={isSubmitting}
-                          className="w-full bg-gradient-to-r from-green-600 to-orange-500 hover:from-green-700 hover:to-orange-600 text-white font-bold py-5 px-8 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 text-base mt-8"
+                          className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold py-5 px-8 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 text-lg mt-8"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                           variants={itemVariants}

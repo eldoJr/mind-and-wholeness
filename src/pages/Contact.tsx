@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Send, MapPin, Phone, Heart, CheckCircle2, Clock, Loader2, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -6,24 +6,54 @@ import Confetti from 'react-confetti';
 import { createAvatar } from '@dicebear/core';
 import { initials } from '@dicebear/collection';
 
+// Constants
+const CONTACT_INFO = [
+  {
+    icon: <Mail className="w-7 h-5 text-white" />,
+    title: 'Email Us',
+    description: 'hello@mindwholeness.org',
+    subtitle: 'Response within 24 hours',
+    href: 'mailto:hello@mindwholeness.org',
+    bgColor: 'bg-gradient-to-r from-green-500 to-green-600',
+    detail: 'Professional support team'
+  },
+  {
+    icon: <Phone className="w-7 h-5 text-white" />,
+    title: 'Call Us',
+    description: '+1 (555) 123-4567',
+    subtitle: 'Mon-Fri, 9am-6pm EST',
+    href: 'tel:+15551234567',
+    bgColor: 'bg-gradient-to-r from-orange-500 to-orange-600',
+    detail: 'Direct consultation available'
+  },
+  {
+    icon: <MapPin className="w-7 h-5 text-white" />,
+    title: 'Visit Our Center',
+    description: 'Parul University, Medical Auditorium',
+    subtitle: 'Waghodia, Vadodara, Gujarat 391760',
+    href: '#',
+    bgColor: 'bg-gradient-to-r from-green-600 to-orange-500',
+    detail: 'In-person sessions welcome'
+  }
+] as const;
+
+const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
+const INITIAL_FORM_DATA = { name: '', email: '', phone: '', message: '' };
+
 const ContactSection: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // Generate avatar based on user's name
-  const userAvatar = formData.name 
-    ? createAvatar(initials, { seed: formData.name, size: 64 }).toDataUri()
-    : null;
+  // Memoized avatar generation
+  const userAvatar = useMemo(() => 
+    formData.name ? createAvatar(initials, { seed: formData.name, size: 64 }).toDataUri() : null,
+    [formData.name]
+  );
 
-  const validateForm = () => {
+  const validateForm = useCallback(() => {
     const newErrors: Record<string, string> = {};
     
     if (!formData.name.trim()) {
@@ -32,7 +62,7 @@ const ContactSection: React.FC = () => {
     
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
-    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+    } else if (!EMAIL_REGEX.test(formData.email)) {
       newErrors.email = 'Please enter a valid email';
     }
     
@@ -42,66 +72,66 @@ const ContactSection: React.FC = () => {
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
+  }, [formData]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
     
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
-  };
+  }, [errors]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!validateForm()) return;
     
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setShowConfetti(true);
-    
-    // Reset confetti after animation
-    setTimeout(() => setShowConfetti(false), 5000);
-    
-    // Reset form after success
-    setTimeout(() => {
-      setIsSuccess(false);
-      setFormData({ name: '', email: '', phone: '', message: '' });
-    }, 8000);
-  };
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      setIsSuccess(true);
+      setShowConfetti(true);
+      
+      // Reset confetti after animation
+      setTimeout(() => setShowConfetti(false), 5000);
+      
+      // Reset form after success
+      setTimeout(() => {
+        setIsSuccess(false);
+        setFormData(INITIAL_FORM_DATA);
+        setErrors({});
+      }, 8000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      // Handle error state here
+    } finally {
+      setIsSubmitting(false);
+    }
+  }, [validateForm]);
 
-  // Animation variants
-  const containerVariants = {
+  // Memoized animation variants
+  const containerVariants = useMemo(() => ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
+      transition: { staggerChildren: 0.1 }
     }
-  };
+  }), []);
 
-  const itemVariants = {
+  const itemVariants = useMemo(() => ({
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.5
-      }
+      transition: { duration: 0.5 }
     }
-  };
+  }), []);
 
   return (
     <motion.section 
@@ -199,35 +229,7 @@ const ContactSection: React.FC = () => {
 
                 {/* Contact Cards */}
                 <div className="space-y-11 flex-grow">
-                  {[
-                    {
-                      icon: <Mail className="w-7 h-5 text-white" />,
-                      title: 'Email Us',
-                      description: 'hello@mindwholeness.org',
-                      subtitle: 'Response within 24 hours',
-                      href: 'mailto:hello@mindwholeness.org',
-                      bgColor: 'bg-gradient-to-r from-green-500 to-green-600',
-                      detail: 'Professional support team'
-                    },
-                    {
-                      icon: <Phone className="w-7 h-5 text-white" />,
-                      title: 'Call Us',
-                      description: '+1 (555) 123-4567',
-                      subtitle: 'Mon-Fri, 9am-6pm EST',
-                      href: 'tel:+15551234567',
-                      bgColor: 'bg-gradient-to-r from-orange-500 to-orange-600',
-                      detail: 'Direct consultation available'
-                    },
-                    {
-                      icon: <MapPin className="w-7 h-5 text-white" />,
-                      title: 'Visit Our Center',
-                      description: 'Parul University, Medical Auditorium',
-                      subtitle: 'Waghodia, Vadodara, Gujarat 391760',
-                      href: '#',
-                      bgColor: 'bg-gradient-to-r from-green-600 to-orange-500',
-                      detail: 'In-person sessions welcome'
-                    }
-                  ].map((item, idx) => (
+                  {CONTACT_INFO.map((item, idx) => (
                     <motion.a
                       key={idx}
                       href={item.href}
@@ -465,13 +467,7 @@ const ContactSection: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Buttom */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-          </motion.div>
+
         </div>
       </div>
     </motion.section>

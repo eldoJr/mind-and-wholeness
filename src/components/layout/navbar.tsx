@@ -61,10 +61,15 @@ const NAVIGATION = {
       to: "/programs/events",
     },
     {
-      title: "Volunteer",
-      description: "Join our community",
-      to: "/programs/volunteer",
-    }
+      title: "Wellness Courses",
+      description: "Structured learning programs",
+      to: "/programs/courses",
+    },
+    {
+      title: "Community Groups",
+      description: "Connect with like-minded people",
+      to: "/programs/community",
+    },
   ]
 };
 
@@ -488,7 +493,7 @@ export default function Navbar() {
             {/* Footer */}
             <div className="px-6 py-4 border-t border-gray-200">
               <Link 
-                to="/signup" 
+                to="/signup/signup" 
                 className="w-full flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-emerald-600 hover:bg-emerald-700"
                 onClick={closeAllMenus}
               >

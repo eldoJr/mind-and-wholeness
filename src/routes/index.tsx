@@ -11,7 +11,7 @@ import ProgramsPage from "../components/sections/programs/podcasts/Podcasts";
 import DailyMeditations from "../components/sections/programs/meditations/Meditations";
 import PodcastsPage from "../components/sections/programs/podcasts/Podcasts";
 import EventsPage from "../components/sections/programs/events/Events";
-import BlogSection from "../pages/articles/articles";
+import ArticlesSection from "../pages/articles/articles";
 import BookStore from "../components/sections/bookstore/BookStore";
 import ContactSection from "../pages/Contact";
 import Signup from "../pages/signup/signup";
@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/articles/articles",
-        element: <BlogSection />,
+        element: <ArticlesSection />
       },
       {
         path: "/bookstore/bookstore",

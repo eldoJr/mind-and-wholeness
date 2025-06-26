@@ -29,28 +29,6 @@ const CommunityGroups = () => {
       image: meditationsImg,
       facilitator: "Michael Rodriguez"
     },
-    {
-      id: 3,
-      name: "Women of Wisdom",
-      description: "Empowering women through spiritual growth, mentorship, and sisterhood in a nurturing environment.",
-      location: "Online",
-      schedule: "Tuesdays, 8:00 PM",
-      members: 67,
-      type: "Women's Group",
-      image: homeImg,
-      facilitator: "Lilian Titus"
-    },
-    {
-      id: 4,
-      name: "Mindful Parents Network",
-      description: "Supporting parents in raising children with mindfulness, compassion, and spiritual awareness.",
-      location: "Hybrid",
-      schedule: "Sundays, 4:00 PM",
-      members: 38,
-      type: "Parenting",
-      image: meditationsImg,
-      facilitator: "James & Maria Santos"
-    }
   ];
 
   return (

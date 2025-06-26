@@ -14,13 +14,13 @@ const highlights = [
     title: "Guides",
     description: "Deepen your journey with printable guides and spiritual tools.",
     icon: guides,
-    to:"/programs/guides"
+    to:"/programs/community"
   },
   {
     title: "Podcast",
     description: "Listen to conversations that nourish your soul and expand your thinking.",
     icon: podcast,
-    to:"/programs/podcast"
+    to:"/programs/podcasts"
   },
   {
     title: "Courses",

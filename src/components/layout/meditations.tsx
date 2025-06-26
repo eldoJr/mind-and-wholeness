@@ -5,9 +5,9 @@ import presenceImage from '/src/assets/images/presence.jpg';
 
 export default function MeditativeThemes() {
   const themes = [
-    { title: "joy", image: joyImage, link: "/meditations/joy" },
-    { title: "healing", image: healingImage, link: "/meditations/healing" },
-    { title: "presence", image: presenceImage, link: "/meditations/presence" },
+    { title: "joy", image: joyImage, link: "/programs/meditations/joy" },
+    { title: "healing", image: healingImage, link: "/programs/meditations/healing" },
+    { title: "presence", image: presenceImage, link: "/programs/meditations/presence" },
   ];
 
   return (

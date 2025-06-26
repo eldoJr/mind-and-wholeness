@@ -17,6 +17,9 @@ import ArticlesSection from "../pages/articles/articles";
 import BookStore from "../components/sections/bookstore/BookStore";
 import ContactSection from "../pages/Contact";
 import Signup from "../pages/signup/signup";
+import HealingMeditations from "../components/sections/programs/meditations/topic/healing";
+import JoyMeditations from "../components/sections/programs/meditations/topic/joy";
+import PresenceMeditations from "../components/sections/programs/meditations/topic/presence";
 import NotFound from "../pages/404/NotFound";
 
 export const router = createBrowserRouter([
@@ -70,6 +73,18 @@ export const router = createBrowserRouter([
       {
         path: "/programs/community",
         element: <CommunityPage />,
+      },
+      {
+        path: "/programs/meditations/healing",
+        element: <HealingMeditations />,
+      },
+      {
+        path: "/programs/meditations/joy",
+        element: <JoyMeditations />,
+      },
+      {
+        path: "/programs/meditations/presence",
+        element: <PresenceMeditations />,
       },
       {
         path: "/articles/articles",

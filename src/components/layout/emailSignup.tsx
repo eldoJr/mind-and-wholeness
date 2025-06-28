@@ -1,4 +1,11 @@
 import { motion } from 'framer-motion';
+import { useForm } from '../../hooks/useForm';
+
+interface EmailSignupForm {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -24,6 +31,20 @@ const itemVariants = {
 };
 
 export default function EmailSignup() {
+  const { values, errors, isSubmitting, handleChange, setIsSubmitting } = useForm<EmailSignupForm>({
+    firstName: '',
+    lastName: '',
+    email: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // TODO: Connect to backend API
+    console.log('Form submitted:', values);
+    setTimeout(() => setIsSubmitting(false), 1000);
+  };
+
   return (
     <motion.section 
       className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 text-center font-serif"
@@ -51,29 +72,39 @@ export default function EmailSignup() {
         <motion.form 
           className="pt-12 pb-16 md:py-24 grid grid-cols-1 sm:grid-cols-3 gap-10 max-w-5xl mx-auto mb-10"
           variants={itemVariants}
+          onSubmit={handleSubmit}
         >
           <motion.div variants={itemVariants}>
             <input
               type="text"
               placeholder="First Name"
+              value={values.firstName}
+              onChange={(e) => handleChange('firstName', e.target.value)}
               className="w-full border-b border-gray-400 placeholder-gray-500 focus:outline-none focus:border-green-600 py-2 bg-transparent text-center"
             />
+            {errors.firstName && <span className="text-red-500 text-xs">{errors.firstName}</span>}
           </motion.div>
           
           <motion.div variants={itemVariants}>
             <input
               type="text"
               placeholder="Last Name"
+              value={values.lastName}
+              onChange={(e) => handleChange('lastName', e.target.value)}
               className="w-full border-b border-gray-400 placeholder-gray-500 focus:outline-none focus:border-green-600 py-2 bg-transparent text-center"
             />
+            {errors.lastName && <span className="text-red-500 text-xs">{errors.lastName}</span>}
           </motion.div>
           
           <motion.div variants={itemVariants}>
             <input
               type="email"
               placeholder="Email"
+              value={values.email}
+              onChange={(e) => handleChange('email', e.target.value)}
               className="w-full border-b border-gray-400 placeholder-gray-500 focus:outline-none focus:border-green-600 py-2 bg-transparent text-center"
             />
+            {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
           </motion.div>
         </motion.form>
 
@@ -84,9 +115,10 @@ export default function EmailSignup() {
         >
           <button
             type="submit"
-            className="mt-4 px-6 py-3 bg-green-600 text-white font-medium tracking-wide uppercase text-sm rounded-sm hover:bg-green-700 transition-all shadow-sm"
+            disabled={isSubmitting}
+            className="mt-4 px-6 py-3 bg-green-600 text-white font-medium tracking-wide uppercase text-sm rounded-sm hover:bg-green-700 transition-all shadow-sm disabled:opacity-50"
           >
-            Join Now
+            {isSubmitting ? 'Joining...' : 'Join Now'}
           </button>
         </motion.div>
       </div>

@@ -182,12 +182,6 @@ export default function Footer() {
                 Privacy Policy
               </Link>
               <Link 
-                to="/terms" 
-                className="hover:text-gray-800 transition-all duration-200 hover:translate-y-[-1px] font-medium text-gray-600"
-              >
-                Terms of Service
-              </Link>
-              <Link 
                 to="/contact" 
                 className="hover:text-gray-800 transition-all duration-200 hover:translate-y-[-1px] font-medium text-gray-600"
               >

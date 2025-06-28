@@ -18,6 +18,7 @@ import Signup from "../pages/signup/signup";
 import HealingMeditations from "../components/sections/programs/meditations/topic/healing";
 import JoyMeditations from "../components/sections/programs/meditations/topic/joy";
 import PresenceMeditations from "../components/sections/programs/meditations/topic/presence";
+import { Privacy } from "../pages/privacy";
 import NotFound from "../pages/404/NotFound";
 
 export const router = createBrowserRouter([
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactSection />,
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />,
       },
       {
         path: "/signup/signup",

@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronDown, Menu, X, Sparkles, ArrowRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../../assets/images/logo.svg';
+import logo from '../../assets/icons/logo-icon.png';
 
 // Optimized throttle function
 const throttle = <T extends (...args: unknown[]) => void>(
@@ -267,7 +267,7 @@ export default function Navbar() {
         aria-label="Main navigation"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-18">
             {/* Logo */}
             <Link 
               to="/" 
@@ -278,7 +278,7 @@ export default function Navbar() {
               <img 
                 src={logo} 
                 alt="Logo" 
-                className="h-8 w-auto" 
+                className="h-14 w-auto" 
               />
               <span className="ml-3 text-xl font-serif font-semibold text-gray-800">
                 Mind & Wholeness

@@ -1,11 +1,11 @@
 import PracticeWithUs from "../../components/sections/about/Practice";
-import EmailSignup from "../../components/layout/emailSignup";
+import { SubscribeForm } from "../../components/ui";
 
 export default function PracticePage() {
   return (
     <div>
       <PracticeWithUs />
-      <EmailSignup />
+      <SubscribeForm variant="detailed" />
     </div>
   );
 }

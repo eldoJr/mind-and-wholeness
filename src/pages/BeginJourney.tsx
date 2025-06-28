@@ -1,6 +1,6 @@
 import ceoImg from "/src/assets/images/ceo.png";
 import joinImg from "/src/assets/images/begin_join.png";
-import NewsletterSignup from "../components/layout/newsletterSignup";
+import { SubscribeForm } from "../components/ui";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { 
@@ -434,7 +434,7 @@ export default function BeginJourney() {
             </div>
         </div>
       </div>
-      <NewsletterSignup />
+      <SubscribeForm />
       </div>
     </div>
   );

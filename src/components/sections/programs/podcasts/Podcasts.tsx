@@ -8,7 +8,7 @@ import pod3Img from '/src/assets/images/podcasts/pod3.png';
 
 import PodcastSeries from './Series';
 import StartSection from './StartSection';
-import NewsletterSignup from '../../../layout/newsletterSignup';
+import { SubscribeForm } from '../../../ui';
 interface PodcastsProps {
   className?: string;
 }
@@ -158,7 +158,7 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
     </div>
 
     <div>
-      <NewsletterSignup />
+      <SubscribeForm />
     </div>
     </section>
   );

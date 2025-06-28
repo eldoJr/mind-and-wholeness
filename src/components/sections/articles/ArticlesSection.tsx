@@ -1,6 +1,6 @@
 import { BookOpen, Sparkles, Clock, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import EmailSignup from '../../layout/emailSignup';
+import { SubscribeForm } from '../../ui';
 
 const ArticlesSection = () => {
   return (
@@ -94,7 +94,7 @@ const ArticlesSection = () => {
       {/* Full-width email signup section */}
       <div className="bg-gray-50 border-t border-gray-200 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <EmailSignup />
+          <SubscribeForm variant="detailed" />
         </div>
       </div>
     </main>

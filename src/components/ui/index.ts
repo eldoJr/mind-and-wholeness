@@ -6,3 +6,5 @@ export { Button } from './Button';
 export { MeditationCard } from './MeditationCard';
 export { Container } from './Container';
 export { Input } from './Input';
+export { NewsletterBanner } from './newsletterBanner';
+export { SubscribeForm } from './subscribeForm';

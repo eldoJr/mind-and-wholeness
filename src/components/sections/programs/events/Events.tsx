@@ -2,7 +2,7 @@ import { Calendar, MapPin, Users, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ChevronRight } from "lucide-react";
 import { Link } from 'react-router-dom';
-import NewsletterSignup from '../../../layout/newsletterSignup';
+import { SubscribeForm } from '../../../ui';
 import ListEvents from './ListEvents';
 
 const EventsPage = () => {
@@ -164,7 +164,7 @@ const EventsPage = () => {
       <ListEvents />
     </div> 
     <div>
-      <NewsletterSignup />
+      <SubscribeForm />
     </div>   
     </motion.div>
   );

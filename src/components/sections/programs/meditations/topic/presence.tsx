@@ -1,6 +1,6 @@
 import { Circle, ArrowRight, Clock, User, Play, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import EmailSignup from '../../../../layout/emailSignup';
+import { SubscribeForm } from '../../../../ui';
 
 const PresenceMeditations = () => {
   const meditations = [
@@ -134,10 +134,10 @@ const PresenceMeditations = () => {
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div>
-          <EmailSignup />
-        </div>
+        <SubscribeForm 
+          variant="detailed"
+          description="Sign-up to receive the Daily Meditations, featuring reflections on the wisdom and practices of the Christian contemplative tradition."
+        />
 
       </div>
     </section>

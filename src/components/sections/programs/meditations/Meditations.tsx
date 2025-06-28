@@ -6,7 +6,7 @@ import homeImg from "/src/assets/images/home-mosaic-grid-image.webp"
 import meditationsImg from "/src/assets/images/meditations.webp";
 import MindWholenessExplore from "./MindWholenessExplore";
 import SearchMeditation from "./SearchMeditation";
-import EmailSignup from "../../../layout/emailSignup";
+import { SubscribeForm } from "../../../ui";
 import MeditativeThemes from "../../../layout/meditations";
 
 const DailyMeditations = () => {
@@ -162,7 +162,10 @@ const DailyMeditations = () => {
         <MeditativeThemes />
       </div>
         <div>
-          <EmailSignup />
+          <SubscribeForm 
+        variant="detailed"
+        description="Sign-up to receive the Daily Meditations, featuring reflections on the wisdom and practices of the Christian contemplative tradition."
+      />
         </div>
       </div>
     </section>

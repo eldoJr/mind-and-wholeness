@@ -1,4 +1,3 @@
-// src/components/sections/shared/SectionHeader.tsx
 import { motion } from "framer-motion";
 
 interface SectionHeaderProps {
@@ -9,13 +8,13 @@ interface SectionHeaderProps {
   description?: string;
 }
 
-export function SectionHeader({ 
+export const SectionHeader = ({ 
   tagline, 
   title, 
   highlight, 
   highlightColor = 'emerald', 
   description 
-}: SectionHeaderProps) {
+}: SectionHeaderProps) => {
   const colorMap = {
     emerald: {
       text: 'text-emerald-600',
@@ -72,12 +71,14 @@ export function SectionHeader({
       viewport={{ once: true, margin: "-50px" }}
       className="text-center mb-16"
     >
-      <motion.span 
-        whileHover={{ scale: 1.05 }}
-        className={`inline-block px-4 py-2 ${colorMap[highlightColor].bg} ${colorMap[highlightColor].text} rounded-full text-sm font-medium mb-4 shadow-sm`}
-      >
-        {tagline}
-      </motion.span>
+      {tagline && (
+        <motion.span 
+          whileHover={{ scale: 1.05 }}
+          className={`inline-block px-4 py-2 ${colorMap[highlightColor].bg} ${colorMap[highlightColor].text} rounded-full text-sm font-medium mb-4 shadow-sm`}
+        >
+          {tagline}
+        </motion.span>
+      )}
       <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-gray-900 mb-6 leading-tight">
         {renderTitle()}
       </h2>
@@ -95,4 +96,4 @@ export function SectionHeader({
       )}
     </motion.div>
   );
-}
+};

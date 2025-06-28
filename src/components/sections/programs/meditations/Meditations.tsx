@@ -135,6 +135,7 @@ const DailyMeditations = () => {
         <div>
           <MindWholenessExplore className="mt-16" />
         </div>
+        
         <div>
           <SearchMeditation />
         </div>

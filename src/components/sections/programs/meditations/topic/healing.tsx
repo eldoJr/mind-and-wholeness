@@ -30,7 +30,7 @@ const HealingMeditations = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-rose-50 to-pink-50">
+    <section className="py-16 bg-gradient-to-br from-green-50 to-orange-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="text-center mb-12"
@@ -38,12 +38,12 @@ const HealingMeditations = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-rose-100 rounded-full text-rose-700 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 rounded-full text-green-700 text-sm font-medium mb-4">
             <Heart className="w-4 h-4" />
             <span>Healing Meditations</span>
           </div>
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Journey to <span className="text-rose-600">Wholeness</span>
+            Journey to <span className="text-green-600">Wholeness</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Discover profound healing through guided meditations designed to restore your mind, body, and spirit.
@@ -72,7 +72,7 @@ const HealingMeditations = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
-                    <Play className="w-6 h-6 text-rose-600" />
+                    <Play className="w-6 h-6 text-green-600" />
                   </motion.button>
                 </div>
               </div>
@@ -93,7 +93,7 @@ const HealingMeditations = () => {
                 </div>
                 
                 <motion.button
-                  className="w-full mt-4 bg-gradient-to-r from-rose-500 to-pink-500 text-white py-3 rounded-xl font-semibold hover:from-rose-600 hover:to-pink-600 transition-all duration-300"
+                  className="w-full mt-4 bg-gradient-to-r from-green-500 to-orange-500 text-white py-3 rounded-xl font-semibold hover:from-green-600 hover:to-orange-600 transition-all duration-300"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

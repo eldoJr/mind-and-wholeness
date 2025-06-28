@@ -74,7 +74,7 @@ const HealingMeditations = () => {
             {meditations.map((meditation) => (
               <div 
                 key={meditation.id}
-                className="group bg-gradient-to-br from-slate-50 to-emerald-50 backdrop-blur-sm p-8 shadow-md hover:shadow-2xl transition-all duration-500 border border-white/30 overflow-hidden relative"
+                className="group bg-gradient-to-br from-slate-50 to-emerald-50 backdrop-blur-sm p-8 shadow-md"
               >
                 {/* Background Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-r ${meditation.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>

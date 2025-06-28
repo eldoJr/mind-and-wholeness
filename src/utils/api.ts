@@ -1,5 +1,4 @@
 // API configuration and utilities
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
 
 export const api = {
   // Newsletter endpoints
@@ -19,13 +18,14 @@ export const api = {
     },
     getByTopic: async (topic: string) => {
       // TODO: Implement when backend is ready
+      console.log('Get meditations by topic:', topic);
       return Promise.resolve([]);
     }
   },
   
   // User endpoints
   users: {
-    signup: async (userData: any) => {
+    signup: async (userData: { firstName: string; lastName: string; email: string; password: string }) => {
       // TODO: Implement when backend is ready
       console.log('User signup:', userData);
       return Promise.resolve({ success: true });

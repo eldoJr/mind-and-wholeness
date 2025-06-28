@@ -5,7 +5,12 @@ import { motion } from 'framer-motion';
 
 const ArticlesSection = () => {
   return (
-    <main className="min-h-screen">
+    <motion.main 
+      className="min-h-screen"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       {/* Header */}
       <div className="bg-gradient-to-r from-orange-400 to-orange-800 py-20 text-center text-white">
         <motion.div
@@ -29,7 +34,12 @@ const ArticlesSection = () => {
         </nav>
 
         {/* Improved introductory section with better typography */}
-        <div className="mb-8 md:mb-12">
+        <motion.div 
+          className="mb-8 md:mb-12"
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
           <h1 className="text-3xl sm:text-4xl font-serif text-gray-900 mb-4 font-bold tracking-tight">
             Mind & Wholeness Articles
           </h1>
@@ -37,12 +47,17 @@ const ArticlesSection = () => {
             Explore our collection of articles designed to support your journey to wholeness and mental wellness.
             Each piece is carefully crafted to provide actionable insights and guidance.
           </p>
-        </div>
+        </motion.div>
 
         {/* Main content grid with improved spacing */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-12">
           {/* Main Articles Section */}
-          <div className="lg:col-span-2 space-y-8">
+          <motion.div 
+            className="lg:col-span-2 space-y-8"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+          >
             {/* Enhanced empty state with better animations and structure */}
             <div className="flex flex-col items-center justify-center py-16 px-6 bg-gradient-to-br from-gray-50 to-white rounded-xl border border-gray-200 shadow-sm transition-all hover:shadow-md">
               <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center mb-6 animate-float">
@@ -71,10 +86,15 @@ const ArticlesSection = () => {
                 <div key={item} className="h-48 bg-gray-100 rounded-lg animate-pulse"></div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Popular Articles Sidebar with improved visual hierarchy */}
-          <div className="space-y-8">
+          <motion.div 
+            className="space-y-8"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+          >
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm sticky top-6">
               <h2 className="text-xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-100">
                 <Sparkles className="inline-block w-5 h-5 text-purple-500 mr-2 -mt-1" />
@@ -102,7 +122,7 @@ const ArticlesSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
       
@@ -112,7 +132,7 @@ const ArticlesSection = () => {
           <SubscribeForm variant="detailed" />
         </div>
       </div>
-    </main>
+    </motion.main>
   );
 };
 

@@ -21,7 +21,12 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
   };
 
   return (
-    <section className={`bg-white ${className}`}>
+    <motion.section 
+      className={`bg-white ${className}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="bg-gradient-to-r from-blue-400 to-blue-800 py-20 text-center text-white">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
@@ -39,29 +44,45 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
       <Container className="py-8">
         <Breadcrumb items={breadcrumbItems} />
         
-        <div className="mb-12">
+        <motion.div 
+          className="mb-12"
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
           <p className="text-base text-gray-700 leading-relaxed">
             Explore thought-provoking conversations that invite you to cultivate inner peace, embrace wholeness, and live more mindfully. 
             Rooted in mindfulness practices and holistic wellness traditions, the Mind and Wholeness podcast series offer insights and 
             practical guidance to nurture mental clarity and spiritual well-being—within yourself and your community.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mb-16">
+        <motion.div 
+          className="mb-16"
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+        >
           <h4 className="text-2xl sm:text-3xl font-serif text-gray-900 mb-8">
             Latest Episodes
           </h4>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recentEpisodes.map((episode) => (
-              <PodcastCard 
+            {recentEpisodes.map((episode, index) => (
+              <motion.div
                 key={episode.id}
-                podcast={episode}
-                onPlay={handlePlayPodcast}
-              />
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.8 + (index * 0.1), duration: 0.5 }}
+              >
+                <PodcastCard 
+                  podcast={episode}
+                  onPlay={handlePlayPodcast}
+                />
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </Container>
 
     <div>
@@ -75,7 +96,7 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
     <div>
       <SubscribeForm />
     </div>
-    </section>
+    </motion.section>
   );
 };
 

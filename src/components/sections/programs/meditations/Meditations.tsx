@@ -21,7 +21,12 @@ const DailyMeditations = () => {
   });
 
   return (
-    <section className="bg-white">
+    <motion.section 
+      className="bg-white"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
                     {/* Header */}
       <div className="bg-gradient-to-r from-green-400 to-green-800 py-20 text-center text-white">
         <motion.div
@@ -45,17 +50,27 @@ const DailyMeditations = () => {
         </nav>
 
         {/* Header */}
-        <div className="mb-12">
+        <motion.div 
+          className="mb-12"
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
 
           <p className="text-base text-gray-700 leading-relaxed max-w-7xl">
             Rooted in Christian contemplative traditions, the Daily Meditations offer reflections from Lilian Titus, 
             Mind & Wholeness faculty, and guest teachers to help you deepen your spiritual practice and embody 
             transformation in the world.
           </p>
-          </div>
+          </motion.div>
 
           {/* Today's Meditation Section */}
-          <div className="mb-8">
+          <motion.div 
+            className="mb-8"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+          >
             <h3 className="text-2xl sm:text-3xl font-serif text-gray-900 mb-8">
               Today's Meditation
             </h3>
@@ -112,6 +127,7 @@ const DailyMeditations = () => {
               </div>
             </div>
           </div>
+          </motion.div>
         </div>
 
         
@@ -165,8 +181,7 @@ const DailyMeditations = () => {
         description="Sign-up to receive the Daily Meditations, featuring reflections on the wisdom and practices of the Christian contemplative tradition."
       />
         </div>
-      </div>
-    </section>
+    </motion.section>
   );
 };
 

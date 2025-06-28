@@ -4,6 +4,7 @@ import { Globe, Target, Heart, ChevronDown } from "lucide-react";
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from 'framer-motion';
 
 
 const AboutSection = () => {
@@ -115,7 +116,12 @@ const AboutSection = () => {
   };
 
   return (
-    <section className=" bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-8 lg:px-20">
+    <motion.section 
+      className=" bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-8 lg:px-20"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8 ">
               <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
@@ -124,17 +130,27 @@ const AboutSection = () => {
           </nav>
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
-          <div className="text-left mb-12">
+          <motion.div 
+            className="text-left mb-12"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
             <h1 className="text-3xl sm:text-4xl font-serif text-gray-900 mb-6 leading-tight">
               About Mind & Wholeness
             </h1>
             <p className="text-base text-gray-700 leading-relaxed mb-6 max-w-4xl">
               We support those seeking healing within themselves and in the world around them through everyday Christian contemplative wisdom and practices.
             </p>
-          </div>
+          </motion.div>
 
           {/* Introduction Content */}
-          <div className="mb-12">
+          <motion.div 
+            className="mb-12"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
             <div className={`space-y-4 overflow-hidden transition-all duration-500 ${expanded ? 'max-h-[1000px]' : 'max-h-[200px]'}`}>
               <p className="text-base leading-relaxed text-gray-700">
                 At <strong>Mind and Wholeness</strong>, we believe that transformation begins with learning to see and love the world as it is. Through everyday Christian contemplative wisdom and practices, we support those seeking healing—within themselves and in the world around them.
@@ -172,10 +188,15 @@ const AboutSection = () => {
                 </>
               )}
             </button>
-          </div>
+          </motion.div>
 
           {/* Navigation Tabs */}
-          <div className="flex flex-wrap gap-8 mb-6 border-b border-gray-200">
+          <motion.div 
+            className="flex flex-wrap gap-8 mb-6 border-b border-gray-200"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+          >
             {["vision-mission", "values", "beliefs"].map((tab) => (
               <button
                 key={tab}
@@ -194,16 +215,28 @@ const AboutSection = () => {
                   : "WHAT WE BELIEVE"}
               </button>
             ))}
-          </div>
+          </motion.div>
 
           {/* Tab Content */}
-          <div className="min-h-[400px]">
+          <motion.div 
+            className="min-h-[400px]"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+            key={activeTab}
+          >
             {renderContent()}
-          </div>
+          </motion.div>
         </div>
 
         {/* CEO Content */}
-        <div className="py-16 space-y-6">
+        <motion.div 
+          className="py-16 space-y-6"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="mx-auto max-w-7xl">
             <div className="relative flex flex-col md:flex-row shadow-lg">
               {/* Text Content - Left Side with beige background */}
@@ -241,11 +274,11 @@ const AboutSection = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
-};
+}
 
 export default AboutSection;
 

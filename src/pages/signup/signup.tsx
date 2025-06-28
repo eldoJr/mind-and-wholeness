@@ -146,7 +146,7 @@ const Signup: React.FC = () => {
   }
 
   return (
-    <div className="min-h-full bg-white flex items-center justify-center p-6">
+    <div className="min-h-full bg-gradient-to-br from-slate-50 to-emerald-50 flex items-center justify-center p-6">
       <div className="max-w-4xl w-full">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}

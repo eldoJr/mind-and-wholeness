@@ -28,7 +28,7 @@ export const podcastSeries: PodcastSeries[] = [
     id: 1,
     title: "Mind & Wholeness Conversations",
     description: "Deep conversations about spirituality, healing, and personal transformation with thought leaders and practitioners.",
-    host: "Lilian Titus",
+    host: "Mrs. Lilian Titus",
     totalEpisodes: 24,
     tags: ["spirituality", "healing", "transformation", "interviews"]
   },
@@ -36,7 +36,7 @@ export const podcastSeries: PodcastSeries[] = [
     id: 2,
     title: "Contemplative Living",
     description: "Practical guidance for integrating contemplative practices into modern daily life.",
-    host: "Dr. Sarah Chen",
+    host: "Mrs. Jane Doe",
     totalEpisodes: 18,
     tags: ["contemplation", "daily-life", "practices", "guidance"]
   }
@@ -52,7 +52,8 @@ export const podcasts: Podcast[] = [
     publishDate: "2025-01-15",
     season: 1,
     episode: 12,
-    tags: ["healing", "spirituality", "personal-growth", "transformation"]
+    tags: ["healing", "spirituality", "personal-growth", "transformation"],
+    image: "/src/assets/images/podcasts/pod1.png"
   },
   {
     id: 2,
@@ -63,7 +64,8 @@ export const podcasts: Podcast[] = [
     publishDate: "2025-01-08",
     season: 2,
     episode: 8,
-    tags: ["mindfulness", "daily-practice", "relationships", "presence"]
+    tags: ["mindfulness", "daily-practice", "relationships", "presence"],
+    image: "/src/assets/images/podcasts/pod2.png"
   },
   {
     id: 3,
@@ -74,7 +76,8 @@ export const podcasts: Podcast[] = [
     publishDate: "2025-01-01",
     season: 1,
     episode: 15,
-    tags: ["sacred-rhythms", "spirituality", "life-purpose", "alignment"]
+    tags: ["sacred-rhythms", "spirituality", "life-purpose", "alignment"],
+    image: "/src/assets/images/podcasts/pod3.png"
   }
 ];
 

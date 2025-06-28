@@ -1,6 +1,6 @@
 import { BookOpen, Sparkles, Clock, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { SubscribeForm } from '../../ui';
+import { SubscribeForm } from '../../../ui';
 
 const ArticlesSection = () => {
   return (

@@ -60,6 +60,11 @@ const NAVIGATION = {
       description: "Workshops and gatherings",
       to: "/programs/events",
     },
+    {
+      title: "Articles",
+      description: "Articles and News",
+      to: "/programs/articles",
+    }
   ]
 };
 
@@ -350,7 +355,6 @@ export default function Navbar() {
                 />
               </li>
 
-              <li><NavLink to="/articles/articles">Articles</NavLink></li>
               <li><NavLink to="/bookstore/bookstore">Bookstore</NavLink></li>
               <li><NavLink to="/contact">Contact</NavLink></li>
             </ul>
@@ -468,9 +472,6 @@ export default function Navbar() {
                     ))}
                   </div>
                 )}
-              </div>
-              <div className="border-b border-gray-100 pb-2">
-                <NavLink to="/articles/articles">Articles</NavLink>
               </div>
               <div className="border-b border-gray-100 pb-2">
                 <NavLink to="/bookstore/bookstore">Bookstore</NavLink>

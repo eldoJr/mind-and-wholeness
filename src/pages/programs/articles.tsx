@@ -1,4 +1,4 @@
-import ArticlesSection from "../../components/sections/articles/ArticlesSection";
+import ArticlesSection from "../../components/sections/programs/articles/ArticlesSection";
 
 export default function BlogPage() {
   return (

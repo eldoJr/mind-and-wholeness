@@ -1,8 +1,8 @@
-import { createContext, useContext, ReactNode } from 'react';
+import { createContext, useContext } from 'react';
+import type { ReactNode } from 'react';
 
-interface AppContextType {
-  // Add context types here when backend is ready
-}
+// Use 'object' as a placeholder until context types are defined
+type AppContextType = object;
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 

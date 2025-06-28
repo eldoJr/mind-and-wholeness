@@ -60,16 +60,6 @@ const NAVIGATION = {
       description: "Workshops and gatherings",
       to: "/programs/events",
     },
-    {
-      title: "Wellness Courses",
-      description: "Structured learning programs",
-      to: "/programs/courses",
-    },
-    {
-      title: "Community Groups",
-      description: "Connect with like-minded people",
-      to: "/programs/community",
-    },
   ]
 };
 

@@ -1,10 +1,25 @@
 import { BookOpen, Sparkles, Clock, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SubscribeForm } from '../../../ui';
+import { motion } from 'framer-motion';
 
 const ArticlesSection = () => {
   return (
     <main className="min-h-screen">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-orange-400 to-orange-800 py-20 text-center text-white">
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="max-w-4xl mx-auto"
+        >
+          <h1 className="text-5xl font-bold mb-6">Articles</h1>
+          <h2 className="text-xl sm:text-2xl text-yellow-50 mb-6 font-serif">
+            Our collection of articles designed to support your journey to wholeness and mental wellness
+          </h2>
+        </motion.div>
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         {/* Enhanced Breadcrumb with better spacing and hover effects */}
         <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">

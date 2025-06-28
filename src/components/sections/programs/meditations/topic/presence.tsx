@@ -36,28 +36,7 @@ const PresenceMeditations = () => {
     }
   ];
 
-  const practices = [
-    {
-      icon: <Eye className="w-10 h-10" />,
-      title: "Mindful Awareness",
-      description: "Develop clear, non-judgmental awareness of the present moment and all that arises within conscious experience."
-    },
-    {
-      icon: <Focus className="w-10 h-10" />,
-      title: "Focused Attention", 
-      description: "Cultivate single-pointed concentration and sustained attention to deepen your presence and inner stability."
-    },
-    {
-      icon: <Compass className="w-10 h-10" />,
-      title: "Inner Navigation",
-      description: "Learn to navigate your inner landscape with wisdom and compassionate awareness of your true nature."
-    },
-    {
-      icon: <Mountain className="w-10 h-10" />,
-      title: "Stable Presence",
-      description: "Develop unshakeable presence that remains steady and grounded through all of life's changes and challenges."
-    }
-  ];
+
 
   return (
     <section className="min-h-screen bg-white pb-16">
@@ -88,46 +67,10 @@ const PresenceMeditations = () => {
           </p>
         </div>
 
-        {/* Featured Practices Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {practices.map((practice, index) => {
-            const gradients = [
-              "from-indigo-400 to-purple-400",
-              "from-purple-400 to-violet-400", 
-              "from-violet-400 to-fuchsia-400",
-              "from-blue-400 to-indigo-400"
-            ];
-            const iconBgs = [
-              "from-indigo-500/20 to-purple-500/20",
-              "from-purple-500/20 to-violet-500/20",
-              "from-violet-500/20 to-fuchsia-500/20", 
-              "from-blue-500/20 to-indigo-500/20"
-            ];
-            return (
-              <div 
-                key={index}
-                className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100 overflow-hidden"
-              >
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${gradients[index]} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                
-                <div className="relative z-10">
-                  <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${iconBgs[index]} mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <div className={`text-transparent bg-gradient-to-r ${gradients[index]} bg-clip-text`}>
-                      {practice.icon}
-                    </div>
-                  </div>
-                  <h3 className="font-bold text-xl text-gray-800 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-indigo-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">{practice.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{practice.description}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
         {/* Meditations Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Featured Presence Meditations</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Daily Meditations</h2>
+          <h4 className="text-lg font-bold text-gray-800 mb-8">Tag: Presence Meditations</h4>
           
           <div className="space-y-8">
             {meditations.map((meditation) => (

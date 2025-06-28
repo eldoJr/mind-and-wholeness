@@ -1,4 +1,4 @@
-import { Heart, Sparkles, Shield, Leaf, Circle, ArrowRight, Clock, User, Play, ChevronRight } from 'lucide-react';
+import { Circle, ArrowRight, Clock, User, Play, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import EmailSignup from '../../../../layout/emailSignup';
 
@@ -36,29 +36,6 @@ const HealingMeditations = () => {
     }
   ];
 
-  const practices = [
-    {
-      icon: <Heart className="w-8 h-8" />,
-      title: "Emotional Healing",
-      description: "Release past wounds and cultivate deep emotional healing through compassionate awareness."
-    },
-    {
-      icon: <Sparkles className="w-8 h-8" />,
-      title: "Energy Restoration", 
-      description: "Reconnect with your natural healing energy and restore vitality to every cell of your being."
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Protective Healing",
-      description: "Create energetic boundaries while opening to healing, maintaining safety in your healing journey."
-    },
-    {
-      icon: <Leaf className="w-8 h-8" />,
-      title: "Natural Restoration",
-      description: "Align with nature's healing wisdom to restore balance and harmony within your entire being."
-    }
-  ];
-
   return (
     <section className="min-h-screen bg-white pb-16">
        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -73,7 +50,7 @@ const HealingMeditations = () => {
         </div>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <div className="flex justify-center items-center gap-3 mb-6">
             <div className="p-3 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full text-white">
               <Circle className="w-8 h-8" />
@@ -88,25 +65,10 @@ const HealingMeditations = () => {
           </p>
         </div>
 
-        {/* Featured Practices Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {practices.map((practice, index) => (
-            <div 
-              key={index}
-              className="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-white/20"
-            >
-              <div className="text-gradient-to-r from-emerald-500 to-teal-500 mb-4 group-hover:scale-110 transition-transform duration-300">
-                {practice.icon}
-              </div>
-              <h3 className="font-bold text-lg text-gray-800 mb-3">{practice.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{practice.description}</p>
-            </div>
-          ))}
-        </div>
-
         {/* Meditations Section */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Featured Healing Meditations</h2>
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Daily Meditations</h2>
+          <h4 className="text-lg font-bold text-gray-800 mb-8">Tag: Healing Meditations</h4>
           
           <div className="space-y-8">
             {meditations.map((meditation) => (

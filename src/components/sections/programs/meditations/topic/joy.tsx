@@ -41,24 +41,24 @@ const JoyMeditations = () => {
 
   const practices = [
     {
-      icon: <Smile className="w-8 h-8" />,
+      icon: <Smile className="w-10 h-10" />,
       title: "Inner Joy Cultivation",
-      description: "Discover and nurture the wellspring of joy that naturally exists within your being."
+      description: "Discover and nurture the wellspring of joy that naturally exists within your being through mindful awareness."
     },
     {
-      icon: <Heart className="w-8 h-8" />,
+      icon: <Heart className="w-10 h-10" />,
       title: "Heart-Centered Bliss", 
-      description: "Open your heart to experience deeper levels of joy, love, and connection with all life."
+      description: "Open your heart to experience deeper levels of joy, love, and connection with all life through compassionate practice."
     },
     {
-      icon: <Sun className="w-8 h-8" />,
+      icon: <Sun className="w-10 h-10" />,
       title: "Radiant Presence",
-      description: "Embody joy as your natural state, radiating warmth and light to yourself and others."
+      description: "Embody joy as your natural state, radiating warmth and light to yourself and others in every moment."
     },
     {
-      icon: <Star className="w-8 h-8" />,
+      icon: <Star className="w-10 h-10" />,
       title: "Celebration of Life",
-      description: "Find reasons to celebrate in every moment, transforming ordinary experiences into sources of joy."
+      description: "Find reasons to celebrate in every moment, transforming ordinary experiences into sources of profound joy."
     }
   ];
 
@@ -76,7 +76,7 @@ const JoyMeditations = () => {
         </div>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <div className="flex justify-center items-center gap-3 mb-6">
             <div className="p-3 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full text-white">
               <Circle className="w-8 h-8" />
@@ -92,23 +92,44 @@ const JoyMeditations = () => {
         </div>
 
         {/* Featured Practices Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {practices.map((practice, index) => (
-            <div 
-              key={index}
-              className="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-white/20"
-            >
-              <div className="text-gradient-to-r from-yellow-500 to-orange-500 mb-4 group-hover:scale-110 transition-transform duration-300">
-                {practice.icon}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {practices.map((practice, index) => {
+            const gradients = [
+              "from-yellow-400 to-orange-400",
+              "from-orange-400 to-pink-400", 
+              "from-pink-400 to-rose-400",
+              "from-rose-400 to-red-400"
+            ];
+            const iconBgs = [
+              "from-yellow-500/20 to-orange-500/20",
+              "from-orange-500/20 to-pink-500/20",
+              "from-pink-500/20 to-rose-500/20", 
+              "from-rose-500/20 to-red-500/20"
+            ];
+            return (
+              <div 
+                key={index}
+                className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100 overflow-hidden"
+              >
+                {/* Background Gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${gradients[index]} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                
+                <div className="relative z-10">
+                  <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${iconBgs[index]} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`text-transparent bg-gradient-to-r ${gradients[index]} bg-clip-text`}>
+                      {practice.icon}
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-xl text-gray-800 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-yellow-600 group-hover:to-orange-600 group-hover:bg-clip-text transition-all duration-300">{practice.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{practice.description}</p>
+                </div>
               </div>
-              <h3 className="font-bold text-lg text-gray-800 mb-3">{practice.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{practice.description}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Meditations Section */}
-        <div className="mb-12">
+        <div className="mb-16">
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Featured Joy Meditations</h2>
           
           <div className="space-y-8">

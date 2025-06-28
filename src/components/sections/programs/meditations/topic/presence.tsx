@@ -38,24 +38,24 @@ const PresenceMeditations = () => {
 
   const practices = [
     {
-      icon: <Eye className="w-8 h-8" />,
+      icon: <Eye className="w-10 h-10" />,
       title: "Mindful Awareness",
-      description: "Develop clear, non-judgmental awareness of the present moment and all that arises within it."
+      description: "Develop clear, non-judgmental awareness of the present moment and all that arises within conscious experience."
     },
     {
-      icon: <Focus className="w-8 h-8" />,
+      icon: <Focus className="w-10 h-10" />,
       title: "Focused Attention", 
-      description: "Cultivate single-pointed concentration and sustained attention to deepen your presence."
+      description: "Cultivate single-pointed concentration and sustained attention to deepen your presence and inner stability."
     },
     {
-      icon: <Compass className="w-8 h-8" />,
+      icon: <Compass className="w-10 h-10" />,
       title: "Inner Navigation",
-      description: "Learn to navigate your inner landscape with wisdom and compassionate awareness."
+      description: "Learn to navigate your inner landscape with wisdom and compassionate awareness of your true nature."
     },
     {
-      icon: <Mountain className="w-8 h-8" />,
+      icon: <Mountain className="w-10 h-10" />,
       title: "Stable Presence",
-      description: "Develop unshakeable presence that remains steady through all of life's changes."
+      description: "Develop unshakeable presence that remains steady and grounded through all of life's changes and challenges."
     }
   ];
 
@@ -73,7 +73,7 @@ const PresenceMeditations = () => {
         </div>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <div className="flex justify-center items-center gap-3 mb-6">
             <div className="p-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full text-white">
               <Circle className="w-8 h-8" />
@@ -89,23 +89,44 @@ const PresenceMeditations = () => {
         </div>
 
         {/* Featured Practices Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {practices.map((practice, index) => (
-            <div 
-              key={index}
-              className="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-white/20"
-            >
-              <div className="text-gradient-to-r from-indigo-500 to-purple-500 mb-4 group-hover:scale-110 transition-transform duration-300">
-                {practice.icon}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {practices.map((practice, index) => {
+            const gradients = [
+              "from-indigo-400 to-purple-400",
+              "from-purple-400 to-violet-400", 
+              "from-violet-400 to-fuchsia-400",
+              "from-blue-400 to-indigo-400"
+            ];
+            const iconBgs = [
+              "from-indigo-500/20 to-purple-500/20",
+              "from-purple-500/20 to-violet-500/20",
+              "from-violet-500/20 to-fuchsia-500/20", 
+              "from-blue-500/20 to-indigo-500/20"
+            ];
+            return (
+              <div 
+                key={index}
+                className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100 overflow-hidden"
+              >
+                {/* Background Gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${gradients[index]} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                
+                <div className="relative z-10">
+                  <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${iconBgs[index]} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`text-transparent bg-gradient-to-r ${gradients[index]} bg-clip-text`}>
+                      {practice.icon}
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-xl text-gray-800 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-indigo-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">{practice.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{practice.description}</p>
+                </div>
               </div>
-              <h3 className="font-bold text-lg text-gray-800 mb-3">{practice.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{practice.description}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Meditations Section */}
-        <div className="mb-12">
+        <div className="mb-16">
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Featured Presence Meditations</h2>
           
           <div className="space-y-8">

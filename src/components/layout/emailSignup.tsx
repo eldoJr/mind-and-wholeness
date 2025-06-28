@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useForm } from '../../hooks/useForm';
+import { Button, Input } from '../ui';
 
 interface EmailSignupForm {
   firstName: string;
@@ -75,36 +76,31 @@ export default function EmailSignup() {
           onSubmit={handleSubmit}
         >
           <motion.div variants={itemVariants}>
-            <input
-              type="text"
+            <Input
               placeholder="First Name"
               value={values.firstName}
-              onChange={(e) => handleChange('firstName', e.target.value)}
-              className="w-full border-b border-gray-400 placeholder-gray-500 focus:outline-none focus:border-green-600 py-2 bg-transparent text-center"
+              onChange={(value) => handleChange('firstName', value)}
+              error={errors.firstName}
             />
-            {errors.firstName && <span className="text-red-500 text-xs">{errors.firstName}</span>}
           </motion.div>
           
           <motion.div variants={itemVariants}>
-            <input
-              type="text"
+            <Input
               placeholder="Last Name"
               value={values.lastName}
-              onChange={(e) => handleChange('lastName', e.target.value)}
-              className="w-full border-b border-gray-400 placeholder-gray-500 focus:outline-none focus:border-green-600 py-2 bg-transparent text-center"
+              onChange={(value) => handleChange('lastName', value)}
+              error={errors.lastName}
             />
-            {errors.lastName && <span className="text-red-500 text-xs">{errors.lastName}</span>}
           </motion.div>
           
           <motion.div variants={itemVariants}>
-            <input
+            <Input
               type="email"
               placeholder="Email"
               value={values.email}
-              onChange={(e) => handleChange('email', e.target.value)}
-              className="w-full border-b border-gray-400 placeholder-gray-500 focus:outline-none focus:border-green-600 py-2 bg-transparent text-center"
+              onChange={(value) => handleChange('email', value)}
+              error={errors.email}
             />
-            {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
           </motion.div>
         </motion.form>
 
@@ -113,13 +109,13 @@ export default function EmailSignup() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <button
+          <Button
             type="submit"
             disabled={isSubmitting}
-            className="mt-4 px-6 py-3 bg-green-600 text-white font-medium tracking-wide uppercase text-sm rounded-sm hover:bg-green-700 transition-all shadow-sm disabled:opacity-50"
+            className="mt-4 tracking-wide uppercase text-sm"
           >
             {isSubmitting ? 'Joining...' : 'Join Now'}
-          </button>
+          </Button>
         </motion.div>
       </div>
     </motion.section>

@@ -1,113 +1,52 @@
-import { Circle, ArrowRight, Clock, User, Play, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Circle } from 'lucide-react';
 import EmailSignup from '../../../../layout/emailSignup';
 import { getMeditationsByTopic } from '../../../../../data/meditations';
+import { Breadcrumb, PageHeader, MeditationCard, Container } from '../../../../ui';
 
 const HealingMeditations = () => {
   const meditations = getMeditationsByTopic('healing');
 
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Meditations', href: '/programs/meditations' },
+    { label: 'Daily Meditations' }
+  ];
+
+  const handlePlayMeditation = (id: number) => {
+    console.log('Playing meditation:', id);
+    // TODO: Implement meditation player
+  };
+
   return (
     <section className="min-h-screen bg-white pb-16">
-       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Breadcrumb */}
-          <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
-            <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
-            <ChevronRight className="w-4 h-4" />
-            <Link to="/programs/meditations" className="hover:text-gray-900 transition-colors">Meditations</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 underline">Daily Meditations</span>
-          </nav>
-        </div>
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <div className="flex justify-center items-center gap-3 mb-6">
-            <div className="p-3 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full text-white">
-              <Circle className="w-8 h-8" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
-              Healing Meditations
-            </h1>
-          </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Discover profound healing through transformative meditation practices that restore your mind, 
-            body, and spirit to their natural state of wholeness and vitality.
-          </p>
-        </div>
+      <Container className="py-8">
+        <Breadcrumb items={breadcrumbItems} />
+      </Container>
+      
+      <Container>
+        <PageHeader 
+          icon={<Circle className="w-8 h-8" />}
+          title="Healing Meditations"
+          description="Discover profound healing through transformative meditation practices that restore your mind, body, and spirit to their natural state of wholeness and vitality."
+        />
 
-        {/* Meditations Section */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">Daily Meditations</h2>
           <h4 className="text-lg font-bold text-gray-800 mb-8">Tag: Healing Meditations</h4>
           
           <div className="space-y-8">
             {meditations.map((meditation) => (
-              <div 
+              <MeditationCard 
                 key={meditation.id}
-                className="group bg-gradient-to-br from-slate-50 to-emerald-50 backdrop-blur-sm p-8 shadow-md"
-              >
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${meditation.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                
-                <div className="relative z-10">
-                  {/* Meditation Meta */}
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-4">
-                    <div className="flex items-center gap-2">
-                      <User className="w-4 h-4" />
-                      <span>{meditation.instructor}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4" />
-                      <span>{meditation.duration}</span>
-                    </div>
-                    <span className="px-3 py-1 bg-gray-100 rounded-full text-xs font-medium">
-                      {meditation.date}
-                    </span>
-                  </div>
-
-                  {/* Meditation Content */}
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-600 group-hover:to-teal-600 group-hover:bg-clip-text transition-all duration-300">
-                      {meditation.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed mb-4">
-                      {meditation.description}
-                    </p>
-                  </div>
-
-                  {/* Tags and Play Button */}
-                  <div className="flex flex-wrap items-center justify-between gap-4">
-                    <div className="flex flex-wrap gap-2">
-                      {meditation.tags.map((tag, tagIndex) => (
-                        <span 
-                          key={tagIndex}
-                          className="px-3 py-1 bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 rounded-full text-xs font-medium hover:from-emerald-200 hover:to-teal-200 transition-colors duration-200 cursor-pointer"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    <button 
-                      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-full font-medium hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-                    >
-                      <Play className="w-4 h-4" />
-                      Start Meditation
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                    </button>
-                  </div>
-                </div>
-              </div>
+                meditation={meditation}
+                onPlay={handlePlayMeditation}
+              />
             ))}
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div>
-          <EmailSignup />
-        </div>
-
-      </div>
+        <EmailSignup />
+      </Container>
     </section>
   );
 };

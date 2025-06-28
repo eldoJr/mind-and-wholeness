@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Headphones } from 'lucide-react';
 import { getRecentPodcasts } from '../../../../data/podcasts';
-import { PodcastCard, Container, Breadcrumb, PageHeader, SubscribeForm } from '../../../ui';
+import { PodcastCard, Container, Breadcrumb, SubscribeForm } from '../../../ui';
 import PodcastSeries from './Series';
 import StartSection from './StartSection';
 interface PodcastsProps {
@@ -14,7 +13,6 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
   
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
-    { label: 'Programs', href: '/programs' },
     { label: 'Podcasts' }
   ];
 

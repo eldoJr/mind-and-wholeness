@@ -8,7 +8,6 @@ const EventsPage = () => {
   
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
-    { label: 'Programs', href: '/programs' },
     { label: 'Events' }
   ];
 

@@ -26,7 +26,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="space-y-4 sm:space-y-6 col-span-1 sm:col-span-2 lg:col-span-1 text-center sm:text-left">
             <div className="flex flex-col sm:flex-row items-center sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
-              <div className="p-3 bg-white/10 backdrop-blur-sm rounded-2xl">
+              <div className="p-3">
                 <img 
                   src={logo} 
                   alt="Mind & Wholeness logo" 
@@ -99,11 +99,11 @@ export default function Footer() {
               </li>
               <li>
                 <Link 
-                  to="/volunteer" 
+                  to="/bookstore/bookstore" 
                   className="text-emerald-100 hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group"
                 >
                   <span className="w-1 h-1 bg-emerald-400 rounded-full mr-3 group-hover:w-2 transition-all" />
-                  Volunteer
+                  Bookstore
                 </Link>
               </li>
             </ul>
@@ -173,7 +173,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="relative z-10 border-t border-white/20 bg-black/20 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 text-sm sm:text-base text-emerald-200">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 text-sm sm:text-sm text-emerald-200">
             <p className="font-medium">
               © {new Date().getFullYear()} Mind & Wholeness. All rights reserved.
             </p>

@@ -11,8 +11,6 @@ import ProgramsPage from "../components/sections/programs/podcasts/Podcasts";
 import DailyMeditations from "../components/sections/programs/meditations/Meditations";
 import PodcastsPage from "../components/sections/programs/podcasts/Podcasts";
 import EventsPage from "../components/sections/programs/events/Events";
-import CoursesPage from "../pages/programs/courses";
-import CommunityPage from "../pages/programs/community";
 import ArticlesSection from "../pages/articles/articles";
 import BookStore from "../components/sections/bookstore/BookStore";
 import ContactSection from "../pages/Contact";
@@ -65,14 +63,6 @@ export const router = createBrowserRouter([
       {
         path: "/programs/events",
         element: <EventsPage />,
-      },
-      {
-        path: "/programs/courses",
-        element: <CoursesPage />,
-      },
-      {
-        path: "/programs/community",
-        element: <CommunityPage />,
       },
       {
         path: "/programs/meditations/healing",

@@ -1,108 +1,180 @@
-import { motion } from 'framer-motion';
-import { Eye, Play, Clock, User } from 'lucide-react';
+import { Eye, Focus, Compass, Mountain, Circle, ArrowRight, Clock, User, Play, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import EmailSignup from '../../../../layout/emailSignup';
 
 const PresenceMeditations = () => {
   const meditations = [
     {
       id: 1,
       title: "Mindful Presence",
-      description: "Cultivate deep awareness and presence in each moment of your life.",
-      duration: "16 min",
       instructor: "Dr. Sarah Chen",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
+      date: "Monday, June 24, 2025",
+      duration: "16 min",
+      description: "Cultivate deep awareness and presence in each moment of your life through mindful attention and conscious breathing.",
+      tags: ["mindfulness", "awareness", "present-moment", "attention", "consciousness"],
+      gradient: "from-indigo-400 to-purple-400"
     },
     {
       id: 2,
       title: "Sacred Stillness",
-      description: "Enter into the profound peace found in sacred stillness and silence.",
-      duration: "24 min",
       instructor: "Michael Rodriguez",
-      image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=300&fit=crop"
+      date: "Sunday, June 22, 2025", 
+      duration: "24 min",
+      description: "Enter into the profound peace found in sacred stillness and silence, discovering the depth of your true nature.",
+      tags: ["stillness", "silence", "peace", "sacred", "depth"],
+      gradient: "from-purple-400 to-violet-400"
     },
     {
       id: 3,
       title: "Present Moment Awareness",
-      description: "Anchor yourself in the eternal now through mindful awareness practices.",
-      duration: "14 min",
       instructor: "Lilian Titus",
-      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop"
+      date: "Friday, June 20, 2025",
+      duration: "14 min", 
+      description: "Anchor yourself in the eternal now through mindful awareness practices that ground you in the present moment.",
+      tags: ["present-moment", "awareness", "grounding", "eternal-now", "anchoring"],
+      gradient: "from-blue-400 to-indigo-400"
+    }
+  ];
+
+  const practices = [
+    {
+      icon: <Eye className="w-8 h-8" />,
+      title: "Mindful Awareness",
+      description: "Develop clear, non-judgmental awareness of the present moment and all that arises within it."
+    },
+    {
+      icon: <Focus className="w-8 h-8" />,
+      title: "Focused Attention", 
+      description: "Cultivate single-pointed concentration and sustained attention to deepen your presence."
+    },
+    {
+      icon: <Compass className="w-8 h-8" />,
+      title: "Inner Navigation",
+      description: "Learn to navigate your inner landscape with wisdom and compassionate awareness."
+    },
+    {
+      icon: <Mountain className="w-8 h-8" />,
+      title: "Stable Presence",
+      description: "Develop unshakeable presence that remains steady through all of life's changes."
     }
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-green-50 to-orange-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 rounded-full text-green-700 text-sm font-medium mb-4">
-            <Eye className="w-4 h-4" />
-            <span>Presence Meditations</span>
+    <section className="min-h-screen bg-white pb-16">
+       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {/* Breadcrumb */}
+          <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
+            <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
+            <ChevronRight className="w-4 h-4" />
+            <Link to="/programs/meditations" className="hover:text-gray-900 transition-colors">Meditations</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-gray-900 underline">Daily Meditations</span>
+          </nav>
+        </div>
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="flex justify-center items-center gap-3 mb-6">
+            <div className="p-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full text-white">
+              <Circle className="w-8 h-8" />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent">
+              Presence Meditations
+            </h1>
           </div>
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Cultivate <span className="text-green-600">Deep Presence</span>
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Develop profound awareness and presence through meditations that anchor you in the eternal now.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Develop profound awareness and presence through meditations that anchor you in the eternal now, 
+            cultivating deep peace and conscious awareness in every moment.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {meditations.map((meditation, index) => (
-            <motion.div
-              key={meditation.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
+        {/* Featured Practices Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {practices.map((practice, index) => (
+            <div 
+              key={index}
+              className="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-white/20"
             >
-              <div className="relative h-48">
-                <img
-                  src={meditation.image}
-                  alt={meditation.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                  <motion.button
-                    className="bg-white bg-opacity-90 p-4 rounded-full shadow-lg"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <Play className="w-6 h-6 text-green-600" />
-                  </motion.button>
-                </div>
+              <div className="text-gradient-to-r from-indigo-500 to-purple-500 mb-4 group-hover:scale-110 transition-transform duration-300">
+                {practice.icon}
               </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{meditation.title}</h3>
-                <p className="text-gray-600 mb-4">{meditation.description}</p>
-                
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{meditation.duration}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <User className="w-4 h-4" />
-                    <span>{meditation.instructor}</span>
-                  </div>
-                </div>
-                
-                <motion.button
-                  className="w-full mt-4 bg-gradient-to-r from-green-500 to-orange-500 text-white py-3 rounded-xl font-semibold hover:from-green-600 hover:to-orange-600 transition-all duration-300"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Start Meditation
-                </motion.button>
-              </div>
-            </motion.div>
+              <h3 className="font-bold text-lg text-gray-800 mb-3">{practice.title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">{practice.description}</p>
+            </div>
           ))}
         </div>
+
+        {/* Meditations Section */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Featured Presence Meditations</h2>
+          
+          <div className="space-y-8">
+            {meditations.map((meditation) => (
+              <div 
+                key={meditation.id}
+                className="group bg-gradient-to-br from-slate-50 to-indigo-50 backdrop-blur-sm p-8 shadow-md hover:shadow-2xl transition-all duration-500 border border-white/30 overflow-hidden relative"
+              >
+                {/* Background Gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-r ${meditation.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                
+                <div className="relative z-10">
+                  {/* Meditation Meta */}
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-4">
+                    <div className="flex items-center gap-2">
+                      <User className="w-4 h-4" />
+                      <span>{meditation.instructor}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4" />
+                      <span>{meditation.duration}</span>
+                    </div>
+                    <span className="px-3 py-1 bg-gray-100 rounded-full text-xs font-medium">
+                      {meditation.date}
+                    </span>
+                  </div>
+
+                  {/* Meditation Content */}
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-indigo-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+                      {meditation.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed mb-4">
+                      {meditation.description}
+                    </p>
+                  </div>
+
+                  {/* Tags and Play Button */}
+                  <div className="flex flex-wrap items-center justify-between gap-4">
+                    <div className="flex flex-wrap gap-2">
+                      {meditation.tags.map((tag, tagIndex) => (
+                        <span 
+                          key={tagIndex}
+                          className="px-3 py-1 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-xs font-medium hover:from-indigo-200 hover:to-purple-200 transition-colors duration-200 cursor-pointer"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <button 
+                      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full font-medium hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                    >
+                      <Play className="w-4 h-4" />
+                      Start Meditation
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div>
+          <EmailSignup />
+        </div>
+
       </div>
     </section>
   );

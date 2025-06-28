@@ -1,4 +1,4 @@
-import { Eye, Focus, Compass, Mountain, Circle, ArrowRight, Clock, User, Play, ChevronRight } from 'lucide-react';
+import { Circle, ArrowRight, Clock, User, Play, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import EmailSignup from '../../../../layout/emailSignup';
 

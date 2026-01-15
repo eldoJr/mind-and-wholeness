@@ -1,0 +1,44 @@
+Korean nav additions:
+aboutUs: '회사 소개',
+leadershipTeam: '리더십 팀',
+practiceWithUs: '함께 연습하기',
+meditations: '명상',
+meditationsDesc: '가이드 마음챙김 연습',
+events: '이벤트',
+eventsDesc: '워크숍 및 모임',
+articles: '기사',
+articlesDesc: '기사 및 뉴스',
+helpCenter: '도움말 센터',
+loginSignup: '로그인 / 가입',
+account: '계정',
+allLanguages: '모든 언어 →'
+
+Chinese nav additions:
+aboutUs: '关于我们',
+leadershipTeam: '领导团队',
+practiceWithUs: '与我们一起练习',
+meditations: '冥想',
+meditationsDesc: '引导正念练习',
+events: '活动',
+eventsDesc: '研讨会和聚会',
+articles: '文章',
+articlesDesc: '文章和新闻',
+helpCenter: '帮助中心',
+loginSignup: '登录 / 注册',
+account: '账户',
+allLanguages: '所有语言 →'
+
+Hindi nav additions:
+aboutUs: 'हमारे बारे में',
+leadershipTeam: 'नेतृत्व टीम',
+practiceWithUs: 'हमारे साथ अभ्यास करें',
+meditations: 'ध्यान',
+meditationsDesc: 'निर्देशित माइंडफुलनेस अभ्यास',
+events: 'कार्यक्रम',
+eventsDesc: 'कार्यशालाएं और समारोह',
+articles: 'लेख',
+articlesDesc: 'लेख और समाचार',
+helpCenter: 'सहायता केंद्र',
+loginSignup: 'लॉगिन / साइन अप',
+account: 'खाता',
+allLanguages: 'सभी भाषाएं →'

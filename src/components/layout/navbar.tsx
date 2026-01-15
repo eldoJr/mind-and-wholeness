@@ -31,46 +31,46 @@ const throttle = <T extends (...args: unknown[]) => void>(
 };
 
 // Structured navigation data
-const NAVIGATION = {
+const getNavigation = (t: any) => ({
   about: [
     {
-      title: "About Us",
+      title: t.aboutUs,
       to: "/about/about",
       description: ""
     },
     {
-      title: "Leadership Team",
+      title: t.leadershipTeam,
       to: "/about/team",
       description: ""
     },
     {
-      title: "Practice With Us",
+      title: t.practiceWithUs,
       to: "/about/practice",
       description: ""
     }
   ],
   programs: [
     {
-      title: "Meditations",
-      description: "Guided mindfulness practices",
+      title: t.meditations,
+      description: t.meditationsDesc,
       to: "/programs/meditations",
     },
     {
-      title: "Events",
-      description: "Workshops and gatherings",
+      title: t.events,
+      description: t.eventsDesc,
       to: "/programs/events",
     },
     {
-      title: "Articles",
-      description: "Articles and News",
+      title: t.articles,
+      description: t.articlesDesc,
       to: "/programs/articles",
     }
   ]
-};
+});
 
 interface DropdownProps {
   isOpen: boolean;
-  items: (typeof NAVIGATION.about | { title: string; description: string; to: string; onClick?: () => void }[]);
+  items: any[];
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   className?: string;
@@ -83,7 +83,7 @@ const Dropdown = ({ isOpen, items, onMouseEnter, onMouseLeave, className = '', s
 
   return (
     <div 
-      className={`absolute top-full left-0 mt-1 bg-white/95 backdrop-blur-lg shadow-xl border border-emerald-100/40 overflow-hidden z-50 transition-all duration-300 ease-out
+      className={`absolute top-full left-0 mt-1 bg-gradient-to-br from-slate-50 to-emerald-50 backdrop-blur-md shadow-xl border border-emerald-100/40 overflow-hidden z-50 transition-all duration-300 ease-out
  ${
         isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2'
       } ${className}`}
@@ -159,6 +159,7 @@ export default function Navbar() {
   const location = useLocation();
   const { language, setLanguage } = useLanguage();
   const t = translations[language].nav;
+  const NAVIGATION = getNavigation(t);
   const [state, setState] = useState({
     aboutOpen: false,
     programsOpen: false,
@@ -448,7 +449,7 @@ export default function Navbar() {
                     { title: "Korean", description: "한국어", to: "#", onClick: () => setLanguage('ko') },
                     { title: "Mandarin", description: "普通话", to: "#", onClick: () => setLanguage('zh') },
                     { title: "Hindi", description: "हिन्दी", to: "#", onClick: () => setLanguage('hi') },
-                    { title: "All Languages →", description: "", to: "/languages" }
+                    { title: t.allLanguages || 'All Languages →', description: "", to: "/languages" }
                   ]}
                   onMouseEnter={() => handleHover('lang', true)}
                   onMouseLeave={() => handleHover('lang', false)}
@@ -475,8 +476,8 @@ export default function Navbar() {
                 <Dropdown
                   isOpen={state.userOpen}
                   items={[
-                    { title: "Help Center", description: "", to: "/help" },
-                    { title: "Login / Sign Up", description: "", to: "/signup/signup" }
+                    { title: t.helpCenter, description: "", to: "/help" },
+                    { title: t.loginSignup, description: "", to: "/signup/signup" }
                   ]}
                   onMouseEnter={() => handleHover('user', true)}
                   onMouseLeave={() => handleHover('user', false)}
@@ -605,7 +606,7 @@ export default function Navbar() {
                 >
                   <span className="flex items-center gap-2">
                     <User size={16} />
-                    Account
+                    {t.account}
                   </span>
                   <ChevronDown 
                     size={16} 
@@ -622,14 +623,14 @@ export default function Navbar() {
                       className="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-600 rounded-md hover:bg-gray-50"
                       onClick={closeAllMenus}
                     >
-                      Help Center
+                      {t.helpCenter}
                     </Link>
                     <Link
                       to="/signup/signup"
                       className="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-600 rounded-md hover:bg-gray-50"
                       onClick={closeAllMenus}
                     >
-                      Login / Sign Up
+                      {t.loginSignup}
                     </Link>
                   </div>
                 )}

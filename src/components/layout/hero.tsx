@@ -202,7 +202,7 @@ export function Hero() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-serif font-semibold leading-tight text-white mb-4 sm:mb-6"
           >
             From <span className="text-emerald-300">Brokenness</span><br />
-            To <span className="text-amber-200">Sacred Wholeness</span>
+            To <span className="text-amber-200">Wholeness</span>
           </motion.h1>
 
           {/* Description */}

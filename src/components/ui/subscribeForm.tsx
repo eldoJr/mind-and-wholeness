@@ -1,12 +1,6 @@
 import { motion } from 'framer-motion';
-import { useForm } from '../../hooks/useForm';
-import { Button, Input } from './';
-
-interface SubscribeFormData {
-  firstName?: string;
-  lastName?: string;
-  email: string;
-}
+import { MessageCircle } from 'lucide-react';
+import { Button } from './';
 
 interface SubscribeFormProps {
   variant?: 'simple' | 'detailed';
@@ -39,99 +33,61 @@ const itemVariants = {
 
 export const SubscribeForm = ({ 
   variant = 'simple',
-  title = "Join Our Email Community",
-  description = "Stay informed with reflections, practices, and holistic insights from Mind & Wholeness."
+  title = "Join Our WhatsApp Community",
+  description = "Connect with like-minded individuals, receive daily reflections, and stay updated with holistic practices from Mind & Wholeness."
 }: SubscribeFormProps) => {
-  const initialValues = variant === 'detailed' 
-    ? { firstName: '', lastName: '', email: '' }
-    : { email: '' };
 
-  const { values, errors, isSubmitting, handleChange, setIsSubmitting } = useForm<SubscribeFormData>(initialValues);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    console.log('Form submitted:', values);
-    setTimeout(() => setIsSubmitting(false), 1000);
+  const handleJoinWhatsApp = () => {
+    window.open('https://chat.whatsapp.com/your-group-link', '_blank');
   };
 
   return (
     <motion.section 
-      className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 text-center font-serif"
+      className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 text-center font-serif bg-gradient-to-b from-emerald-50/50 to-white"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
     >
-      <div className="max-w-5xl mx-auto space-y-6 md:space-y-10">
-        <motion.p 
-          className="text-sm font-semibold tracking-widest text-emerald-600 uppercase"
+      <div className="max-w-5xl mx-auto space-y-6">
+        <motion.div 
+          className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-100 text-emerald-700"
           variants={itemVariants}
         >
-          {title}
-        </motion.p>
+          <MessageCircle size={18} />
+          <span className="text-xs font-semibold tracking-wider uppercase">{title}</span>
+        </motion.div>
         
         <motion.h2 
-          className="text-2xl sm:text-3xl md:text-4xl text-gray-900 leading-relaxed"
+          className="text-2xl sm:text-3xl md:text-4xl text-gray-900 leading-relaxed font-serif"
           variants={itemVariants}
         >
           {description}
         </motion.h2>
 
-        <motion.form 
-          className={variant === 'detailed' 
-            ? "pt-12 pb-16 md:py-24 grid grid-cols-1 sm:grid-cols-3 gap-10 max-w-5xl mx-auto mb-10"
-            : "pt-12 pb-16 md:py-24 space-y-6 sm:space-y-4"
-          }
-          variants={itemVariants}
-          onSubmit={handleSubmit}
-        >
-          {variant === 'detailed' && (
-            <>
-              <motion.div variants={itemVariants}>
-                <Input
-                  placeholder="First Name"
-                  value={values.firstName || ''}
-                  onChange={(value) => handleChange('firstName', value)}
-                  error={errors.firstName}
-                />
-              </motion.div>
-              
-              <motion.div variants={itemVariants}>
-                <Input
-                  placeholder="Last Name"
-                  value={values.lastName || ''}
-                  onChange={(value) => handleChange('lastName', value)}
-                  error={errors.lastName}
-                />
-              </motion.div>
-            </>
-          )}
-          
-          <motion.div variants={itemVariants}>
-            <Input
-              type="email"
-              placeholder={variant === 'simple' ? "Enter your email" : "Email"}
-              value={values.email}
-              onChange={(value) => handleChange('email', value)}
-              error={errors.email}
-              className={variant === 'simple' ? "max-w-md mx-auto text-lg" : ""}
-            />
-          </motion.div>
-        </motion.form>
-
         <motion.div
           variants={itemVariants}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          className="pt-6"
         >
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="mt-4 tracking-wide uppercase text-sm"
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {isSubmitting ? 'Joining...' : 'Join Now'}
-          </Button>
+            <Button
+              onClick={handleJoinWhatsApp}
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm tracking-wide uppercase bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <MessageCircle size={18} />
+              Join WhatsApp Community
+            </Button>
+          </motion.div>
+          
+          <motion.p 
+            className="mt-4 text-xs text-gray-500"
+            variants={itemVariants}
+          >
+            Free to join • Daily inspiration • Supportive community
+          </motion.p>
         </motion.div>
       </div>
     </motion.section>

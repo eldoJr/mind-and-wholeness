@@ -231,46 +231,101 @@ const AboutSection = () => {
 
         {/* CEO Content */}
         <motion.div 
-          className="py-16 space-y-6"
+          className="py-20 space-y-8"
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
           <div className="mx-auto max-w-7xl">
-            <div className="relative flex flex-col md:flex-row shadow-lg">
-              {/* Text Content - Left Side with beige background */}
-              <div className="md:flex-1 p-8 md:p-12 flex flex-col justify-center bg-white backdrop-blur-md border-b transition-all duration-300">
-                <div className="space-y-5 max-w-xl">
-                  <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase">
-                    Meet Our Founder
-                  </p>
-                  <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-gray-900 leading-snug">
-                    Lilian Titus
-                  </h2>
-                  <p className="text-gray-700 text-base sm:text-lg">
-                    Lilian founded Mind and Wholeness out of a deep calling to restore balance and purpose in the lives of young people. With a background in counseling and spiritual mentorship, she leads the organization with passion and clarity. As an accomplished author, motivational speaker, and advocate for social transformation, her vision is to see communities transformed through renewed minds and restored hearts.
-                  </p>
-                  <div className="flex space-x-4">
-                    <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
-                      <Facebook size={24} />
-                    </a>
-                    <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
-                      <Instagram size={24} />
-                    </a>
-                    <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
-                      <Linkedin size={24} />
-                    </a>
-                </div>
-                </div>
-              </div>
-              {/* Image - Right Side (full height, touching edges) */}
-              <div className="w-full md:w-auto md:flex-[0_0_auto] h-[300px] md:h-auto">
+            {/* Section Header */}
+            <div className="text-center mb-12">
+              <p className="text-sm font-semibold text-emerald-600 tracking-wider uppercase mb-3">
+                Leadership
+              </p>
+              <h2 className="text-4xl sm:text-5xl font-serif text-gray-900 mb-4">
+                Meet Our Founder
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 mx-auto"></div>
+            </div>
+
+            <div className="relative flex flex-col lg:flex-row shadow-2xl overflow-hidden">
+              {/* Image - Left Side */}
+              <div className="lg:flex-1 h-[400px] lg:h-auto relative overflow-hidden group">
                 <img
                   src={ceoImg}
-                  alt="Mindful reflection"
-                  className="w-full h-full object-cover"
+                  alt="Lilian Titus - Founder of Mind & Wholeness"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              </div>
+
+              {/* Text Content - Right Side */}
+              <div className="lg:flex-1 p-10 lg:p-16 flex flex-col justify-center bg-gradient-to-br from-white to-emerald-50/30">
+                <div className="space-y-6 max-w-2xl">
+                  <div className="space-y-2">
+                    <h3 className="text-4xl font-serif font-bold text-gray-900">
+                      Lilian Titus
+                    </h3>
+                    <p className="text-lg text-emerald-700 font-medium">
+                      Founder & Spiritual Director
+                    </p>
+                  </div>
+
+                  <div className="w-16 h-1 bg-emerald-600"></div>
+
+                  <div className="space-y-4 text-gray-700 leading-relaxed">
+                    <p className="text-base">
+                      Lilian founded Mind and Wholeness out of a deep calling to restore balance and purpose in the lives of young people. With extensive experience in counseling and spiritual mentorship, she leads the organization with unwavering passion and clarity.
+                    </p>
+                    <p className="text-base">
+                      As an accomplished author, motivational speaker, and advocate for social transformation, Lilian has dedicated her life to empowering individuals to discover their true identity and purpose through Christian contemplative wisdom.
+                    </p>
+                    <p className="text-base font-medium text-gray-900">
+                      Her vision is to see communities transformed through renewed minds and restored hearts, creating ripples of positive change that extend across generations.
+                    </p>
+                  </div>
+
+                  {/* Achievements */}
+                  <div className="grid grid-cols-2 gap-4 pt-4">
+                    <div className="space-y-1">
+                      <p className="text-2xl font-bold text-emerald-600">Author</p>
+                      <p className="text-sm text-gray-600">Published Writer</p>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-2xl font-bold text-emerald-600">Speaker</p>
+                      <p className="text-sm text-gray-600">Motivational Leader</p>
+                    </div>
+                  </div>
+
+                  {/* Social Links */}
+                  <div className="flex items-center gap-4 pt-6 border-t border-gray-200">
+                    <p className="text-sm font-medium text-gray-600">Connect:</p>
+                    <div className="flex space-x-3">
+                      <a 
+                        href="#" 
+                        className="p-2 bg-emerald-100 hover:bg-emerald-600 text-emerald-700 hover:text-white transition-all duration-300 transform hover:scale-110 rounded-tl-lg"
+                        aria-label="Facebook"
+                      >
+                        <Facebook size={20} />
+                      </a>
+                      <a 
+                        href="#" 
+                        className="p-2 bg-emerald-100 hover:bg-emerald-600 text-emerald-700 hover:text-white transition-all duration-300 transform hover:scale-110"
+                        aria-label="Instagram"
+                      >
+                        <Instagram size={20} />
+                      </a>
+                      <a 
+                        href="#" 
+                        className="p-2 bg-emerald-100 hover:bg-emerald-600 text-emerald-700 hover:text-white transition-all duration-300 transform hover:scale-110"
+                        aria-label="LinkedIn"
+                      >
+                        <Linkedin size={20} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

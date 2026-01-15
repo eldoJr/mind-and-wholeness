@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from "react-router-dom";
-import { Play, Sparkles, ArrowRight } from 'lucide-react';
+import { Play, ArrowRight } from 'lucide-react';
 import herobg from '/src/assets/images/herobg.jpg';
 import { useEffect, useState, useRef } from 'react';
 
@@ -9,6 +9,12 @@ export function Hero() {
   const [imageError, setImageError] = useState(false);
   const imageRef = useRef<HTMLDivElement | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Parallax scroll effect
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
+  const scale = useTransform(scrollY, [0, 500], [1, 1.1]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0.3]);
 
   useEffect(() => {
     // Preload da imagem com otimizações
@@ -127,7 +133,11 @@ export function Hero() {
         {/* Main background image com otimizações */}
         <motion.div
           className="absolute inset-0 w-full h-full"
-          style={backgroundStyle}
+          style={{
+            ...backgroundStyle,
+            y,
+            scale
+          }}
           initial={{ 
             scale: 1.05,
             opacity: 0 
@@ -146,14 +156,17 @@ export function Hero() {
           }}
         />
         
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/30 to-black/10" />
+        {/* Gradient overlay with parallax */}
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" 
+          style={{ opacity }}
+        />
       </div>
 
       {/* Content Container */}
-      <div className="relative h-full flex items-center pt-16 sm:pt-20 lg:pt-28 mx-2 sm:mx-4 lg:mx-8 mb-4 sm:mb-8 z-10">
+      <div className="relative h-full flex items-center justify-center pt-8 sm:pt-12 lg:pt-16 mx-2 sm:mx-4 lg:mx-8 mb-4 sm:mb-8 z-10">
         <motion.div 
-          className="container mx-auto px-4 sm:px-6 lg:px-8"
+          className="container mx-auto px-4 sm:px-6 lg:px-8 text-center"
           initial="hidden"
           animate="visible"
           variants={{
@@ -167,59 +180,80 @@ export function Hero() {
             }
           }}
         >
-          {/* Premium Label */}
-          <motion.div
+          {/* Handwritten Text */}
+          <motion.p
             variants={{
-              hidden: { opacity: 0, y: 12 },
+              hidden: { opacity: 0, y: 20, filter: 'blur(10px)' },
               visible: { 
                 opacity: 1, 
                 y: 0,
+                filter: 'blur(0px)',
                 transition: { 
-                  duration: 0.5, 
+                  duration: 0.8, 
                   ease: [0.16, 1, 0.3, 1] 
                 }
               }
             }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-600/20 backdrop-blur-sm border border-emerald-400/30 rounded-full text-emerald-100 text-xs sm:text-sm font-medium mb-4 sm:mb-6"
+            className="text-xl sm:text-2xl md:text-3xl text-emerald-300 mb-3 sm:mb-4"
+            style={{ fontFamily: 'Dancing Script, cursive', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
           >
-            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
-            <span>Begin Your Transformation</span>
-          </motion.div>
+            Your Journey Begins Here
+          </motion.p>
 
           {/* Main Heading */}
           <motion.h1
             variants={{
-              hidden: { opacity: 0, y: 15 },
+              hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },
               visible: { 
                 opacity: 1, 
                 y: 0,
+                filter: 'blur(0px)',
                 transition: { 
-                  duration: 0.6, 
+                  duration: 0.8, 
                   ease: [0.16, 1, 0.3, 1] 
                 }
               }
             }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-serif font-semibold leading-tight text-white mb-4 sm:mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold leading-tight text-white drop-shadow-2xl mb-4 sm:mb-6"
+            style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3)' }}
           >
-            From <span className="text-emerald-300">Brokenness</span><br />
-            To <span className="text-amber-200">Wholeness</span>
+            From <motion.span 
+              className="text-emerald-400"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              style={{ textShadow: '0 0 30px rgba(52, 211, 153, 0.5)' }}
+            >
+              Brokenness
+            </motion.span>{' '}
+            To <motion.span 
+              className="text-amber-300"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              style={{ textShadow: '0 0 30px rgba(252, 211, 77, 0.5)' }}
+            >
+              Wholeness
+            </motion.span>
           </motion.h1>
 
           {/* Description */}
           <motion.p
             variants={{
-              hidden: { opacity: 0, y: 12 },
+              hidden: { opacity: 0, y: 20, filter: 'blur(8px)' },
               visible: { 
                 opacity: 1, 
                 y: 0,
+                filter: 'blur(0px)',
                 transition: { 
-                  duration: 0.6, 
-                  delay: 0.1, 
+                  duration: 0.8, 
+                  delay: 0.2, 
                   ease: [0.16, 1, 0.3, 1] 
                 }
               }
             }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl max-w-lg leading-relaxed text-emerald-50/90 mb-6 sm:mb-8"
+            className="text-sm sm:text-base md:text-lg lg:text-xl max-w-lg mx-auto leading-relaxed text-white font-medium mb-6 sm:mb-8"
+            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
           >
             Discover your divine blueprint through transformative programs integrating mind, body and spirit.
           </motion.p>
@@ -236,52 +270,62 @@ export function Hero() {
                 }
               }
             }}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full"
           >
-            <Link to="/begin-journey">
+            <Link to="/begin-journey" className="w-full sm:w-auto">
               <motion.button
                 variants={{
-                  hidden: { opacity: 0, x: -12 },
+                  hidden: { opacity: 0, x: -20, filter: 'blur(8px)' },
                   visible: { 
                     opacity: 1, 
                     x: 0,
+                    filter: 'blur(0px)',
                     transition: { 
-                      duration: 0.5,
+                      duration: 0.6,
                       ease: [0.16, 1, 0.3, 1] 
                     }
                   }
                 }}
                 whileHover={{ 
-                  scale: 1.02,
-                  boxShadow: '0 10px 25px -5px rgba(5, 150, 105, 0.3)'
+                  scale: 1.05,
+                  boxShadow: '0 20px 40px -10px rgba(5, 150, 105, 0.5)',
+                  transition: { duration: 0.2 }
                 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-medium rounded-lg shadow-md hover:shadow-emerald-500/30 transition-all duration-300 text-sm sm:text-base"
+                whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-medium rounded-lg shadow-md hover:shadow-emerald-500/30 transition-all duration-300 text-sm sm:text-base"
               >
                 Begin Your Journey
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.div>
               </motion.button>
             </Link>
             
             <motion.button
               variants={{
-                hidden: { opacity: 0, x: -12 },
+                hidden: { opacity: 0, x: -20, filter: 'blur(8px)' },
                 visible: { 
                   opacity: 1, 
                   x: 0,
+                  filter: 'blur(0px)',
                   transition: { 
-                    duration: 0.5,
-                    delay: 0.08,
+                    duration: 0.6,
+                    delay: 0.1,
                     ease: [0.16, 1, 0.3, 1] 
                   }
                 }
               }}
               whileHover={{ 
-                scale: 1.02,
-                backgroundColor: 'rgba(255, 255, 255, 0.15)'
+                scale: 1.05,
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                borderColor: 'rgba(255, 255, 255, 0.4)',
+                transition: { duration: 0.2 }
               }}
-              whileTap={{ scale: 0.98 }}
-              className="flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-white/5 backdrop-blur-sm border border-white/20 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 text-sm sm:text-base"
+              whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-white/5 backdrop-blur-sm border border-white/20 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 text-sm sm:text-base"
             >
               <Play className="w-4 h-4 sm:w-5 sm:h-5" />
               Watch Stories

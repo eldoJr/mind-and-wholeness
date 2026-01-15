@@ -32,7 +32,6 @@ const itemVariants = {
 };
 
 export const SubscribeForm = ({ 
-  variant = 'simple',
   title = "Join Our WhatsApp Community",
   description = "Connect with like-minded individuals, receive daily reflections, and stay updated with holistic practices from Mind & Wholeness."
 }: SubscribeFormProps) => {

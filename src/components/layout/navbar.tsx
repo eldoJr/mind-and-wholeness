@@ -2,6 +2,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronDown, Menu, X, User, ArrowRight, Search, Globe } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../utils/translations';
 import logo from '../../assets/icons/logo-icon.png';
 
 // Optimized throttle function
@@ -68,7 +70,7 @@ const NAVIGATION = {
 
 interface DropdownProps {
   isOpen: boolean;
-  items: typeof NAVIGATION.about;
+  items: (typeof NAVIGATION.about | { title: string; description: string; to: string; onClick?: () => void }[]);
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   className?: string;
@@ -90,10 +92,16 @@ const Dropdown = ({ isOpen, items, onMouseEnter, onMouseLeave, className = '', s
       role="menu"
     >
       <div className="relative p-1">
-        {items.map((item) => (
+        {items.map((item: any) => (
           <Link
             key={item.to}
             to={item.to}
+            onClick={(e) => {
+              if (item.onClick) {
+                e.preventDefault();
+                item.onClick();
+              }
+            }}
             className="group flex items-center gap-1 px-3 py-1.5 hover:bg-slate-200 text-gray-700 transition-colors duration-200"
             role="menuitem"
           >
@@ -149,6 +157,8 @@ const AboutAccordionButton: React.FC<AccordionButtonProps> = ({ open, onClick, l
 
 export default function Navbar() {
   const location = useLocation();
+  const { language, setLanguage } = useLanguage();
+  const t = translations[language].nav;
   const [state, setState] = useState({
     aboutOpen: false,
     programsOpen: false,
@@ -314,7 +324,7 @@ export default function Navbar() {
 
             {/* Desktop Navigation */}
             <ul className="hidden lg:flex items-center space-x-1">
-              <li><NavLink to="/">Home</NavLink></li>
+              <li><NavLink to="/">{t.home}</NavLink></li>
 
               {/* Programs Dropdown */}
               <li 
@@ -331,7 +341,7 @@ export default function Navbar() {
                   }`}
                   aria-expanded={state.programsOpen}
                 >
-                  Programs
+                  {t.programs}
                   <ChevronDown 
                     size={14} 
                     className={`ml-0.5 transition-transform duration-200 ${
@@ -349,8 +359,8 @@ export default function Navbar() {
                 />
               </li>
 
-              <li><NavLink to="/programs/podcasts">Podcast</NavLink></li>
-              <li><NavLink to="/bookstore/bookstore">Bookstore</NavLink></li>
+              <li><NavLink to="/programs/podcasts">{t.podcast}</NavLink></li>
+              <li><NavLink to="/bookstore/bookstore">{t.bookstore}</NavLink></li>
 
               {/* About Dropdown */}
               <li 
@@ -367,7 +377,7 @@ export default function Navbar() {
                   }`}
                   aria-expanded={state.aboutOpen}
                 >
-                  About
+                  {t.about}
                   <ChevronDown 
                     size={14} 
                     className={`ml-0.5 transition-transform duration-200 ${
@@ -385,7 +395,7 @@ export default function Navbar() {
                 />
               </li>
 
-              <li><NavLink to="/contact">Contact</NavLink></li>
+              <li><NavLink to="/contact">{t.contact}</NavLink></li>
             </ul>
 
             {/* Right Controls */}
@@ -430,13 +440,14 @@ export default function Navbar() {
                 <Dropdown
                   isOpen={state.langOpen}
                   items={[
-                    { title: "English", description: "English (US)", to: "#" },
-                    { title: "Spanish", description: "Español", to: "#" },
-                    { title: "Portuguese", description: "Português", to: "#" },
-                    { title: "French", description: "Français", to: "#" },
-                    { title: "German", description: "Deutsch", to: "#" },
-                    { title: "Korean", description: "한국어", to: "#" },
-                    { title: "Mandarin", description: "普通话", to: "#" },
+                    { title: "English", description: "English (US)", to: "#", onClick: () => setLanguage('en') },
+                    { title: "Spanish", description: "Español", to: "#", onClick: () => setLanguage('es') },
+                    { title: "Portuguese", description: "Português", to: "#", onClick: () => setLanguage('pt') },
+                    { title: "French", description: "Français", to: "#", onClick: () => setLanguage('fr') },
+                    { title: "German", description: "Deutsch", to: "#", onClick: () => setLanguage('de') },
+                    { title: "Korean", description: "한국어", to: "#", onClick: () => setLanguage('ko') },
+                    { title: "Mandarin", description: "普通话", to: "#", onClick: () => setLanguage('zh') },
+                    { title: "Hindi", description: "हिन्दी", to: "#", onClick: () => setLanguage('hi') },
                     { title: "All Languages →", description: "", to: "/languages" }
                   ]}
                   onMouseEnter={() => handleHover('lang', true)}
@@ -514,7 +525,7 @@ export default function Navbar() {
             {/* Content */}
             <div className="flex-1 px-4 py-20 space-y-2">
               <div className="border-b border-gray-100 pb-2">
-                  <NavLink to="/">Home</NavLink>
+                  <NavLink to="/">{t.home}</NavLink>
               </div>
 
               {/* Programs Accordion */}
@@ -525,7 +536,7 @@ export default function Navbar() {
                   }`}
                   onClick={() => updateState({ programsOpen: !state.programsOpen, aboutOpen: false })}
                 >
-                  <span>Programs</span>
+                  <span>{t.programs}</span>
                   <ChevronDown 
                     size={16} 
                     className={`transition-transform duration-200 ${
@@ -550,10 +561,10 @@ export default function Navbar() {
                 )}
               </div>
               <div className="border-b border-gray-100 pb-2">
-                <NavLink to="/programs/podcasts">Podcast</NavLink>
+                <NavLink to="/programs/podcasts">{t.podcast}</NavLink>
               </div>
               <div className="border-b border-gray-100 pb-2">
-                <NavLink to="/bookstore/bookstore">Bookstore</NavLink>
+                <NavLink to="/bookstore/bookstore">{t.bookstore}</NavLink>
               </div>
 
               {/* About Accordion */}
@@ -561,7 +572,7 @@ export default function Navbar() {
                 <AboutAccordionButton
                   open={state.aboutOpen}
                   onClick={() => updateState({ aboutOpen: !state.aboutOpen, programsOpen: false })}
-                  label="About"
+                  label={t.about}
                 />
                 
                 {state.aboutOpen && (
@@ -581,7 +592,7 @@ export default function Navbar() {
               </div>
 
               <div className="border-b border-gray-100 pb-2">
-                <NavLink to="/contact">Contact</NavLink>
+                <NavLink to="/contact">{t.contact}</NavLink>
               </div>
 
               {/* User Menu */}

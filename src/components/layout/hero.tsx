@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from "react-router-dom";
 import { Play, ArrowRight } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../utils/translations';
 import herobg from '/src/assets/images/herobg.jpg';
 import { useEffect, useState, useRef } from 'react';
 
@@ -9,6 +11,8 @@ export function Hero() {
   const [imageError, setImageError] = useState(false);
   const imageRef = useRef<HTMLDivElement | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const { language } = useLanguage();
+  const t = translations[language].hero;
 
   // Parallax scroll effect
   const { scrollY } = useScroll();
@@ -197,7 +201,7 @@ export function Hero() {
             className="text-xl sm:text-2xl md:text-3xl text-emerald-300 mb-3 sm:mb-4"
             style={{ fontFamily: 'Dancing Script, cursive', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
           >
-            Your Journey Begins Here
+            {t.handwritten}
           </motion.p>
 
           {/* Main Heading */}
@@ -217,23 +221,23 @@ export function Hero() {
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold leading-tight text-white drop-shadow-2xl mb-4 sm:mb-6"
             style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3)' }}
           >
-            From <motion.span 
+            {t.from} <motion.span 
               className="text-emerald-400"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
               style={{ textShadow: '0 0 30px rgba(52, 211, 153, 0.5)' }}
             >
-              Brokenness
+              {t.brokenness}
             </motion.span>{' '}
-            To <motion.span 
+            {t.to} <motion.span 
               className="text-amber-300"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
               style={{ textShadow: '0 0 30px rgba(252, 211, 77, 0.5)' }}
             >
-              Wholeness
+              {t.wholeness}
             </motion.span>
           </motion.h1>
 
@@ -255,7 +259,7 @@ export function Hero() {
             className="text-sm sm:text-base md:text-lg lg:text-xl max-w-lg mx-auto leading-relaxed text-white font-medium mb-6 sm:mb-8"
             style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
           >
-            Discover your divine blueprint through transformative programs integrating mind, body and spirit.
+            {t.description}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -294,7 +298,7 @@ export function Hero() {
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-medium rounded-lg shadow-md hover:shadow-emerald-500/30 transition-all duration-300 text-sm sm:text-base"
               >
-                Begin Your Journey
+                {t.beginJourney}
                 <motion.div
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
@@ -328,7 +332,7 @@ export function Hero() {
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-white/5 backdrop-blur-sm border border-white/20 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 text-sm sm:text-base"
             >
               <Play className="w-4 h-4 sm:w-5 sm:h-5" />
-              Watch Stories
+              {t.watchStories}
             </motion.button>
           </motion.div>
         </motion.div>

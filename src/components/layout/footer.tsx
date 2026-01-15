@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom";
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-  Youtube,
-  Linkedin,
-  Mail,
-} from "lucide-react";
-
+import { Facebook, Instagram, Twitter, Youtube, Linkedin, Mail } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../utils/translations";
 import logo from "/src/assets/icons/logo-icon.png";
 
 export default function Footer() {
+  const { language } = useLanguage();
+  const t = translations[language].footer;
   return (
     <footer className="bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 text-white relative overflow-hidden">
       {/* Background Pattern */}
@@ -36,16 +32,16 @@ export default function Footer() {
             </div>
             <div className="space-y-3 text-sm sm:text-base">
               <h3 className="font-bold text-xl sm:text-2xl text-white">
-                Mind & Wholeness
+                {t.brand}
               </h3>
               <p className="text-sm sm:text-base text-emerald-200 font-medium">
-                Spiritual Wellness Center
+                {t.tagline}
               </p>
             </div>
 
             <div className="space-y-3 text-sm sm:text-base">
               <p className="text-lg italic text-emerald-100 font-light leading-relaxed">
-                "From Brokenness To Wholeness"
+                {t.motto}
               </p>
             </div>
             
@@ -54,7 +50,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="space-y-4 text-center lg:text-left">
             <h4 className="text-lg font-bold text-white mb-2">
-              Quick Links
+              {t.quickLinks}
             </h4>
             <div className="w-12 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full mb-4 mx-auto lg:mx-0" />
             <ul className="space-y-3 text-base">
@@ -64,7 +60,7 @@ export default function Footer() {
                   className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group justify-center lg:justify-start"
                 >
                   <span className="w-1 h-1 bg-emerald-400 rounded-full mr-3 group-hover:w-2 transition-all" />
-                  About Us
+                  {t.aboutUs}
                 </Link>
               </li>
               <li>
@@ -73,7 +69,7 @@ export default function Footer() {
                   className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group justify-center lg:justify-start"
                 >
                   <span className="w-1 h-1 bg-emerald-400 rounded-full mr-3 group-hover:w-2 transition-all" />
-                  Daily Meditations
+                  {t.dailyMeditations}
                 </Link>
               </li>
               <li>
@@ -82,7 +78,7 @@ export default function Footer() {
                   className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group justify-center lg:justify-start"
                 >
                   <span className="w-1 h-1 bg-emerald-400 rounded-full mr-3 group-hover:w-2 transition-all" />
-                  Wellness Courses
+                  {t.wellnessCourses}
                 </Link>
               </li>
               <li>
@@ -91,7 +87,7 @@ export default function Footer() {
                   className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group justify-center lg:justify-start"
                 >
                   <span className="w-1 h-1 bg-emerald-400 rounded-full mr-3 group-hover:w-2 transition-all" />
-                  Events
+                  {t.events}
                 </Link>
               </li>
               <li>
@@ -100,7 +96,7 @@ export default function Footer() {
                   className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center group justify-center lg:justify-start"
                 >
                   <span className="w-1 h-1 bg-emerald-400 rounded-full mr-3 group-hover:w-2 transition-all" />
-                  Bookstore
+                  {t.bookstore}
                 </Link>
               </li>
             </ul>
@@ -109,11 +105,11 @@ export default function Footer() {
           {/* Stay Connected */}
           <div className="space-y-4 text-center lg:text-left">
             <h4 className="text-lg font-bold text-white mb-2">
-              Stay Connected
+              {t.stayConnected}
             </h4>
             <div className="w-12 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full mb-4 mx-auto lg:mx-0" />
             <p className="text-base text-gray-300 leading-relaxed mb-6">
-              Join our community for daily inspiration, spiritual insights, and transformative content.
+              {t.communityText}
             </p>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-6">
               <a 
@@ -160,7 +156,7 @@ export default function Footer() {
                 className="inline-flex items-center text-base bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-xl transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:scale-105 transform"
               >
                 <Mail size={18} className="mr-2" />
-                Join Community
+                {t.joinCommunity}
               </Link>
             </div>
           </div>
@@ -172,20 +168,20 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 text-sm sm:text-sm text-gray-300">
             <p className="font-medium text-gray-200">
-              &copy; {new Date().getFullYear()} Mind & Wholeness. All rights reserved.
+              &copy; {new Date().getFullYear()} {t.brand}. {t.copyright}
             </p>
             <div className="flex flex-wrap gap-6">
               <Link 
                 to="/privacy" 
                 className="hover:text-white transition-all duration-200 hover:translate-y-[-1px] font-medium text-gray-300"
               >
-                Privacy Policy
+                {t.privacyPolicy}
               </Link>
               <Link 
                 to="/contact" 
                 className="hover:text-white transition-all duration-200 hover:translate-y-[-1px] font-medium text-gray-300"
               >
-                Contact Us
+                {t.contactUs}
               </Link>
             </div>
           </div>

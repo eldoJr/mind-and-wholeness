@@ -1,36 +1,40 @@
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../utils/translations';
 import teachings from "/src/assets/icons/brand-icon-videos.svg";
 import guides from "/src/assets/icons/brand-icon-guides.svg";
 import podcast from "/src/assets/icons/brand-icon-podcast.svg";
 import courses from "/src/assets/icons/brand-icon-classes.svg";
 
-const highlights = [
-  {
-    title: "Teachings",
-    description: "Watch Engaging videos offering wisdom for growth anddeeper understanding.",
-    icon: teachings,
-    to:"/programs/meditations"
-  },
-  {
-    title: "Guides",
-    description: "Deepen your journey with printable guides and impactful tools.",
-    icon: guides,
-    to:"/programs/community"
-  },
-  {
-    title: "Podcast",
-    description: "Listen to conversations that nourish your soul and expand your thinking.",
-    icon: podcast,
-    to:"/programs/podcasts"
-  },
-  {
-    title: "Courses",
-    description: "Join reflective classes to cultivate wholeness at your own pace.",
-    icon: courses,
-    to:"/programs/courses"
-  },
-];
-
 export default function Highlights() {
+  const { language } = useLanguage();
+  const t = translations[language].highlights;
+
+  const highlights = [
+    {
+      title: t.teachings.title,
+      description: t.teachings.description,
+      icon: teachings,
+      to:"/programs/meditations"
+    },
+    {
+      title: t.guides.title,
+      description: t.guides.description,
+      icon: guides,
+      to:"/programs/community"
+    },
+    {
+      title: t.podcast.title,
+      description: t.podcast.description,
+      icon: podcast,
+      to:"/programs/podcasts"
+    },
+    {
+      title: t.courses.title,
+      description: t.courses.description,
+      icon: courses,
+      to:"/programs/courses"
+    },
+  ];
   return (
     <section className="bg-gradient-to-br from-slate-50 to-emerald-50 pb-16 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">

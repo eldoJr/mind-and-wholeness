@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
-
-const words = ["mind", "spirit", "body"];
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../utils/translations';
 
 export default function AnimatedHeader() {
+  const { language } = useLanguage();
+  const t = translations[language].support;
+  const words = t.words;
   const [index, setIndex] = useState(0);
   const [displayedWord, setDisplayedWord] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -44,7 +47,7 @@ export default function AnimatedHeader() {
     <section className="py-24 px-6 bg-gradient-to-br from-slate-50 to-emerald-50 text-center">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-gray-900 leading-tight">
-          Healing the{" "}
+          {t.healing}{" "}
           <span className="relative inline-block text-emerald-600 min-w-[120px] mx-2">
             <span className="relative z-10 font-extrabold">
               {displayedWord}
@@ -67,7 +70,7 @@ export default function AnimatedHeader() {
             </span>
           </span>
 
-           transforms lives and communities.
+           {t.transforms}
         </h1>
       </div>
     </section>

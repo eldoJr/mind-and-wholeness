@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../utils/translations';
 import { Button } from './';
 
 interface SubscribeFormProps {
@@ -32,9 +34,11 @@ const itemVariants = {
 };
 
 export const SubscribeForm = ({ 
-  title = "Join Our WhatsApp Community",
-  description = "Connect with like-minded individuals, receive daily reflections, and stay updated with holistic practices from Mind & Wholeness."
+  title,
+  description
 }: SubscribeFormProps) => {
+  const { language } = useLanguage();
+  const t = translations[language].whatsapp;
 
   const handleJoinWhatsApp = () => {
     window.open('https://chat.whatsapp.com/your-group-link', '_blank');
@@ -54,14 +58,14 @@ export const SubscribeForm = ({
           variants={itemVariants}
         >
           <MessageCircle size={18} />
-          <span className="text-xs font-semibold tracking-wider uppercase">{title}</span>
+          <span className="text-xs font-semibold tracking-wider uppercase">{title || t.title}</span>
         </motion.div>
         
         <motion.h2 
           className="text-2xl sm:text-3xl md:text-4xl text-gray-900 leading-relaxed font-serif"
           variants={itemVariants}
         >
-          {description}
+          {description || t.description}
         </motion.h2>
 
         <motion.div
@@ -77,7 +81,7 @@ export const SubscribeForm = ({
               className="inline-flex items-center gap-2 px-6 py-3 text-sm tracking-wide uppercase bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <MessageCircle size={18} />
-              Join WhatsApp Community
+              {t.button}
             </Button>
           </motion.div>
           
@@ -85,7 +89,7 @@ export const SubscribeForm = ({
             className="mt-4 text-xs text-gray-500"
             variants={itemVariants}
           >
-            Free to join • Daily inspiration • Supportive community
+            {t.footer}
           </motion.p>
         </motion.div>
       </div>

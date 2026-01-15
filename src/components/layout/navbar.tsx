@@ -1,6 +1,6 @@
 // src/components/layout/Navbar.tsx
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { ChevronDown, Menu, X, Sparkles, ArrowRight } from 'lucide-react';
+import { ChevronDown, Menu, X, User, ArrowRight, Search, Globe } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/icons/logo-icon.png';
 
@@ -34,14 +34,17 @@ const NAVIGATION = {
     {
       title: "About Us",
       to: "/about/about",
+      description: ""
     },
     {
       title: "Leadership Team",
       to: "/about/team",
+      description: ""
     },
     {
       title: "Practice With Us",
       to: "/about/practice",
+      description: ""
     }
   ],
   programs: [
@@ -49,11 +52,6 @@ const NAVIGATION = {
       title: "Meditations",
       description: "Guided mindfulness practices",
       to: "/programs/meditations",
-    },
-    {
-      title: "Podcasts",
-      description: "Insights and conversations",
-      to: "/programs/podcasts",
     },
     {
       title: "Events",
@@ -74,14 +72,16 @@ interface DropdownProps {
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   className?: string;
+  showArrow?: boolean;
+  isLanguage?: boolean;
 }
 
-const Dropdown = ({ isOpen, items, onMouseEnter, onMouseLeave, className = '' }: DropdownProps) => {
+const Dropdown = ({ isOpen, items, onMouseEnter, onMouseLeave, className = '', showArrow = true, isLanguage = false }: DropdownProps) => {
   if (!isOpen) return null;
 
   return (
     <div 
-      className={`absolute top-full left-0 mt-2 bg-white/95 backdrop-blur-lg shadow-xl border border-emerald-100/40 overflow-hidden z-50 transition-all duration-300 ease-out
+      className={`absolute top-full left-0 mt-1 bg-white/95 backdrop-blur-lg shadow-xl border border-emerald-100/40 overflow-hidden z-50 transition-all duration-300 ease-out
  ${
         isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2'
       } ${className}`}
@@ -89,21 +89,34 @@ const Dropdown = ({ isOpen, items, onMouseEnter, onMouseLeave, className = '' }:
       onMouseLeave={onMouseLeave}
       role="menu"
     >
-      <div className="relative p-2">
+      <div className="relative p-1">
         {items.map((item) => (
           <Link
             key={item.to}
             to={item.to}
-            className="group flex items-center gap-1 px-4 py-2 hover:bg-slate-200 text-gray-700 transition-colors duration-200"
+            className="group flex items-center gap-1 px-3 py-1.5 hover:bg-slate-200 text-gray-700 transition-colors duration-200"
             role="menuitem"
           >
             <div className="flex-1 min-w-0">
-              <div className="font-medium text-gray-900 group-hover:text-emerald-700">
-                {item.title}
-              </div>
+              {isLanguage ? (
+                <>
+                  <div className="font-semibold text-xs text-gray-900 group-hover:text-emerald-700">
+                    {item.title}
+                  </div>
+                  {item.description && (
+                    <div className="text-[10px] text-gray-500">
+                      {item.description}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="font-medium text-xs text-gray-900 group-hover:text-emerald-700">
+                  {item.title}
+                </div>
+              )}
             </div>
             
-            <ArrowRight size={14} className="text-gray-400 group-hover:text-emerald-500 transition-colors" />
+            {showArrow && <ArrowRight size={12} className="text-gray-400 group-hover:text-emerald-500 transition-colors" />}
           </Link>
         ))}
       </div>
@@ -139,6 +152,9 @@ export default function Navbar() {
   const [state, setState] = useState({
     aboutOpen: false,
     programsOpen: false,
+    userOpen: false,
+    langOpen: false,
+    searchOpen: false,
     mobileOpen: false,
     scrolled: false,
     navVisible: true,
@@ -149,7 +165,10 @@ export default function Navbar() {
   const navRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLLIElement>(null);
   const programsRef = useRef<HTMLLIElement>(null);
-  const timeoutRefs = useRef<{ about?: number; programs?: number }>({});
+  const userRef = useRef<HTMLDivElement>(null);
+  const langRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const timeoutRefs = useRef<{ about?: number; programs?: number; user?: number; lang?: number }>({});
 
   const updateState = useCallback((updates: Partial<typeof state>) => {
     setState(prev => ({ ...prev, ...updates }));
@@ -179,7 +198,7 @@ export default function Navbar() {
 
   // Close dropdowns when route changes
   useEffect(() => {
-    updateState({ aboutOpen: false, programsOpen: false, mobileOpen: false });
+    updateState({ aboutOpen: false, programsOpen: false, userOpen: false, langOpen: false, searchOpen: false, mobileOpen: false });
   }, [location.pathname, updateState]);
 
   // Mobile menu body lock
@@ -208,13 +227,15 @@ export default function Navbar() {
     };
   }, []);
 
-  const handleHover = useCallback((dropdown: 'about' | 'programs', open: boolean) => {
+  const handleHover = useCallback((dropdown: 'about' | 'programs' | 'user' | 'lang', open: boolean) => {
     clearTimeout(timeoutRefs.current[dropdown]);
     
     if (open) {
       updateState({
         aboutOpen: dropdown === 'about',
-        programsOpen: dropdown === 'programs'
+        programsOpen: dropdown === 'programs',
+        userOpen: dropdown === 'user',
+        langOpen: dropdown === 'lang'
       });
     } else {
       timeoutRefs.current[dropdown] = window.setTimeout(() => {
@@ -227,7 +248,10 @@ export default function Navbar() {
     updateState({
       mobileOpen: false,
       aboutOpen: false,
-      programsOpen: false
+      programsOpen: false,
+      userOpen: false,
+      langOpen: false,
+      searchOpen: false
     });
   }, [updateState]);
 
@@ -235,14 +259,17 @@ export default function Navbar() {
     updateState({
       mobileOpen: !state.mobileOpen,
       aboutOpen: false,
-      programsOpen: false
+      programsOpen: false,
+      userOpen: false,
+      langOpen: false,
+      searchOpen: false
     });
   }, [updateState, state.mobileOpen]);
 
   const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => (
     <Link
       to={to}
-      className={`relative px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
+      className={`relative px-3 py-2 text-xs font-medium transition-colors duration-200 ${
         location.pathname === to ? 'text-emerald-600' : 'text-gray-600 hover:text-gray-900'
       }`}
       onClick={closeAllMenus}
@@ -267,7 +294,7 @@ export default function Navbar() {
         aria-label="Main navigation"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex justify-between items-center h-18">
+          <div className="flex justify-between items-center h-14">
             {/* Logo */}
             <Link 
               to="/" 
@@ -278,9 +305,9 @@ export default function Navbar() {
               <img 
                 src={logo} 
                 alt="Logo" 
-                className="h-14 w-auto" 
+                className="h-10 w-auto" 
               />
-              <span className="ml-3 text-xl font-serif font-semibold text-gray-800">
+              <span className="ml-3 text-lg font-serif font-semibold text-gray-800">
                 Mind & Wholeness
               </span>
             </Link>
@@ -288,39 +315,6 @@ export default function Navbar() {
             {/* Desktop Navigation */}
             <ul className="hidden lg:flex items-center space-x-1">
               <li><NavLink to="/">Home</NavLink></li>
-
-              {/* About Dropdown */}
-              <li 
-                ref={aboutRef}
-                className="relative"
-                onMouseEnter={() => handleHover('about', true)}
-                onMouseLeave={() => handleHover('about', false)}
-              >
-                <button 
-                  className={`flex items-center px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
-                    state.aboutOpen || location.pathname.startsWith('/about') 
-                      ? 'text-emerald-600' 
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                  aria-expanded={state.aboutOpen}
-                >
-                  About
-                  <ChevronDown 
-                    size={16} 
-                    className={`ml-1 transition-transform duration-200 ${
-                      state.aboutOpen ? 'rotate-180' : ''
-                    }`} 
-                  />
-                </button>
-                
-                <Dropdown
-                  isOpen={state.aboutOpen}
-                  items={NAVIGATION.about}
-                  onMouseEnter={() => handleHover('about', true)}
-                  onMouseLeave={() => handleHover('about', false)}
-                  className="w-64"
-                />
-              </li>
 
               {/* Programs Dropdown */}
               <li 
@@ -330,7 +324,7 @@ export default function Navbar() {
                 onMouseLeave={() => handleHover('programs', false)}
               >
                 <button 
-                  className={`flex items-center px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
+                  className={`flex items-center px-3 py-2 text-xs font-medium transition-colors duration-200 h-full ${
                     state.programsOpen || location.pathname.startsWith('/programs') 
                       ? 'text-emerald-600' 
                       : 'text-gray-600 hover:text-gray-900'
@@ -339,8 +333,8 @@ export default function Navbar() {
                 >
                   Programs
                   <ChevronDown 
-                    size={16} 
-                    className={`ml-1 transition-transform duration-200 ${
+                    size={14} 
+                    className={`ml-0.5 transition-transform duration-200 ${
                       state.programsOpen ? 'rotate-180' : ''
                     }`} 
                   />
@@ -351,26 +345,133 @@ export default function Navbar() {
                   items={NAVIGATION.programs}
                   onMouseEnter={() => handleHover('programs', true)}
                   onMouseLeave={() => handleHover('programs', false)}
-                  className="w-72"
+                  className="w-60"
                 />
               </li>
 
+              <li><NavLink to="/programs/podcasts">Podcast</NavLink></li>
               <li><NavLink to="/bookstore/bookstore">Bookstore</NavLink></li>
+
+              {/* About Dropdown */}
+              <li 
+                ref={aboutRef}
+                className="relative"
+                onMouseEnter={() => handleHover('about', true)}
+                onMouseLeave={() => handleHover('about', false)}
+              >
+                <button 
+                  className={`flex items-center px-3 py-2 text-xs font-medium transition-colors duration-200 h-full ${
+                    state.aboutOpen || location.pathname.startsWith('/about') 
+                      ? 'text-emerald-600' 
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                  aria-expanded={state.aboutOpen}
+                >
+                  About
+                  <ChevronDown 
+                    size={14} 
+                    className={`ml-0.5 transition-transform duration-200 ${
+                      state.aboutOpen ? 'rotate-180' : ''
+                    }`} 
+                  />
+                </button>
+                
+                <Dropdown
+                  isOpen={state.aboutOpen}
+                  items={NAVIGATION.about}
+                  onMouseEnter={() => handleHover('about', true)}
+                  onMouseLeave={() => handleHover('about', false)}
+                  className="w-52"
+                />
+              </li>
+
               <li><NavLink to="/contact">Contact</NavLink></li>
             </ul>
 
             {/* Right Controls */}
             <div className="flex items-center gap-2">
-              {/* CTA Button */}
-              <div className="hidden lg:block">
-                <Link 
-                  to="/signup/signup" 
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-colors duration-200"
-                  onClick={closeAllMenus}
+              {/* Search */}
+              <div ref={searchRef} className="hidden lg:block relative">
+                {state.searchOpen ? (
+                  <div className="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2">
+                    <Search size={18} className="text-gray-400" />
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      className="w-48 bg-transparent text-sm focus:outline-none text-gray-700 placeholder-gray-500"
+                      autoFocus
+                      onBlur={() => updateState({ searchOpen: false })}
+                    />
+                  </div>
+                ) : (
+                  <button
+                    className="p-2 rounded-full text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 transition-colors duration-200"
+                    onClick={() => updateState({ searchOpen: true })}
+                  >
+                    <Search size={18} />
+                  </button>
+                )}
+              </div>
+
+              {/* Language Switcher */}
+              <div
+                ref={langRef}
+                className="hidden lg:block relative"
+                onMouseEnter={() => handleHover('lang', true)}
+                onMouseLeave={() => handleHover('lang', false)}
+              >
+                <button
+                  className="p-2 rounded-full text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 transition-colors duration-200"
+                  aria-expanded={state.langOpen}
                 >
-                  <Sparkles size={14} className="mr-2" />
-                  Sign Up
-                </Link>
+                  <Globe size={18} />
+                </button>
+
+                <Dropdown
+                  isOpen={state.langOpen}
+                  items={[
+                    { title: "English", description: "English (US)", to: "#" },
+                    { title: "Spanish", description: "Español", to: "#" },
+                    { title: "Portuguese", description: "Português", to: "#" },
+                    { title: "French", description: "Français", to: "#" },
+                    { title: "German", description: "Deutsch", to: "#" },
+                    { title: "Korean", description: "한국어", to: "#" },
+                    { title: "Mandarin", description: "普通话", to: "#" },
+                    { title: "All Languages →", description: "", to: "/languages" }
+                  ]}
+                  onMouseEnter={() => handleHover('lang', true)}
+                  onMouseLeave={() => handleHover('lang', false)}
+                  className="w-40 right-0"
+                  showArrow={false}
+                  isLanguage={true}
+                />
+              </div>
+
+              {/* User Dropdown */}
+              <div 
+                ref={userRef}
+                className="hidden lg:block relative"
+                onMouseEnter={() => handleHover('user', true)}
+                onMouseLeave={() => handleHover('user', false)}
+              >
+                <button 
+                  className="p-2 rounded-full text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 border border-gray-300 transition-colors duration-200"
+                  aria-expanded={state.userOpen}
+                >
+                  <User size={18} />
+                </button>
+                
+                <Dropdown
+                  isOpen={state.userOpen}
+                  items={[
+                    { title: "Help Center", description: "", to: "/help" },
+                    { title: "Login / Sign Up", description: "", to: "/signup/signup" }
+                  ]}
+                  onMouseEnter={() => handleHover('user', true)}
+                  onMouseLeave={() => handleHover('user', false)}
+                  className="w-40 right-0"
+                  showArrow={false}
+                />
               </div>
 
               {/* Mobile Menu Button */}
@@ -416,31 +517,6 @@ export default function Navbar() {
                   <NavLink to="/">Home</NavLink>
               </div>
 
-
-              {/* About Accordion */}
-              <div className="border-b border-gray-100 pb-2">
-                <AboutAccordionButton
-                  open={state.aboutOpen}
-                  onClick={() => updateState({ aboutOpen: !state.aboutOpen, programsOpen: false })}
-                  label="About"
-                />
-                
-                {state.aboutOpen && (
-                  <div className="pl-4 mt-1 space-y-1">
-                    {NAVIGATION.about.map(item => (
-                      <Link
-                        key={item.to}
-                        to={item.to}
-                        className="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-600 rounded-md hover:bg-gray-50"
-                        onClick={closeAllMenus}
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
               {/* Programs Accordion */}
               <div className="border-b border-gray-100 pb-2">
                 <button 
@@ -474,23 +550,79 @@ export default function Navbar() {
                 )}
               </div>
               <div className="border-b border-gray-100 pb-2">
+                <NavLink to="/programs/podcasts">Podcast</NavLink>
+              </div>
+              <div className="border-b border-gray-100 pb-2">
                 <NavLink to="/bookstore/bookstore">Bookstore</NavLink>
               </div>
+
+              {/* About Accordion */}
+              <div className="border-b border-gray-100 pb-2">
+                <AboutAccordionButton
+                  open={state.aboutOpen}
+                  onClick={() => updateState({ aboutOpen: !state.aboutOpen, programsOpen: false })}
+                  label="About"
+                />
+                
+                {state.aboutOpen && (
+                  <div className="pl-4 mt-1 space-y-1">
+                    {NAVIGATION.about.map(item => (
+                      <Link
+                        key={item.to}
+                        to={item.to}
+                        className="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-600 rounded-md hover:bg-gray-50"
+                        onClick={closeAllMenus}
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               <div className="border-b border-gray-100 pb-2">
                 <NavLink to="/contact">Contact</NavLink>
               </div>
-            </div>
 
-            {/* Footer */}
-            <div className="px-6 py-4 border-t border-gray-200">
-              <Link 
-                to="/signup/signup" 
-                className="w-full flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-emerald-600 hover:bg-emerald-700"
-                onClick={closeAllMenus}
-              >
-                <Sparkles size={14} className="mr-2" />
-                Sign Up
-              </Link>
+              {/* User Menu */}
+              <div className="border-b border-gray-100 pb-2">
+                <button 
+                  className={`flex justify-between items-center w-full px-3 py-2.5 text-left text-sm font-medium ${
+                    state.userOpen ? 'text-emerald-600' : 'text-gray-700 hover:text-gray-900'
+                  }`}
+                  onClick={() => updateState({ userOpen: !state.userOpen, aboutOpen: false, programsOpen: false })}
+                >
+                  <span className="flex items-center gap-2">
+                    <User size={16} />
+                    Account
+                  </span>
+                  <ChevronDown 
+                    size={16} 
+                    className={`transition-transform duration-200 ${
+                      state.userOpen ? 'rotate-180' : ''
+                    }`} 
+                  />
+                </button>
+                
+                {state.userOpen && (
+                  <div className="pl-4 mt-1 space-y-1">
+                    <Link
+                      to="/help"
+                      className="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-600 rounded-md hover:bg-gray-50"
+                      onClick={closeAllMenus}
+                    >
+                      Help Center
+                    </Link>
+                    <Link
+                      to="/signup/signup"
+                      className="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-600 rounded-md hover:bg-gray-50"
+                      onClick={closeAllMenus}
+                    >
+                      Login / Sign Up
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

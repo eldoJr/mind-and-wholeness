@@ -6,13 +6,13 @@ import courses from "/src/assets/icons/brand-icon-classes.svg";
 const highlights = [
   {
     title: "Teachings",
-    description: "Watch spiritual insights and transformative wisdom through engaging videos.",
+    description: "Watch Engaging videos offering wisdom for growth anddeeper understanding.",
     icon: teachings,
     to:"/programs/meditations"
   },
   {
     title: "Guides",
-    description: "Deepen your journey with printable guides and spiritual tools.",
+    description: "Deepen your journey with printable guides and impactful tools.",
     icon: guides,
     to:"/programs/community"
   },

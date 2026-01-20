@@ -280,7 +280,7 @@ export default function Navbar() {
   const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => (
     <Link
       to={to}
-      className={`relative px-3 py-2 text-xs font-medium transition-colors duration-200 ${
+      className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
         location.pathname === to ? 'text-emerald-600' : 'text-gray-600 hover:text-gray-900'
       }`}
       onClick={closeAllMenus}
@@ -335,7 +335,7 @@ export default function Navbar() {
                 onMouseLeave={() => handleHover('programs', false)}
               >
                 <button 
-                  className={`flex items-center px-3 py-2 text-xs font-medium transition-colors duration-200 h-full ${
+                  className={`flex items-center px-3 py-2 text-sm font-medium transition-colors duration-200 h-full ${
                     state.programsOpen || location.pathname.startsWith('/programs') 
                       ? 'text-emerald-600' 
                       : 'text-gray-600 hover:text-gray-900'
@@ -371,7 +371,7 @@ export default function Navbar() {
                 onMouseLeave={() => handleHover('about', false)}
               >
                 <button 
-                  className={`flex items-center px-3 py-2 text-xs font-medium transition-colors duration-200 h-full ${
+                  className={`flex items-center px-3 py-2 text-sm font-medium transition-colors duration-200 h-full ${
                     state.aboutOpen || location.pathname.startsWith('/about') 
                       ? 'text-emerald-600' 
                       : 'text-gray-600 hover:text-gray-900'

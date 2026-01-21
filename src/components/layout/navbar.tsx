@@ -467,7 +467,7 @@ export default function Navbar() {
                 onMouseLeave={() => handleHover('user', false)}
               >
                 <button 
-                  className="p-2 rounded-full text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 border border-gray-300 transition-colors duration-200"
+                  className="p-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 transition-colors duration-200"
                   aria-expanded={state.userOpen}
                 >
                   <User size={18} />

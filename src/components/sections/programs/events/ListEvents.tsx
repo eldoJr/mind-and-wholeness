@@ -64,10 +64,10 @@ const ListEvents = () => {
 
   if (loading) {
     return (
-      <section className="bg-gradient-to-br from-slate-50 to-emerald-100">
-        <div className="max-w-7xl mx-auto px-6 py-16">
+      <section className="bg-gradient-to-br from-[#b39c7c]/5 to-[#8d7434]/10 py-20">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-center py-16">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#8d7434]"></div>
           </div>
         </div>
       </section>
@@ -76,13 +76,18 @@ const ListEvents = () => {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-slate-50 to-emerald-100">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <h1 className="text-3xl sm:text-4xl font-serif text-gray-900 mb-8">
-            Last Events
-          </h1>
+      <section className="bg-gradient-to-br from-[#b39c7c]/5 to-[#8d7434]/10 py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="text-sm font-serif tracking-[0.3em] text-[#8d7434] mb-4 uppercase">
+              Past Gatherings
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif text-[#8d7434] mb-4">
+              Past Events
+            </h2>
+          </div>
         </div>
-        <div className="max-w-7xl mx-auto px-6 pb-16">
+        <div className="max-w-7xl mx-auto px-6">
           {listEvents.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {listEvents.map(renderPodcastSerie)}
@@ -91,15 +96,15 @@ const ListEvents = () => {
             <div className="text-center py-16">
               <div className="max-w-md mx-auto">
                 <div className="bg-white rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <List className="w-12 h-12 text-emerald-600" />
+                  <List className="w-12 h-12 text-[#8d7434]" />
                 </div>
                 
-                <h3 className="text-2xl font-light text-gray-900 mb-4">
-                  No latest event available
+                <h3 className="text-2xl font-serif text-gray-900 mb-4">
+                  No past events available
                 </h3>
                 
-                <p className="text-gray-600 text-sm leading-relaxed mb-8">
-                  We're working to bring you the latest amazing events.
+                <p className="text-gray-600 leading-relaxed">
+                  Check back soon for highlights from our transformative gatherings.
                 </p>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import ceoImg from "/src/assets/images/ceo.png";
+import ceoImg from "/src/assets/images/lilian.jpeg";
 import { useState } from "react";
 import { Globe, Target, Heart, ChevronDown } from "lucide-react";
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
@@ -231,100 +231,49 @@ const AboutSection = () => {
 
         {/* CEO Content */}
         <motion.div 
-          className="py-20 space-y-8"
+          className="py-20"
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
           <div className="mx-auto max-w-7xl">
-            {/* Section Header */}
-            <div className="text-center mb-12">
-              <p className="text-sm font-semibold text-emerald-600 tracking-wider uppercase mb-3">
-                Leadership
-              </p>
-              <h2 className="text-4xl sm:text-5xl font-serif text-gray-900 mb-4">
-                Meet Our Founder
-              </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 mx-auto"></div>
-            </div>
-
-            <div className="relative flex flex-col lg:flex-row shadow-2xl overflow-hidden">
+            <div className="relative flex flex-col lg:flex-row gap-12 items-center">
               {/* Image - Left Side */}
-              <div className="lg:flex-1 h-[400px] lg:h-auto relative overflow-hidden group">
-                <img
-                  src={ceoImg}
-                  alt="Lilian Titus - Founder of Mind & Wholeness"
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <div className="lg:w-5/12 w-full">
+                <div className="rounded-3xl overflow-hidden shadow-2xl">
+                  <img
+                    src={ceoImg}
+                    alt="Lilian Titus - Founder of Mind & Wholeness"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
               </div>
 
               {/* Text Content - Right Side */}
-              <div className="lg:flex-1 p-10 lg:p-16 flex flex-col justify-center bg-gradient-to-br from-white to-emerald-50/30">
-                <div className="space-y-6 max-w-2xl">
-                  <div className="space-y-2">
-                    <h3 className="text-4xl font-serif font-bold text-gray-900">
-                      Lilian Titus
-                    </h3>
-                    <p className="text-lg text-emerald-700 font-medium">
-                      Founder & Spiritual Director
-                    </p>
-                  </div>
+              <div className="lg:w-7/12 w-full space-y-6">
+                <div>
+                  <p className="text-sm font-serif tracking-[0.3em] text-gray-600 mb-4">
+                    HELLO, I'M
+                  </p>
+                  <h2 className="text-5xl sm:text-6xl lg:text-7xl font-serif text-gray-900 leading-tight mb-4">
+                    LILIAN<br />TITUS
+                  </h2>
+                  <p className="text-sm font-serif tracking-[0.2em] text-gray-700 uppercase">
+                    Author, CEO and Founder of Mind & Wholeness
+                  </p>
+                </div>
 
-                  <div className="w-16 h-1 bg-emerald-600"></div>
-
-                  <div className="space-y-4 text-gray-700 leading-relaxed">
-                    <p className="text-base">
-                      Lilian founded Mind and Wholeness out of a deep calling to restore balance and purpose in the lives of young people. With extensive experience in counseling and spiritual mentorship, she leads the organization with unwavering passion and clarity.
-                    </p>
-                    <p className="text-base">
-                      As an accomplished author, motivational speaker, and advocate for social transformation, Lilian has dedicated her life to empowering individuals to discover their true identity and purpose through Christian contemplative wisdom.
-                    </p>
-                    <p className="text-base font-medium text-gray-900">
-                      Her vision is to see communities transformed through renewed minds and restored hearts, creating ripples of positive change that extend across generations.
-                    </p>
-                  </div>
-
-                  {/* Achievements */}
-                  <div className="grid grid-cols-2 gap-4 pt-4">
-                    <div className="space-y-1">
-                      <p className="text-2xl font-bold text-emerald-600">Author</p>
-                      <p className="text-sm text-gray-600">Published Writer</p>
-                    </div>
-                    <div className="space-y-1">
-                      <p className="text-2xl font-bold text-emerald-600">Speaker</p>
-                      <p className="text-sm text-gray-600">Motivational Leader</p>
-                    </div>
-                  </div>
-
-                  {/* Social Links */}
-                  <div className="flex items-center gap-4 pt-6 border-t border-gray-200">
-                    <p className="text-sm font-medium text-gray-600">Connect:</p>
-                    <div className="flex space-x-3">
-                      <a 
-                        href="#" 
-                        className="p-2 bg-emerald-100 hover:bg-emerald-600 text-emerald-700 hover:text-white transition-all duration-300 transform hover:scale-110 rounded-tl-lg"
-                        aria-label="Facebook"
-                      >
-                        <Facebook size={20} />
-                      </a>
-                      <a 
-                        href="#" 
-                        className="p-2 bg-emerald-100 hover:bg-emerald-600 text-emerald-700 hover:text-white transition-all duration-300 transform hover:scale-110"
-                        aria-label="Instagram"
-                      >
-                        <Instagram size={20} />
-                      </a>
-                      <a 
-                        href="#" 
-                        className="p-2 bg-emerald-100 hover:bg-emerald-600 text-emerald-700 hover:text-white transition-all duration-300 transform hover:scale-110"
-                        aria-label="LinkedIn"
-                      >
-                        <Linkedin size={20} />
-                      </a>
-                    </div>
-                  </div>
+                <div className="space-y-4 text-gray-600 leading-relaxed">
+                  <p className="text-base">
+                    Lilian Titus is an entrepreneur, spiritual director, and author dedicated to guiding individuals toward wholeness.
+                  </p>
+                  <p className="text-base">
+                    Her life's work is to help individuals take care of their mind, body, and spirit. Every part of the Mind & Wholeness mission is designed to help individuals navigate all aspects of their wellness.
+                  </p>
+                  <p className="text-base">
+                    Mind & Wholeness was born while dealing with personal challenges. Never did she imagine that sharing the experience of this journey with darkness would lead to the healing of thousands. Our community is a movement of love; it represents something bigger than herself, instilling faith and wisdom in each other, so we can all be holistically well. This movement has grown over the years and we now host events, facilitate transformative programs, and an incredible community of seekers.
+                  </p>
                 </div>
               </div>
             </div>

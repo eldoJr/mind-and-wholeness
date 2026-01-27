@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from "react-router-dom";
-import { Play, ArrowRight } from 'lucide-react';
+import { Play, ArrowRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../utils/translations';
 import herobg from '/src/assets/images/herobg.jpg';
@@ -168,9 +168,9 @@ export function Hero() {
       </div>
 
       {/* Content Container */}
-      <div className="relative h-full flex items-center justify-center pt-8 sm:pt-12 lg:pt-16 mx-2 sm:mx-4 lg:mx-8 mb-4 sm:mb-8 z-10">
+      <div className="relative h-full flex items-center pt-8 sm:pt-12 lg:pt-16 mx-2 sm:mx-4 lg:mx-8 mb-4 sm:mb-8 z-10">
         <motion.div 
-          className="container mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"
           initial="hidden"
           animate="visible"
           variants={{
@@ -185,7 +185,7 @@ export function Hero() {
           }}
         >
           {/* Handwritten Text */}
-          <motion.p
+          <motion.div
             variants={{
               hidden: { opacity: 0, y: 20, filter: 'blur(10px)' },
               visible: { 
@@ -198,11 +198,13 @@ export function Hero() {
                 }
               }
             }}
-            className="text-xl sm:text-2xl md:text-3xl text-emerald-300 mb-3 sm:mb-4"
-            style={{ fontFamily: 'Dancing Script, cursive', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 backdrop-blur-md border border-emerald-400/20 rounded-full mb-4"
           >
-            {t.handwritten}
-          </motion.p>
+            <Sparkles className="w-4 h-4 text-emerald-300" />
+            <p className="text-sm sm:text-base text-white font-serif">
+              {t.handwritten}
+            </p>
+          </motion.div>
 
           {/* Main Heading */}
           <motion.h1
@@ -218,7 +220,7 @@ export function Hero() {
                 }
               }
             }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold leading-tight text-white drop-shadow-2xl mb-4 sm:mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold leading-tight text-white drop-shadow-2xl mb-4 sm:mb-6 max-w-4xl"
             style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3)' }}
           >
             {t.from} <motion.span 
@@ -256,7 +258,7 @@ export function Hero() {
                 }
               }
             }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl max-w-lg mx-auto leading-relaxed text-white font-medium mb-6 sm:mb-8"
+            className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed text-white font-medium mb-6 sm:mb-8"
             style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
           >
             {t.description}
@@ -274,7 +276,7 @@ export function Hero() {
                 }
               }
             }}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center w-full"
           >
             <Link to="/begin-journey" className="w-full sm:w-auto">
               <motion.button

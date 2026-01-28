@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { getRecentPodcasts } from '../../../../data/podcasts';
 import { PodcastCard, Container } from '../../../ui';
 import PodcastSeries from './Series';
 import PodcastFacts from './PodcastFacts';
 import { SubscribeForm } from '../../../ui';
+import podcastImg from './../../../../assets/images/pod.jpg'
 import SundayNuggets from './SundayNuggets';
 interface PodcastsProps {
   className?: string;
@@ -12,6 +13,24 @@ interface PodcastsProps {
 
 const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
   const recentEpisodes = getRecentPodcasts(3);
+  const [typedText, setTypedText] = useState('');
+  const fullText = 'New episodes every week...';
+  
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index <= fullText.length) {
+        setTypedText(fullText.slice(0, index));
+        index++;
+      } else {
+        setTimeout(() => {
+          index = 0;
+          setTypedText('');
+        }, 2000);
+      }
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
   
 
   const handlePlayPodcast = (podcastId: number) => {
@@ -39,8 +58,11 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif italic text-white mb-8 leading-tight">
               Podcasts
             </h1>
-            <p className="text-lg text-white/90 max-w-2xl leading-relaxed">
+            <p className="text-lg text-white/90 max-w-2xl leading-relaxed mb-4">
               Join us for meaningful conversations exploring wellness, faith, and personal growth with inspiring guests from around the world.
+            </p>
+            <p className="text-sm text-white/70 font-mono h-6">
+              {typedText}<span className="animate-pulse">|</span>
             </p>
           </motion.div>
           <motion.div
@@ -50,7 +72,7 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
             className="w-full md:w-2/5"
           >
             <img
-              src="https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-600/Jude-Podcast_1.1.jpg"
+              src={podcastImg}
               alt="Podcast"
               className="w-full h-auto shadow-2xl"
             />

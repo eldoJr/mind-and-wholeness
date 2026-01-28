@@ -1,7 +1,5 @@
-import { Play, Clock, Calendar } from 'lucide-react';
+import { Play } from 'lucide-react';
 import type { Podcast } from '../../data/podcasts';
-import { Tag } from './Tag';
-import { Button } from './Button';
 
 interface PodcastCardProps {
   podcast: Podcast;
@@ -9,25 +7,33 @@ interface PodcastCardProps {
 }
 
 export const PodcastCard = ({ podcast, onPlay }: PodcastCardProps) => (
-  <div className="bg-white overflow-hidden group max-w-sm mx-auto">
+  <div className="bg-white group max-w-sm mx-auto hover:shadow-lg transition-shadow duration-300">
     {podcast.image && (
-      <div className="relative mb-6">
+      <div className="relative mb-4 overflow-hidden">
         <img 
           src={podcast.image} 
           alt={podcast.title}
-          className="w-full h-64 object-cover"
+          className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
         />
+        <button 
+          onClick={() => onPlay?.(podcast.id)}
+          className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+        >
+          <div className="bg-white rounded-full p-4 transform group-hover:scale-110 transition-transform">
+            <Play className="w-6 h-6 text-[#651d31] fill-[#651d31]" />
+          </div>
+        </button>
       </div>
     )}
     
-    <div className="text-center">
-      <h3 className="text-2xl font-serif text-gray-900 mb-2">{podcast.host}</h3>
-      <p className="text-sm text-gray-600 uppercase tracking-wider mb-4">{podcast.title}</p>
+    <div className="text-center px-4 pb-6">
+      <h3 className="text-xl font-serif text-gray-900 mb-1">{podcast.host}</h3>
+      <p className="text-xs text-gray-600 uppercase tracking-wider mb-3">{podcast.title}</p>
       <button 
         onClick={() => onPlay?.(podcast.id)}
-        className="text-gray-900 underline font-medium hover:text-[#651d31] transition-colors"
+        className="text-xs text-[#651d31] font-medium uppercase tracking-wider hover:underline transition-all"
       >
-        LISTEN HERE
+        Listen Now
       </button>
     </div>
   </div>

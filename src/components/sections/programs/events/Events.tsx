@@ -24,25 +24,55 @@ const EventsPage = () => {
       className="min-h-screen bg-white"
     >
       {/* Header */}
-      <div className="bg-gradient-to-br from-[#ae9463] via-[#8d7434] to-[#b39c7c] py-32 px-6">
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="max-w-7xl mx-auto flex items-center justify-between gap-12"
+      <div className="relative bg-gradient-to-br from-[#ae9463] via-[#8d7434] to-[#b39c7c] h-[600px] px-6 overflow-hidden">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
         >
-          <div className="flex-1">
-            <p className="text-sm font-serif tracking-[0.3em] text-white/80 mb-4 uppercase">
+          <source src="https://wisdomwellness.co.za/wp-content/uploads/2024/04/unlimited-fest-1.mov" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative h-full flex items-end pb-16">
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="w-full max-w-7xl mx-auto text-center"
+          >
+            <p className="text-xs font-serif tracking-[0.3em] text-white/80 mb-3 uppercase">
               Join Us
             </p>
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif text-white mb-8 leading-tight">
-              UPCOMING<br />EVENTS
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif italic text-white mb-6 leading-tight">
+              Upcoming Events
             </h1>
-            <p className="text-lg text-white/90 max-w-2xl leading-relaxed">
+            <p className="text-base text-white/90 max-w-xl mx-auto leading-relaxed">
               Workshops, gatherings and retreats to deepen your practice
             </p>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Motivating Content Section */}
+      <div className="bg-white py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-sm font-serif tracking-[0.2em] text-[#8d7434] mb-4 uppercase">
+            Experience Growth
+          </p>
+          <h2 className="text-4xl md:text-5xl font-serif italic text-gray-900 mb-8">
+            Transform Your Journey
+          </h2>
+          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            Join a community dedicated to mindful living and personal growth. Our events are designed to inspire, 
+            connect, and empower you on your path to wholeness.
+          </p>
+          <p className="text-base text-gray-600 leading-relaxed">
+            Each gathering is an opportunity to learn from experienced facilitators, share with like-minded individuals, 
+            and discover new dimensions of your potential.
+          </p>
+        </div>
       </div>
 
       {/* Background Image Section */}
@@ -60,32 +90,62 @@ const EventsPage = () => {
         </div>
       </div>
 
-      {/* Info Section */}
-      <div className="bg-gradient-to-br from-[#b39c7c]/10 to-[#8d7434]/5 py-16 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-lg text-gray-800 leading-relaxed mb-12">
-            Since its inception, Mind & Wholeness has helped transform countless individuals through Christian contemplative wisdom. 
-            We have testimonies from different communities, but how do you know if our events are for you? 
-            If you can relate to the below, they are definitely for you.
-          </p>
-          <h3 className="text-3xl md:text-4xl font-serif text-[#8d7434] mb-8">
-            Our events are for you if...
-          </h3>
-        </div>
-      </div>
-
-      <div className="bg-white py-20">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {upcomingEvents.map((event) => (
-              <EventCard 
-                key={event.id}
-                event={event}
-                onRegister={handleRegister}
-              />
-            ))}
+      {/* Why Join Section */}
+      <div className="bg-gradient-to-br from-[#b39c7c]/10 to-[#8d7434]/5 py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-sm font-serif tracking-[0.2em] text-[#8d7434] mb-4 uppercase">
+              The Mind & Wholeness Experience
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif italic text-gray-900 mb-6">
+              Why Join Our Events?
+            </h2>
           </div>
-        </Container>
+          
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-2xl font-serif text-[#8d7434] mb-3">Deepen Your Practice</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Immerse yourself in transformative workshops and retreats that blend ancient wisdom with modern mindfulness techniques.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-serif text-[#8d7434] mb-3">Connect Authentically</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Build meaningful relationships with a supportive community of individuals committed to personal growth and holistic living.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-serif text-[#8d7434] mb-3">Expert Guidance</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Learn from experienced facilitators who bring years of wisdom in contemplative practices and wellness.
+                </p>
+              </div>
+            </div>
+            
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-2xl font-serif text-[#8d7434] mb-3">Practical Tools</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Take home actionable practices and techniques you can integrate into your daily life for lasting transformation.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-serif text-[#8d7434] mb-3">Sacred Spaces</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Experience carefully curated environments designed to nurture reflection, healing, and personal discovery.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-serif text-[#8d7434] mb-3">Holistic Approach</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Embrace a comprehensive path to wellness that honors mind, body, and spirit in harmony.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <ListEvents />
       <SubscribeForm />   

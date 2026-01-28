@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { getRecentPodcasts } from '../../../../data/podcasts';
-import { PodcastCard, Container, Breadcrumb, SubscribeForm } from '../../../ui';
+import { PodcastCard, Container } from '../../../ui';
 import PodcastSeries from './Series';
-import StartSection from './StartSection';
+import PodcastFacts from './PodcastFacts';
+import SundayNuggets from './SundayNuggets';
 interface PodcastsProps {
   className?: string;
 }
@@ -11,10 +12,6 @@ interface PodcastsProps {
 const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
   const recentEpisodes = getRecentPodcasts(3);
   
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Podcasts' }
-  ];
 
   const handlePlayPodcast = (podcastId: number) => {
     console.log('Playing podcast:', podcastId);
@@ -37,8 +34,8 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
           <p className="text-sm font-serif tracking-[0.3em] text-white/80 mb-4 uppercase">
             Listen & Learn
           </p>
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif text-white mb-8 leading-tight">
-            PODCASTS
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif italic text-white mb-8 leading-tight">
+            Podcasts
           </h1>
           <p className="text-lg text-white/90 max-w-2xl leading-relaxed">
             Conversations That Inspire Mindful Living
@@ -84,10 +81,12 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
           </div>
 
           <div className="text-center mt-12">
-            <button className="px-8 py-3 bg-[#d4c5e8] text-gray-900 font-medium uppercase tracking-wider hover:bg-[#c5b3db] transition-colors">
+            <button className="px-8 py-3 bg-[#651d31] text-white font-medium uppercase tracking-wider hover:bg-[#48020c] transition-colors">
               VIEW MORE
             </button>
           </div>
+
+          <PodcastFacts />
         </motion.div>
       </Container>
 
@@ -96,11 +95,7 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
     </div>
 
     <div>
-      <StartSection />
-    </div>
-
-    <div>
-      <SubscribeForm />
+      <SundayNuggets />
     </div>
     </motion.section>
   );

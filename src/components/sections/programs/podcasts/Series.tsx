@@ -64,10 +64,10 @@ const PodcastSeries = () => {
 
   if (loading) {
     return (
-      <section className="bg-gradient-to-br from-slate-50 to-emerald-100">
+      <section className="bg-gradient-to-br from-[#2e0003] via-[#48020c] to-[#651d31]">
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="flex items-center justify-center py-16">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
           </div>
         </div>
       </section>
@@ -76,9 +76,9 @@ const PodcastSeries = () => {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-slate-50 to-emerald-100">
+      <section className="bg-gradient-to-br from-[#2e0003] via-[#48020c] to-[#651d31]">
         <div className="max-w-7xl mx-auto px-6 py-16">
-          <h1 className="text-3xl sm:text-4xl font-serif text-gray-900 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-serif text-white mb-8">
             Podcast Series
           </h1>
         </div>
@@ -91,14 +91,14 @@ const PodcastSeries = () => {
             <div className="text-center py-16">
               <div className="max-w-md mx-auto">
                 <div className="bg-white rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Podcast className="w-12 h-12 text-emerald-600" />
+                  <Podcast className="w-12 h-12 text-[#651d31]" />
                 </div>
                 
-                <h3 className="text-2xl font-light text-gray-900 mb-4">
+                <h3 className="text-2xl font-light text-white mb-4">
                   No Podcast Series Available
                 </h3>
                 
-                <p className="text-gray-600 text-sm leading-relaxed mb-8">
+                <p className="text-white/80 text-sm leading-relaxed mb-8">
                   We're working on bringing you amazing podcast series.
                 </p>
               </div>

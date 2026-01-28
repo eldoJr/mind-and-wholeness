@@ -4,6 +4,7 @@ import { getRecentPodcasts } from '../../../../data/podcasts';
 import { PodcastCard, Container } from '../../../ui';
 import PodcastSeries from './Series';
 import PodcastFacts from './PodcastFacts';
+import { SubscribeForm } from '../../../ui';
 import SundayNuggets from './SundayNuggets';
 interface PodcastsProps {
   className?: string;
@@ -24,23 +25,37 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="bg-gradient-to-br from-[#2e0003] via-[#48020c] to-[#651d31] py-32 px-6">
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="max-w-7xl mx-auto"
-        >
-          <p className="text-sm font-serif tracking-[0.3em] text-white/80 mb-4 uppercase">
-            Listen & Learn
-          </p>
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif italic text-white mb-8 leading-tight">
-            Podcasts
-          </h1>
-          <p className="text-lg text-white/90 max-w-2xl leading-relaxed">
-            Conversations That Inspire Mindful Living
-          </p>
-        </motion.div>
+      <div className="bg-gradient-to-br from-[#2e0003] via-[#48020c] to-[#651d31] py-20 md:py-24 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="flex-1"
+          >
+            <p className="text-sm font-serif tracking-[0.3em] text-white/80 mb-4 uppercase">
+              Listen & Learn
+            </p>
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif italic text-white mb-8 leading-tight">
+              Podcasts
+            </h1>
+            <p className="text-lg text-white/90 max-w-2xl leading-relaxed">
+              Join us for meaningful conversations exploring wellness, faith, and personal growth with inspiring guests from around the world.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ x: 20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="w-full md:w-2/5"
+          >
+            <img
+              src="https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-600/Jude-Podcast_1.1.jpg"
+              alt="Podcast"
+              className="w-full h-auto shadow-2xl"
+            />
+          </motion.div>
+        </div>
       </div>
       
       <Container className="py-20">
@@ -59,8 +74,7 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
               Mind & Wholeness Podcast
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              We cover various wellness topics and speak with individuals from diverse backgrounds.
-              Sometimes we laugh and cry, but we always learn from our guests and community.
+              Join us for authentic conversations about wellness, mental health, and spiritual growth. We explore diverse perspectives, share personal stories, and create a space where we laugh, reflect, and grow together as a community.
             </p>
           </div>
           
@@ -95,7 +109,7 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
     </div>
 
     <div>
-      <SundayNuggets />
+      <SubscribeForm />
     </div>
     </motion.section>
   );

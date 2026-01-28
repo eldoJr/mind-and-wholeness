@@ -11,9 +11,9 @@ export default function MeditativeThemes() {
   const t = translations[language].meditations;
 
   const themes = [
-    { key: 'mind', image: mindImage, link: "/programs/meditations/mind" },
-    { key: 'body', image: bodyImage, link: "/programs/meditations/body" },
-    { key: 'spirit', image: presenceImage, link: "/programs/meditations/spirit" },
+    { key: 'mind', image: "https://d3kfvpfexuy5fk.cloudfront.net/_static/assets/artwork/ephesians/module-an-epic-conclusion-wide.jpg", link: "/programs/meditations/mind" },
+    { key: 'body', image: "https://d3kfvpfexuy5fk.cloudfront.net/_static/assets/artwork/ephesians/module-introduction-to-ephesians-wide.jpg", link: "/programs/meditations/body" },
+    { key: 'spirit', image: "https://d3kfvpfexuy5fk.cloudfront.net/_static/assets/artwork/rise-of-the-messiah/class-rise-of-the-messiah-wide.jpg", link: "/programs/meditations/spirit" },
   ];
 
   return (

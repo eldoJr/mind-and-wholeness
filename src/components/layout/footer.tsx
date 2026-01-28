@@ -8,7 +8,7 @@ import {
   Mail,
 } from "lucide-react";
 
-import logo from "/src/assets/images/logo.svg";
+import logo from "/src/assets/icons/logo-icon.png";
 
 export default function Footer() {
   return (
@@ -48,7 +48,7 @@ export default function Footer() {
                 <p className="font-semibold text-emerald-200">Global Community</p>
               </div>
               <p className="text-lg italic text-emerald-100 font-light leading-relaxed">
-                "Rooted in Presence. Serving in Love."
+                "From Brokenness To Wholeness"
               </p>
             </div>
             

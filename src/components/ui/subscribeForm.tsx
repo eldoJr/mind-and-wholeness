@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../utils/translations';
@@ -9,29 +8,6 @@ interface SubscribeFormProps {
   title?: string;
   description?: string;
 }
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  }
-};
 
 export const SubscribeForm = ({ 
   title,
@@ -45,54 +21,40 @@ export const SubscribeForm = ({
   };
 
   return (
-    <motion.section 
-      className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 text-center font-serif bg-gradient-to-b from-emerald-50/50 to-white"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={containerVariants}
-    >
-      <div className="max-w-5xl mx-auto space-y-6">
-        <motion.div 
-          className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-100 text-emerald-700"
-          variants={itemVariants}
-        >
-          <MessageCircle size={18} />
-          <span className="text-xs font-semibold tracking-wider uppercase">{title || t.title}</span>
-        </motion.div>
-        
-        <motion.h2 
-          className="text-2xl sm:text-3xl md:text-4xl text-gray-900 leading-relaxed font-serif"
-          variants={itemVariants}
-        >
-          {description || t.description}
-        </motion.h2>
-
-        <motion.div
-          variants={itemVariants}
-          className="pt-6"
-        >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button
-              onClick={handleJoinWhatsApp}
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm tracking-wide uppercase bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <MessageCircle size={18} />
-              {t.button}
-            </Button>
-          </motion.div>
-          
-          <motion.p 
-            className="mt-4 text-xs text-gray-500"
-            variants={itemVariants}
-          >
-            {t.footer}
-          </motion.p>
-        </motion.div>
+    <section className="py-16">
+      <div className="py-12 space-y-6">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row min-h-[500px] shadow-lg">
+            <div className="flex-1">
+              <img 
+                src="https://d3kfvpfexuy5fk.cloudfront.net/_static/assets/artwork/joseph/class-the-story-of-joseph-wide.jpg" 
+                alt="WhatsApp Community" 
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+            <div className="flex-1 bg-white px-8 md:px-16 py-12 md:py-16 flex flex-col justify-center">
+              <div className="space-y-6 max-w-lg">
+                <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase">
+                  {title || t.title}
+                </p>
+                <h2 className="text-3xl md:text-4xl font-serif text-gray-900 leading-tight">
+                  {description || t.description}
+                </h2>
+                <p className="text-gray-700 text-base leading-relaxed">
+                  {t.footer}
+                </p>
+                <Button
+                  onClick={handleJoinWhatsApp}
+                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium bg-emerald-600 hover:bg-emerald-700 text-white transition"
+                >
+                  <MessageCircle size={18} />
+                  {t.button}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };

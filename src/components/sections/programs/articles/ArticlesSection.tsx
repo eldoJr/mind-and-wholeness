@@ -1,5 +1,4 @@
-import { BookOpen, Sparkles, Clock, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { BookOpen, Sparkles, Clock } from 'lucide-react';
 import { SubscribeForm } from '../../../ui';
 import { motion } from 'framer-motion';
 

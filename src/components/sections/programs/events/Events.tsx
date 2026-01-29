@@ -1,21 +1,9 @@
 import { motion } from 'framer-motion';
-import { getUpcomingEvents } from '../../../../data/events';
-import { EventCard, Container, Breadcrumb, SubscribeForm } from '../../../ui';
+import { SubscribeForm } from '../../../ui';
 import ListEvents from './ListEvents';
-import eventsImg from '/src/assets/images/events.png';
 
 const EventsPage = () => {
-  const upcomingEvents = getUpcomingEvents();
   
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Events' }
-  ];
-
-  const handleRegister = (eventId: number) => {
-    console.log('Registering for event:', eventId);
-  };
-
   return (
     <motion.div 
       initial={{ opacity: 0 }}

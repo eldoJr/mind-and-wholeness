@@ -2,9 +2,6 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { translations } from "../../utils/translations";
-import mindImage from '/src/assets/images/mind.png';
-import bodyImage from '/src/assets/images/body.png';
-import presenceImage from '/src/assets/images/spirit.png';
 
 export default function MeditativeThemes() {
   const { language } = useLanguage();

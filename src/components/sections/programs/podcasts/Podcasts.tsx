@@ -6,7 +6,6 @@ import PodcastSeries from './Series';
 import PodcastFacts from './PodcastFacts';
 import { SubscribeForm } from '../../../ui';
 import podcastImg from './../../../../assets/images/pod.jpg'
-import SundayNuggets from './SundayNuggets';
 interface PodcastsProps {
   className?: string;
 }

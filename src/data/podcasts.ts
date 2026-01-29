@@ -53,31 +53,31 @@ export const podcasts: Podcast[] = [
     season: 1,
     episode: 12,
     tags: ["healing", "spirituality", "personal-growth", "transformation"],
-    image: "/src/assets/images/podcasts/pod1.png"
+    image: "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-600/Jude-Podcast_1.1.jpg"
   },
   {
     id: 2,
     title: "Mindfulness in Daily Practice",
     description: "Practical ways to incorporate mindfulness and presence into your everyday routines and relationships.",
-    host: "Dr. Sarah Chen",
+    host: "Viviana Claudia",
     duration: "32 min",
     publishDate: "2025-01-08",
     season: 2,
     episode: 8,
     tags: ["mindfulness", "daily-practice", "relationships", "presence"],
-    image: "/src/assets/images/podcasts/pod2.png"
+    image: "https://ik.imagekit.io/bpweb1/web/media/podcast_thumbs_updated2024/tr:q-65,w-600/podcast_chaosdragon_series.png"
   },
   {
     id: 3,
     title: "Sacred Rhythms of Life",
     description: "Understanding how to create sacred rhythms that align with your spiritual journey and life purpose.",
-    host: "Michael Rodriguez",
+    host: "Michael Mugwenhi",
     duration: "38 min",
     publishDate: "2025-01-01",
     season: 1,
     episode: 15,
     tags: ["sacred-rhythms", "spirituality", "life-purpose", "alignment"],
-    image: "/src/assets/images/podcasts/pod3.png"
+    image: "https://ik.imagekit.io/bpweb1/web/media/podcast_thumbs_updated2024/tr:q-65,w-600/podcast_paradigm_series.png"
   }
 ];
 

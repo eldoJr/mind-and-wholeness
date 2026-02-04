@@ -7,7 +7,7 @@ interface PodcastCardProps {
   onPlay?: (id: number) => void;
 }
 
-export const PodcastCard = ({ podcast, onPlay }: PodcastCardProps) => {
+export const PodcastCard = ({ podcast }: PodcastCardProps) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {

@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Podcast } from 'lucide-react';
 
 const PodcastSeries = () => {
   const [podcastSeries, setPodcastSeries] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const podcastEpisodes = [
+    "https://open.spotify.com/embed/episode/0L2xf8hS13XurGZZbINuLP?utm_source=generator&t=0",
+    "https://open.spotify.com/embed/episode/0eHVZ8iPKU91QZBxajZ4JO?utm_source=generator&t=0",
+    "https://open.spotify.com/embed/episode/02qV0q8Zq0j3JfInOX6rI0?utm_source=generator&t=0",
+    "https://open.spotify.com/embed/episode/5hE381jbRlRJ2200hS15hJ?utm_source=generator&t=0",
+    "https://open.spotify.com/embed/episode/0fpURCdelUynmrDhUsqDjF?utm_source=generator&t=0"
+  ];
 
   useEffect(() => {
     const fetchPodcastSeries = async () => {
@@ -51,11 +60,11 @@ const PodcastSeries = () => {
       <h3 className="text-2xl font-light text-gray-900 mb-4">
         {serie.title}
       </h3>
-      
+
       <p className="text-gray-600 text-sm leading-relaxed mb-6">
         {serie.description}
       </p>
-      
+
       <button className={`bg-${serie.color}-600 hover:bg-${serie.color}-700 text-white text-sm font-medium px-6 py-2 rounded transition-colors`}>
         LEARN MORE
       </button>
@@ -81,6 +90,36 @@ const PodcastSeries = () => {
           <h1 className="text-3xl sm:text-4xl font-serif text-white mb-8">
             Podcast Series
           </h1>
+
+          <div className="bg-white rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <Podcast className="w-12 h-12 text-[#651d31]" />
+          </div>
+
+          <div className="flex flex-col gap-8 mb-16">
+            {podcastEpisodes.map((src, index) => (
+              <motion.div
+                key={index}
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className="w-full"
+              >
+                <iframe
+                  data-testid={`series-embed-iframe-${index}`}
+                  style={{ borderRadius: '12px' }}
+                  src={src}
+                  width="100%"
+                  height="152"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  title={`Mind and Wholeness Podcast Series Episode ${index + 1}`}
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
         <div className="max-w-7xl mx-auto px-6 pb-16">
           {podcastSeries.length > 0 ? (
@@ -88,19 +127,9 @@ const PodcastSeries = () => {
               {podcastSeries.map(renderPodcastSerie)}
             </div>
           ) : (
-            <div className="text-center py-16">
+            <div className="text-center py-1">
               <div className="max-w-md mx-auto">
-                <div className="bg-white rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Podcast className="w-12 h-12 text-[#651d31]" />
-                </div>
-                
-                <h3 className="text-2xl font-light text-white mb-4">
-                  No Podcast Series Available
-                </h3>
-                
-                <p className="text-white/80 text-sm leading-relaxed mb-8">
-                  We're working on bringing you amazing podcast series.
-                </p>
+
               </div>
             </div>
           )}

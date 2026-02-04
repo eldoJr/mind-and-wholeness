@@ -33,113 +33,113 @@ const TeamSection = () => {
   ];
 
   return (
-    <motion.section 
+    <motion.section
       className="bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-8 lg:px-20"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24">
-          <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8 ">
-            <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 underline">Our Team</span>
+        <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8 ">
+          <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-gray-900 underline">Our Team</span>
         </nav>
-      <div className="max-w-7xl mx-auto sha">
-        {/* Header */}
-        <motion.div 
-          className="mb-16"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          <h2 className="text-4xl font-serif text-gray-900 mb-6">
-            Our Leadership Team
-          </h2>
-          
-          <p className="text-lg text-gray-700 mb-8 max-w-4xl">
-            Building on a vision of transformation, our team inspires individuals to embrace wholeness and live purposefully.
-          </p>
-          
-          <p className="text-base text-gray-700 max-w-5xl leading-relaxed">
-            At Mind and Wholeness, our leadership team embodies a journey of transformation that addresses the essence of human life by exploring the profound connection between the soul, spirit, and body. They guide us in fostering a global paradigm shift by inspiring individuals to embrace their true identity, live purposefully, and cultivate flourishing communities through renewed minds and restored hearts.
-          </p>
-        </motion.div>
+        <div className="max-w-7xl mx-auto sha">
+          {/* Header */}
+          <motion.div
+            className="mb-16"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-serif text-gray-900 mb-6">
+              Our Leadership Team
+            </h2>
 
-        {/* Subtitle */}
-        <motion.div 
-          className="mb-12"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
-          <h3 className="text-3xl font-serif text-gray-900">
-            Meet Our Team
-          </h3>
-        </motion.div>
+            <p className="text-lg text-gray-700 mb-8 max-w-4xl">
+              Building on a vision of transformation, our team inspires individuals to embrace wholeness and live purposefully.
+            </p>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {teamMembers.map((member, index) => (
-            <motion.div 
-              key={index} 
-              className="text-center"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6 + (index * 0.2), duration: 0.6 }}
-            >
-              {/* Profile Image */} 
-              <div className="mb-6">
-                <img 
-                  src={member.image} 
-                  alt={member.name}
-                  className="w-full shadow-lg aspect-square object-cover rounded-none grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              
-{/* Member Info */}
-              <div className="flex flex-col text-left">
-                <h4 className="text-lg font-bold text-gray-900 mb-1">
-                  {member.name}
-                </h4>
-                <p className="text-sm text-gray-600 italic mb-3 font-medium">
-                  {member.subtitle}
-                </p>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  {member.description}
-                </p>
-                {/* Social Links */}
-                <div className="mt-4 flex justify-start space-x-4">
-                  <a 
-                    href="https://www.facebook.com/mindandwholeness" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-emerald-600 transition-colors duration-300"
-                  >
-                    <Facebook size={20} />
-                  </a>
-                  <a 
-                    href="https://www.instagram.com/mindandwholeness" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-emerald-600 transition-colors duration-300"
-                  >
-                    <Instagram size={20} />
-                  </a>
-                  <a 
-                    href="https://www.linkedin.com/company/mindandwholeness" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-emerald-600 transition-colors duration-300"
-                  >
-                    <Linkedin size={20} />
-                  </a>
+            <p className="text-base text-gray-700 max-w-5xl leading-relaxed">
+              At Mind and Wholeness, our leadership team embodies a journey of transformation that addresses the essence of human life by exploring the profound connection between the soul, spirit, and body. They guide us in fostering a global paradigm shift by inspiring individuals to embrace their true identity, live purposefully, and cultivate flourishing communities through renewed minds and restored hearts.
+            </p>
+          </motion.div>
+
+          {/* Subtitle */}
+          <motion.div
+            className="mb-12"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
+            <h3 className="text-3xl font-serif text-gray-900">
+              Meet Our Team
+            </h3>
+          </motion.div>
+
+          {/* Team Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={index}
+                className="text-center"
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.6 + (index * 0.2), duration: 0.6 }}
+              >
+                {/* Profile Image */}
+                <div className="mb-6">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full shadow-lg aspect-square object-cover rounded-none grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+
+                {/* Member Info */}
+                <div className="flex flex-col text-left">
+                  <h4 className="text-lg font-bold text-gray-900 mb-1">
+                    {member.name}
+                  </h4>
+                  <p className="text-sm text-gray-600 italic mb-3 font-medium">
+                    {member.subtitle}
+                  </p>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    {member.description}
+                  </p>
+                  {/* Social Links */}
+                  <div className="mt-4 flex justify-start space-x-4">
+                    <a
+                      href="https://www.facebook.com/mindandwholeness"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-emerald-600 transition-colors duration-300"
+                    >
+                      <Facebook size={20} />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/mindandwholeness"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-emerald-600 transition-colors duration-300"
+                    >
+                      <Instagram size={20} />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/mindandwholeness"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-emerald-600 transition-colors duration-300"
+                    >
+                      <Linkedin size={20} />
+                    </a>
                   </div>
-              </div>
-            </motion.div>
-          ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
       </div>
       <div className="w-full h-px bg-gray-400 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 "></div>
     </motion.section>

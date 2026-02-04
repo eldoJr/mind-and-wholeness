@@ -10,6 +10,7 @@ import PracticePage from "../pages/about/practice";
 import ProgramsPage from "../components/sections/programs/podcasts/Podcasts";
 import DailyMeditations from "../components/sections/programs/meditations/Meditations";
 import PodcastsPage from "../components/sections/programs/podcasts/Podcasts";
+import HostPodcastPage from "../components/sections/programs/podcasts/HostPodcastPage";
 import EventsPage from "../components/sections/programs/events/Events";
 import ArticlesSection from "../pages/programs/articles";
 import BookStore from "../components/sections/bookstore/BookStore";
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
       {
         path: "/programs/podcasts",
         element: <PodcastsPage />,
+      },
+      {
+        path: "/programs/podcasts/:hostId",
+        element: <HostPodcastPage />,
       },
       {
         path: "/programs/events",

@@ -1,218 +1,166 @@
-import React, { useState, useEffect } from 'react';
-import { Gift, Sparkles, Shield } from 'lucide-react';
-import { Leaf, Flower2, Sun, Moon, Star, Bird, SunMedium } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Confetti from 'react-dom-confetti';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { SignupForm } from './types';
-import { INITIAL_FORM_STATE } from './constants';
-import SignupSteps from './SignupSteps';
+import { INITIAL_FORM_STATE, INTERESTS_LIST, PERSONAL_GOALS, HEALING_JOURNEY_OPTIONS, TIME_PREFERENCES } from './constants';
+
+const GoogleIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/>
+    <path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z" fill="#34A853"/>
+    <path d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707 0-.593.102-1.17.282-1.709V4.958H.957C.347 6.173 0 7.548 0 9c0 1.452.348 2.827.957 4.042l3.007-2.335z" fill="#FBBC05"/>
+    <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+  </svg>
+);
+
+const AppleIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 384 512" fill="currentColor">
+    <path d="m318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7-55.8.9-115.1 44.5-115.1 133.2q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+  </svg>
+);
 
 const Signup: React.FC = () => {
   const [form, setForm] = useState<SignupForm>(INITIAL_FORM_STATE);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [emailError, setEmailError] = useState('');
-  const [step, setStep] = useState(1);
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [avatar, setAvatar] = useState<React.ReactNode>(null);
 
-  useEffect(() => {
-    if (form.firstName) {
-      const avatars = [<Leaf />, <Flower2 />, <Sun />, <SunMedium />, <Moon />, <Star />, <Sparkles />, <Bird />];
-      setAvatar(avatars[Math.floor(Math.random() * avatars.length)]);
-    }
-  }, [form.firstName]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
-    const checked = (e.target as HTMLInputElement).checked;
-
     if (type === 'checkbox') {
-      const updated = checked
-        ? [...form.interests, value]
-        : form.interests.filter((item) => item !== value);
-      setForm({ ...form, interests: updated });
+      const checked = (e.target as HTMLInputElement).checked;
+      const currentInterests = form.interests;
+      setForm({
+        ...form,
+        interests: checked
+          ? [...currentInterests, value]
+          : currentInterests.filter(i => i !== value)
+      });
     } else {
       setForm({ ...form, [name]: value });
       if (name === 'email' || name === 'confirmEmail') setEmailError('');
     }
   };
 
-  const validateEmails = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     if (form.email !== form.confirmEmail) {
       setEmailError('Email addresses must match');
-      return false;
+      return;
     }
-    return true;
+    console.log('Signup with:', form);
   };
-
-  const handleNext = () => {
-    if (step === 1) {
-      if (!form.firstName || !form.lastName || !form.email || !form.confirmEmail) {
-        return;
-      }
-      if (!validateEmails()) return;
-    }
-    setStep(step + 1);
-  };
-
-  const handlePrev = () => {
-    setStep(step - 1);
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise((res) => setTimeout(res, 2000));
-    
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setShowConfetti(true);
-    
-    // Reset confetti after animation
-    setTimeout(() => setShowConfetti(false), 3000);
-  };
-
-  if (isSuccess) {
-    return (
-      <div className="flex items-center justify-center min-h-full bg-gradient-to-br py-40">
-        <div className="max-w-4xl w-full bg-white rounded-2xl p-8 text-center shadow-xl border border-emerald-100 relative overflow-hidden">
-          {/* Confetti */}
-          <div className="absolute inset-0 pointer-events-none">
-            <Confetti active={showConfetti} config={{ elementCount: 100, spread: 90 }} />
-          </div>
-          
-          {/* Avatar celebration */}
-          <motion.div 
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: 'spring', stiffness: 200 }}
-            className="w-24 h-24 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl"
-          >
-            {avatar}
-          </motion.div>
-          
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Welcome to your healing journey, {form.firstName}! <span className="text-emerald-600">🌟</span>
-          </h2>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-600 mb-6"
-          >
-            Thank you for joining our community of wholeness. Based on your interests, we've prepared a personalized welcome package just for you.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg p-4 mb-6 border border-emerald-200"
-          >
-            <div className="flex items-center gap-2 text-emerald-700 mb-2">
-              <Gift className="w-5 h-5" />
-              <span className="font-semibold">Your Welcome Gift</span>
-            </div>
-            <p className="text-sm text-emerald-600">
-              Check your email for a personalized meditation guide and exclusive content based on your healing journey stage.
-            </p>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-col gap-3"
-          >
-            <button
-              onClick={() => {
-                setIsSuccess(false);
-                setForm(INITIAL_FORM_STATE);
-                setStep(1);
-              }}
-              className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-medium py-3 px-6 rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-emerald-200"
-            >
-              Help Another Person Join
-            </button>
-            
-          </motion.div>
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className="min-h-full bg-gradient-to-br from-slate-50 to-emerald-50 flex items-center justify-center p-6">
-      <div className="max-w-4xl w-full">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
-        >
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm border border-emerald-200 rounded-full text-emerald-700 text-sm font-medium mb-4 shadow-sm"
-          >
-            <Sparkles className="w-4 h-4" />
-            <span>Begin Your Transformation Today</span>
-          </motion.div>
-          
-          <h1 className="text-4xl font-bold text-gray-900 mb-2 bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
-            Join Our Healing Community
-          </h1>
-          
-          <p className="text-gray-600 text-lg max-w-lg mx-auto">
-            Connect with others on their journey to wholeness and receive personalized spiritual guidance.
-          </p>
-          
-          {/* Animated Progress Indicator */}
-          <div className="flex items-center justify-center gap-2 mt-6">
-            {[1, 2, 3].map((num) => (
-              <motion.div
-                key={num}
-                whileHover={{ scale: 1.2 }}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  step >= num ? 'bg-emerald-600' : 'bg-gray-300'
-                }`}
-              />
-            ))}
+    <div className="min-h-screen flex items-center justify-center bg-white px-4 py-12">
+      <div className="w-full max-w-md">
+        <h1 className="text-4xl font-bold text-gray-900 mb-2">
+          Create Your<br />Account
+        </h1>
+        <p className="text-sm text-gray-600 mb-8">Join our healing community</p>
+
+        <div className="space-y-2 mb-6">
+          <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-900 text-sm font-medium">
+            <GoogleIcon />
+            Sign up with Google
+          </button>
+          <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-900 text-sm font-medium">
+            <AppleIcon />
+            Sign up with Apple
+          </button>
+        </div>
+
+        <div className="relative mb-6">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300"></div>
           </div>
-          <p className="text-sm text-gray-500 mt-2">Step {step} of 3</p>
-        </motion.div>
+          <div className="relative flex justify-center text-xs">
+            <span className="px-3 bg-white text-gray-500">OR</span>
+          </div>
+        </div>
 
-        <motion.div 
-          layout
-          className="bg-white rounded-2xl shadow-xl border border-emerald-100 overflow-hidden"
-        >
-          <AnimatePresence mode="wait">
-            <SignupSteps
-              step={step}
-              form={form}
-              emailError={emailError}
-              isSubmitting={isSubmitting}
-              handleChange={handleChange}
-              handleNext={handleNext}
-              handlePrev={handlePrev}
-              handleSubmit={handleSubmit}
-            />
-          </AnimatePresence>
-        </motion.div>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label htmlFor="firstName" className="block text-sm font-semibold text-gray-900 mb-1.5">First Name</label>
+              <input type="text" id="firstName" name="firstName" value={form.firstName} onChange={handleChange} placeholder="First name" className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" required />
+            </div>
+            <div>
+              <label htmlFor="lastName" className="block text-sm font-semibold text-gray-900 mb-1.5">Last Name</label>
+              <input type="text" id="lastName" name="lastName" value={form.lastName} onChange={handleChange} placeholder="Last name" className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" required />
+            </div>
+          </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="mt-8 text-center text-sm text-gray-500"
-        >
-          <p className="flex items-center justify-center gap-2">
-            <Shield className="w-4 h-4 text-emerald-600" />
-            Your information is secure with us. We respect your privacy.
-          </p>
-        </motion.div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-1.5">Email</label>
+            <input type="email" id="email" name="email" value={form.email} onChange={handleChange} placeholder="Enter your email address" className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" required />
+          </div>
+
+          <div>
+            <label htmlFor="confirmEmail" className="block text-sm font-semibold text-gray-900 mb-1.5">Confirm Email</label>
+            <input type="email" id="confirmEmail" name="confirmEmail" value={form.confirmEmail} onChange={handleChange} placeholder="Confirm your email address" className={`w-full px-3 py-3 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent ${emailError ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-gray-900'}`} required />
+            {emailError && <p className="text-xs text-red-600 mt-1">{emailError}</p>}
+          </div>
+
+          <div>
+            <label className="block text-base font-semibold text-gray-900 mb-2">Personal Goal</label>
+            <div className="border-t border-gray-300 mb-3"></div>
+            <div className="space-y-1.5">
+              {PERSONAL_GOALS.map((goal) => (
+                <label key={goal.text} className={`flex items-center gap-2 px-3 py-2.5 border rounded-lg cursor-pointer transition-colors text-sm ${form.personalGoal === goal.text ? 'border-gray-900 bg-gray-50' : 'border-gray-200 hover:border-gray-400'}`}>
+                  <input type="radio" name="personalGoal" value={goal.text} checked={form.personalGoal === goal.text} onChange={handleChange} className="w-4 h-4 text-gray-900" />
+                  <span className="flex-1">{goal.text}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="healingJourney" className="block text-base font-semibold text-gray-900 mb-2">Healing Journey Stage</label>
+            <div className="border-t border-gray-300 mb-3"></div>
+            <select id="healingJourney" name="healingJourney" value={form.healingJourney} onChange={handleChange} className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" required>
+              <option value="">Select your stage</option>
+              {HEALING_JOURNEY_OPTIONS.map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-base font-semibold text-gray-900 mb-2">Preferred Time</label>
+            <div className="border-t border-gray-300 mb-3"></div>
+            <div className="space-y-1.5">
+              {Object.keys(TIME_PREFERENCES).map((time) => (
+                <label key={time} className={`flex items-center gap-2 px-3 py-2.5 border rounded-lg cursor-pointer transition-colors text-sm ${form.preferredTime === time ? 'border-gray-900 bg-gray-50' : 'border-gray-200 hover:border-gray-400'}`}>
+                  <input type="radio" name="preferredTime" value={time} checked={form.preferredTime === time} onChange={handleChange} className="w-4 h-4 text-gray-900" />
+                  <span className="flex-1">{time}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-base font-semibold text-gray-900 mb-2">Interests</label>
+            <div className="border-t border-gray-300 mb-3"></div>
+            <div className="space-y-1.5">
+              {INTERESTS_LIST.map((interest) => (
+                <label key={interest.value} className={`flex items-start gap-2 px-3 py-2.5 border rounded-lg cursor-pointer transition-colors ${form.interests.includes(interest.value) ? 'border-gray-900 bg-gray-50' : 'border-gray-200 hover:border-gray-400'}`}>
+                  <input type="checkbox" name="interests" value={interest.value} checked={form.interests.includes(interest.value)} onChange={handleChange} className="w-4 h-4 mt-0.5 text-gray-900 rounded" />
+                  <div className="flex-1">
+                    <div className="text-sm font-medium text-gray-900">{interest.label}</div>
+                    <div className="text-xs text-gray-600">{interest.description}</div>
+                  </div>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <button type="submit" className="w-full bg-gray-900 text-white text-sm font-semibold py-3 rounded-lg hover:bg-gray-800 transition-colors">
+            Create Account
+          </button>
+        </form>
+
+        <p className="text-center mt-8 text-sm text-gray-700">
+          Already have an account?{' '}
+          <Link to="/login" className="underline font-medium hover:text-gray-900">Sign in here</Link>.
+        </p>
       </div>
     </div>
   );

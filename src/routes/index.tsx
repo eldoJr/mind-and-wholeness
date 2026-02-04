@@ -16,6 +16,7 @@ import ArticlesSection from "../pages/programs/articles";
 import BookStore from "../components/sections/bookstore/BookStore";
 import ContactSection from "../pages/Contact";
 import Signup from "../pages/signup/signup";
+import Login from "../pages/login/login";
 import HealingMeditations from "../components/sections/programs/meditations/topic/healing";
 import JoyMeditations from "../components/sections/programs/meditations/topic/joy";
 import PresenceMeditations from "../components/sections/programs/meditations/topic/presence";
@@ -101,6 +102,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup/signup",
         element: <Signup />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
       {
         path: "*",

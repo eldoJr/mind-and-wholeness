@@ -477,7 +477,7 @@ export default function Navbar() {
                   isOpen={state.userOpen}
                   items={[
                     { title: t.helpCenter, description: "", to: "/help" },
-                    { title: t.loginSignup, description: "", to: "/signup/signup" }
+                    { title: t.loginSignup, description: "", to: "/login" }
                   ]}
                   onMouseEnter={() => handleHover('user', true)}
                   onMouseLeave={() => handleHover('user', false)}
@@ -626,7 +626,7 @@ export default function Navbar() {
                       {t.helpCenter}
                     </Link>
                     <Link
-                      to="/signup/signup"
+                      to="/login"
                       className="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-600 rounded-md hover:bg-gray-50"
                       onClick={closeAllMenus}
                     >

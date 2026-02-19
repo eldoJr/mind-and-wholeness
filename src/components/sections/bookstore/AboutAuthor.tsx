@@ -1,104 +1,68 @@
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
-import authorImg from "../../../assets/images/ceo.png"
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  }
-};
+import authorImg from "../../../assets/images/lilian.jpeg";
 
 export default function AboutAuthor() {
   return (
     <motion.section 
-      className="py-16"
-      initial="hidden"
-      whileInView="visible"
+      className="py-20 bg-gradient-to-br from-slate-50 to-emerald-50"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      variants={containerVariants}
+      transition={{ duration: 0.8 }}
     >
-      <div className="mx-auto max-w-7xl">
-        <motion.div 
-          className="relative flex flex-col md:flex-row shadow-lg overflow-hidden"
-          variants={itemVariants}
-        >
-          {/* Text Content - Left Side */}
-          <div className="md:flex-1 p-8 md:p-12 flex flex-col justify-center bg-white backdrop-blur-md border-b transition-all duration-300">
-            <div className="space-y-5 max-w-xl">
-              <motion.p 
-                className="text-sm font-semibold text-emerald-600 tracking-wide uppercase"
-                variants={itemVariants}
-              >
-                About The Author
-              </motion.p>
-              
-              <motion.h2 
-                className="text-3xl sm:text-4xl font-serif font-semibold text-gray-900 leading-snug"
-                variants={itemVariants}
-              >
-                Lilian Titus
-              </motion.h2>
-              
-              <motion.p 
-                className="text-gray-700 text-base sm:text-lg"
-                variants={itemVariants}
-              >
-                Lilian Titus is an acclaimed author whose works explore the intersection of spirituality, personal growth, and social transformation. With a background in counseling and spiritual mentorship, her writing offers profound insights into the human condition. Her bestselling books have touched thousands of readers worldwide, guiding them toward inner peace and purposeful living.
-              </motion.p>
-              
-              <motion.p 
-                className="text-gray-700 text-base sm:text-lg"
-                variants={itemVariants}
-              >
-                When not writing, Lilian conducts workshops and speaks at literary festivals, sharing her wisdom on mindful living and authentic storytelling. Her latest book, "Whispers of the Soul," has been praised for its lyrical prose and transformative message.
-              </motion.p>
-              
-              <motion.div 
-                className="flex space-x-4"
-                variants={itemVariants}
-              >
-                <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
-                  <Facebook size={24} />
-                </a>
-                <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
-                  <Instagram size={24} />
-                </a>
-                <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
-                  <Linkedin size={24} />
-                </a>
-              </motion.div>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative flex flex-col lg:flex-row gap-12 items-center">
+          {/* Image - Left Side */}
+          <div className="lg:w-1/2 w-full">
+            <div className="rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src={authorImg}
+                alt="Lilian Titus - Author"
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
-          
-          {/* Image - Right Side */}
-          <motion.div 
-            className="w-full md:w-auto md:flex-[0_0_auto] h-[300px] md:h-auto"
-            variants={itemVariants}
-          >
-            <img
-              src={authorImg} 
-              alt="Author Lilian Titus"
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-        </motion.div>
+
+          {/* Text Content - Right Side */}
+          <div className="lg:w-1/2 w-full space-y-6">
+            <div>
+              <p className="text-sm font-serif tracking-[0.3em] text-gray-600 mb-4">
+                MEET THE AUTHOR
+              </p>
+              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-serif text-gray-900 leading-tight mb-4">
+                LILIAN<br />TITUS
+              </h2>
+              <p className="text-sm font-serif tracking-[0.2em] text-gray-700 uppercase">
+                Author, CEO and Founder of Mind & Wholeness
+              </p>
+            </div>
+
+            <div className="space-y-4 text-gray-600 leading-relaxed text-justify">
+              <p className="text-base">
+                Lilian Mussa Titus is a visionary leader, author, entrepreneur, and transformational teacher from the United Republic of Tanzania. She is the founder of Mind and Wholeness, a platform devoted to restoring clarity, identity, and inner alignment in individuals, families, and leaders.
+              </p>
+              <p className="text-base">
+                With a multidisciplinary background that bridges healthcare, faith-based personal development, and leadership formation, Lilian brings a rare depth to her work combining insight of the mind, wisdom of the heart, and purpose-driven living.
+              </p>
+              <p className="text-base">
+                Over the years, Lilian has led seminars, workshops, camps, and digital teachings that have reached diverse communities across Tanzania and beyond. Her work centers on mental wellness, identity restoration, leadership development, and holistic growth.
+              </p>
+            </div>
+
+            <div className="flex space-x-4 pt-4">
+              <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
+                <Facebook size={24} />
+              </a>
+              <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
+                <Instagram size={24} />
+              </a>
+              <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
+                <Linkedin size={24} />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </motion.section>
   );

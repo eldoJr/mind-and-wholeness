@@ -1,12 +1,78 @@
 import { motion } from 'framer-motion';
-import { BookOpen, Clock } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
+import { useState } from 'react';
 import AboutAuthor from './AboutAuthor';
 import { SubscribeForm } from '../../ui';
+import ShoppingCart from './ShoppingCart';
 import image from '/src/assets/images/book.png';
+import book1 from '/src/assets/images/book1.png';
+import book3 from '/src/assets/images/book3.png';
+
+interface CartItem {
+  id: number;
+  title: string;
+  author: string;
+  price: number;
+  quantity: number;
+  image: string;
+}
 
 export default function BookStore() {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  const addToCart = (book: Omit<CartItem, 'quantity'>) => {
+    setCartItems(prev => {
+      const existing = prev.find(item => item.id === book.id);
+      if (existing) {
+        return prev.map(item =>
+          item.id === book.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      }
+      return [...prev, { ...book, quantity: 1 }];
+    });
+    setIsCartOpen(true);
+  };
+
+  const updateQuantity = (id: number, quantity: number) => {
+    if (quantity === 0) {
+      setCartItems(prev => prev.filter(item => item.id !== id));
+    } else {
+      setCartItems(prev =>
+        prev.map(item => (item.id === id ? { ...item, quantity } : item))
+      );
+    }
+  };
+
+  const removeItem = (id: number) => {
+    setCartItems(prev => prev.filter(item => item.id !== id));
+  };
+
+  const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   return (
     <>
+      {/* Shopping Cart */}
+      <ShoppingCart
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        items={cartItems}
+        onUpdateQuantity={updateQuantity}
+        onRemoveItem={removeItem}
+      />
+
+      {/* Floating Cart Button */}
+      <button
+        onClick={() => setIsCartOpen(true)}
+        className="fixed bottom-8 right-8 w-16 h-16 bg-black text-white rounded-full shadow-2xl hover:bg-gray-800 transition-all z-40 flex items-center justify-center group"
+      >
+        <ShoppingBag className="w-6 h-6" />
+        {cartItemCount > 0 && (
+          <span className="absolute -top-2 -right-2 w-6 h-6 bg-amber-600 text-white text-xs font-bold flex items-center justify-center rounded-full">
+            {cartItemCount}
+          </span>
+        )}
+      </button>
+
       <motion.section 
         className="min-h-screen bg-gradient-to-br from-amber-50 via-yellow-50 to-white"
         initial={{ opacity: 0 }}
@@ -51,60 +117,69 @@ export default function BookStore() {
             className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20"
           >
             {/* Book 1 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-80 bg-gradient-to-br from-amber-100 to-yellow-100 flex items-center justify-center">
-                <img src={image} alt="The Wholeness Journey" className="w-full h-full object-cover" />
+            <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
+              <div className="h-96 flex items-center justify-center overflow-hidden bg-white">
+                <img src={book1} alt="Discovering Your Identity" className="w-full h-full object-contain hover:scale-105 transition-transform duration-300" />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-serif text-gray-900 mb-2">The Wholeness Journey</h3>
-                <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                  A comprehensive guide to inner alignment and purposeful living.
+              <div className="p-8">
+                <h3 className="text-2xl font-serif text-gray-900 mb-3">Discovering Your Identity</h3>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  Unlock and unleash. Explore and rediscover your infinite potential.
                 </p>
-                <div className="space-y-1 mb-4">
-                  <p className="text-xs text-gray-500">Lilian Mussa Titus</p>
-                  <p className="text-lg font-semibold text-amber-600">$24.99</p>
+                <div className="space-y-2 mb-6">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider">Lilian Mussa Titus</p>
+                  <p className="text-2xl font-bold text-amber-600">$24.99</p>
                 </div>
-                <button className="w-full px-4 py-2 border-2 border-amber-600 text-amber-600 rounded hover:bg-amber-50 transition-colors font-medium">
+                <button
+                  onClick={() => addToCart({ id: 1, title: 'Discovering Your Identity', author: 'Lilian Mussa Titus', price: 24.99, image: book1 })}
+                  className="w-full px-6 py-3 bg-amber-600 text-white hover:bg-amber-700 transition-colors font-medium"
+                >
                   Add to Cart
                 </button>
               </div>
             </div>
 
             {/* Book 2 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-80 bg-gradient-to-br from-yellow-100 to-amber-100 flex items-center justify-center">
-                <img src={image} alt="Mind Renewal" className="w-full h-full object-cover" />
+            <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
+              <div className="h-96 flex items-center justify-center overflow-hidden bg-white">
+                <img src={book1} alt="Power That Brings Growth" className="w-full h-full object-contain hover:scale-105 transition-transform duration-300" />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-serif text-gray-900 mb-2">Mind Renewal</h3>
-                <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                  Transforming thoughts for lasting change and renewed mindset.
+              <div className="p-8">
+                <h3 className="text-2xl font-serif text-gray-900 mb-3">Power That Brings Growth</h3>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  Unlock and unleash. Explore and rediscover your infinite potential.
                 </p>
-                <div className="space-y-1 mb-4">
-                  <p className="text-xs text-gray-500">Lilian Mussa Titus</p>
-                  <p className="text-lg font-semibold text-amber-600">$27.99</p>
+                <div className="space-y-2 mb-6">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider">Lilian Mussa Titus</p>
+                  <p className="text-2xl font-bold text-amber-600">$27.99</p>
                 </div>
-                <button className="w-full px-4 py-2 border-2 border-amber-600 text-amber-600 rounded hover:bg-amber-50 transition-colors font-medium">
+                <button
+                  onClick={() => addToCart({ id: 2, title: 'Power That Brings Growth', author: 'Lilian Mussa Titus', price: 27.99, image: book1 })}
+                  className="w-full px-6 py-3 bg-amber-600 text-white hover:bg-amber-700 transition-colors font-medium"
+                >
                   Add to Cart
                 </button>
               </div>
             </div>
 
             {/* Book 3 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-80 bg-gradient-to-br from-amber-100 to-yellow-100 flex items-center justify-center">
-                <img src={image} alt="Leadership from Within" className="w-full h-full object-cover" />
+            <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
+              <div className="h-96 flex items-center justify-center overflow-hidden bg-white">
+                <img src={book1} alt="How to Get Unstuck" className="w-full h-full object-contain hover:scale-105 transition-transform duration-300" />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-serif text-gray-900 mb-2">Leadership from Within</h3>
-                <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                  Leading with clarity, identity, and purpose from inner wholeness.
+              <div className="p-8">
+                <h3 className="text-2xl font-serif text-gray-900 mb-3">How to Get Unstuck</h3>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  Unlock and unleash. Explore and rediscover your infinite potential.
                 </p>
-                <div className="space-y-1 mb-4">
-                  <p className="text-xs text-gray-500">Lilian Mussa Titus</p>
-                  <p className="text-lg font-semibold text-amber-600">$26.99</p>
+                <div className="space-y-2 mb-6">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider">Lilian Mussa Titus</p>
+                  <p className="text-2xl font-bold text-amber-600">$26.99</p>
                 </div>
-                <button className="w-full px-4 py-2 border-2 border-amber-600 text-amber-600 rounded hover:bg-amber-50 transition-colors font-medium">
+                <button
+                  onClick={() => addToCart({ id: 3, title: 'How to Get Unstuck', author: 'Lilian Mussa Titus', price: 26.99, image: book1 })}
+                  className="w-full px-6 py-3 bg-amber-600 text-white hover:bg-amber-700 transition-colors font-medium"
+                >
                   Add to Cart
                 </button>
               </div>
@@ -118,65 +193,65 @@ export default function BookStore() {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="mb-20"
           >
-            <h2 className="text-3xl font-serif text-gray-900 text-center mb-12">Our Recommendations</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="mb-12">
+              <h2 className="text-4xl font-serif text-gray-900 mb-3">Our Recommendations</h2>
+              <p className="text-gray-600">Curated selections for your reading journey</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {/* Recommendation 1 */}
               <div className="relative group cursor-pointer">
-                <div className="absolute top-2 left-2 z-10">
-                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded">New</span>
+                <div className="absolute top-0 left-0 z-10">
+                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5">New</span>
                 </div>
-                <div className="h-64 bg-gradient-to-br from-amber-100 to-yellow-100 rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-                  <img src={image} alt="Book" className="w-full h-full object-cover" />
+                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
+                  <img src={book3} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
 
               {/* Recommendation 2 */}
               <div className="relative group cursor-pointer">
-                <div className="absolute top-2 left-2 z-10">
-                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded">New</span>
+                <div className="absolute top-0 left-0 z-10">
+                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5">New</span>
                 </div>
-                <div className="h-64 bg-gradient-to-br from-yellow-100 to-amber-100 rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-                  <img src={image} alt="Book" className="w-full h-full object-cover" />
+                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
+                  <img src={book1} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
 
               {/* Recommendation 3 */}
               <div className="relative group cursor-pointer">
-                <div className="absolute top-2 left-2 z-10">
-                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded">New</span>
+                <div className="absolute top-0 left-0 z-10">
+                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5">New</span>
                 </div>
-                <div className="h-64 bg-gradient-to-br from-amber-100 to-yellow-100 rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-                  <img src={image} alt="Book" className="w-full h-full object-cover" />
+                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
+                  <img src={book3} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
 
               {/* Recommendation 4 */}
               <div className="relative group cursor-pointer">
-                <div className="absolute top-2 left-2 z-10">
-                  <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded">-5%</span>
+                <div className="absolute top-0 left-0 z-10">
+                  <span className="bg-red-600 text-white text-xs font-bold px-3 py-1.5">-5%</span>
                 </div>
-                <div className="h-64 bg-gradient-to-br from-yellow-100 to-amber-100 rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-                  <img src={image} alt="Book" className="w-full h-full object-cover" />
+                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
+                  <img src={book1} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
 
               {/* Recommendation 5 */}
               <div className="relative group cursor-pointer">
-                <div className="absolute top-2 left-2 z-10">
-                  <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded">-10%</span>
+                <div className="absolute top-0 left-0 z-10">
+                  <span className="bg-red-600 text-white text-xs font-bold px-3 py-1.5">-10%</span>
                 </div>
-                <div className="h-64 bg-gradient-to-br from-amber-100 to-yellow-100 rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-                  <img src={image} alt="Book" className="w-full h-full object-cover" />
+                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
+                  <img src={book3} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
 
               {/* Recommendation 6 */}
               <div className="relative group cursor-pointer">
-                <div className="absolute top-2 left-2 z-10">
-                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded">New</span>
-                </div>
-                <div className="h-64 bg-gradient-to-br from-yellow-100 to-amber-100 rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-                  <img src={image} alt="Book" className="w-full h-full object-cover" />
+                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
+                  <img src={book1} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
             </div>

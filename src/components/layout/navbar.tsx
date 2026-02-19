@@ -44,17 +44,12 @@ const getNavigation = (t: any) => ({
       description: ""
     },
     {
-      title: t.practiceWithUs,
-      to: "/about/practice",
+      title: t.contact,
+      to: "/contact",
       description: ""
     }
   ],
   programs: [
-    {
-      title: t.meditations,
-      description: t.meditationsDesc,
-      to: "/programs/meditations",
-    },
     {
       title: t.events,
       description: t.eventsDesc,
@@ -362,6 +357,7 @@ export default function Navbar() {
 
               <li><NavLink to="/programs/podcasts">{t.podcast}</NavLink></li>
               <li><NavLink to="/bookstore/bookstore">{t.bookstore}</NavLink></li>
+              <li><NavLink to="/institute">{t.institute || 'Institute'}</NavLink></li>
 
               {/* About Dropdown */}
               <li 
@@ -395,8 +391,6 @@ export default function Navbar() {
                   className="w-52"
                 />
               </li>
-
-              <li><NavLink to="/contact">{t.contact}</NavLink></li>
             </ul>
 
             {/* Right Controls */}
@@ -567,6 +561,9 @@ export default function Navbar() {
               <div className="border-b border-gray-100 pb-2">
                 <NavLink to="/bookstore/bookstore">{t.bookstore}</NavLink>
               </div>
+              <div className="border-b border-gray-100 pb-2">
+                <NavLink to="/institute">{t.institute || 'Institute'}</NavLink>
+              </div>
 
               {/* About Accordion */}
               <div className="border-b border-gray-100 pb-2">
@@ -590,10 +587,6 @@ export default function Navbar() {
                     ))}
                   </div>
                 )}
-              </div>
-
-              <div className="border-b border-gray-100 pb-2">
-                <NavLink to="/contact">{t.contact}</NavLink>
               </div>
 
               {/* User Menu */}

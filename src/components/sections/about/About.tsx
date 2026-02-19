@@ -48,34 +48,59 @@ const AboutSection = () => {
       case "values":
         return (
           <div className="mt-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-serif text-gray-900 mb-6 text-center">Our Core Values</h2>
-              <p className="text-base text-gray-700 mb-8 text-center leading-relaxed max-w-3xl mx-auto">
-                We believe in the power of transformation through awareness, identity restoration, and practical wisdom. Our values guide us in empowering communities to heal from within and thrive together.
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-serif text-gray-900 mb-6 text-center">Our Values</h2>
+              <p className="text-base text-gray-700 mb-8 text-center leading-relaxed max-w-4xl mx-auto">
+                At Mind and Wholeness, our values guide how we think, serve, and build. They shape our culture, our work, and our impact.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <Heart className="w-8 h-8 text-emerald-600 mx-auto mb-4" />
-                  <h4 className="text-lg font-serif text-gray-900 mb-3">Awareness</h4>
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    Recognizing problems as the first step toward resolution and bringing consciousness to unconscious patterns.
-                  </p>
-                </div>
-                
-                <div className="text-center">
-                  <Target className="w-8 h-8 text-emerald-600 mx-auto mb-4" />
-                  <h4 className="text-lg font-serif text-gray-900 mb-3">Transformation</h4>
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    Inspiring paradigm shifts for lasting change through practical wisdom and renewed mindsets.
-                  </p>
-                </div>
-                
-                <div className="text-center">
-                  <Globe className="w-8 h-8 text-emerald-600 mx-auto mb-4" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-emerald-50 p-6 rounded-lg">
                   <h4 className="text-lg font-serif text-gray-900 mb-3">Wholeness</h4>
                   <p className="text-sm text-gray-700 leading-relaxed">
-                    Integrating mind, body, and spirit to achieve complete wellness and purposeful living.
+                    We pursue integrated living—mind, identity, relationships, and purpose aligned for sustainable growth.
+                  </p>
+                </div>
+                
+                <div className="bg-emerald-50 p-6 rounded-lg">
+                  <h4 className="text-lg font-serif text-gray-900 mb-3">Truth & Clarity</h4>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    We are committed to truth that brings understanding, freedom, and wise action.
+                  </p>
+                </div>
+                
+                <div className="bg-emerald-50 p-6 rounded-lg">
+                  <h4 className="text-lg font-serif text-gray-900 mb-3">Identity Before Performance</h4>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    We prioritize inner alignment over outward achievement, believing that lasting growth flows from restored identity.
+                  </p>
+                </div>
+                
+                <div className="bg-emerald-50 p-6 rounded-lg">
+                  <h4 className="text-lg font-serif text-gray-900 mb-3">Integrity</h4>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    We lead with consistency, honesty, and accountability in all we do.
+                  </p>
+                </div>
+                
+                <div className="bg-emerald-50 p-6 rounded-lg">
+                  <h4 className="text-lg font-serif text-gray-900 mb-3">Growth with Structure</h4>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    We value disciplined, intentional development supported by learning, guidance, and healthy rhythms.
+                  </p>
+                </div>
+                
+                <div className="bg-emerald-50 p-6 rounded-lg">
+                  <h4 className="text-lg font-serif text-gray-900 mb-3">Compassion & Responsibility</h4>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    We serve with empathy while encouraging personal ownership and maturity.
+                  </p>
+                </div>
+                
+                <div className="bg-emerald-50 p-6 rounded-lg md:col-span-2">
+                  <h4 className="text-lg font-serif text-gray-900 mb-3">Service-Oriented Leadership</h4>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    We believe leadership exists to restore, empower, and guide others.
                   </p>
                 </div>
               </div>
@@ -86,23 +111,65 @@ const AboutSection = () => {
         return (
           <div className="mt-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-4xl font-serif text-gray-900 mb-6 text-center">What We Believe</h2>
-              <p className="text-base text-gray-700 mb-8 text-center leading-relaxed max-w-5xl mx-auto">
-                We believe that every person has the capacity for renewal and wholeness. By uncovering root causes and reshaping mindsets, individuals can live in balance and purpose.
+              <h2 className="text-3xl font-serif text-gray-900 mb-6 text-center">What We Believe</h2>
+              <p className="text-base text-gray-700 mb-8 text-center leading-relaxed max-w-4xl mx-auto">
+                Our beliefs form the foundation of our mission and our approach to transformation.
               </p>
               
-              <div className="space-y-6">
-                <div className="bg-emerald-50 p-6 rounded-lg">
-                  <h4 className="text-lg font-serif text-gray-900 mb-3">Core Belief: Human Reflection</h4>
-                  <p className="text-sm text-gray-700 leading-relaxed italic">
-                    "A human being is a reflection of the thoughts they allow to shape their mind. These thoughts influence decisions, judgements, and ultimately determine whether one lives in wholeness or brokenness."
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+                <div className="flex items-start gap-3">
+                  <span className="text-emerald-600 text-xl mt-1">•</span>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    True transformation begins within.
                   </p>
                 </div>
                 
-                <div className="bg-emerald-50 p-6 rounded-lg">
-                  <h4 className="text-lg font-serif text-gray-900 mb-3">Our Conviction</h4>
-                  <p className="text-sm text-gray-700 leading-relaxed italic">
-                    "Every outcome has a root cause. By understanding how individuals have become who they are today, we can bring awareness and offer transformative solutions."
+                <div className="flex items-start gap-3">
+                  <span className="text-emerald-600 text-xl mt-1">•</span>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Wholeness is essential to healthy individuals, families, and communities.
+                  </p>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <span className="text-emerald-600 text-xl mt-1">•</span>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Renewed thinking leads to renewed living.
+                  </p>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <span className="text-emerald-600 text-xl mt-1">•</span>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Identity shapes behavior, leadership, and legacy.
+                  </p>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <span className="text-emerald-600 text-xl mt-1">•</span>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Faith, lived in truth, brings clarity and freedom.
+                  </p>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <span className="text-emerald-600 text-xl mt-1">•</span>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Leadership is an inner posture before it is a public role.
+                  </p>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <span className="text-emerald-600 text-xl mt-1">•</span>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Sustainable impact comes from aligned minds and healed hearts.
+                  </p>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <span className="text-emerald-600 text-xl mt-1">•</span>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Growth is a journey strengthened by structure and community.
                   </p>
                 </div>
               </div>
@@ -151,22 +218,33 @@ const AboutSection = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
           >
             <div className={`space-y-4 overflow-hidden transition-all duration-500 ${expanded ? 'max-h-[1000px]' : 'max-h-[200px]'}`}>
-              <p className="text-base leading-relaxed text-gray-700">
-                At <strong>Mind and Wholeness</strong>, we believe that transformation begins with learning to see and love the world as it is. Through everyday Christian contemplative wisdom and practices, we support those seeking healing—within themselves and in the world around them.
+              <p className="text-base leading-relaxed text-gray-700 text-justify">
+                Mind and Wholeness was born from a simple but powerful conviction: that true growth—personal, relational, and leadership growth—begins within.
               </p>
               
               <div className={expanded ? 'block space-y-4' : 'hidden'}>
-                <p className="text-base leading-relaxed text-gray-700">
-                  Founded by Lilian Titus, our work is rooted in a long tradition of Christian contemplation but presented in ways that meet people where they are today. Whether through teachings, practices, or community engagement, our goal is to help people live out this wisdom in practical ways—so that they become instruments of love, peacemaking, and positive change in the world.
+                <p className="text-base leading-relaxed text-gray-700 text-justify">
+                  With a background in cardiovascular technology and a deep passion for faith, identity, and human development, I have spent years observing the connection between the mind, the heart, and the way people live, lead, and relate. What became clear over time is that many of the challenges we face externally are rooted internally—in how we think, how we process life, and how whole we are within ourselves.
                 </p>
                 
-                <p className="text-base leading-relaxed text-gray-700">
-                  Our communities bear witness to the consequences of a fragmented mindset—pain, struggles, and discontent that ripple through generations, particularly affecting the youth and emerging leaders of tomorrow. As an organization, we recognize that every outcome has a root cause.
+                <p className="text-base leading-relaxed text-gray-700 text-justify">
+                  Mind and Wholeness exists to bridge that gap. This platform was created to support individuals and families in cultivating clarity, emotional health, faith-grounded identity, and sustainable leadership from the inside out. We believe wholeness is not a luxury—it is a foundation. When the mind is aligned and the inner life is healthy, decisions become clearer, relationships become stronger, and leadership becomes more authentic.
                 </p>
                 
-                <p className="text-base leading-relaxed text-gray-700">
-                  We believe that recognizing a problem is the first significant step toward its resolution. This conviction drives our mission: to inspire a paradigm shift that empowers individuals to embrace practical wisdom, renew their mindsets, and rediscover their identity and purpose.
+                <p className="text-base leading-relaxed text-gray-700 text-justify">
+                  Our work is guided by purpose, integrity, and service. Whether through teaching, guidance, products, or community, our focus remains the same: to help people live with intention, lead with wisdom, and grow in a way that is whole, not fragmented.
                 </p>
+                
+                <div className="mt-8 pt-6 border-t border-gray-300">
+                  <p className="text-base italic text-gray-700 mb-4">
+                    This is more than a brand.<br />
+                    It is a journey toward a life led from within.
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    — Lilian Mussa Titus<br />
+                    <span className="text-xs">Founder, Mind and Wholeness</span>
+                  </p>
+                </div>
               </div>
             </div>
             
@@ -230,7 +308,7 @@ const AboutSection = () => {
 
         {/* CEO Content */}
         <motion.div 
-          className="py-20"
+          className="py-20 border-b border-gray-200"
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -239,7 +317,7 @@ const AboutSection = () => {
           <div className="mx-auto max-w-7xl">
             <div className="relative flex flex-col lg:flex-row gap-12 items-center">
               {/* Image - Left Side */}
-              <div className="lg:w-5/12 w-full">
+              <div className="lg:w-1/2 w-full">
                 <div className="rounded-3xl overflow-hidden shadow-2xl">
                   <img
                     src={ceoImg}
@@ -250,7 +328,7 @@ const AboutSection = () => {
               </div>
 
               {/* Text Content - Right Side */}
-              <div className="lg:w-7/12 w-full space-y-6">
+              <div className="lg:w-1/2 w-full space-y-6">
                 <div>
                   <p className="text-sm font-serif tracking-[0.3em] text-gray-600 mb-4">
                     HELLO, I'M
@@ -263,15 +341,18 @@ const AboutSection = () => {
                   </p>
                 </div>
 
-                <div className="space-y-4 text-gray-600 leading-relaxed">
+                <div className="space-y-4 text-gray-600 leading-relaxed text-justify">
                   <p className="text-base">
-                    Lilian Titus is an entrepreneur, spiritual director, and author dedicated to guiding individuals toward wholeness.
+                    Lilian Mussa Titus is a visionary leader, author, entrepreneur, and transformational teacher from the United Republic of Tanzania. She is the founder of Mind and Wholeness, a platform devoted to restoring clarity, identity, and inner alignment in individuals, families, and leaders.
                   </p>
                   <p className="text-base">
-                    Her life's work is to help individuals take care of their mind, body, and spirit. Every part of the Mind & Wholeness mission is designed to help individuals navigate all aspects of their wellness.
+                    With a multidisciplinary background that bridges healthcare, faith-based personal development, and leadership formation, Lilian brings a rare depth to her work combining insight of the mind, wisdom of the heart, and purpose-driven living. Her journey in cardiovascular technology sharpened her understanding of the human system, while her calling in teaching and mentorship expanded her focus to the inner life that shapes behavior, relationships, and leadership.
                   </p>
                   <p className="text-base">
-                    Mind & Wholeness was born while dealing with personal challenges. Never did she imagine that sharing the experience of this journey with darkness would lead to the healing of thousands. Our community is a movement of love; it represents something bigger than herself, instilling faith and wisdom in each other, so we can all be holistically well. This movement has grown over the years and we now host events, facilitate transformative programs, and an incredible community of seekers.
+                    Over the years, Lilian has led seminars, workshops, camps, and digital teachings that have reached diverse communities across Tanzania and beyond. Her work centers on mental wellness, identity restoration, leadership development, and holistic growth for women, men, and families. Through these initiatives, she has helped many transition from fragmentation to wholeness personally, relationally and spiritually.
+                  </p>
+                  <p className="text-base">
+                    Guided by the belief that true transformation begins within, Lilian leads Mind and Wholeness with a commitment to restoring alignment of mind, life, and purpose.
                   </p>
                 </div>
               </div>

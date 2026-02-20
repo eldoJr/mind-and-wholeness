@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShoppingBag } from 'lucide-react';
-import { useState } from 'react';
 
 interface CartItem {
   id: number;

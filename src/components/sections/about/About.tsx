@@ -1,6 +1,6 @@
 import ceoImg from "/src/assets/images/lilian.jpeg";
 import { useState } from "react";
-import { Globe, Target, Heart, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';

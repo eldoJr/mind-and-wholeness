@@ -4,7 +4,7 @@ import { Container } from '../../ui';
 import InstituteSeries from './InstituteSeries';
 import InstituteFacts from './InstituteFacts';
 import { SubscribeForm } from '../../ui';
-import herobgImg from '../../../assets/images/herobg.jpg';
+import instituteImg from '../../../assets/images/Institute.jpg';
 
 interface InstituteProps {
   className?: string;
@@ -38,9 +38,9 @@ const Institute: React.FC<InstituteProps> = ({ className = '' }) => {
       transition={{ duration: 0.6 }}
     >
       <div className="relative py-20 md:py-24 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-top" style={{ backgroundImage: `url(${herobgImg})` }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#651d31] to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#651d31] to-transparent backdrop-blur-md" style={{ maskImage: 'linear-gradient(to right, black, transparent)' }} />
+        <div className="absolute inset-0 bg-cover bg-top" style={{ backgroundImage: `url(${instituteImg})` }} />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a2954] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a2954] to-transparent backdrop-blur-md" style={{ maskImage: 'linear-gradient(to right, black, transparent)' }} />
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ y: -20, opacity: 0 }}
@@ -71,7 +71,7 @@ const Institute: React.FC<InstituteProps> = ({ className = '' }) => {
           transition={{ delay: 0.6, duration: 0.6 }}
         >
           <div className="text-center mb-12">
-            <p className="text-sm font-serif tracking-[0.3em] text-[#651d31] mb-4 uppercase">
+            <p className="text-sm font-serif tracking-[0.3em] text-[#0a2954] mb-4 uppercase">
               Welcome to the
             </p>
             <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">

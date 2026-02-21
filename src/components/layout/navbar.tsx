@@ -357,7 +357,7 @@ export default function Navbar() {
 
               <li><NavLink to="/programs/podcasts">{t.podcast}</NavLink></li>
               <li><NavLink to="/bookstore/bookstore">{t.bookstore}</NavLink></li>
-              <li><NavLink to="/institute">{t.institute || 'Institute'}</NavLink></li>
+              <li><NavLink to="/programs/institute">{t.institute || 'Institute'}</NavLink></li>
 
               {/* About Dropdown */}
               <li 
@@ -562,7 +562,7 @@ export default function Navbar() {
                 <NavLink to="/bookstore/bookstore">{t.bookstore}</NavLink>
               </div>
               <div className="border-b border-gray-100 pb-2">
-                <NavLink to="/institute">{t.institute || 'Institute'}</NavLink>
+                <NavLink to="/programs/institute">{t.institute || 'Institute'}</NavLink>
               </div>
 
               {/* About Accordion */}

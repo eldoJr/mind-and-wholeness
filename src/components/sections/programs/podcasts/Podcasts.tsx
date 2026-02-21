@@ -43,13 +43,15 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="bg-gradient-to-br from-[#2e0003] via-[#48020c] to-[#651d31] py-20 md:py-24 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <div className="relative py-20 md:py-24 px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${podcastImg})` }} />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#360d19] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#360d19] to-transparent backdrop-blur-md" style={{ maskImage: 'linear-gradient(to right, black, transparent)' }} />
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="flex-1"
           >
             <p className="text-sm font-serif tracking-[0.3em] text-white/80 mb-4 uppercase">
               Listen & Learn
@@ -63,18 +65,6 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
             <p className="text-sm text-white/70 font-mono h-6">
               {typedText}<span className="animate-pulse">|</span>
             </p>
-          </motion.div>
-          <motion.div
-            initial={{ x: 20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="w-full md:w-2/5"
-          >
-            <img
-              src={podcastImg}
-              alt="Podcast"
-              className="w-full h-auto shadow-2xl"
-            />
           </motion.div>
         </div>
       </div>

@@ -22,6 +22,7 @@ import JoyMeditations from "../components/sections/programs/meditations/topic/jo
 import PresenceMeditations from "../components/sections/programs/meditations/topic/presence";
 import { Privacy } from "../pages/privacy";
 import NotFound from "../pages/404/NotFound";
+import InstitutePage from "../pages/institute/institute";
 
 export const router = createBrowserRouter([
   {
@@ -86,6 +87,10 @@ export const router = createBrowserRouter([
       {
         path: "/programs/articles",
         element: <ArticlesSection />
+      },
+      {
+        path: "/programs/institute",
+        element: <InstitutePage />,
       },
       {
         path: "/bookstore/bookstore",

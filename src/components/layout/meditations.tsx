@@ -2,15 +2,18 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { translations } from "../../utils/translations";
+import mindImg from "../../assets/images/soul.png";
+import bodyImg from "../../assets/images/body1.png";
+import spiritImg from "../../assets/images/spirit.png";
 
 export default function MeditativeThemes() {
   const { language } = useLanguage();
   const t = translations[language].meditations;
 
   const themes = [
-    { key: 'mind', image: "https://d3kfvpfexuy5fk.cloudfront.net/_static/assets/artwork/ephesians/module-an-epic-conclusion-wide.jpg", link: "/programs/meditations/mind" },
-    { key: 'body', image: "https://d3kfvpfexuy5fk.cloudfront.net/_static/assets/artwork/ephesians/module-introduction-to-ephesians-wide.jpg", link: "/programs/meditations/body" },
-    { key: 'spirit', image: "https://d3kfvpfexuy5fk.cloudfront.net/_static/assets/artwork/rise-of-the-messiah/class-rise-of-the-messiah-wide.jpg", link: "/programs/meditations/spirit" },
+    { key: 'mind', image: mindImg, link: "/programs/meditations/mind" },
+    { key: 'body', image: bodyImg, link: "/programs/meditations/body" },
+    { key: 'spirit', image: spiritImg, link: "/programs/meditations/spirit" },
   ];
 
   return (

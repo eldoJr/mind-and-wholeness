@@ -2,7 +2,7 @@ import { MessageCircle } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../utils/translations';
 import { Button } from './';
-import podcommunityImg from '../../assets/images/Podcommunity.jpg';
+import communityImg from '../../assets/images/community1.png';
 
 interface SubscribeFormProps {
   variant?: 'simple' | 'detailed';
@@ -28,9 +28,9 @@ export const SubscribeForm = ({
           <div className="flex flex-col md:flex-row min-h-[500px] shadow-lg">
             <div className="flex-1">
               <img 
-                src={podcommunityImg} 
+                src={communityImg} 
                 alt="WhatsApp Community" 
-                className="w-full h-full object-cover object-center"
+                className="w-full h-100 object-cover object-center"
               />
             </div>
             <div className="flex-1 bg-white px-8 md:px-16 py-12 md:py-16 flex flex-col justify-center">

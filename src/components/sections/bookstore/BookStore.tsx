@@ -6,7 +6,6 @@ import { SubscribeForm } from '../../ui';
 import ShoppingCart from './ShoppingCart';
 import image from '/src/assets/images/book.png';
 import book1 from '/src/assets/images/book1.png';
-import book3 from '/src/assets/images/book3.png';
 
 interface CartItem {
   id: number;
@@ -117,6 +116,7 @@ export default function BookStore() {
             className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20"
           >
             {/* Book 1 */}
+            {/*
             <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
               <div className="h-96 flex items-center justify-center overflow-hidden bg-white">
                 <img src={book1} alt="Discovering Your Identity" className="w-full h-full object-contain hover:scale-105 transition-transform duration-300" />
@@ -138,6 +138,7 @@ export default function BookStore() {
                 </button>
               </div>
             </div>
+             */}
 
             {/* Book 2 */}
             <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
@@ -163,6 +164,7 @@ export default function BookStore() {
             </div>
 
             {/* Book 3 */}
+            {/* 
             <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
               <div className="h-96 flex items-center justify-center overflow-hidden bg-white">
                 <img src={book1} alt="How to Get Unstuck" className="w-full h-full object-contain hover:scale-105 transition-transform duration-300" />
@@ -184,6 +186,7 @@ export default function BookStore() {
                 </button>
               </div>
             </div>
+            */}
           </motion.div>
 
           {/* Our Recommendations Section */}
@@ -204,7 +207,7 @@ export default function BookStore() {
                   <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5">New</span>
                 </div>
                 <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
-                  <img src={book3} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
+                  <img src={book1} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
 
@@ -224,7 +227,7 @@ export default function BookStore() {
                   <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5">New</span>
                 </div>
                 <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
-                  <img src={book3} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
+                  <img src={book1} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
 
@@ -244,7 +247,7 @@ export default function BookStore() {
                   <span className="bg-red-600 text-white text-xs font-bold px-3 py-1.5">-10%</span>
                 </div>
                 <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
-                  <img src={book3} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
+                  <img src={book1} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
 

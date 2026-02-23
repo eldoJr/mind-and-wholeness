@@ -4,7 +4,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { translations } from "../../utils/translations";
 import mindImg from "../../assets/images/soul.png";
 import bodyImg from "../../assets/images/body1.png";
-import spiritImg from "../../assets/images/spirit.png";
+import spiritImg from "../../assets/images/spirit2.png";
 
 export default function MeditativeThemes() {
   const { language } = useLanguage();

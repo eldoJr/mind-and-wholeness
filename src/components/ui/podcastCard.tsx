@@ -48,7 +48,7 @@ export const PodcastCard = ({ podcast }: PodcastCardProps) => {
         <button
           className="text-xs text-[#651d31] font-medium uppercase tracking-wider hover:underline transition-all"
         >
-          Listen Now Podcast
+          Listen Now
         </button>
       </div>
     </div>

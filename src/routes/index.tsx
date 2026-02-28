@@ -23,6 +23,7 @@ import PresenceMeditations from "../components/sections/programs/meditations/top
 import { Privacy } from "../pages/privacy";
 import NotFound from "../pages/404/NotFound";
 import InstitutePage from "../pages/institute/institute";
+import Newsletter from "../pages/Newsletter";
 
 export const router = createBrowserRouter([
   {
@@ -103,6 +104,10 @@ export const router = createBrowserRouter([
       {
         path: "/privacy",
         element: <Privacy />,
+      },
+      {
+        path: "/newsletter",
+        element: <Newsletter />,
       },
       {
         path: "/signup/signup",

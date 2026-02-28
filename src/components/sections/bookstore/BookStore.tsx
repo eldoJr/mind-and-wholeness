@@ -79,15 +79,7 @@ export default function BookStore() {
         transition={{ duration: 0.6 }}
       >
         {/* Header */}
-        <div className="relative bg-gradient-to-br from-amber-400 via-yellow-500 to-amber-600 py-32 px-6 overflow-hidden">
-          {/* Background Image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-20"
-            style={{ 
-              backgroundImage: `url(${image})`,
-              filter: 'blur(8px)'
-            }}
-          />
+        <div className="relative bg-gradient-to-br from-amber-400 via-yellow-500 to-amber-600 py-32 px-6">
           <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}

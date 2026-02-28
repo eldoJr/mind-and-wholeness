@@ -13,14 +13,6 @@ const ArticlesSection = () => {
     >
       {/* Header */}
       <div className="relative bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-800 py-32 px-6 overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ 
-            backgroundImage: `url(${image})`,
-            filter: 'blur(8px)'
-          }}
-        />
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

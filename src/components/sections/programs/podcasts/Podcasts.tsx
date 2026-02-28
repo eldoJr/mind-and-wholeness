@@ -5,7 +5,7 @@ import { PodcastCard, Container } from '../../../ui';
 import PodcastSeries from './Series';
 import PodcastFacts from './PodcastFacts';
 import { SubscribeForm } from '../../../ui';
-import podcastImg from './../../../../assets/images/pod.jpg'
+import podcastImg from './../../../../assets/images/Pod.jpg';
 interface PodcastsProps {
   className?: string;
 }
@@ -43,29 +43,32 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="relative py-20 md:py-24 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${podcastImg})` }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#360d19] to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#360d19] to-transparent backdrop-blur-md" style={{ maskImage: 'linear-gradient(to right, black, transparent)' }} />
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <p className="text-sm font-serif tracking-[0.3em] text-white/80 mb-4 uppercase">
-              Listen & Learn
-            </p>
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif italic text-white mb-8 leading-tight">
-              Podcasts
-            </h1>
-            <p className="text-lg text-white/90 max-w-2xl leading-relaxed mb-4">
-              Join us for meaningful conversations exploring wellness, faith, and personal growth with inspiring guests from around the world.
-            </p>
-            <p className="text-sm text-white/70 font-mono h-6">
-              {typedText}<span className="animate-pulse">|</span>
-            </p>
-          </motion.div>
+      <div className="relative py-20 md:py-24 px-6 bg-gradient-to-br from-[#360d19] via-[#4a1523] to-[#651d31]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <motion.div
+              className="w-full md:w-2/3"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <p className="text-sm font-serif tracking-[0.3em] text-white/80 mb-4 uppercase">
+                Listen & Learn
+              </p>
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif italic text-white mb-8 leading-tight">
+                Podcasts
+              </h1>
+              <p className="text-lg text-white/90 max-w-2xl leading-relaxed mb-4">
+                Join us for meaningful conversations exploring wellness, faith, and personal growth with inspiring guests from around the world.
+              </p>
+              <p className="text-sm text-white/70 font-mono h-6">
+                {typedText}<span className="animate-pulse">|</span>
+              </p>
+            </motion.div>
+            <div className="w-full md:w-1/3">
+              <img src={podcastImg} alt="Podcast" className="w-full h-auto rounded-lg shadow-lg" />
+            </div>
+          </div>
         </div>
       </div>
       

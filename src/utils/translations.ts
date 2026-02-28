@@ -28,7 +28,7 @@ export const translations = {
       brokenness: 'Brokenness',
       to: 'To',
       wholeness: 'Wholeness',
-      description: 'Discover your divine blueprint through transformative programs integrating mind, body and spirit.',
+      description: 'To cultivate a global movement of transformed minds, where individuals embrace their true identity, live with purpose, and contribute to building thriving, harmonious communities.',
       beginJourney: 'Begin Your Journey',
       watchStories: 'Watch Stories'
     },

@@ -5,7 +5,7 @@ import { PodcastCard, Container } from '../../../ui';
 import PodcastSeries from './Series';
 import PodcastFacts from './PodcastFacts';
 import { SubscribeForm } from '../../../ui';
-import podcastImg from './../../../../assets/images/Pod.jpg';
+import podcastImg from './../../../../assets/images/pod.jpg';
 interface PodcastsProps {
   className?: string;
 }

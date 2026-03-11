@@ -8,7 +8,6 @@ export default function Newsletter() {
           src={pdfFile}
           className="w-full h-[calc(100vh-200px)] border-0 rounded-lg shadow-lg"
           title="M&W Newsletter"
-          type="application/pdf"
         />
       </div>
     </div>

@@ -1,7 +1,6 @@
 import { BookOpen, Clock } from 'lucide-react';
 import { SubscribeForm } from '../../../ui';
 import { motion } from 'framer-motion';
-import image from '/src/assets/images/book.png';
 
 const ArticlesSection = () => {
   return (

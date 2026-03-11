@@ -4,7 +4,6 @@ import { useState } from 'react';
 import AboutAuthor from './AboutAuthor';
 import { SubscribeForm } from '../../ui';
 import ShoppingCart from './ShoppingCart';
-import image from '/src/assets/images/book.png';
 import book1 from '/src/assets/images/book1.png';
 
 interface CartItem {

@@ -13,7 +13,7 @@ export default function AnimatedHeader() {
 
   useEffect(() => {
     const currentWord = words[index];
-    let timeout: number;
+    let timeout: ReturnType<typeof setTimeout>;
 
     if (isPaused) {
       timeout = setTimeout(() => {

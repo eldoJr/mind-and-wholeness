@@ -129,7 +129,11 @@ export const translations = {
       interests: 'Interests',
       createAccount: 'Create Account',
       alreadyHaveAccount: 'Already have an account?',
-      signInHere: 'Sign in here'
+      signInHere: 'Sign in here',
+      password: 'Password',
+      passwordPlaceholder: 'Enter your password',
+      signingIn: 'Signing in...',
+      creatingAccount: 'Creating account...'
     },
     pages: {
       articles: {
@@ -548,7 +552,11 @@ export const translations = {
       interests: 'Intereses',
       createAccount: 'Crear Cuenta',
       alreadyHaveAccount: '¿Ya tienes una cuenta?',
-      signInHere: 'Inicia sesión aquí'
+      signInHere: 'Inicia sesión aquí',
+      password: 'Contraseña',
+      passwordPlaceholder: 'Ingresa tu contraseña',
+      signingIn: 'Iniciando sesión...',
+      creatingAccount: 'Creando cuenta...'
     },
     pages: {
       articles: { subtitle: 'Ideas y Sabiduría', title: 'ARTÍCULOS', description: 'Explora nuestra colección de artículos diseñados para apoyar tu camino hacia la plenitud', comingSoonTitle: 'Contenido Transformador Próximamente', comingSoonDesc: 'Estamos elaborando cuidadosamente artículos que combinan conocimientos basados en evidencia con sabiduría práctica.', inDevelopment: 'En Desarrollo' },
@@ -694,7 +702,11 @@ export const translations = {
       interests: 'Interesses',
       createAccount: 'Criar Conta',
       alreadyHaveAccount: 'Já tem uma conta?',
-      signInHere: 'Entre aqui'
+      signInHere: 'Entre aqui',
+      password: 'Senha',
+      passwordPlaceholder: 'Digite sua senha',
+      signingIn: 'Entrando...',
+      creatingAccount: 'Criando conta...'
     },
     pages: {
       articles: { subtitle: 'Ideias e Sabedoria', title: 'ARTIGOS', description: 'Explore nossa coleção de artigos projetados para apoiar sua jornada rumo à plenitude', comingSoonTitle: 'Conteúdo Transformador Em Breve', comingSoonDesc: 'Estamos elaborando cuidadosamente artigos que combinam insights baseados em evidências com sabedoria prática.', inDevelopment: 'Em Desenvolvimento' },
@@ -840,7 +852,11 @@ export const translations = {
       interests: 'Intérêts',
       createAccount: 'Créer un Compte',
       alreadyHaveAccount: 'Vous avez déjà un compte ?',
-      signInHere: 'Connectez-vous ici'
+      signInHere: 'Connectez-vous ici',
+      password: 'Mot de passe',
+      passwordPlaceholder: 'Entrez votre mot de passe',
+      signingIn: 'Connexion...',
+      creatingAccount: 'Création du compte...'
     },
     pages: {
       articles: { subtitle: 'Idées et Sagesse', title: 'ARTICLES', description: 'Explorez notre collection d\'articles conçus pour soutenir votre chemin vers la plénitude', comingSoonTitle: 'Contenu Transformateur Bientôt', comingSoonDesc: 'Nous élaborons soigneusement des articles combinant des connaissances fondées sur des preuves avec une sagesse pratique.', inDevelopment: 'En Développement' },
@@ -986,7 +1002,11 @@ export const translations = {
       interests: 'Interessen',
       createAccount: 'Konto Erstellen',
       alreadyHaveAccount: 'Haben Sie bereits ein Konto?',
-      signInHere: 'Hier anmelden'
+      signInHere: 'Hier anmelden',
+      password: 'Passwort',
+      passwordPlaceholder: 'Geben Sie Ihr Passwort ein',
+      signingIn: 'Anmeldung...',
+      creatingAccount: 'Konto wird erstellt...'
     },
     pages: {
       articles: { subtitle: 'Einblicke & Weisheit', title: 'ARTIKEL', description: 'Entdecken Sie unsere Artikelsammlung zur Unterstützung Ihrer Reise zur Ganzheit', comingSoonTitle: 'Transformative Inhalte Bald Verfügbar', comingSoonDesc: 'Wir erstellen sorgfältig Artikel, die evidenzbasierte Erkenntnisse mit praktischer Weisheit verbinden.', inDevelopment: 'In Entwicklung' },
@@ -1132,7 +1152,11 @@ export const translations = {
       interests: '兴趣',
       createAccount: '创建账户',
       alreadyHaveAccount: '已有账户？',
-      signInHere: '在这里登录'
+      signInHere: '在这里登录',
+      password: '密码',
+      passwordPlaceholder: '输入您的密码',
+      signingIn: '登录中...',
+      creatingAccount: '创建账户中...'
     },
     pages: {
       articles: { subtitle: '洞察与智慧', title: '文章', description: '探索我们的文章集，支持您走向完整的旅程', comingSoonTitle: '变革性内容即将推出', comingSoonDesc: '我们正在精心撰写将循证见解与实用智慧相结合的文章。', inDevelopment: '开发中' },
@@ -1278,7 +1302,11 @@ export const translations = {
       interests: 'रुचियाँ',
       createAccount: 'खाता बनाएं',
       alreadyHaveAccount: 'पहले से खाता है?',
-      signInHere: 'यहाँ साइन इन करें'
+      signInHere: 'यहाँ साइन इन करें',
+      password: 'पासवर्ड',
+      passwordPlaceholder: 'अपना पासवर्ड दर्ज करें',
+      signingIn: 'साइन इन हो रहा है...',
+      creatingAccount: 'खाता बनाया जा रहा है...'
     },
     pages: {
       articles: { subtitle: 'अंतर्दृष्टि और ज्ञान', title: 'लेख', description: 'पूर्णता की ओर आपकी यात्रा का समर्थन करने के लिए डिज़ाइन किए गए हमारे लेखों का अन्वेषण करें', comingSoonTitle: 'परिवर्तनकारी सामग्री जल्द आ रही है', comingSoonDesc: 'हम सावधानीपूर्वक ऐसे लेख तैयार कर रहे हैं जो साक्ष्य-आधारित अंतर्दृष्टि को व्यावहारिक ज्ञान के साथ जोड़ते हैं।', inDevelopment: 'विकास में' },

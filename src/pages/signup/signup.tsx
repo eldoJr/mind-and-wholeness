@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertCircle, X } from 'lucide-react';
 import type { SignupForm } from './types';
@@ -32,7 +32,6 @@ const Signup: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const { signUp, signInWithGoogle, signInWithApple } = useAuth();
-  const navigate = useNavigate();
   const { language } = useLanguage();
   const t = translations[language].auth;
 

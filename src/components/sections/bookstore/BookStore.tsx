@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ShoppingBag } from 'lucide-react';
+import { ShoppingBag, Bell } from 'lucide-react';
 import { useState } from 'react';
 import AboutAuthor from './AboutAuthor';
 import { SubscribeForm } from '../../ui';
@@ -47,6 +47,7 @@ export default function BookStore() {
   };
 
   const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <>
       {/* Shopping Cart */}
@@ -71,7 +72,7 @@ export default function BookStore() {
         )}
       </button>
 
-      <motion.section 
+      <motion.section
         className="min-h-screen bg-gradient-to-br from-amber-50 via-yellow-50 to-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -99,163 +100,107 @@ export default function BookStore() {
 
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          {/* Books Grid - 3 columns on large screens */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20"
+            className="flex flex-col lg:flex-row gap-12 items-center mb-20"
           >
-            {/* Book 1 */}
-            {/*
-            <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
-              <div className="h-96 flex items-center justify-center overflow-hidden bg-white">
-                <img src={book1} alt="Discovering Your Identity" className="w-full h-full object-contain hover:scale-105 transition-transform duration-300" />
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-serif text-gray-900 mb-3">Discovering Your Identity</h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                  Unlock and unleash. Explore and rediscover your infinite potential.
-                </p>
-                <div className="space-y-2 mb-6">
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">Lilian Mussa Titus</p>
-                  <p className="text-2xl font-bold text-amber-600">$24.99</p>
-                </div>
-                <button
-                  onClick={() => addToCart({ id: 1, title: 'Discovering Your Identity', author: 'Lilian Mussa Titus', price: 24.99, image: book1 })}
-                  className="w-full px-6 py-3 bg-amber-600 text-white hover:bg-amber-700 transition-colors font-medium"
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-             */}
-
-            {/* Book 2 */}
-            <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
-              <div className="h-96 flex items-center justify-center overflow-hidden bg-white">
-                <img src={book1} alt="Power That Brings Growth" className="w-full h-full object-contain hover:scale-105 transition-transform duration-300" />
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-serif text-gray-900 mb-3">Power That Brings Growth</h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                  Unlock and unleash. Explore and rediscover your infinite potential.
-                </p>
-                <div className="space-y-2 mb-6">
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">Lilian Mussa Titus</p>
-                  <p className="text-2xl font-bold text-amber-600">$27.99</p>
-                </div>
-                <button
-                  onClick={() => addToCart({ id: 2, title: 'Power That Brings Growth', author: 'Lilian Mussa Titus', price: 27.99, image: book1 })}
-                  className="w-full px-6 py-3 bg-amber-600 text-white hover:bg-amber-700 transition-colors font-medium"
-                >
-                  Add to Cart
-                </button>
+            {/* Book Image */}
+            <div className="w-full lg:w-1/2 flex justify-center">
+              <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-all max-w-sm">
+                <img
+                  src={book1}
+                  alt="Power That Brings Growth"
+                  className="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
+                />
               </div>
             </div>
 
-            {/* Book 3 */}
-            {/* 
-            <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
-              <div className="h-96 flex items-center justify-center overflow-hidden bg-white">
-                <img src={book1} alt="How to Get Unstuck" className="w-full h-full object-contain hover:scale-105 transition-transform duration-300" />
+            {/* Book Details */}
+            <div className="w-full lg:w-1/2 space-y-6">
+              <div>
+                <p className="text-xs text-amber-600 uppercase tracking-widest font-semibold mb-2">Featured Book</p>
+                <h3 className="text-3xl md:text-4xl font-serif text-gray-900 mb-3">Power That Brings Growth</h3>
+                <p className="text-xs text-gray-500 uppercase tracking-wider">By Lilian Mussa Titus</p>
               </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-serif text-gray-900 mb-3">How to Get Unstuck</h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                  Unlock and unleash. Explore and rediscover your infinite potential.
-                </p>
-                <div className="space-y-2 mb-6">
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">Lilian Mussa Titus</p>
-                  <p className="text-2xl font-bold text-amber-600">$26.99</p>
-                </div>
-                <button
-                  onClick={() => addToCart({ id: 3, title: 'How to Get Unstuck', author: 'Lilian Mussa Titus', price: 26.99, image: book1 })}
-                  className="w-full px-6 py-3 bg-amber-600 text-white hover:bg-amber-700 transition-colors font-medium"
-                >
-                  Add to Cart
-                </button>
+              <p className="text-gray-600 leading-relaxed">
+                A transformative guide that explores the inner power each person carries and how to channel it toward lasting personal growth. This book walks you through practical principles for overcoming limitations, renewing your mindset, and stepping into the fullness of your purpose.
+              </p>
+              <div className="flex items-center gap-3">
+                <p className="text-3xl font-bold text-amber-600">$10.00</p>
+                <span className="text-gray-400">|</span>
+                <p className="text-2xl font-semibold text-gray-500">₹500</p>
               </div>
-            </div>
-            */}
-          </motion.div>
-
-          {/* Our Recommendations Section */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="mb-20"
-          >
-            <div className="mb-12">
-              <h2 className="text-4xl font-serif text-gray-900 mb-3">Our Recommendations</h2>
-              <p className="text-gray-600">Curated selections for your reading journey</p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {/* Recommendation 1 */}
-              <div className="relative group cursor-pointer">
-                <div className="absolute top-0 left-0 z-10">
-                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5">New</span>
-                </div>
-                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
-                  <img src={book1} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
-                </div>
-              </div>
-
-              {/* Recommendation 2 */}
-              <div className="relative group cursor-pointer">
-                <div className="absolute top-0 left-0 z-10">
-                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5">New</span>
-                </div>
-                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
-                  <img src={book1} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
-                </div>
-              </div>
-
-              {/* Recommendation 3 */}
-              <div className="relative group cursor-pointer">
-                <div className="absolute top-0 left-0 z-10">
-                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5">New</span>
-                </div>
-                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
-                  <img src={book1} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
-                </div>
-              </div>
-
-              {/* Recommendation 4 */}
-              <div className="relative group cursor-pointer">
-                <div className="absolute top-0 left-0 z-10">
-                  <span className="bg-red-600 text-white text-xs font-bold px-3 py-1.5">-5%</span>
-                </div>
-                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
-                  <img src={book1} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
-                </div>
-              </div>
-
-              {/* Recommendation 5 */}
-              <div className="relative group cursor-pointer">
-                <div className="absolute top-0 left-0 z-10">
-                  <span className="bg-red-600 text-white text-xs font-bold px-3 py-1.5">-10%</span>
-                </div>
-                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
-                  <img src={book1} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
-                </div>
-              </div>
-
-              {/* Recommendation 6 */}
-              <div className="relative group cursor-pointer">
-                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
-                  <img src={book1} alt="Book" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
-                </div>
-              </div>
+              <button
+                onClick={() => addToCart({ id: 2, title: 'Power That Brings Growth', author: 'Lilian Mussa Titus', price: 10, image: book1 })}
+                className="px-8 py-3 bg-amber-600 text-white hover:bg-amber-700 transition-colors font-medium text-lg"
+              >
+                Add to Cart
+              </button>
             </div>
           </motion.div>
         </div>
       </motion.section>
 
-      <div>
-        <AboutAuthor />
+      {/* Divider */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <hr className="border-amber-200" />
       </div>
+
+      {/* Our Recommendations */}
+      <section className="bg-gradient-to-br from-amber-50 via-yellow-50 to-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+          >
+            <div className="mb-12">
+              <h2 className="text-4xl font-serif text-gray-900 mb-3">Our Recommendations</h2>
+              <p className="text-gray-600">Curated selections for your reading journey</p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {/* Available Book */}
+              <div
+                className="relative group cursor-pointer"
+                onClick={() => addToCart({ id: 2, title: 'Power That Brings Growth', author: 'Lilian Mussa Titus', price: 10, image: book1 })}
+              >
+                <div className="absolute top-0 left-0 z-10">
+                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5">Available</span>
+                </div>
+                <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
+                  <img src={book1} alt="Power That Brings Growth" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
+                </div>
+                <p className="mt-3 text-sm font-medium text-gray-900">Power That Brings Growth</p>
+                <p className="text-sm text-amber-600 font-bold">$10.00</p>
+              </div>
+
+              {/* Coming Soon Placeholders */}
+              {['New release on the way...', 'Something special is brewing...', 'Another chapter awaits...'].map((hint, i) => (
+                <div key={i} className="relative group">
+                  <div className="absolute top-0 left-0 z-10">
+                    <span className="bg-gray-800 text-white text-xs font-bold px-3 py-1.5">Coming Soon</span>
+                  </div>
+                  <div className="h-72 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden shadow-md flex items-center justify-center">
+                    <div className="text-center px-4">
+                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-amber-100 flex items-center justify-center">
+                        <Bell className="w-7 h-7 text-amber-600" />
+                      </div>
+                      <p className="text-gray-500 text-sm italic">Stay tuned</p>
+                    </div>
+                  </div>
+                  <p className="mt-3 text-sm font-medium text-gray-400 italic">{hint}</p>
+                  <p className="text-sm text-gray-300 font-bold">—</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <AboutAuthor />
 
       {/* Newsletter Section */}
       <div className="bg-gradient-to-br from-amber-50 to-yellow-50 border-t border-amber-200">

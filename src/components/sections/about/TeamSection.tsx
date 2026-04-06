@@ -1,7 +1,7 @@
-import ceoImg from '/src/assets/images/ceo.png';
-import cooImg from '/src/assets/images/viviana.jpeg';
-import ctoImg from '/src/assets/images/michael.jpeg';
-import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import ceoImg from '/src/assets/images/lili.jpeg';
+import cooImg from '/src/assets/images/vivi.jpeg';
+import ctoImg from '/src/assets/images/mich.jpeg';
+import { Instagram, Linkedin } from 'lucide-react';
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
@@ -14,6 +14,7 @@ const TeamSection = () => {
       role: "Founder & Visionary Leader",
       subtitle: "Founder & Visionary Leader",
       image: ceoImg,
+      linkedin: "https://www.linkedin.com/company/mindandwholeness",
       description: "Lilian founded Mind and Wholeness out of a deep calling to restore balance and purpose in the lives of young people. With a background in counseling and spiritual mentorship, she leads the organization with passion and clarity. As an accomplished author, motivational speaker, and advocate for social transformation, her vision is to see communities transformed through renewed minds and restored hearts."
     },
     {
@@ -21,14 +22,16 @@ const TeamSection = () => {
       role: "Chief Operating Officer (COO)",
       subtitle: "Chief Operating Officer",
       image: cooImg,
-      description: "She is a brilliant and goal-oriented individual who organizes and coordinates events with excellence and precision. She is passionate about complete healing and empowering ladies to live purposeful lives."
+      linkedin: "https://www.linkedin.com/in/viviana-claudia-de-carlos-mussanhane-4ab426358",
+      description: "As Chief Operating Officer, she brings clarity and structure to the organization. She oversees operations with a strategic mindset, ensuring that vision is translated into effective execution. With a strong focus on alignment, efficiency, and people, she works closely with teams to build sustainable systems, drive growth, and create meaningful, long-term impact."
     },
     {
       name: "Michael Mugwenhi",
       role: "Chief Technology Officer (CTO)",
       subtitle: "Chief Technology Officer",
       image: ctoImg,
-      description: "Michael is a brilliant and goal-oriented individual who creates and manages technological innovation with excellence and precision. He is passionate about complete healing and empowering youth through purpose-driven solutions."
+      linkedin: "https://www.linkedin.com/company/mindandwholeness",
+      description: "Michael is a purpose-driven CTO and technology leader using innovation to create meaningful impact. He leads scalable digital solutions at Mind & Wholeness, aligning technology with holistic healing and human transformation. Focused on growth, efficiency, and real-world change, he builds systems that empower people, uplift communities, and inspire the next generation to lead and innovate."
     }
   ];
 
@@ -93,7 +96,7 @@ const TeamSection = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full shadow-lg aspect-square object-cover rounded-none grayscale hover:grayscale-0 transition-all duration-300"
+                    className="w-full shadow-lg aspect-[2/3] object-cover rounded-none grayscale hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
 
@@ -111,14 +114,6 @@ const TeamSection = () => {
                   {/* Social Links */}
                   <div className="mt-4 flex justify-start space-x-4">
                     <a
-                      href="https://www.facebook.com/mindandwholeness"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-emerald-600 transition-colors duration-300"
-                    >
-                      <Facebook size={20} />
-                    </a>
-                    <a
                       href="https://www.instagram.com/mindandwholeness"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -127,7 +122,7 @@ const TeamSection = () => {
                       <Instagram size={20} />
                     </a>
                     <a
-                      href="https://www.linkedin.com/company/mindandwholeness"
+                      href={member.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-600 hover:text-emerald-600 transition-colors duration-300"

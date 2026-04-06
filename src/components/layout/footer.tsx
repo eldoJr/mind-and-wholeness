@@ -6,8 +6,13 @@ import {
 } from "lucide-react";
 
 import logo from "/src/assets/icons/logo-icon.png";
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../utils/translations";
 
 export default function Footer() {
+  const { language } = useLanguage();
+  const t = translations[language].footer;
+  const nav = translations[language].nav;
   return (
     <footer className="bg-gradient-to-br from-white via-emerald-50 to-green-100 text-gray-800 relative overflow-hidden border-t border-emerald-200">
       {/* Background Pattern */}
@@ -35,17 +40,17 @@ export default function Footer() {
                   Mind & Wholeness
                 </h3>
                 <p className="text-sm sm:text-base text-emerald-700 font-medium">
-                  Spiritual Wellness Center
+                  {t.tagline}
                 </p>
               </div>
             </div>
             <div className="space-y-3 text-sm sm:text-base">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 backdrop-blur-sm rounded-full">
                 <span className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse" />
-                <p className="font-semibold text-emerald-800">Global Community</p>
+                <p className="font-semibold text-emerald-800">{t.globalCommunity}</p>
               </div>
               <p className="text-lg italic text-emerald-700 font-light leading-relaxed">
-                "From Brokenness To Wholeness"
+                {t.motto}
               </p>
             </div>
             
@@ -54,7 +59,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="space-y-4 text-center sm:text-left">
             <h4 className="text-lg font-bold text-gray-900 mb-2">
-              Quick Links
+              {t.quickLinks}
             </h4>
             <div className="w-12 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full mb-4" />
             <ul className="space-y-3 text-base">
@@ -64,7 +69,7 @@ export default function Footer() {
                   className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center group"
                 >
                   <span className="w-1 h-1 bg-emerald-600 rounded-full mr-3 group-hover:w-2 transition-all" />
-                  About Us
+                  {t.aboutUs}
                 </Link>
               </li>
 
@@ -74,7 +79,7 @@ export default function Footer() {
                   className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center group"
                 >
                   <span className="w-1 h-1 bg-emerald-600 rounded-full mr-3 group-hover:w-2 transition-all" />
-                  Events
+                  {t.events}
                 </Link>
               </li>
               <li>
@@ -83,7 +88,7 @@ export default function Footer() {
                   className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center group"
                 >
                   <span className="w-1 h-1 bg-emerald-600 rounded-full mr-3 group-hover:w-2 transition-all" />
-                  Bookstore
+                  {t.bookstore}
                 </Link>
               </li>
 
@@ -93,7 +98,7 @@ export default function Footer() {
                   className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center group"
                 >
                   <span className="w-1 h-1 bg-emerald-600 rounded-full mr-3 group-hover:w-2 transition-all" />
-                  Articles
+                  {nav.articles}
                 </Link>
               </li>
               <li>
@@ -102,7 +107,7 @@ export default function Footer() {
                   className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center group"
                 >
                   <span className="w-1 h-1 bg-emerald-600 rounded-full mr-3 group-hover:w-2 transition-all" />
-                  Contact
+                  {nav.contact}
                 </Link>
               </li>
             </ul>
@@ -111,11 +116,11 @@ export default function Footer() {
           {/* Stay Connected */}
           <div className="space-y-4 text-center sm:text-left">
             <h4 className="text-lg font-bold text-gray-900 mb-2">
-              Stay Connected
+              {t.stayConnected}
             </h4>
             <div className="w-12 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full mb-4" />
             <p className="text-base text-gray-700 leading-relaxed mb-6">
-              Join our community for daily inspiration, spiritual insights, and transformative content.
+              {t.communityText}
             </p>
             <div className="flex flex-wrap gap-4 justify-center sm:justify-start mb-6">
               <a 
@@ -156,7 +161,7 @@ export default function Footer() {
                 className="inline-flex items-center text-base bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 px-6 py-3 rounded-xl transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:scale-105 transform"
               >
                 <Mail size={18} className="mr-2" />
-                Join Newsletter
+                {t.joinCommunity}
               </Link>
             </div>
           </div>
@@ -168,26 +173,26 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 text-sm sm:text-sm text-gray-700">
             <p className="font-medium">
-              © {new Date().getFullYear()} Mind & Wholeness. All rights reserved.
+              © {new Date().getFullYear()} Mind & Wholeness. {t.copyright}
             </p>
             <div className="flex flex-wrap gap-6">
               <Link 
                 to="/privacy" 
                 className="hover:text-emerald-700 transition-all duration-200 hover:translate-y-[-1px] font-medium"
               >
-                Privacy Policy
+                {t.privacyPolicy}
               </Link>
               <Link 
                 to="/terms" 
                 className="hover:text-emerald-700 transition-all duration-200 hover:translate-y-[-1px] font-medium"
               >
-                Terms of Service
+                {t.termsOfService}
               </Link>
               <Link 
                 to="/contact" 
                 className="hover:text-emerald-700 transition-all duration-200 hover:translate-y-[-1px] font-medium"
               >
-                Contact Us
+                {t.contactUs}
               </Link>
             </div>
           </div>

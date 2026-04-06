@@ -5,14 +5,18 @@ import InstituteSeries from './InstituteSeries';
 import InstituteFacts from './InstituteFacts';
 import { SubscribeForm } from '../../ui';
 import instituteImg from '../../../assets/images/Institute.jpg';
+import { useLanguage } from '../../../context/LanguageContext';
+import { translations } from '../../../utils/translations';
 
 interface InstituteProps {
   className?: string;
 }
 
 const Institute: React.FC<InstituteProps> = ({ className = '' }) => {
+  const { language } = useLanguage();
+  const t = translations[language].pages.institute;
   const [typedText, setTypedText] = useState('');
-  const fullText = 'Transform your life through learning...';
+  const fullText = t.typingText;
   
   useEffect(() => {
     let index = 0;
@@ -21,14 +25,11 @@ const Institute: React.FC<InstituteProps> = ({ className = '' }) => {
         setTypedText(fullText.slice(0, index));
         index++;
       } else {
-        setTimeout(() => {
-          index = 0;
-          setTypedText('');
-        }, 2000);
+        setTimeout(() => { index = 0; setTypedText(''); }, 2000);
       }
     }, 100);
     return () => clearInterval(interval);
-  }, []);
+  }, [fullText]);
 
   return (
     <motion.section 
@@ -47,13 +48,13 @@ const Institute: React.FC<InstituteProps> = ({ className = '' }) => {
               transition={{ delay: 0.2 }}
             >
               <p className="text-sm font-serif tracking-[0.3em] text-white/80 mb-4 uppercase">
-                Learn & Grow
+                {t.learnGrow}
               </p>
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif italic text-white mb-8 leading-tight">
-                Institute
+                {t.title}
               </h1>
               <p className="text-lg text-white/90 max-w-2xl leading-relaxed mb-4">
-                Discover transformative courses and programs designed to nurture your mind, body, and spirit through holistic education and spiritual development.
+                {t.heroDesc}
               </p>
               <p className="text-sm text-white/70 font-mono h-6">
                 {typedText}<span className="animate-pulse">|</span>
@@ -75,13 +76,13 @@ const Institute: React.FC<InstituteProps> = ({ className = '' }) => {
         >
           <div className="text-center mb-12">
             <p className="text-sm font-serif tracking-[0.3em] text-[#0a2954] mb-4 uppercase">
-              Welcome to the
+              {t.welcomeTo}
             </p>
             <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">
-              Mind & Wholeness Institute
+              {t.welcomeTitle}
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Our institute offers comprehensive programs in mindfulness, spiritual growth, and holistic wellness. Join our community of learners committed to personal transformation and collective healing.
+              {t.welcomeDesc}
             </p>
           </div>
 

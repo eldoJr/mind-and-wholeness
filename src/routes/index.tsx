@@ -24,6 +24,8 @@ import { Privacy } from "../pages/privacy";
 import NotFound from "../pages/404/NotFound";
 import InstitutePage from "../pages/institute/institute";
 import Newsletter from "../pages/Newsletter";
+import HelpPage from "../pages/Help";
+import SubscribePage from "../pages/Subscribe";
 
 export const router = createBrowserRouter([
   {
@@ -108,6 +110,14 @@ export const router = createBrowserRouter([
       {
         path: "/newsletter",
         element: <Newsletter />,
+      },
+      {
+        path: "/help",
+        element: <HelpPage />,
+      },
+      {
+        path: "/subscribe",
+        element: <SubscribePage />,
       },
       {
         path: "/signup/signup",

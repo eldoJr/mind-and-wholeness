@@ -160,6 +160,7 @@ export default function Navbar() {
     programsOpen: false,
     userOpen: false,
     langOpen: false,
+    langShowAll: false,
     searchOpen: false,
     mobileOpen: false,
     scrolled: false,
@@ -257,6 +258,7 @@ export default function Navbar() {
       programsOpen: false,
       userOpen: false,
       langOpen: false,
+      langShowAll: false,
       searchOpen: false
     });
   }, [updateState]);
@@ -268,6 +270,7 @@ export default function Navbar() {
       programsOpen: false,
       userOpen: false,
       langOpen: false,
+      langShowAll: false,
       searchOpen: false
     });
   }, [updateState, state.mobileOpen]);
@@ -439,11 +442,12 @@ export default function Navbar() {
                     { title: "Spanish", description: "Español", to: "#", onClick: () => setLanguage('es') },
                     { title: "Portuguese", description: "Português", to: "#", onClick: () => setLanguage('pt') },
                     { title: "French", description: "Français", to: "#", onClick: () => setLanguage('fr') },
-                    { title: "German", description: "Deutsch", to: "#", onClick: () => setLanguage('de') },
-                    { title: "Korean", description: "한국어", to: "#", onClick: () => setLanguage('ko') },
-                    { title: "Mandarin", description: "普通话", to: "#", onClick: () => setLanguage('zh') },
                     { title: "Hindi", description: "हिन्दी", to: "#", onClick: () => setLanguage('hi') },
-                    { title: t.allLanguages || 'All Languages →', description: "", to: "/languages" }
+                    ...(state.langShowAll ? [
+                      { title: "German", description: "Deutsch", to: "#", onClick: () => setLanguage('de') },
+                      { title: "Mandarin", description: "普通话", to: "#", onClick: () => setLanguage('zh') },
+                    ] : []),
+                    { title: state.langShowAll ? '← Show Less' : (t.allLanguages || 'All Languages →'), description: "", to: "#", onClick: () => updateState({ langShowAll: !state.langShowAll }) }
                   ]}
                   onMouseEnter={() => handleHover('lang', true)}
                   onMouseLeave={() => handleHover('lang', false)}

@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import { AlertCircle, X } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../utils/translations';
+import { getFriendlyAuthError } from '../../utils/authErrors';
 
 const GoogleIcon = () => (
   <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -18,28 +24,76 @@ const AppleIcon = () => (
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { signIn, signInWithGoogle, signInWithApple } = useAuth();
+  const navigate = useNavigate();
+  const { language } = useLanguage();
+  const t = translations[language].auth;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Login with:', email);
+    setError('');
+    setLoading(true);
+    const { error } = await signIn(email, password);
+    setLoading(false);
+    if (error) {
+      setError(getFriendlyAuthError(error.message));
+    } else {
+      navigate('/');
+    }
+  };
+
+  const handleGoogle = async () => {
+    const { error } = await signInWithGoogle();
+    if (error) setError(getFriendlyAuthError(error.message));
+  };
+
+  const handleApple = async () => {
+    const { error } = await signInWithApple();
+    if (error) setError(getFriendlyAuthError(error.message));
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-emerald-50 px-4">
       <div className="w-full max-w-md">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">
-          Sign In To<br />Your Account
+          {t.signInTitle}<br />{t.signInTitle2}
         </h1>
 
-        <div className="space-y-2 mb-6">
-          <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-900 text-sm font-medium">
-            <GoogleIcon />
-            Sign in with Google
-          </button>
+        <AnimatePresence>
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="mb-6 flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl"
+            >
+              <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-red-800 flex-1">{error}</p>
+              <button onClick={() => setError('')} className="text-red-400 hover:text-red-600 flex-shrink-0">
+                <X className="w-4 h-4" />
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-          <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-900 text-sm font-medium">
+        <div className="space-y-2 mb-6">
+          <button
+            onClick={handleGoogle}
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-900 text-sm font-medium"
+          >
+            <GoogleIcon />
+            {t.signInGoogle}
+          </button>
+          <button
+            onClick={handleApple}
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-900 text-sm font-medium"
+          >
             <AppleIcon />
-            Sign in with Apple
+            {t.signInApple}
           </button>
         </div>
 
@@ -48,38 +102,53 @@ const Login: React.FC = () => {
             <div className="w-full border-t border-gray-300"></div>
           </div>
           <div className="relative flex justify-center text-xs">
-            <span className="px-3 bg-white text-gray-500">OR</span>
+            <span className="px-3 bg-slate-50 text-gray-500">{t.or}</span>
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-1.5">
-              Email
+              {t.email}
             </label>
             <input
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
+              placeholder={t.emailPlaceholder}
               className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
               required
             />
           </div>
-
+          <div>
+            <label htmlFor="password" className="block text-sm font-semibold text-gray-900 mb-1.5">
+              {t.password || 'Password'}
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder={t.passwordPlaceholder || 'Enter your password'}
+              className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+              required
+              minLength={6}
+            />
+          </div>
           <button
             type="submit"
-            className="w-full bg-gray-900 text-white text-sm font-semibold py-3 rounded-lg hover:bg-gray-800 transition-colors"
+            disabled={loading}
+            className="w-full bg-gray-900 text-white text-sm font-semibold py-3 rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50"
           >
-            Sign In
+            {loading ? (t.signingIn || 'Signing in...') : t.signIn}
           </button>
         </form>
 
         <p className="text-center mt-8 text-sm text-gray-700">
-          Need an account?{' '}
+          {t.needAccount}{' '}
           <Link to="/signup/signup" className="underline font-medium hover:text-gray-900">
-            Create one here
+            {t.createOneHere}
           </Link>
           .
         </p>

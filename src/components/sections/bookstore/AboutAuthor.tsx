@@ -1,8 +1,13 @@
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import authorImg from "../../../assets/images/lilian.jpeg";
+import { useLanguage } from '../../../context/LanguageContext';
+import { translations } from '../../../utils/translations';
 
 export default function AboutAuthor() {
+  const { language } = useLanguage();
+  const t = translations[language].pages.bookstore;
+
   return (
     <motion.section 
       className="py-20 bg-gradient-to-br from-slate-50 to-emerald-50"
@@ -13,7 +18,6 @@ export default function AboutAuthor() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative flex flex-col lg:flex-row gap-12 items-center">
-          {/* Image - Left Side */}
           <div className="lg:w-1/2 w-full">
             <div className="rounded-3xl overflow-hidden shadow-2xl">
               <img
@@ -24,30 +28,23 @@ export default function AboutAuthor() {
             </div>
           </div>
 
-          {/* Text Content - Right Side */}
           <div className="lg:w-1/2 w-full space-y-6">
             <div>
               <p className="text-sm font-serif tracking-[0.3em] text-gray-600 mb-4">
-                MEET THE AUTHOR
+                {t.meetAuthor}
               </p>
               <h2 className="text-5xl sm:text-6xl lg:text-7xl font-serif text-gray-900 leading-tight mb-4">
-                LILIAN<br />TITUS
+                {t.authorName}<br />{t.authorLastName}
               </h2>
               <p className="text-sm font-serif tracking-[0.2em] text-gray-700 uppercase">
-                Author, CEO and Founder of Mind & Wholeness
+                {t.authorRole}
               </p>
             </div>
 
             <div className="space-y-4 text-gray-600 leading-relaxed text-justify">
-              <p className="text-base">
-                Lilian Mussa Titus is a visionary leader, author, entrepreneur, and transformational teacher from the United Republic of Tanzania. She is the founder of Mind and Wholeness, a platform devoted to restoring clarity, identity, and inner alignment in individuals, families, and leaders.
-              </p>
-              <p className="text-base">
-                With a multidisciplinary background that bridges healthcare, faith-based personal development, and leadership formation, Lilian brings a rare depth to her work combining insight of the mind, wisdom of the heart, and purpose-driven living.
-              </p>
-              <p className="text-base">
-                Over the years, Lilian has led seminars, workshops, camps, and digital teachings that have reached diverse communities across Tanzania and beyond. Her work centers on mental wellness, identity restoration, leadership development, and holistic growth.
-              </p>
+              <p className="text-base">{t.authorBio1}</p>
+              <p className="text-base">{t.authorBio2}</p>
+              <p className="text-base">{t.authorBio3}</p>
             </div>
 
             <div className="flex space-x-4 pt-4">

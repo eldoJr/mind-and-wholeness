@@ -6,14 +6,19 @@ import PodcastSeries from './Series';
 import PodcastFacts from './PodcastFacts';
 import { SubscribeForm } from '../../../ui';
 import podcastImg from './../../../../assets/images/pod.jpg';
+import { useLanguage } from '../../../../context/LanguageContext';
+import { translations } from '../../../../utils/translations';
+
 interface PodcastsProps {
   className?: string;
 }
 
 const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
+  const { language } = useLanguage();
+  const t = translations[language].pages.podcasts;
   const recentEpisodes = getRecentPodcasts(3);
   const [typedText, setTypedText] = useState('');
-  const fullText = 'New episodes every week...';
+  const fullText = t.newEpisodes;
   
   useEffect(() => {
     let index = 0;
@@ -29,8 +34,7 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
       }
     }, 100);
     return () => clearInterval(interval);
-  }, []);
-  
+  }, [fullText]);
 
   const handlePlayPodcast = (podcastId: number) => {
     console.log('Playing podcast:', podcastId);
@@ -53,13 +57,13 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
               transition={{ delay: 0.2 }}
             >
               <p className="text-sm font-serif tracking-[0.3em] text-white/80 mb-4 uppercase">
-                Listen & Learn
+                {t.listenLearn}
               </p>
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif italic text-white mb-8 leading-tight">
-                Podcasts
+                {t.title}
               </h1>
               <p className="text-lg text-white/90 max-w-2xl leading-relaxed mb-4">
-                Join us for meaningful conversations exploring wellness, faith, and personal growth with inspiring guests from around the world.
+                {t.heroDesc}
               </p>
               <p className="text-sm text-white/70 font-mono h-6">
                 {typedText}<span className="animate-pulse">|</span>
@@ -73,7 +77,6 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
       </div>
       
       <Container className="py-20">
-
         <motion.div 
           className="mb-16"
           initial={{ y: 30, opacity: 0 }}
@@ -82,13 +85,13 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
         >
           <div className="text-center mb-12">
             <p className="text-sm font-serif tracking-[0.3em] text-[#651d31] mb-4 uppercase">
-              Welcome to the
+              {t.welcomeTo}
             </p>
             <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">
-              Mind & Wholeness Podcast
+              {t.welcomeTitle}
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Join us for authentic conversations about wellness, mental health, and spiritual growth. We explore diverse perspectives, share personal stories, and create a space where we laugh, reflect, and grow together as a community.
+              {t.welcomeDesc}
             </p>
           </div>
           
@@ -110,7 +113,7 @@ const Podcasts: React.FC<PodcastsProps> = ({ className = '' }) => {
 
           <div className="text-center mt-12">
             <button className="px-8 py-3 bg-[#651d31] text-white font-medium uppercase tracking-wider hover:bg-[#48020c] transition-colors">
-              VIEW MORE
+              {t.viewMore}
             </button>
           </div>
 

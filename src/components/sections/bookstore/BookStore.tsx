@@ -5,6 +5,8 @@ import AboutAuthor from './AboutAuthor';
 import { SubscribeForm } from '../../ui';
 import ShoppingCart from './ShoppingCart';
 import book1 from '/src/assets/images/book1.png';
+import { useLanguage } from '../../../context/LanguageContext';
+import { translations } from '../../../utils/translations';
 
 interface CartItem {
   id: number;
@@ -18,6 +20,8 @@ interface CartItem {
 export default function BookStore() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const { language } = useLanguage();
+  const t = translations[language].pages.bookstore;
 
   const addToCart = (book: Omit<CartItem, 'quantity'>) => {
     setCartItems(prev => {
@@ -87,13 +91,13 @@ export default function BookStore() {
             className="max-w-7xl mx-auto relative z-10"
           >
             <p className="text-sm font-serif tracking-[0.3em] text-white/90 mb-4 uppercase">
-              Transformative Resources
+              {t.subtitle}
             </p>
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif text-white mb-8 leading-tight">
-              BOOKSTORE
+              {t.title}
             </h1>
             <p className="text-lg text-white/95 max-w-2xl leading-relaxed">
-              Discover books designed to guide you toward wholeness, clarity, and purposeful living
+              {t.description}
             </p>
           </motion.div>
         </div>
@@ -120,12 +124,12 @@ export default function BookStore() {
             {/* Book Details */}
             <div className="w-full lg:w-1/2 space-y-6">
               <div>
-                <p className="text-xs text-amber-600 uppercase tracking-widest font-semibold mb-2">Featured Book</p>
-                <h3 className="text-3xl md:text-4xl font-serif text-gray-900 mb-3">Power That Brings Growth</h3>
-                <p className="text-xs text-gray-500 uppercase tracking-wider">By Lilian Mussa Titus</p>
+                <p className="text-xs text-amber-600 uppercase tracking-widest font-semibold mb-2">{t.featuredBook}</p>
+                <h3 className="text-3xl md:text-4xl font-serif text-gray-900 mb-3">{t.bookTitle}</h3>
+                <p className="text-xs text-gray-500 uppercase tracking-wider">{t.bookAuthor}</p>
               </div>
               <p className="text-gray-600 leading-relaxed">
-                A transformative guide that explores the inner power each person carries and how to channel it toward lasting personal growth. This book walks you through practical principles for overcoming limitations, renewing your mindset, and stepping into the fullness of your purpose.
+                {t.bookDesc}
               </p>
               <div className="flex items-center gap-3">
                 <p className="text-3xl font-bold text-amber-600">$10.00</p>
@@ -136,7 +140,7 @@ export default function BookStore() {
                 onClick={() => addToCart({ id: 2, title: 'Power That Brings Growth', author: 'Lilian Mussa Titus', price: 10, image: book1 })}
                 className="px-8 py-3 bg-amber-600 text-white hover:bg-amber-700 transition-colors font-medium text-lg"
               >
-                Add to Cart
+                {t.addToCart}
               </button>
             </div>
           </motion.div>
@@ -157,8 +161,8 @@ export default function BookStore() {
             transition={{ delay: 0.6, duration: 0.6 }}
           >
             <div className="mb-12">
-              <h2 className="text-4xl font-serif text-gray-900 mb-3">Our Recommendations</h2>
-              <p className="text-gray-600">Curated selections for your reading journey</p>
+              <h2 className="text-4xl font-serif text-gray-900 mb-3">{t.recommendations}</h2>
+              <p className="text-gray-600">{t.recommendationsDesc}</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -168,7 +172,7 @@ export default function BookStore() {
                 onClick={() => addToCart({ id: 2, title: 'Power That Brings Growth', author: 'Lilian Mussa Titus', price: 10, image: book1 })}
               >
                 <div className="absolute top-0 left-0 z-10">
-                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5">Available</span>
+                  <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5">{t.available}</span>
                 </div>
                 <div className="h-72 bg-white overflow-hidden shadow-md group-hover:shadow-2xl transition-all group-hover:-translate-y-1">
                   <img src={book1} alt="Power That Brings Growth" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
@@ -178,17 +182,17 @@ export default function BookStore() {
               </div>
 
               {/* Coming Soon Placeholders */}
-              {['New release on the way...', 'Something special is brewing...', 'Another chapter awaits...'].map((hint, i) => (
+              {[t.hint1, t.hint2, t.hint3].map((hint, i) => (
                 <div key={i} className="relative group">
                   <div className="absolute top-0 left-0 z-10">
-                    <span className="bg-gray-800 text-white text-xs font-bold px-3 py-1.5">Coming Soon</span>
+                    <span className="bg-gray-800 text-white text-xs font-bold px-3 py-1.5">{t.comingSoon}</span>
                   </div>
                   <div className="h-72 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden shadow-md flex items-center justify-center">
                     <div className="text-center px-4">
                       <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-amber-100 flex items-center justify-center">
                         <Bell className="w-7 h-7 text-amber-600" />
                       </div>
-                      <p className="text-gray-500 text-sm italic">Stay tuned</p>
+                      <p className="text-gray-500 text-sm italic">{t.stayTuned}</p>
                     </div>
                   </div>
                   <p className="mt-3 text-sm font-medium text-gray-400 italic">{hint}</p>

@@ -2,12 +2,15 @@
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes";
 import { LanguageProvider } from "./context/LanguageContext";
+import { AuthProvider } from "./context/AuthContext";
 import "./index.css";
 
 function App() {
   return (
     <LanguageProvider>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </LanguageProvider>
   );
 }

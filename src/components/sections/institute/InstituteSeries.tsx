@@ -1,64 +1,46 @@
 import { motion } from 'framer-motion';
-import { BookOpen } from 'lucide-react';
+import { Bell } from 'lucide-react';
+import { useLanguage } from '../../../context/LanguageContext';
+import { translations } from '../../../utils/translations';
 
 const InstituteSeries = () => {
-  const courses = [
-    {
-      id: '1',
-      title: 'Mindfulness & Meditation',
-      description: 'Learn foundational practices for inner peace and mental clarity.',
-      category: 'Wellness'
-    },
-    {
-      id: '2',
-      title: 'Spiritual Growth',
-      description: 'Deepen your spiritual journey through guided teachings.',
-      category: 'Spirituality'
-    },
-    {
-      id: '3',
-      title: 'Holistic Health',
-      description: 'Integrate mind, body, and spirit for complete wellness.',
-      category: 'Health'
-    }
-  ];
+  const { language } = useLanguage();
+  const t = translations[language].pages.institute;
 
   return (
-    <section className="bg-gradient-to-br from-[#2e0003] via-[#48020c] to-[#651d31]">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <h1 className="text-3xl sm:text-4xl font-serif text-white mb-8">
-          Featured Courses
-        </h1>
+    <section className="bg-gradient-to-br from-[#0a2954] via-[#0d3568] to-[#10417c] py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="mb-12">
+            <h2 className="text-4xl font-serif text-white mb-3">{t.featuredCourses}</h2>
+          </div>
 
-        <div className="bg-white rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-12 shadow-lg">
-          <BookOpen className="w-12 h-12 text-[#651d31]" />
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.map((course, index) => (
-            <motion.div
-              key={course.id}
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-white rounded-lg p-8 hover:shadow-xl transition-shadow"
-            >
-              <span className="bg-[#651d31] text-white text-xs px-3 py-1 rounded mb-4 inline-block">
-                {course.category}
-              </span>
-              <h3 className="text-2xl font-serif text-gray-900 mb-4">
-                {course.title}
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                {course.description}
-              </p>
-              <button className="bg-[#651d31] hover:bg-[#48020c] text-white text-sm font-medium px-6 py-2 rounded transition-colors">
-                LEARN MORE
-              </button>
-            </motion.div>
-          ))}
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[t.hint1, t.hint2, t.hint3].map((hint, i) => (
+              <div key={i} className="relative group">
+                <div className="absolute top-0 left-0 z-10">
+                  <span className="bg-white/20 text-white text-xs font-bold px-3 py-1.5">
+                    {t.comingSoon}
+                  </span>
+                </div>
+                <div className="h-72 bg-white/10 backdrop-blur-sm overflow-hidden rounded-lg flex items-center justify-center border border-white/20">
+                  <div className="text-center px-4">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center">
+                      <Bell className="w-7 h-7 text-white" />
+                    </div>
+                    <p className="text-white/70 text-sm italic">{t.stayTuned}</p>
+                  </div>
+                </div>
+                <p className="mt-3 text-sm font-medium text-white/50 italic">{hint}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -5,19 +5,18 @@ import { ChevronLeft } from 'lucide-react';
 import ceoImg from './../../../../assets/images/ceo.png';
 import cooImg from './../../../../assets/images/viviana.jpeg';
 import ctoImg from './../../../../assets/images/michael.jpeg';
+import { useLanguage } from '../../../../context/LanguageContext';
+import { translations } from '../../../../utils/translations';
 
 const HostPodcastPage = () => {
+    const { language } = useLanguage();
+    const t = translations[language].pages.podcasts;
     const { hostId } = useParams<{ hostId: string }>();
 
-    // Map hostId to host details
-    // Normalize hostId for easier matching (e.g. lilian-titus -> Lilian Titus)
     const getHostDetails = (id: string | undefined) => {
         if (!id) return null;
-
-        // Normalize string: replace hyphens with spaces, etc.
         const name = id.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
-        // Specific mapping if needed for images/descriptions
         if (id.includes('lilian')) {
             return {
                 name: "Lilian Titus",
@@ -41,12 +40,7 @@ const HostPodcastPage = () => {
             };
         }
 
-        return {
-            name: name,
-            role: "Podcast Host",
-            image: null,
-            description: "Host at Mind and Wholeness"
-        };
+        return { name, role: "Podcast Host", image: null, description: "Host at Mind and Wholeness" };
     };
 
     const host = getHostDetails(hostId);
@@ -62,19 +56,17 @@ const HostPodcastPage = () => {
 
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
-        { label: 'Podcasts', href: '/programs/podcasts' },
+        { label: t.title, href: '/programs/podcasts' },
         { label: host?.name || 'Host' }
     ];
 
     const handleScrollToPodcasts = () => {
         const element = document.getElementById('host-podcasts-list');
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
     };
 
     if (!host) {
-        return <div>Host not found</div>;
+        return <div>{t.hostNotFound}</div>;
     }
 
     return (
@@ -94,14 +86,10 @@ const HostPodcastPage = () => {
                             className="w-full md:w-1/3 max-w-sm"
                         >
                             {host.image ? (
-                                <img
-                                    src={host.image}
-                                    alt={host.name}
-                                    className="w-full aspect-square object-cover shadow-2xl rounded-sm border-4 border-white/10"
-                                />
+                                <img src={host.image} alt={host.name} className="w-full aspect-square object-cover shadow-2xl rounded-sm border-4 border-white/10" />
                             ) : (
                                 <div className="w-full aspect-square bg-gray-200 flex items-center justify-center">
-                                    <span className="text-gray-400">No Image</span>
+                                    <span className="text-gray-400">{t.noImage}</span>
                                 </div>
                             )}
                         </motion.div>
@@ -112,21 +100,11 @@ const HostPodcastPage = () => {
                             transition={{ delay: 0.4 }}
                             className="flex-1 text-center md:text-left"
                         >
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4">
-                                {host.name}
-                            </h1>
-                            <p className="text-xl text-white/80 font-light mb-6">
-                                {host.role}
-                            </p>
-                            <p className="text-white/70 max-w-2xl leading-relaxed mb-8 mx-auto md:mx-0">
-                                {host.description}
-                            </p>
-
-                            <button
-                                onClick={handleScrollToPodcasts}
-                                className="px-8 py-3 bg-white text-[#651d31] font-medium uppercase tracking-wider hover:bg-gray-100 transition-colors shadow-lg"
-                            >
-                                Listen Now
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4">{host.name}</h1>
+                            <p className="text-xl text-white/80 font-light mb-6">{host.role}</p>
+                            <p className="text-white/70 max-w-2xl leading-relaxed mb-8 mx-auto md:mx-0">{host.description}</p>
+                            <button onClick={handleScrollToPodcasts} className="px-8 py-3 bg-white text-[#651d31] font-medium uppercase tracking-wider hover:bg-gray-100 transition-colors shadow-lg">
+                                {t.listenNow}
                             </button>
                         </motion.div>
                     </div>
@@ -140,7 +118,7 @@ const HostPodcastPage = () => {
 
                 <div id="host-podcasts-list" className="max-w-4xl mx-auto">
                     <h2 className="text-3xl font-serif text-gray-900 mb-8 border-b pb-4">
-                        Episodes Featuring {host.name}
+                        {t.episodesFeaturing} {host.name}
                     </h2>
 
                     <div className="flex flex-col gap-8">
@@ -173,7 +151,7 @@ const HostPodcastPage = () => {
                 <div className="mt-12 text-center">
                     <Link to="/programs/podcasts" className="inline-flex items-center text-[#651d31] hover:underline font-medium">
                         <ChevronLeft className="w-4 h-4 mr-1" />
-                        Back to All Podcasts
+                        {t.backToAll}
                     </Link>
                 </div>
             </Container>

@@ -278,7 +278,7 @@ export function Hero() {
             }}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center w-full"
           >
-            <Link to="/begin-journey" className="w-full sm:w-auto">
+            <Link to="/login" className="w-full sm:w-auto">
               <motion.button
                 variants={{
                   hidden: { opacity: 0, x: -20, filter: 'blur(8px)' },

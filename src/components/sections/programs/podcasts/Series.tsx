@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Podcast } from 'lucide-react';
+import { useLanguage } from '../../../../context/LanguageContext';
+import { translations } from '../../../../utils/translations';
 
 const PodcastSeries = () => {
+  const { language } = useLanguage();
+  const t = translations[language].pages.podcasts;
   const [podcastSeries, setPodcastSeries] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -62,7 +66,7 @@ const PodcastSeries = () => {
       </p>
 
       <button className={`bg-${serie.color}-600 hover:bg-${serie.color}-700 text-white text-sm font-medium px-6 py-2 rounded transition-colors`}>
-        LEARN MORE
+        {t.viewMore}
       </button>
     </div>
   );
@@ -84,7 +88,7 @@ const PodcastSeries = () => {
       <section className="bg-gradient-to-br from-[#2e0003] via-[#48020c] to-[#651d31]">
         <div className="max-w-7xl mx-auto px-6 py-16">
           <h1 className="text-3xl sm:text-4xl font-serif text-white mb-8">
-            Podcast Series
+            {t.podcastSeries}
           </h1>
 
           <div className="bg-white rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 shadow-lg">

@@ -1,11 +1,16 @@
 import React from 'react';
 import { GraduationCap, Users, Award } from 'lucide-react';
+import { useLanguage } from '../../../context/LanguageContext';
+import { translations } from '../../../utils/translations';
 
 const InstituteFacts: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations[language].pages.institute;
+
   const facts = [
-    { icon: GraduationCap, number: '50+', label: 'COURSES' },
-    { icon: Users, number: '5,000+', label: 'STUDENTS' },
-    { icon: Award, number: 'Certified', label: 'PROGRAMS' }
+    { icon: GraduationCap, number: '-- +', label: t.courses },
+    { icon: Users, number: '--- +', label: t.students },
+    { icon: Award, number: 'Certified', label: t.programs }
   ];
 
   return (
@@ -14,7 +19,7 @@ const InstituteFacts: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-0 shadow-lg">
           <div className="bg-[#0a2954] p-12 flex items-center justify-center min-h-[280px]">
             <h2 className="text-4xl md:text-5xl font-serif text-white text-center leading-tight">
-              INSTITUTE<br />FACTS
+              {t.instituteFacts}
             </h2>
           </div>
           {facts.map((fact, index) => (

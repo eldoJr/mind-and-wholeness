@@ -141,7 +141,16 @@ export default function ShoppingCart({ isOpen, onClose, items, onUpdateQuantity,
                 >
                   Continue Shopping
                 </button>
-                <button className="w-full py-3 bg-amber-600 text-white hover:bg-amber-700 rounded transition-colors font-medium">
+                <button
+                  onClick={() => {
+                    const message = items
+                      .map((item) => `• ${item.title} x${item.quantity} — $${(item.price * item.quantity).toFixed(2)}`)
+                      .join('\n');
+                    const text = `Hi, I'd like to order:\n\n${message}\n\nTotal: $${subtotal.toFixed(2)}`;
+                    window.open(`https://wa.me/qr/AZMIAY77ABJ6D1?text=${encodeURIComponent(text)}`, '_blank');
+                  }}
+                  className="w-full py-3 bg-amber-600 text-white hover:bg-amber-700 rounded transition-colors font-medium"
+                >
                   Proceed to Checkout
                 </button>
               </div>

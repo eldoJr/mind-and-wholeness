@@ -5,33 +5,38 @@ import { Instagram, Linkedin } from 'lucide-react';
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../../context/LanguageContext';
+import { translations } from '../../../utils/translations';
 
 
 const TeamSection = () => {
+  const { language } = useLanguage();
+  const t = translations[language].pages.team;
   const teamMembers = [
     {
       name: "Lilian Titus",
-      role: "Founder & Visionary Leader",
-      subtitle: "Founder & Visionary Leader",
+      role: t.member1Role,
+      subtitle: t.member1Role,
       image: ceoImg,
       linkedin: "https://www.linkedin.com/company/mindandwholeness",
-      description: "Lilian founded Mind and Wholeness out of a deep calling to restore balance and purpose in the lives of young people. With a background in counseling and spiritual mentorship, she leads the organization with passion and clarity. As an accomplished author, motivational speaker, and advocate for social transformation, her vision is to see communities transformed through renewed minds and restored hearts."
+      description: t.member1Desc
     },
     {
       name: "Viviana Claudia",
-      role: "Chief Operating Officer (COO)",
-      subtitle: "Chief Operating Officer",
+      role: t.member2Role,
+      subtitle: t.member2Role,
       image: cooImg,
       linkedin: "https://www.linkedin.com/in/viviana-claudia-de-carlos-mussanhane-4ab426358",
-      description: "As Chief Operating Officer, she brings clarity and structure to the organization. She oversees operations with a strategic mindset, ensuring that vision is translated into effective execution. With a strong focus on alignment, efficiency, and people, she works closely with teams to build sustainable systems, drive growth, and create meaningful, long-term impact."
+      description: t.member2Desc
     },
     {
       name: "Michael Mugwenhi",
-      role: "Chief Technology Officer (CTO)",
-      subtitle: "Chief Technology Officer",
+      role: t.member3Role,
+      subtitle: t.member3Role,
       image: ctoImg,
-      linkedin: "https://www.linkedin.com/company/mindandwholeness",
-      description: "Michael is a purpose-driven CTO and technology leader using innovation to create meaningful impact. He leads scalable digital solutions at Mind & Wholeness, aligning technology with holistic healing and human transformation. Focused on growth, efficiency, and real-world change, he builds systems that empower people, uplift communities, and inspire the next generation to lead and innovate."
+      instagram: "https://www.instagram.com/mickymich_345?igsh=MTNramVzMXAxbWxhcQ==",
+      linkedin: "https://www.linkedin.com/in/michael-mugwenhi-24787127a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      description: t.member3Desc
     }
   ];
 
@@ -44,9 +49,9 @@ const TeamSection = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24">
         <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8 ">
-          <Link to="/" className="hover:text-gray-900 transition-colors">Home</Link>
+          <Link to="/" className="hover:text-gray-900 transition-colors">{t.breadcrumbHome}</Link>
           <ChevronRight className="w-4 h-4" />
-          <span className="text-gray-900 underline">Our Team</span>
+          <span className="text-gray-900 underline">{t.breadcrumbTeam}</span>
         </nav>
         <div className="max-w-7xl mx-auto sha">
           {/* Header */}
@@ -57,15 +62,15 @@ const TeamSection = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <h2 className="text-4xl font-serif text-gray-900 mb-6">
-              Our Leadership Team
+              {t.title}
             </h2>
 
             <p className="text-lg text-gray-700 mb-8 max-w-4xl">
-              Building on a vision of transformation, our team inspires individuals to embrace wholeness and live purposefully.
+              {t.subtitle}
             </p>
 
             <p className="text-base text-gray-700 max-w-5xl leading-relaxed">
-              At Mind and Wholeness, our leadership team embodies a journey of transformation that addresses the essence of human life by exploring the profound connection between the soul, spirit, and body. They guide us in fostering a global paradigm shift by inspiring individuals to embrace their true identity, live purposefully, and cultivate flourishing communities through renewed minds and restored hearts.
+              {t.description}
             </p>
           </motion.div>
 
@@ -77,7 +82,7 @@ const TeamSection = () => {
             transition={{ delay: 0.4, duration: 0.5 }}
           >
             <h3 className="text-3xl font-serif text-gray-900">
-              Meet Our Team
+              {t.meetTeam}
             </h3>
           </motion.div>
 
@@ -114,7 +119,7 @@ const TeamSection = () => {
                   {/* Social Links */}
                   <div className="mt-4 flex justify-start space-x-4">
                     <a
-                      href="https://www.instagram.com/mindandwholeness"
+                      href={member.instagram || "https://www.instagram.com/mindandwholeness"}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-600 hover:text-emerald-600 transition-colors duration-300"

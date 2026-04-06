@@ -1,7 +1,12 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { useLanguage } from '../../../../context/LanguageContext';
+import { translations } from '../../../../utils/translations';
 
 const SundayNuggets: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations[language].pages.podcasts;
+
   return (
     <section className="relative h-[500px] flex items-center">
       <div className="absolute inset-0">
@@ -16,20 +21,19 @@ const SundayNuggets: React.FC = () => {
       <div className="relative max-w-7xl mx-auto px-6 w-full">
         <div className="bg-white p-12 max-w-2xl">
           <p className="text-sm font-serif text-[#651d31] mb-4">
-            Join Our Community Every Sunday
+            {t.joinCommunity}
           </p>
           
           <h2 className="text-5xl md:text-6xl font-serif text-gray-900 mb-8">
-            Weekly Wellness Insights
+            {t.weeklyInsights}
           </h2>
           
           <p className="text-gray-700 leading-relaxed mb-8">
-            Beyond our podcast episodes, connect with our community through weekly reflections and wellness insights. 
-            Every Sunday, receive thoughtfully curated content about mindfulness, personal growth, and holistic living.
+            {t.weeklyInsightsDesc}
           </p>
           
           <button className="flex items-center gap-2 px-8 py-3 bg-[#651d31] text-white font-medium hover:bg-[#48020c] transition-colors">
-            Subscribe Now
+            {t.subscribeNow}
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>

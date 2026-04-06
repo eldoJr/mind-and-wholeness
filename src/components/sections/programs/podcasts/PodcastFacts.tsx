@@ -1,11 +1,16 @@
 import React from 'react';
 import { Download, Mic, Heart } from 'lucide-react';
+import { useLanguage } from '../../../../context/LanguageContext';
+import { translations } from '../../../../utils/translations';
 
 const PodcastFacts: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations[language].pages.podcasts;
+
   const facts = [
-    { icon: Download, number: '1+ Million', label: 'DOWNLOADS' },
-    { icon: Mic, number: '80+', label: 'EPISODES' },
-    { icon: Heart, number: 'Number 1', label: 'UNIVERSAL PODCAST' }
+    { icon: Download, number: '1+ Million', label: t.downloads },
+    { icon: Mic, number: '80+', label: t.episodes },
+    { icon: Heart, number: 'Number 1', label: t.universalPodcast }
   ];
 
   return (
@@ -14,7 +19,7 @@ const PodcastFacts: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-0 shadow-lg">
           <div className="bg-[#651d31] p-12 flex items-center justify-center min-h-[280px]">
             <h2 className="text-4xl md:text-5xl font-serif text-white text-center leading-tight">
-              PODCAST<br />FACTS
+              {t.podcastFacts}
             </h2>
           </div>
           {facts.map((fact, index) => (

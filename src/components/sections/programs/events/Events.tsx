@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { SubscribeForm } from '../../../ui';
 import ListEvents from './ListEvents';
-import eventsVideo from './video/events.mp4';
 import { useLanguage } from '../../../../context/LanguageContext';
 import { translations } from '../../../../utils/translations';
 
@@ -12,7 +11,7 @@ const EventsPage = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="min-h-screen bg-white">
       <div className="relative bg-gradient-to-br from-[#ae9463] via-[#8d7434] to-[#b39c7c] h-[600px] px-6 overflow-hidden">
-        <video autoPlay loop muted playsInline preload="auto" src={eventsVideo} className="absolute inset-0 w-full h-full object-cover" />
+        <video autoPlay loop muted playsInline preload="auto" src="/events.mp4" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative h-full flex items-end pb-16">
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="w-full max-w-7xl mx-auto text-center">

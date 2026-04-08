@@ -157,7 +157,7 @@ export default function Footer() {
             {/* Newsletter Signup */}
             <div className="flex justify-center sm:justify-start">
               <Link 
-                to="/newsletter" 
+                to="/subscribe" 
                 className="inline-flex items-center text-base bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 px-6 py-3 rounded-xl transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:scale-105 transform"
               >
                 <Mail size={18} className="mr-2" />

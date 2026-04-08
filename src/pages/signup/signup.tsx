@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertCircle, X } from 'lucide-react';
 import type { SignupForm } from './types';
@@ -16,8 +16,14 @@ const Signup: React.FC = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const { signUp } = useAuth();
+  const { signUp, user } = useAuth();
   const { language } = useLanguage();
+  const navigate = useNavigate();
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user) navigate('/');
+  }, [user, navigate]);
   const t = translations[language].auth;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {

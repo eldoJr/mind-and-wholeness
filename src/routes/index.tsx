@@ -23,6 +23,7 @@ import PresenceMeditations from "../components/sections/programs/meditations/top
 import { Privacy } from "../pages/privacy";
 import { Terms } from "../pages/terms";
 import ProfilePage from "../pages/Profile";
+import ResetPasswordPage from "../pages/ResetPassword";
 import NotFound from "../pages/404/NotFound";
 import InstitutePage from "../pages/institute/institute";
 import Newsletter from "../pages/Newsletter";
@@ -136,6 +137,10 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPasswordPage />,
       },
       {
         path: "*",

@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronDown, Menu, X, User, ArrowRight, Search, Globe } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
+import { useAuth } from '../../context/AuthContext';
 import { translations } from '../../utils/translations';
 import logo from '../../assets/icons/logo-icon.png';
 
@@ -153,6 +154,7 @@ const AboutAccordionButton: React.FC<AccordionButtonProps> = ({ open, onClick, l
 export default function Navbar() {
   const location = useLocation();
   const { language, setLanguage } = useLanguage();
+  const { user } = useAuth();
   const t = translations[language].nav;
   const NAVIGATION = getNavigation(t);
   const [state, setState] = useState({
@@ -475,7 +477,14 @@ export default function Navbar() {
                   isOpen={state.userOpen}
                   items={[
                     { title: t.helpCenter, description: "", to: "/help" },
-                    { title: t.loginSignup, description: "", to: "/login" }
+                    ...(user
+                      ? [
+                          { title: 'Profile', description: "", to: "/profile" },
+                        ]
+                      : [
+                          { title: t.loginSignup, description: "", to: "/login" },
+                        ]
+                    ),
                   ]}
                   onMouseEnter={() => handleHover('user', true)}
                   onMouseLeave={() => handleHover('user', false)}
@@ -622,13 +631,23 @@ export default function Navbar() {
                     >
                       {t.helpCenter}
                     </Link>
-                    <Link
-                      to="/login"
-                      className="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-600 rounded-md hover:bg-gray-50"
-                      onClick={closeAllMenus}
-                    >
-                      {t.loginSignup}
-                    </Link>
+                    {user ? (
+                      <Link
+                        to="/profile"
+                        className="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-600 rounded-md hover:bg-gray-50"
+                        onClick={closeAllMenus}
+                      >
+                        Profile
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/login"
+                        className="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-600 rounded-md hover:bg-gray-50"
+                        onClick={closeAllMenus}
+                      >
+                        {t.loginSignup}
+                      </Link>
+                    )}
                   </div>
                 )}
               </div>

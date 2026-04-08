@@ -61,12 +61,12 @@ export default function Footer() {
             <h4 className="text-lg font-bold text-gray-900 mb-2">
               {t.quickLinks}
             </h4>
-            <div className="w-12 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full mb-4" />
+            <div className="w-12 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full mb-4 mx-auto sm:mx-0" />
             <ul className="space-y-3 text-base">
               <li>
                 <Link 
                   to="/about/about" 
-                  className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center group"
+                  className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center justify-center sm:justify-start group"
                 >
                   <span className="w-1 h-1 bg-emerald-600 rounded-full mr-3 group-hover:w-2 transition-all" />
                   {t.aboutUs}
@@ -76,7 +76,7 @@ export default function Footer() {
               <li>
                 <Link 
                   to="/programs/events" 
-                  className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center group"
+                  className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center justify-center sm:justify-start group"
                 >
                   <span className="w-1 h-1 bg-emerald-600 rounded-full mr-3 group-hover:w-2 transition-all" />
                   {t.events}
@@ -85,7 +85,7 @@ export default function Footer() {
               <li>
                 <Link 
                   to="/bookstore/bookstore" 
-                  className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center group"
+                  className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center justify-center sm:justify-start group"
                 >
                   <span className="w-1 h-1 bg-emerald-600 rounded-full mr-3 group-hover:w-2 transition-all" />
                   {t.bookstore}
@@ -95,7 +95,7 @@ export default function Footer() {
               <li>
                 <Link 
                   to="/programs/articles" 
-                  className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center group"
+                  className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center justify-center sm:justify-start group"
                 >
                   <span className="w-1 h-1 bg-emerald-600 rounded-full mr-3 group-hover:w-2 transition-all" />
                   {nav.articles}
@@ -104,7 +104,7 @@ export default function Footer() {
               <li>
                 <Link 
                   to="/contact" 
-                  className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center group"
+                  className="text-gray-700 hover:text-emerald-700 hover:translate-x-1 transition-all duration-200 flex items-center justify-center sm:justify-start group"
                 >
                   <span className="w-1 h-1 bg-emerald-600 rounded-full mr-3 group-hover:w-2 transition-all" />
                   {nav.contact}

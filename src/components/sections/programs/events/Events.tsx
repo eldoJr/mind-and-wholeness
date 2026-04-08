@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SubscribeForm } from '../../../ui';
 import ListEvents from './ListEvents';
@@ -7,17 +8,32 @@ import { translations } from '../../../../utils/translations';
 const EventsPage = () => {
   const { language } = useLanguage();
   const t = translations[language].pages.events;
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="min-h-screen bg-white">
-      <div className="relative bg-gradient-to-br from-[#ae9463] via-[#8d7434] to-[#b39c7c] h-[600px] px-6 overflow-hidden">
-        <video autoPlay loop muted playsInline preload="auto" src="/events.mp4" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative h-full flex items-end pb-16">
+      <div className="relative bg-gradient-to-br from-[#ae9463] via-[#8d7434] to-[#b39c7c] h-[400px] sm:h-[500px] md:h-[600px] overflow-hidden">
+        {/* Loading shimmer */}
+        {!videoLoaded && (
+          <div className="absolute inset-0 z-[1]">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#ae9463] via-[#8d7434] to-[#b39c7c]" />
+            <div className="absolute inset-0 animate-pulse bg-white/5" />
+          </div>
+        )}
+        <video
+          autoPlay loop muted playsInline preload="auto"
+          src="/events.mp4"
+          onCanPlayThrough={() => setVideoLoaded(true)}
+          onPlaying={() => setVideoLoaded(true)}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+          className={`transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+        />
+        <div className="absolute inset-0 bg-black/40 z-[2]"></div>
+        <div className="relative h-full flex items-end pb-10 sm:pb-16 z-[3] px-6">
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="w-full max-w-7xl mx-auto text-center">
             <p className="text-xs font-serif tracking-[0.3em] text-white/80 mb-3 uppercase">{t.subtitle}</p>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif italic text-white mb-6 leading-tight">{t.title}</h1>
-            <p className="text-base text-white/90 max-w-xl mx-auto leading-relaxed">{t.description}</p>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif italic text-white mb-4 sm:mb-6 leading-tight">{t.title}</h1>
+            <p className="text-sm sm:text-base text-white/90 max-w-xl mx-auto leading-relaxed">{t.description}</p>
           </motion.div>
         </div>
       </div>

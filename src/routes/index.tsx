@@ -22,6 +22,7 @@ import JoyMeditations from "../components/sections/programs/meditations/topic/jo
 import PresenceMeditations from "../components/sections/programs/meditations/topic/presence";
 import { Privacy } from "../pages/privacy";
 import { Terms } from "../pages/terms";
+import ProfilePage from "../pages/Profile";
 import NotFound from "../pages/404/NotFound";
 import InstitutePage from "../pages/institute/institute";
 import Newsletter from "../pages/Newsletter";
@@ -131,6 +132,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
       },
       {
         path: "*",

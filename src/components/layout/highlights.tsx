@@ -14,13 +14,14 @@ export default function Highlights() {
       title: t.teachings.title,
       description: t.teachings.description,
       icon: teachings,
-      to:"/programs/meditations"
+      to:"https://youtube.com/@liliantitus255?si=2tVcHJb1POM8wuRm",
+      external: true
     },
     {
       title: t.guides.title,
       description: t.guides.description,
       icon: guides,
-      to:"/programs/community"
+      to:"/programs/institute"
     },
     {
       title: t.podcast.title,
@@ -32,7 +33,7 @@ export default function Highlights() {
       title: t.courses.title,
       description: t.courses.description,
       icon: courses,
-      to:"/programs/courses"
+      to:"/programs/institute"
     },
   ];
   return (
@@ -51,7 +52,13 @@ export default function Highlights() {
                   src={item.icon}
                   alt={`${item.title} Icon`}
                   className="w-12 h-12 sm:w-24 sm:h-24 cursor-pointer hover:scale-105 transition-transform"
-                  onClick={() => window.location.href = item.to}
+                  onClick={() => {
+                    if (item.external) {
+                      window.open(item.to, '_blank', 'noopener,noreferrer');
+                    } else {
+                      window.location.href = item.to;
+                    }
+                  }}
                 />
               </div>
 

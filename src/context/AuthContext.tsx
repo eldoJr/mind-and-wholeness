@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(session?.user ?? null);
       if (event === 'PASSWORD_RECOVERY') {
         setIsRecovery(true);
+        window.location.href = '/reset-password';
       }
     });
 

@@ -18,7 +18,8 @@ const TeamSection = () => {
       role: t.member1Role,
       subtitle: t.member1Role,
       image: ceoImg,
-      linkedin: "https://www.linkedin.com/company/mindandwholeness",
+      instagram: "https://www.instagram.com/liliantitus_1?igsh=MXdsbXU2NjUxMXJ6bA==",
+      linkedin: "https://www.linkedin.com/in/",
       description: t.member1Desc
     },
     {
@@ -26,6 +27,7 @@ const TeamSection = () => {
       role: t.member2Role,
       subtitle: t.member2Role,
       image: cooImg,
+      instagram: "https://www.instagram.com/vivianaaclaudia?igsh=MWtvbjE0a2g5djdqcw==",
       linkedin: "https://www.linkedin.com/in/viviana-claudia-de-carlos-mussanhane-4ab426358",
       description: t.member2Desc
     },

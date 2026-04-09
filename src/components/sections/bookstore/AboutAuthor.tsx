@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Instagram, Linkedin } from 'lucide-react';
 import authorImg from "../../../assets/images/lilian.jpeg";
 import { useLanguage } from '../../../context/LanguageContext';
 import { translations } from '../../../utils/translations';
@@ -18,8 +18,8 @@ export default function AboutAuthor() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative flex flex-col lg:flex-row gap-12 items-center">
-          <div className="lg:w-1/2 w-full">
-            <div className="rounded-3xl overflow-hidden shadow-2xl">
+          <div className="lg:w-1/2 w-full flex justify-center">
+            <div className="rounded-3xl overflow-hidden shadow-2xl max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm xl:max-w-md">
               <img
                 src={authorImg}
                 alt="Lilian Titus - Author"
@@ -42,16 +42,13 @@ export default function AboutAuthor() {
             </div>
 
             <div className="space-y-4 text-gray-600 leading-relaxed text-justify">
-              <p className="text-base">{t.authorBio1}</p>
-              <p className="text-base">{t.authorBio2}</p>
-              <p className="text-base">{t.authorBio3}</p>
+              {t.authorBio1 && <p className="text-base">{t.authorBio1}</p>}
+              {t.authorBio2 && <p className="text-base">{t.authorBio2}</p>}
+              {t.authorBio3 && <p className="text-base">{t.authorBio3}</p>}
             </div>
 
             <div className="flex space-x-4 pt-4">
-              <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
-                <Facebook size={24} />
-              </a>
-              <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">
+              <a href="https://www.instagram.com/liliantitus_1?igsh=MXdsbXU2NjUxMXJ6bA==" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:text-emerald-900 transition">
                 <Instagram size={24} />
               </a>
               <a href="#" className="text-emerald-700 hover:text-emerald-900 transition">

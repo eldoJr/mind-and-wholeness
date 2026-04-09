@@ -112,12 +112,19 @@ export default function BookStore() {
           >
             {/* Book Image */}
             <div className="w-full lg:w-1/2 flex justify-center">
-              <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-all max-w-sm">
-                <img
-                  src={book1}
-                  alt="Power That Brings Growth"
-                  className="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
-                />
+              <div className="relative group">
+                {/* Decorative background */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-amber-200/40 via-yellow-100/30 to-amber-300/40 blur-sm group-hover:blur-none transition-all duration-500" />
+                <div className="relative bg-white shadow-xl overflow-hidden group-hover:shadow-2xl transition-shadow duration-500 max-w-sm">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none z-10" />
+                  <img
+                    src={book1}
+                    alt="Power That Brings Growth"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+                {/* Subtle reflection */}
+                <div className="mt-2 mx-auto w-3/4 h-4 bg-gradient-to-b from-black/5 to-transparent blur-md" />
               </div>
             </div>
 
@@ -134,7 +141,7 @@ export default function BookStore() {
               <div className="flex items-center gap-3">
                 <p className="text-3xl font-bold text-amber-600">$10.00</p>
                 <span className="text-gray-400">|</span>
-                <p className="text-2xl font-semibold text-gray-500">₹500</p>
+                <p className="text-2xl font-semibold text-gray-500">₹600</p>
               </div>
               <button
                 onClick={() => addToCart({ id: 2, title: 'Power That Brings Growth', author: 'Lilian Mussa Titus', price: 10, image: book1 })}

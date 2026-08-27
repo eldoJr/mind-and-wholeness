@@ -9,8 +9,8 @@ export const NewsletterBanner = () => {
   return (
   <section className="py-16">
     <div className="py-12 space-y-6">
-      <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col md:flex-row min-h-[500px] shadow-lg">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-0">
+        <div className="flex flex-col md:flex-row min-h-[500px] shadow-lg rounded-md overflow-hidden">
           <div className="flex-1 bg-white px-8 md:px-16 py-12 md:py-16 flex flex-col justify-center">
             <div className="space-y-6 max-w-lg">
               <p className="text-sm font-semibold text-emerald-600 tracking-wide uppercase">

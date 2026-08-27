@@ -22,31 +22,41 @@ export const SubscribeForm = ({
   };
 
   return (
-    <section className="py-8">
-      <div className="py-4">
+    <section className="py-0 px-4 sm:px-6 lg:px-0">
+      <div className="py-4 pb-16">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row md:h-96 shadow-lg overflow-hidden">
-            <div className="flex-1 h-56 md:h-full">
-              <img 
-                src={communityImg} 
-                alt="WhatsApp Community" 
-                className="w-full h-full object-cover object-center"
-              />
+          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 bg-white rounded-2xl shadow-[0_8px_40px_-8px_rgba(0,0,0,0.12)] px-8 md:px-16 py-10 md:py-14">
+            {/* Circle image with decorative dots */}
+            <div className="relative flex-shrink-0 w-72 h-72 md:w-96 md:h-96">
+              {/* Mid-right sphere — behind image, half showing */}
+              <span className="absolute top-1/2 -translate-y-1/2 -right-5 w-10 h-10 rounded-full z-0" style={{ background: 'radial-gradient(circle at 35% 35%, #6ee7b7, #059669 60%, #064e3b)' }} />
+              {/* Circle image on top */}
+              <div className="relative w-full h-full rounded-full overflow-hidden z-10">
+                <img
+                  src={communityImg}
+                  alt="WhatsApp Community"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+              {/* Large sphere — top-right, full color, 3D */}
+              <span className="absolute -top-2 -right-2 w-16 h-16 rounded-full z-20" style={{ background: 'radial-gradient(circle at 35% 30%, #a7f3d0, #10b981 55%, #065f46)' }} />
+              {/* Small blurred sphere — bottom-left, ofuscado */}
+              <span className="absolute -bottom-3 -left-3 w-8 h-8 rounded-full blur-[2px] z-10" style={{ background: 'radial-gradient(circle at 35% 35%, #d1fae5, #34d399 55%, #059669)', opacity: 0.6 }} />
             </div>
-            <div className="flex-1 bg-white px-8 md:px-14 py-10 md:py-12 flex flex-col justify-center">
-              <span className="inline-block w-10 h-[3px] bg-emerald-500 rounded-full mb-4" />
-              <p className="text-[11px] font-medium text-emerald-600 tracking-[0.2em] uppercase mb-4">
+            {/* Text content */}
+            <div className="flex flex-col justify-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {title || t.title}
-              </p>
-              <h2 className="text-xl md:text-2xl font-serif text-gray-900 leading-relaxed mb-4 font-normal">
-                {description || t.description}
               </h2>
-              <p className="text-gray-400 text-xs tracking-wide mb-6">
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-3">
+                {description || t.description}
+              </p>
+              <p className="text-gray-500 text-sm leading-relaxed mb-6">
                 {t.footer}
               </p>
               <Button
                 onClick={handleJoinWhatsApp}
-                className="inline-flex items-center gap-2.5 px-6 py-3 text-xs font-medium tracking-wide uppercase bg-emerald-600 hover:bg-emerald-700 text-white rounded-full transition-all duration-300 w-fit shadow-md hover:shadow-lg"
+                className="inline-flex items-center gap-2.5 px-6 py-3 text-sm font-medium bg-emerald-600 hover:bg-emerald-700 text-white rounded-full transition-all duration-300 w-fit shadow-md hover:shadow-lg"
               >
                 <MessageCircle size={15} />
                 {t.button}

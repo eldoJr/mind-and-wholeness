@@ -14,7 +14,7 @@ export default function Footer() {
   const t = translations[language].footer;
   const nav = translations[language].nav;
   return (
-    <footer className="bg-gradient-to-br from-white via-emerald-50 to-green-100 text-gray-800 relative overflow-hidden border-t border-emerald-200">
+    <footer className="bg-white text-gray-800 relative overflow-hidden border-t border-gray-100">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 bg-emerald-300 rounded-full blur-3xl" />
@@ -131,7 +131,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 border-t border-emerald-200 bg-emerald-50/50 backdrop-blur-sm">
+      <div className="relative z-10 border-t border-gray-100 bg-gradient-to-br from-emerald-50 via-emerald-100 to-green-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-700">
             <p className="font-medium">

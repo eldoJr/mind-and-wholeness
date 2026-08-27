@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
 import { translations } from "../../utils/translations";
 import mindImg from "../../assets/images/soul.png";
-import bodyImg from "../../assets/images/body1.png";
+import bodyImg from "../../assets/images/body.png";
 import spiritImg from "../../assets/images/spirit2.png";
 
 export default function MeditativeThemes() {
@@ -18,7 +18,7 @@ export default function MeditativeThemes() {
   ];
 
   return (
-    <section className="relative pb-20 sm:pb-28 bg-gradient-to-br from-white via-emerald-50 to-green-100 overflow-hidden">
+    <section className="relative pb-20 sm:pb-28 overflow-hidden">
       <div className="mx-auto max-w-6xl border-t border-gray-200 mb-20 sm:mb-28" />
       {/* Background blurs — matching footer */}
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
@@ -36,22 +36,20 @@ export default function MeditativeThemes() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 backdrop-blur-sm rounded-full mb-5">
-            <Sparkles className="text-emerald-600" size={16} />
-            <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider">
-              {t.badge}
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-gray-900 mb-4">
+          <p className="text-xs font-medium text-emerald-600 tracking-[0.25em] uppercase mb-4">
+            {t.badge}
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-gray-900 mb-5">
             {t.title}
           </h2>
-          <p className="text-base text-gray-600 max-w-xl mx-auto leading-relaxed">
+          <div className="w-10 h-[2px] bg-emerald-500 rounded-full mx-auto mb-5" />
+          <p className="text-base text-gray-500 max-w-xl mx-auto leading-relaxed">
             {t.subtitle}
           </p>
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 px-4 sm:px-6 lg:px-0">
           {themes.map((theme, idx) => {
             const themeData = t.themes[theme.key as keyof typeof t.themes];
             return (

@@ -4,7 +4,6 @@ import Support from "../components/layout/support";
 import Highlights from "../components/layout/highlights";
 import MeditativeThemes from "../components/layout/meditations";
 import { NewsletterBanner, SubscribeForm } from "../components/ui";
-//import Testimonial from "../components/layout/testimonial";
 
 export default function Home() {
   return (
@@ -13,9 +12,9 @@ export default function Home() {
       <Support />
       <Highlights />
       <NewsletterBanner />
+      <div className="bg-gradient-to-br from-white via-emerald-50 to-green-100">
       <MeditativeThemes />
       <SubscribeForm />
-      {/* <Testimonial /> */}
-    </>
+    </div>
   );
 }

@@ -13,8 +13,9 @@ export default function Home() {
       <Highlights />
       <NewsletterBanner />
       <div className="bg-gradient-to-br from-white via-emerald-50 to-green-100">
-      <MeditativeThemes />
-      <SubscribeForm />
-    </div>
+        <MeditativeThemes />
+        <SubscribeForm />
+      </div>
+    </>
   );
 }

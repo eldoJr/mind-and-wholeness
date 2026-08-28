@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CalendarHeart, Sparkles } from 'lucide-react';
+import { CalendarHeart } from 'lucide-react';
 import { useLanguage } from '../../../../context/LanguageContext';
 import { translations } from '../../../../utils/translations';
 
@@ -8,61 +8,36 @@ const ListEvents = () => {
   const t = translations[language].pages.events;
 
   return (
-    <section className="bg-gradient-to-br from-[#b39c7c]/5 to-[#8d7434]/10 py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <p className="text-sm font-serif tracking-[0.3em] text-[#8d7434] mb-4 uppercase">
-            {t.pastGatherings}
-          </p>
-          <h2 className="text-4xl md:text-5xl font-serif text-[#8d7434] mb-4">
-            {t.pastEvents}
-          </h2>
-        </div>
+    <section className="bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+        <motion.div
+          className="mb-10"
+          initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <span className="block w-6 h-px bg-amber-400" />
+            <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-amber-600">{t.pastGatherings}</p>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl text-gray-900 leading-tight">{t.pastEvents}</h2>
+        </motion.div>
 
-        <div className="flex items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="relative max-w-lg w-full text-center py-16 px-8"
-          >
-            {/* Decorative ring */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-              className="absolute inset-0 m-auto w-48 h-48 rounded-full border border-dashed border-[#8d7434]/20"
-            />
-
-            <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.3, type: 'spring', stiffness: 120 }}
-              className="relative z-10"
-            >
-              <div className="relative inline-flex items-center justify-center mb-8">
-                <div className="absolute w-28 h-28 bg-[#8d7434]/5 rounded-full" />
-                <div className="relative bg-white rounded-full w-20 h-20 flex items-center justify-center shadow-lg shadow-[#8d7434]/10">
-                  <CalendarHeart className="w-9 h-9 text-[#8d7434]" />
-                </div>
-                <Sparkles className="absolute -top-1 -right-1 w-5 h-5 text-[#8d7434]/60" />
-              </div>
-
-              <h3 className="text-2xl md:text-3xl font-serif italic text-gray-900 mb-3">
-                {t.noPastEvents}
-              </h3>
-
-              <p className="text-gray-500 leading-relaxed max-w-sm mx-auto mb-8">
-                {t.checkBackSoon}
-              </p>
-
-              <div className="flex items-center justify-center gap-2 text-xs tracking-widest uppercase text-[#8d7434]/70 font-serif">
-                <span className="w-8 h-px bg-[#8d7434]/30" />
-                <span>{t.stayTuned}</span>
-                <span className="w-8 h-px bg-[#8d7434]/30" />
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
+        <motion.div
+          className="flex flex-col sm:flex-row items-center gap-8 bg-white rounded-2xl px-8 py-10 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08),0_1px_4px_-1px_rgba(0,0,0,0.04)]"
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <div className="w-16 h-16 rounded-full bg-amber-50 flex items-center justify-center shrink-0">
+            <CalendarHeart className="w-8 h-8 text-amber-600" />
+          </div>
+          <div className="flex-1 sm:text-left text-center">
+            <h3 className="text-xl font-serif text-gray-900 mb-2">{t.noPastEvents}</h3>
+            <p className="text-gray-500 text-sm leading-relaxed">{t.checkBackSoon}</p>
+          </div>
+          <div className="inline-flex items-center gap-2 shrink-0">
+            <span className="w-6 h-px bg-amber-300" />
+            <span className="text-xs tracking-widest uppercase text-amber-600 font-medium">{t.stayTuned}</span>
+            <span className="w-6 h-px bg-amber-300" />
+          </div>
+        </motion.div>
       </div>
     </section>
   );

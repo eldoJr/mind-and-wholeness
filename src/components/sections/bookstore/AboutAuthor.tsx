@@ -20,7 +20,7 @@ export default function AboutAuthor() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="relative flex flex-col lg:flex-row gap-12 items-center">
           <div className="lg:w-1/2 w-full flex justify-center">
-            <div className="rounded-2xl overflow-hidden shadow-2xl max-w-xs sm:max-w-sm border-4 border-white/10">
+            <div className="rounded-2xl overflow-hidden shadow-2xl max-w-xs sm:max-w-sm">
               <img src={authorImg} alt="Lilian Titus - Author" className="w-full h-auto object-cover" />
             </div>
           </div>

@@ -60,6 +60,11 @@ const getNavigation = (t: any) => ({
       title: t.articles,
       description: t.articlesDesc,
       to: "/programs/articles",
+    },
+    {
+      title: t.communityHealth,
+      description: t.communityHealthDesc,
+      to: "/programs/community-health",
     }
   ]
 });

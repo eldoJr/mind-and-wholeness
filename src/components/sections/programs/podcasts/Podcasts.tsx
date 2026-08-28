@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { getRecentPodcasts } from '../../../../data/podcasts';
@@ -18,21 +18,6 @@ const Podcasts: React.FC = () => {
   const t = translations[language].pages.podcasts;
   const tLogin = translations[language].loginCTA;
   const recentEpisodes = getRecentPodcasts(3);
-  const [typedText, setTypedText] = useState('');
-  const fullText = t.newEpisodes;
-
-  useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index <= fullText.length) {
-        setTypedText(fullText.slice(0, index));
-        index++;
-      } else {
-        setTimeout(() => { index = 0; setTypedText(''); }, 2000);
-      }
-    }, 100);
-    return () => clearInterval(interval);
-  }, [fullText]);
 
   return (
     <motion.section
@@ -44,9 +29,11 @@ const Podcasts: React.FC = () => {
       {/* Hero */}
       <div className="bg-gradient-to-br from-[#360d19] via-[#4a1523] to-[#651d31] overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 md:py-28">
-          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+
+            {/* Left text */}
             <motion.div
-              className="flex-1"
+              className="w-full md:w-1/2"
               initial={{ y: -16, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -58,20 +45,56 @@ const Podcasts: React.FC = () => {
               <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight mb-5">
                 {t.title}
               </h1>
-              <p className="text-white/70 text-base max-w-xl leading-relaxed mb-4">{t.heroDesc}</p>
-              <p className="text-sm text-white/50 font-mono h-6">
-                {typedText}<span className="animate-pulse">|</span>
-              </p>
+              <p className="text-white/70 text-base max-w-xl leading-relaxed mb-8">{t.heroDesc}</p>
+              <motion.button
+                onClick={() => document.getElementById('episodes')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                className="relative inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-medium tracking-wide text-white border border-white/40 overflow-hidden"
+                whileHover={{ scale: 1.04, borderColor: 'rgba(255,255,255,0.9)' }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              >
+                <motion.span
+                  className="absolute inset-0 rounded-full"
+                  style={{ background: 'rgba(255,255,255,0)' }}
+                  whileHover={{ background: 'rgba(255,255,255,0.12)' }}
+                  transition={{ duration: 0.25 }}
+                />
+                <span className="relative z-10">{t.welcomeTo}</span>
+                <motion.span
+                  className="relative z-10"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </motion.span>
+              </motion.button>
             </motion.div>
-            <div className="w-full md:w-80 lg:w-96 flex-shrink-0">
-              <img src={podcastImg} alt="Podcast" className="w-full h-auto rounded-2xl shadow-2xl" />
-            </div>
+
+            {/* Right circular image */}
+            <motion.div
+              className="w-full md:w-1/2 flex justify-center"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.35 }}
+            >
+              <div className="relative w-64 h-64 md:w-80 md:h-80">
+                <span className="absolute -top-4 right-8 w-8 h-8 rounded-full" style={{ background: 'rgba(253,164,175,0.35)' }} />
+                <span className="absolute top-10 -right-4 w-5 h-5 rounded-full" style={{ background: 'rgba(253,164,175,0.25)' }} />
+                <span className="absolute -bottom-3 left-10 w-6 h-6 rounded-full" style={{ background: 'rgba(253,164,175,0.25)' }} />
+                <img
+                  src={podcastImg}
+                  alt="Podcast"
+                  className="w-full h-full object-cover rounded-full shadow-[0_8px_40px_-8px_rgba(0,0,0,0.4)]"
+                />
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </div>
 
       {/* Welcome + episodes */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+      <div id="episodes" className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
         <motion.div
           className="mb-12"
           initial={{ y: 20, opacity: 0 }}

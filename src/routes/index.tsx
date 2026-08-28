@@ -29,6 +29,7 @@ import InstitutePage from "../pages/institute/institute";
 import Newsletter from "../pages/Newsletter";
 import HelpPage from "../pages/Help";
 import SubscribePage from "../pages/Subscribe";
+import CommunityHealth from "../pages/programs/CommunityHealth";
 
 export const router = createBrowserRouter([
   {
@@ -89,6 +90,10 @@ export const router = createBrowserRouter([
       {
         path: "/programs/meditations/presence",
         element: <PresenceMeditations />,
+      },
+      {
+        path: "/programs/community-health",
+        element: <CommunityHealth />,
       },
       {
         path: "/programs/articles",

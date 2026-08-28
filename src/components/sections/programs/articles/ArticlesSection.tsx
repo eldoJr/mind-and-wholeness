@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../../../../context/LanguageContext';
 import { translations } from '../../../../utils/translations';
 import communityImg from '../../../../assets/images/community.png';
+import presenceImg from '../../../../assets/images/presence.jpg';
 import ManifestoStrip from '../../../ui/ManifestoStrip';
 import { Link } from 'react-router-dom';
 
@@ -21,30 +22,71 @@ const ArticlesSection = () => {
     >
       {/* Hero */}
       <div className="bg-emerald-900 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-24 sm:py-32">
-          <motion.div
-            initial={{ y: -16, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.15, duration: 0.6 }}
-          >
-            <div className="flex items-center gap-3 mb-5">
-              <span className="block w-6 h-px bg-emerald-400" />
-              <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-300">
-                {t.subtitle}
-              </p>
-            </div>
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight mb-5">
-              {t.title}
-            </h1>
-            <p className="text-white/70 text-base max-w-xl leading-relaxed">
-              {t.description}
-            </p>
-          </motion.div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
+          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+
+            {/* Left text */}
+            <motion.div
+              className="w-full md:w-1/2"
+              initial={{ y: -16, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.15, duration: 0.6 }}
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <span className="block w-6 h-px bg-emerald-400" />
+                <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-300">{t.subtitle}</p>
+              </div>
+              <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight mb-5">{t.title}</h1>
+              <p className="text-white/70 text-base max-w-xl leading-relaxed mb-8">{t.description}</p>
+              <motion.button
+                onClick={() => document.getElementById('articles-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                className="relative inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-medium tracking-wide text-white border border-white/40 overflow-hidden"
+                whileHover={{ scale: 1.04, borderColor: 'rgba(255,255,255,0.9)' }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              >
+                <motion.span
+                  className="absolute inset-0 rounded-full"
+                  style={{ background: 'rgba(255,255,255,0)' }}
+                  whileHover={{ background: 'rgba(255,255,255,0.12)' }}
+                  transition={{ duration: 0.25 }}
+                />
+                <span className="relative z-10">{t.subtitle}</span>
+                <motion.span
+                  className="relative z-10"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </motion.span>
+              </motion.button>
+            </motion.div>
+
+            {/* Right circular image */}
+            <motion.div
+              className="w-full md:w-1/2 flex justify-center"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.35 }}
+            >
+              <div className="relative w-64 h-64 md:w-80 md:h-80">
+                <span className="absolute -top-4 right-8 w-8 h-8 rounded-full" style={{ background: 'rgba(167,243,208,0.35)' }} />
+                <span className="absolute top-10 -right-4 w-5 h-5 rounded-full" style={{ background: 'rgba(167,243,208,0.25)' }} />
+                <span className="absolute -bottom-3 left-10 w-6 h-6 rounded-full" style={{ background: 'rgba(167,243,208,0.25)' }} />
+                <img
+                  src={presenceImg}
+                  alt="Articles"
+                  className="w-full h-full object-cover rounded-full shadow-[0_8px_40px_-8px_rgba(0,0,0,0.4)]"
+                />
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </div>
 
       {/* Coming Soon card */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16">
+      <div id="articles-content" className="mx-auto max-w-7xl px-4 sm:px-6 py-16">
         <motion.div
           className="flex flex-col sm:flex-row items-center gap-8 bg-white rounded-2xl px-8 py-10 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08),0_1px_4px_-1px_rgba(0,0,0,0.04)]"
           initial={{ y: 24, opacity: 0 }}

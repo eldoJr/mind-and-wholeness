@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from "react-router-dom";
-import { Play, ArrowRight, Sparkles } from 'lucide-react';
+import { Play, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../utils/translations';
 import herobg from '/src/assets/images/herobg.jpg';
@@ -113,7 +113,7 @@ export function Hero() {
   return (
     <section 
       ref={imageRef}
-      className="relative w-full h-[500px] sm:h-screen min-h-[500px] max-h-[800px] overflow-hidden bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-6 lg:px-12 pb-4 sm:pb-8"
+      className="relative w-full h-[480px] sm:h-[600px] lg:h-[680px] overflow-hidden bg-gradient-to-br from-slate-50 to-emerald-50 px-4 sm:px-6 lg:px-12 pb-4 sm:pb-8"
     >
       {/* Background Image Container */}
       <div className="absolute inset-0 mx-4 sm:mx-6 lg:mx-12 mb-2 sm:mb-4 rounded-xl shadow-lg overflow-hidden">
@@ -162,13 +162,13 @@ export function Hero() {
         
         {/* Gradient overlay with parallax */}
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" 
+          className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" 
           style={{ opacity }}
         />
       </div>
 
       {/* Content Container */}
-      <div className="relative h-full flex items-center pt-8 sm:pt-12 lg:pt-16 mx-2 sm:mx-4 lg:mx-8 mb-4 sm:mb-8 z-10">
+      <div className="relative h-full flex items-center pt-6 sm:pt-8 mx-2 sm:mx-4 lg:mx-8 mb-4 sm:mb-6 z-10">
         <motion.div 
           className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"
           initial="hidden"
@@ -184,24 +184,19 @@ export function Hero() {
             }
           }}
         >
-          {/* Handwritten Text */}
+          {/* Badge */}
           <motion.div
             variants={{
-              hidden: { opacity: 0, y: 20, filter: 'blur(10px)' },
-              visible: { 
-                opacity: 1, 
-                y: 0,
-                filter: 'blur(0px)',
-                transition: { 
-                  duration: 0.8, 
-                  ease: [0.16, 1, 0.3, 1] 
-                }
-              }
+              hidden: { opacity: 0, y: 16 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
             }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 backdrop-blur-md border border-emerald-400/20 rounded-full mb-4"
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-5"
           >
-            <Sparkles className="w-4 h-4 text-emerald-300" />
-            <p className="text-sm sm:text-base text-white font-serif">
+            <span className="text-[10px] font-semibold tracking-[0.25em] uppercase text-emerald-300">
+              {t.welcome}
+            </span>
+            <span className="w-px h-3 bg-white/30" />
+            <p className="text-xs sm:text-sm text-white/90 font-medium tracking-wide">
               {t.handwritten}
             </p>
           </motion.div>
@@ -209,57 +204,26 @@ export function Hero() {
           {/* Main Heading */}
           <motion.h1
             variants={{
-              hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },
-              visible: { 
-                opacity: 1, 
-                y: 0,
-                filter: 'blur(0px)',
-                transition: { 
-                  duration: 0.8, 
-                  ease: [0.16, 1, 0.3, 1] 
-                }
-              }
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } }
             }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold leading-tight text-white drop-shadow-2xl mb-4 sm:mb-6 max-w-4xl"
-            style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3)' }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold leading-[1.05] tracking-tight text-white mb-5 sm:mb-7 max-w-3xl"
+            style={{ textShadow: '0 2px 16px rgba(0,0,0,0.4)' }}
           >
-            {t.from} <motion.span 
-              className="text-emerald-400"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              style={{ textShadow: '0 0 30px rgba(52, 211, 153, 0.5)' }}
-            >
-              {t.brokenness}
-            </motion.span>{' '}
-            {t.to} <motion.span 
-              className="text-amber-300"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              style={{ textShadow: '0 0 30px rgba(252, 211, 77, 0.5)' }}
-            >
-              {t.wholeness}
-            </motion.span>
+            {t.from}{' '}
+            <span className="text-emerald-400">{t.brokenness}</span>{' '}
+            {t.to}{' '}
+            <span className="text-amber-300">{t.wholeness}</span>
           </motion.h1>
 
           {/* Description */}
           <motion.p
             variants={{
-              hidden: { opacity: 0, y: 20, filter: 'blur(8px)' },
-              visible: { 
-                opacity: 1, 
-                y: 0,
-                filter: 'blur(0px)',
-                transition: { 
-                  duration: 0.8, 
-                  delay: 0.2, 
-                  ease: [0.16, 1, 0.3, 1] 
-                }
-              }
+              hidden: { opacity: 0, y: 16 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] } }
             }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed text-white font-medium mb-6 sm:mb-8"
-            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
+            className="text-sm sm:text-base lg:text-lg max-w-3xl leading-[1.75] text-white font-normal mb-7 sm:mb-9"
+            style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}
           >
             {t.description}
           </motion.p>
@@ -298,7 +262,7 @@ export function Hero() {
                   transition: { duration: 0.2 }
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-medium rounded-lg shadow-md hover:shadow-emerald-500/30 transition-all duration-300 text-sm sm:text-base"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-full transition-colors duration-200 text-sm tracking-wide"
               >
                 {t.beginJourney}
                 <motion.div
@@ -331,7 +295,7 @@ export function Hero() {
                 transition: { duration: 0.2 }
               }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-white/5 backdrop-blur-sm border border-white/20 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 text-sm sm:text-base"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3 bg-white/10 backdrop-blur-md border border-white/25 hover:bg-white/20 hover:border-white/40 text-white font-medium rounded-full transition-all duration-200 text-sm tracking-wide"
             >
               <Play className="w-4 h-4 sm:w-5 sm:h-5" />
               {t.watchStories}

@@ -23,6 +23,7 @@ export const translations = {
       allLanguages: 'All Languages →'
     },
     hero: {
+      welcome: 'Welcome',
       handwritten: 'Your Journey Begins Here',
       from: 'From',
       brokenness: 'Brokenness',
@@ -62,6 +63,21 @@ export const translations = {
       subscribe: 'Join Now',
       quote: '"Do not conform to the pattern of this world, but be transformed by the renewing of your mind."',
       quoteSource: '— Romans 12:2'
+    },
+    loginCTA: {
+      badge: 'Members Only',
+      title: 'Your journey deserves a dedicated space.',
+      subtitle: 'Sign in to access meditations, guides, and your personal dashboard.',
+      cta: 'Create free account',
+      login: 'Sign in'
+    },
+    manifesto: {
+      badge: 'Our Belief',
+      quote1: 'Healing is not a destination,',
+      quoteHighlight: 'it is a practice',
+      quote2: 'you return to, every single day.',
+      tagline: 'Discover the story behind our mission.',
+      cta: 'About our mission'
     },
     meditations: {
       badge: 'Explore Themes',
@@ -443,6 +459,7 @@ export const translations = {
       allLanguages: 'Todos los Idiomas →'
     },
     hero: {
+      welcome: 'Bienvenido',
       handwritten: 'Tu Viaje Comienza Aquí',
       from: 'De la',
       brokenness: 'Fragmentación',
@@ -482,6 +499,21 @@ export const translations = {
       subscribe: 'Únete Ahora',
       quote: '"No os conforméis a este mundo, sino transformaos por medio de la renovación de vuestro entendimiento."',
       quoteSource: '— Romanos 12:2'
+    },
+    loginCTA: {
+      badge: 'Solo Miembros',
+      title: 'Tu camino merece un espacio dedicado.',
+      subtitle: 'Inicia sesión para acceder a meditaciones, guías y tu panel personal.',
+      cta: 'Crear cuenta gratis',
+      login: 'Iniciar sesión'
+    },
+    manifesto: {
+      badge: 'Nuestra Creencia',
+      quote1: 'La sanación no es un destino,',
+      quoteHighlight: 'es una práctica',
+      quote2: 'a la que regresas, cada día.',
+      tagline: 'Descubre la historia detrás de nuestra misión.',
+      cta: 'Sobre nuestra misión'
     },
     meditations: {
       badge: 'Explorar Temas',
@@ -593,6 +625,7 @@ export const translations = {
       allLanguages: 'Todos os Idiomas →'
     },
     hero: {
+      welcome: 'Bem-vindo',
       handwritten: 'Sua Jornada Começa Aqui',
       from: 'Da',
       brokenness: 'Fragmentação',
@@ -632,6 +665,21 @@ export const translations = {
       subscribe: 'Junte-se Agora',
       quote: '"Não se conformem com este mundo, mas transformem-se pela renovação da sua mente."',
       quoteSource: '— Romanos 12:2'
+    },
+    loginCTA: {
+      badge: 'Apenas Membros',
+      title: 'Sua jornada merece um espaço dedicado.',
+      subtitle: 'Entre para acessar meditações, guias e seu painel pessoal.',
+      cta: 'Criar conta grátis',
+      login: 'Entrar'
+    },
+    manifesto: {
+      badge: 'Nossa Crença',
+      quote1: 'A cura não é um destino,',
+      quoteHighlight: 'é uma prática',
+      quote2: 'à qual você retorna, todos os dias.',
+      tagline: 'Descubra a história por trás da nossa missão.',
+      cta: 'Sobre nossa missão'
     },
     meditations: {
       badge: 'Explorar Temas',
@@ -743,6 +791,7 @@ export const translations = {
       allLanguages: 'Toutes les Langues →'
     },
     hero: {
+      welcome: 'Bienvenue',
       handwritten: 'Votre Voyage Commence Ici',
       from: 'De la',
       brokenness: 'Fragmentation',
@@ -782,6 +831,21 @@ export const translations = {
       subscribe: 'Rejoindre Maintenant',
       quote: "Ne vous conformez pas au siècle présent, mais soyez transformés par le renouvellement de l'intelligence.",
       quoteSource: '— Romains 12:2'
+    },
+    loginCTA: {
+      badge: 'Membres Uniquement',
+      title: 'Votre parcours mérite un espace dédié.',
+      subtitle: 'Connectez-vous pour accéder aux méditations, guides et votre tableau de bord.',
+      cta: 'Créer un compte gratuit',
+      login: 'Se connecter'
+    },
+    manifesto: {
+      badge: 'Notre Croyance',
+      quote1: "La guérison n'est pas une destination,",
+      quoteHighlight: 'c\'est une pratique',
+      quote2: 'à laquelle vous revenez, chaque jour.',
+      tagline: 'Découvrez l\'histoire derrière notre mission.',
+      cta: 'Notre mission'
     },
     meditations: {
       badge: 'Explorer les Thèmes',
@@ -893,6 +957,7 @@ export const translations = {
       allLanguages: 'Alle Sprachen →'
     },
     hero: {
+      welcome: 'Willkommen',
       handwritten: 'Ihre Reise Beginnt Hier',
       from: 'Von',
       brokenness: 'Zerrissenheit',
@@ -932,6 +997,21 @@ export const translations = {
       subscribe: 'Jetzt Beitreten',
       quote: '"Passt euch nicht dieser Welt an, sondern lasst euch verwandeln durch die Erneuerung eures Denkens."',
       quoteSource: '— Römer 12:2'
+    },
+    loginCTA: {
+      badge: 'Nur Mitglieder',
+      title: 'Ihre Reise verdient einen eigenen Raum.',
+      subtitle: 'Melden Sie sich an, um auf Meditationen, Leitfäden und Ihr Dashboard zuzugreifen.',
+      cta: 'Kostenloses Konto erstellen',
+      login: 'Anmelden'
+    },
+    manifesto: {
+      badge: 'Unser Glaube',
+      quote1: 'Heilung ist kein Ziel,',
+      quoteHighlight: 'sie ist eine Praxis',
+      quote2: 'zu der Sie jeden Tag zurückkehren.',
+      tagline: 'Entdecken Sie die Geschichte hinter unserer Mission.',
+      cta: 'Über unsere Mission'
     },
     meditations: {
       badge: 'Themen Erkunden',
@@ -1043,6 +1123,7 @@ export const translations = {
       allLanguages: '所有语言 →'
     },
     hero: {
+      welcome: '欢迎',
       handwritten: '您的旅程从这里开始',
       from: '从',
       brokenness: '破碎',
@@ -1082,6 +1163,21 @@ export const translations = {
       subscribe: '立即加入',
       quote: '"不要效法这个世界，只要心意更新而变化。"',
       quoteSource: '— 罗马书 12:2'
+    },
+    loginCTA: {
+      badge: '仅限会员',
+      title: '您的旅程将拥有一个专属空间。',
+      subtitle: '登录以访问冥想、指南和您的个人面板。',
+      cta: '免费创建账户',
+      login: '登录'
+    },
+    manifesto: {
+      badge: '我们的信念',
+      quote1: '治愈不是终点,',
+      quoteHighlight: '它是一种修行',
+      quote2: '你每天都会回归其中。',
+      tagline: '了解我们使命背后的故事。',
+      cta: '关于我们的使命'
     },
     meditations: {
       badge: '探索主题',
@@ -1193,6 +1289,7 @@ export const translations = {
       allLanguages: 'सभी भाषाएं →'
     },
     hero: {
+      welcome: 'स्वागत है',
       handwritten: 'आपकी यात्रा यहाँ से शुरू होती है',
       from: 'टूटन से',
       brokenness: '',
@@ -1232,6 +1329,21 @@ export const translations = {
       subscribe: 'अभी शामिल हों',
       quote: '"इस संसार के ढर्रे के अनुरूप मत बनो, बल्कि अपने मन के नवीनीकरण से परिवर्तित हो जाओ।"',
       quoteSource: '— रोमियों 12:2'
+    },
+    loginCTA: {
+      badge: 'सिर्फ सदस्य',
+      title: 'आपकी यात्रा एक समर्पित स्थान की हकदार है।',
+      subtitle: 'ध्यान, मार्गदर्शिकाओं और अपने डैशबोर्ड तक पहुंचने के लिए साइन इन करें।',
+      cta: 'मुफ्त खाता बनाएं',
+      login: 'साइन इन'
+    },
+    manifesto: {
+      badge: 'हमारा विश्वास',
+      quote1: 'उपचार एक मंजिल नहीं है,',
+      quoteHighlight: 'यह एक अभ्यास है',
+      quote2: 'जिसमें आप हर दिन लौटते हैं।',
+      tagline: 'हमारे मिशन के पीछे की कहानी जानें।',
+      cta: 'हमारे मिशन के बारे में'
     },
     meditations: {
       badge: 'विषयों का अन्वेषण करें',

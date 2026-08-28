@@ -12,44 +12,33 @@ export default function MeditativeThemes() {
   const t = translations[language].meditations;
 
   const themes = [
-    { key: 'mind', image: mindImg, link: "/programs/institute", bg: 'bg-purple-100/80', border: 'border-purple-200/60', hoverBorder: 'hover:border-purple-300', shadow: 'hover:shadow-purple-200/40', accent: 'text-purple-700' },
-    { key: 'body', image: bodyImg, link: "/programs/institute", bg: 'bg-amber-100/70', border: 'border-amber-200/60', hoverBorder: 'hover:border-amber-300', shadow: 'hover:shadow-amber-200/40', accent: 'text-amber-700' },
-    { key: 'spirit', image: spiritImg, link: "/programs/institute", bg: 'bg-emerald-100/70', border: 'border-emerald-200/60', hoverBorder: 'hover:border-emerald-300', shadow: 'hover:shadow-emerald-200/40', accent: 'text-emerald-700' },
+    { key: 'mind',   image: mindImg,   link: "/programs/institute", accent: 'text-purple-700',  tag: 'bg-purple-50 text-purple-600' },
+    { key: 'body',   image: bodyImg,   link: "/programs/institute", accent: 'text-amber-700',   tag: 'bg-amber-50 text-amber-600'   },
+    { key: 'spirit', image: spiritImg, link: "/programs/institute", accent: 'text-emerald-700', tag: 'bg-emerald-50 text-emerald-600' },
   ];
 
   return (
-    <section className="relative pb-20 sm:pb-28 overflow-hidden">
-      <div className="mx-auto max-w-6xl border-t border-gray-200 mb-20 sm:mb-28" />
-      {/* Background blurs — matching footer */}
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
-        <div className="absolute top-16 left-16 w-40 h-40 bg-emerald-300 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-52 h-52 bg-green-300 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-teal-300 rounded-full blur-2xl" />
-      </div>
+    <section className="bg-white pt-6 pb-16 sm:pb-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
 
-      <div className="relative z-10 mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
-          className="text-center mb-16 px-4"
-          initial={{ opacity: 0, y: -16 }}
+          className="mb-10"
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
-          <p className="text-xs font-medium text-emerald-600 tracking-[0.25em] uppercase mb-4">
+          <p className="text-[10px] font-semibold text-emerald-600 tracking-[0.3em] uppercase mb-2">
             {t.badge}
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-gray-900 mb-5">
+          <h2 className="text-2xl sm:text-3xl font-serif text-gray-900">
             {t.title}
           </h2>
-          <div className="w-10 h-[2px] bg-emerald-500 rounded-full mx-auto mb-5" />
-          <p className="text-base text-gray-500 max-w-xl mx-auto leading-relaxed">
-            {t.subtitle}
-          </p>
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 px-4 sm:px-6 lg:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {themes.map((theme, idx) => {
             const themeData = t.themes[theme.key as keyof typeof t.themes];
             return (
@@ -62,29 +51,29 @@ export default function MeditativeThemes() {
               >
                 <Link
                   to={theme.link}
-                  className={`group block ${theme.bg} rounded-md overflow-hidden border ${theme.border} ${theme.hoverBorder} hover:shadow-lg ${theme.shadow} transition-all duration-300`}
+                  className="group flex flex-col bg-white border border-gray-100 rounded-xl overflow-hidden shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08),0_1px_4px_-1px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.12),0_2px_8px_-2px_rgba(0,0,0,0.06)] transition-all duration-300"
                 >
                   {/* Image */}
-                  <div className="relative h-72 sm:h-80 overflow-hidden">
+                  <div className="relative h-56 overflow-hidden">
                     <img
                       src={theme.image}
                       alt={themeData.title}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                    <h3 className="absolute bottom-4 left-5 text-2xl sm:text-3xl font-serif text-white">
-                      {themeData.title}
-                    </h3>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                   </div>
 
                   {/* Content */}
-                  <div className="p-5">
-                    <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                  <div className="px-5 py-5 flex flex-col gap-2">
+                    <h3 className={`text-lg font-serif font-semibold ${theme.accent}`}>
+                      {themeData.title}
+                    </h3>
+                    <p className="text-[13px] text-gray-500 font-light leading-relaxed">
                       {themeData.description}
                     </p>
-                    <span className={`inline-flex items-center gap-1.5 text-xs font-semibold ${theme.accent} uppercase tracking-wider group-hover:gap-2.5 transition-all duration-300`}>
+                    <span className={`mt-2 inline-flex items-center gap-1.5 text-[11px] font-semibold ${theme.accent} uppercase tracking-[0.15em] group-hover:gap-2.5 transition-all duration-300`}>
                       {t.explore}
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3 h-3" />
                     </span>
                   </div>
                 </Link>
@@ -92,6 +81,7 @@ export default function MeditativeThemes() {
             );
           })}
         </div>
+
       </div>
     </section>
   );

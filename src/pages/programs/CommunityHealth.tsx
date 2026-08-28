@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { SubscribeForm } from '../../components/ui';
 import communityImg from '../../assets/images/community1.png';
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../utils/translations';
 
 const PRIMARY = '#a91022';
 const ACCENT = '#fbf3f4';
@@ -107,21 +109,15 @@ const pillars = [
   },
 ];
 
-const focusAreas = [
-  'Hypertension (High Blood Pressure)',
-  'Cardiovascular Diseases',
-  'Diabetes',
-  'Kidney (Renal) Diseases',
-];
-
 const fadeUp = {
   hidden: { y: 24, opacity: 0 },
   show: (i: number) => ({ y: 0, opacity: 1, transition: { delay: i * 0.08, duration: 0.55, ease: [0.16, 1, 0.3, 1] } }),
 };
 
-const FULL_SLOGAN = '"Healthy Looks Good on You."';
-
 export default function CommunityHealth() {
+  const { language } = useLanguage();
+  const t = (translations[language].pages as typeof translations['en']['pages']).communityHealth;
+
   const [typed, setTyped] = useState('');
   const [active, setActive] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -131,18 +127,21 @@ export default function CommunityHealth() {
     setActive(next);
   };
 
+  const slogan = t.slogan;
+
   useEffect(() => {
+    setTyped('');
     let i = 0;
     const id = setInterval(() => {
-      if (i <= FULL_SLOGAN.length) {
-        setTyped(FULL_SLOGAN.slice(0, i));
+      if (i <= slogan.length) {
+        setTyped(slogan.slice(0, i));
         i++;
       } else {
         clearInterval(id);
       }
     }, 55);
     return () => clearInterval(id);
-  }, []);
+  }, [slogan]);
 
   return (
     <motion.div className="min-h-screen" style={{ background: ACCENT }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
@@ -157,14 +156,14 @@ export default function CommunityHealth() {
             <div className="flex-1 min-w-0">
               <motion.div className="flex items-center gap-3 mb-6" initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.15 }}>
                 <span className="w-8 h-px" style={{ background: ACCENT }} />
-                <span className="text-[10px] font-semibold tracking-[0.4em] uppercase" style={{ color: ACCENT }}>Programs</span>
+                <span className="text-[10px] font-semibold tracking-[0.4em] uppercase" style={{ color: ACCENT }}>{t.badge}</span>
               </motion.div>
 
               <motion.h1
                 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight mb-4"
                 initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.25, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               >
-                Community<br />Health Movement
+                {t.heroTitle1}<br />{t.heroTitle2}
               </motion.h1>
 
               <motion.p
@@ -184,7 +183,7 @@ export default function CommunityHealth() {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
               >
-                <span className="relative z-10">Explore Our Pillars</span>
+                <span className="relative z-10">{t.explorePillars}</span>
                 <motion.span className="relative z-10" whileHover={{ x: 5 }} transition={{ type: 'spring', stiffness: 500, damping: 20 }}>
                   <ArrowRight className="w-4 h-4" />
                 </motion.span>
@@ -213,14 +212,8 @@ export default function CommunityHealth() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
           <div className="grid lg:grid-cols-2 gap-12">
             {[
-              {
-                label: 'Our Vision',
-                text: 'To build healthier communities where every individual is empowered to prevent chronic disease, every patient lives with dignity and hope, and every family possesses the knowledge and support needed to pursue lifelong health and wholeness.',
-              },
-              {
-                label: 'Our Mission',
-                text: 'To reduce the burden of chronic diseases through prevention, education, compassionate patient support, and strategic partnerships that strengthen individuals, families, healthcare systems, and communities.',
-              },
+              { label: t.visionLabel, text: t.visionText },
+              { label: t.missionLabel, text: t.missionText },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -245,16 +238,14 @@ export default function CommunityHealth() {
           <motion.div variants={fadeUp} custom={0} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-12">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-6 h-px" style={{ background: PRIMARY }} />
-              <span className="text-[10px] font-semibold tracking-[0.35em] uppercase" style={{ color: PRIMARY }}>The Body Initiative</span>
+              <span className="text-[10px] font-semibold tracking-[0.35em] uppercase" style={{ color: PRIMARY }}>{t.focusBadge}</span>
             </div>
-            <h2 className="font-serif text-4xl sm:text-5xl mb-5 max-w-2xl" style={{ color: PRIMARY }}>Our Focus Areas</h2>
-            <p className="text-gray-500 text-base leading-relaxed max-w-3xl">
-              The Body Initiative exists to address the growing burden of non-communicable diseases (NCDs). Through our experience working directly with patients, we have identified a critical gap: many people receive treatment without fully understanding their condition or how to manage it.
-            </p>
+            <h2 className="font-serif text-4xl sm:text-5xl mb-5 max-w-2xl" style={{ color: PRIMARY }}>{t.focusTitle}</h2>
+            <p className="text-gray-500 text-base leading-relaxed max-w-3xl">{t.focusDesc}</p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {focusAreas.map((area, i) => (
+            {[t.focus1, t.focus2, t.focus3, t.focus4].map((area, i) => (
               <motion.div
                 key={i}
                 className="flex items-center gap-4 p-5 rounded-2xl border border-gray-700 shadow-[0_2px_12px_-2px_rgba(0,0,0,0.12)]"
@@ -279,14 +270,10 @@ export default function CommunityHealth() {
               <span className="absolute bottom-6 right-6 w-5 h-5 rounded-full opacity-10" style={{ background: PRIMARY }} />
               <span className="absolute bottom-4 left-6 w-2 h-2 rounded-full opacity-20" style={{ background: PRIMARY }} />
               <span className="absolute top-1/2 left-4 w-3 h-3 rounded-full opacity-10" style={{ background: PRIMARY }} />
-              <p className="relative text-base leading-relaxed text-gray-700">
-                Through our experience working directly with patients, we have identified a critical gap: many people receive treatment for chronic illnesses without fully understanding their condition, how to manage it, or how it affects their daily lives. Likewise, families and caregivers often lack the knowledge needed to support loved ones living with these conditions.
-              </p>
+              <p className="relative text-base leading-relaxed text-gray-700">{t.gapText}</p>
             </div>
             <div className="p-8 rounded-2xl border-l-4" style={{ background: DARK, borderColor: ACCENT }}>
-              <p className="text-base leading-relaxed" style={{ color: 'rgba(251,243,244,0.8)' }}>
-                Our response is to provide education, prevention, and long-term support that enables individuals not merely to survive, but to live meaningful, productive, and fulfilling lives despite chronic illness.
-              </p>
+              <p className="text-base leading-relaxed" style={{ color: 'rgba(251,243,244,0.8)' }}>{t.responseText}</p>
             </div>
           </motion.div>
         </div>
@@ -298,9 +285,9 @@ export default function CommunityHealth() {
           <motion.div variants={fadeUp} custom={0} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-14">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-6 h-px" style={{ background: PRIMARY }} />
-              <span className="text-[10px] font-semibold tracking-[0.35em] uppercase" style={{ color: PRIMARY }}>Strategic Pillars</span>
+              <span className="text-[10px] font-semibold tracking-[0.35em] uppercase" style={{ color: PRIMARY }}>{t.pillarsBadge}</span>
             </div>
-            <h2 className="font-serif text-4xl sm:text-5xl max-w-2xl" style={{ color: PRIMARY }}>How We Create Impact</h2>
+            <h2 className="font-serif text-4xl sm:text-5xl max-w-2xl" style={{ color: PRIMARY }}>{t.pillarsTitle}</h2>
           </motion.div>
 
           {/* Carousel */}
@@ -338,7 +325,9 @@ export default function CommunityHealth() {
                     >
                       {(() => { const Icon = pillars[active].icon; return <Icon className="w-5 h-5" style={{ color: ACCENT }} />; })()}
                     </motion.div>
-                    <h3 className="text-lg font-semibold leading-snug" style={{ color: ACCENT }}>{pillars[active].title}</h3>
+                    <h3 className="text-lg font-semibold leading-snug" style={{ color: ACCENT }}>
+                      {(t.pillars && t.pillars[active]?.title) || pillars[active].title}
+                    </h3>
                   </div>
                   <span className="text-xs font-mono ml-4 flex-shrink-0" style={{ color: 'rgba(251,243,244,0.3)' }}>{pillars[active].number}</span>
                 </motion.div>
@@ -351,11 +340,11 @@ export default function CommunityHealth() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.22, duration: 0.4 }}
                 >
-                  {pillars[active].intro}
+                  {(t.pillars && t.pillars[active]?.intro) || pillars[active].intro}
                 </motion.p>
 
                 {/* Sections */}
-                {pillars[active].sections.map((sec, si) => (
+                {((t.pillars && t.pillars[active]?.sections) || pillars[active].sections).map((sec, si) => (
                   <motion.div
                     key={si}
                     className="mb-5"
@@ -385,7 +374,7 @@ export default function CommunityHealth() {
                 ))}
 
                 {/* Closing */}
-                {pillars[active].closing && (
+                {((t.pillars && t.pillars[active]?.closing) || pillars[active].closing) && (
                   <motion.p
                     className="text-sm leading-relaxed mt-4 pt-4 border-t"
                     style={{ color: 'rgba(251,243,244,0.6)', borderColor: 'rgba(251,243,244,0.08)' }}
@@ -393,7 +382,7 @@ export default function CommunityHealth() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 0.4 }}
                   >
-                    {pillars[active].closing}
+                    {(t.pillars && t.pillars[active]?.closing) || pillars[active].closing}
                   </motion.p>
                 )}
               </motion.div>
@@ -465,21 +454,19 @@ export default function CommunityHealth() {
           >
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-6 h-px" style={{ background: ACCENT }} />
-              <span className="text-[10px] font-semibold tracking-[0.4em] uppercase" style={{ color: ACCENT }}>Our Long-Term Impact</span>
+              <span className="text-[10px] font-semibold tracking-[0.4em] uppercase" style={{ color: ACCENT }}>{t.impactBadge}</span>
               <span className="w-6 h-px" style={{ background: ACCENT }} />
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl text-white leading-tight mb-6">
-              A Culture of Health,<br />Resilience & Wholeness
+              {t.impactTitle}<br />{t.impactTitle2}
             </h2>
-            <p className="text-white/70 text-base leading-relaxed mb-10">
-              We envision communities where chronic diseases are detected earlier, prevented more effectively, and managed with knowledge, compassion, and dignity. Our ultimate goal is not only to reduce disease, but to cultivate a culture of health that transforms generations.
-            </p>
+            <p className="text-white/70 text-base leading-relaxed mb-10">{t.impactDesc}</p>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-medium tracking-wide font-semibold transition-all duration-200"
               style={{ background: ACCENT, color: PRIMARY }}
             >
-              Partner With Us
+              {t.partnerCta}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
@@ -490,11 +477,11 @@ export default function CommunityHealth() {
       <div style={{ background: ACCENT }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
           <nav className="flex items-center gap-2 text-sm text-gray-400">
-            <Link to="/" className="hover:text-gray-700 transition-colors">Home</Link>
+            <Link to="/" className="hover:text-gray-700 transition-colors">{t.breadcrumbHome}</Link>
             <span className="text-gray-300">/</span>
-            <Link to="/programs" className="hover:text-gray-700 transition-colors">Programs</Link>
+            <Link to="/programs" className="hover:text-gray-700 transition-colors">{t.breadcrumbPrograms}</Link>
             <span className="text-gray-300">/</span>
-            <span style={{ color: PRIMARY }}>Community Health</span>
+            <span style={{ color: PRIMARY }}>{t.breadcrumbCommunityHealth}</span>
           </nav>
         </div>
       </div>

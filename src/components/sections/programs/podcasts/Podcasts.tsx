@@ -10,7 +10,6 @@ import podcastImg from './../../../../assets/images/pod.jpg';
 import communityImg from './../../../../assets/images/community.png';
 import { useLanguage } from '../../../../context/LanguageContext';
 import { translations } from '../../../../utils/translations';
-import ManifestoStrip from '../../../ui/ManifestoStrip';
 import { Link } from 'react-router-dom';
 
 const Podcasts: React.FC = () => {

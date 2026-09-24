@@ -5,7 +5,6 @@ import { useLanguage } from '../../../../context/LanguageContext';
 import { translations } from '../../../../utils/translations';
 import communityImg from '../../../../assets/images/community.png';
 import presenceImg from '../../../../assets/images/presence.jpg';
-import ManifestoStrip from '../../../ui/ManifestoStrip';
 import { Link } from 'react-router-dom';
 
 const ArticlesSection = () => {
@@ -117,19 +116,6 @@ const ArticlesSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Circular image */}
-            <div className="relative flex-shrink-0 w-56 h-56 md:w-72 md:h-72">
-              <div className="w-full h-full rounded-full overflow-hidden">
-                <img
-                  src={communityImg}
-                  alt="Community"
-                  className="w-full h-full object-cover object-center"
-                />
-              </div>
-              <span className="absolute -top-2 -right-2 w-10 h-10 rounded-full" style={{ background: 'radial-gradient(circle at 35% 30%, #a7f3d0, #10b981 55%, #065f46)' }} />
-              <span className="absolute -bottom-2 -left-2 w-6 h-6 rounded-full blur-[2px] opacity-60" style={{ background: 'radial-gradient(circle at 35% 35%, #d1fae5, #34d399 55%, #059669)' }} />
-            </div>
-
             {/* Text */}
             <div className="flex flex-col justify-center max-w-lg">
               <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-emerald-600 mb-3">
@@ -149,11 +135,22 @@ const ArticlesSection = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
             </div>
+
+            {/* Circular image */}
+            <div className="relative flex-shrink-0 w-56 h-56 md:w-72 md:h-72 ml-auto">
+              <div className="w-full h-full rounded-full overflow-hidden">
+                <img
+                  src={communityImg}
+                  alt="Community"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+              <span className="absolute -top-2 -right-2 w-10 h-10 rounded-full" style={{ background: 'radial-gradient(circle at 35% 30%, #a7f3d0, #10b981 55%, #065f46)' }} />
+              <span className="absolute -bottom-2 -left-2 w-6 h-6 rounded-full blur-[2px] opacity-60" style={{ background: 'radial-gradient(circle at 35% 35%, #d1fae5, #34d399 55%, #059669)' }} />
+            </div>
           </motion.div>
         </div>
       </div>
-
-      <ManifestoStrip />
 
       <div className="bg-gradient-to-br from-white via-emerald-50 to-green-100">
         <SubscribeForm />

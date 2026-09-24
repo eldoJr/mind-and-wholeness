@@ -9,7 +9,7 @@ import { translations } from '../../utils/translations';
 
 const PRIMARY = '#a91022';
 const ACCENT = '#fbf3f4';
-const DARK = '#343a40';
+const DARK = '#ffffff';
 
 const pillars = [
   {
@@ -217,15 +217,15 @@ export default function CommunityHealth() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                className="p-8 rounded-2xl border border-gray-700 shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_-4px_rgba(0,0,0,0.10)]"
+                className="p-8 rounded-2xl border border-gray-100 shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_32px_-4px_rgba(0,0,0,0.10)]"
                 style={{ background: DARK }}
                 variants={fadeUp} custom={i} initial="hidden" whileInView="show" viewport={{ once: true }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="w-6 h-px" style={{ background: ACCENT }} />
-                  <span className="text-[10px] font-semibold tracking-[0.35em] uppercase" style={{ color: ACCENT }}>{item.label}</span>
+                  <span className="w-6 h-px" style={{ background: PRIMARY }} />
+                  <span className="text-[10px] font-semibold tracking-[0.35em] uppercase" style={{ color: PRIMARY }}>{item.label}</span>
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: 'rgba(251,243,244,0.75)' }}>{item.text}</p>
+                <p className="text-sm leading-relaxed text-gray-600">{item.text}</p>
               </motion.div>
             ))}
           </div>
@@ -252,8 +252,8 @@ export default function CommunityHealth() {
                 style={{ background: DARK }}
                 variants={fadeUp} custom={i} initial="hidden" whileInView="show" viewport={{ once: true }}
               >
-                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: ACCENT }} />
-                <p className="text-sm font-medium" style={{ color: ACCENT }}>{area}</p>
+                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: PRIMARY }} />
+                <p className="text-sm font-medium text-gray-700">{area}</p>
               </motion.div>
             ))}
           </div>
@@ -272,8 +272,8 @@ export default function CommunityHealth() {
               <span className="absolute top-1/2 left-4 w-3 h-3 rounded-full opacity-10" style={{ background: PRIMARY }} />
               <p className="relative text-base leading-relaxed text-gray-700">{t.gapText}</p>
             </div>
-            <div className="p-8 rounded-2xl border-l-4" style={{ background: DARK, borderColor: ACCENT }}>
-              <p className="text-base leading-relaxed" style={{ color: 'rgba(251,243,244,0.8)' }}>{t.responseText}</p>
+            <div className="p-8 rounded-2xl border-l-4" style={{ background: DARK, borderColor: PRIMARY }}>
+              <p className="text-base leading-relaxed text-gray-700">{t.responseText}</p>
             </div>
           </motion.div>
         </div>
@@ -305,7 +305,7 @@ export default function CommunityHealth() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                className="rounded-2xl border border-gray-700 p-8 sm:p-10"
+                className="rounded-2xl border border-gray-100 p-8 sm:p-10"
                 style={{ background: DARK }}
               >
                 {/* Card header */}
@@ -318,24 +318,24 @@ export default function CommunityHealth() {
                   <div className="flex items-center gap-4">
                     <motion.div
                       className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: 'rgba(251,243,244,0.1)' }}
+                      style={{ background: 'rgba(169,16,34,0.08)' }}
                       initial={{ scale: 0.6, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: 0.2, type: 'spring', stiffness: 400, damping: 20 }}
                     >
-                      {(() => { const Icon = pillars[active].icon; return <Icon className="w-5 h-5" style={{ color: ACCENT }} />; })()}
+                      {(() => { const Icon = pillars[active].icon; return <Icon className="w-5 h-5" style={{ color: PRIMARY }} />; })()}
                     </motion.div>
-                    <h3 className="text-lg font-semibold leading-snug" style={{ color: ACCENT }}>
+                    <h3 className="text-lg font-semibold leading-snug text-gray-900">
                       {(t.pillars && t.pillars[active]?.title) || pillars[active].title}
                     </h3>
                   </div>
-                  <span className="text-xs font-mono ml-4 flex-shrink-0" style={{ color: 'rgba(251,243,244,0.3)' }}>{pillars[active].number}</span>
+                  <span className="text-xs font-mono ml-4 flex-shrink-0 text-gray-300">{pillars[active].number}</span>
                 </motion.div>
 
                 {/* Intro */}
                 <motion.p
                   className="text-sm leading-relaxed mb-6"
-                  style={{ color: 'rgba(251,243,244,0.75)' }}
+                  className="text-sm leading-relaxed mb-6 text-gray-600"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.22, duration: 0.4 }}
@@ -353,14 +353,14 @@ export default function CommunityHealth() {
                     transition={{ delay: 0.28 + si * 0.06, duration: 0.35 }}
                   >
                     {sec.label && (
-                      <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: 'rgba(251,243,244,0.45)' }}>{sec.label}</p>
+                      <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-gray-400">{sec.label}</p>
                     )}
                     <ul className="space-y-2">
                       {sec.items.map((item, ii) => (
                         <motion.li
                           key={ii}
                           className="flex items-start gap-2.5 text-sm"
-                          style={{ color: 'rgba(251,243,244,0.7)' }}
+                          className="flex items-start gap-2.5 text-sm text-gray-600"
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.32 + si * 0.06 + ii * 0.04, duration: 0.3 }}
@@ -377,7 +377,8 @@ export default function CommunityHealth() {
                 {((t.pillars && t.pillars[active]?.closing) || pillars[active].closing) && (
                   <motion.p
                     className="text-sm leading-relaxed mt-4 pt-4 border-t"
-                    style={{ color: 'rgba(251,243,244,0.6)', borderColor: 'rgba(251,243,244,0.08)' }}
+                    className="text-sm leading-relaxed mt-4 pt-4 border-t text-gray-500"
+                  style={{ borderColor: 'rgba(0,0,0,0.08)' }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 0.4 }}

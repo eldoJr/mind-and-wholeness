@@ -145,13 +145,6 @@ const Podcasts: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative flex-shrink-0 w-56 h-56 md:w-72 md:h-72">
-              <div className="w-full h-full rounded-full overflow-hidden">
-                <img src={communityImg} alt="Community" className="w-full h-full object-cover object-center" />
-              </div>
-              <span className="absolute -top-2 -right-2 w-10 h-10 rounded-full" style={{ background: 'radial-gradient(circle at 35% 30%, #fecdd3, #e11d48 55%, #9f1239)' }} />
-              <span className="absolute -bottom-2 -left-2 w-6 h-6 rounded-full blur-[2px] opacity-60" style={{ background: 'radial-gradient(circle at 35% 35%, #ffe4e6, #fb7185 55%, #be123c)' }} />
-            </div>
             <div className="flex flex-col justify-center max-w-lg">
               <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-rose-600 mb-3">{tLogin.badge}</p>
               <h2 className="text-2xl md:text-3xl font-serif text-gray-900 leading-snug mb-4">{tLogin.title}</h2>
@@ -163,6 +156,13 @@ const Podcasts: React.FC = () => {
                 {tLogin.cta}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
+            </div>
+            <div className="relative flex-shrink-0 w-56 h-56 md:w-72 md:h-72 ml-auto">
+              <div className="w-full h-full rounded-full overflow-hidden">
+                <img src={communityImg} alt="Community" className="w-full h-full object-cover object-center" />
+              </div>
+              <span className="absolute -top-2 -right-2 w-10 h-10 rounded-full" style={{ background: 'radial-gradient(circle at 35% 30%, #fecdd3, #e11d48 55%, #9f1239)' }} />
+              <span className="absolute -bottom-2 -left-2 w-6 h-6 rounded-full blur-[2px] opacity-60" style={{ background: 'radial-gradient(circle at 35% 35%, #ffe4e6, #fb7185 55%, #be123c)' }} />
             </div>
           </motion.div>
         </div>

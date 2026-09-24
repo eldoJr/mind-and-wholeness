@@ -30,6 +30,7 @@ import Newsletter from "../pages/Newsletter";
 import HelpPage from "../pages/Help";
 import SubscribePage from "../pages/Subscribe";
 import CommunityHealth from "../pages/programs/CommunityHealth";
+import StoriesPage from "../pages/Stories";
 
 export const router = createBrowserRouter([
   {
@@ -96,7 +97,10 @@ export const router = createBrowserRouter([
         element: <CommunityHealth />,
       },
       {
-        path: "/programs/articles",
+        path: "/stories",
+        element: <StoriesPage />,
+      },
+      {
         element: <ArticlesSection />
       },
       {

@@ -5,7 +5,6 @@ import { SubscribeForm } from '../../../ui';
 import ListEvents from './ListEvents';
 import { useLanguage } from '../../../../context/LanguageContext';
 import { translations } from '../../../../utils/translations';
-import ManifestoStrip from '../../../ui/ManifestoStrip';
 import communityImg from '../../../../assets/images/community.png';
 import { Link } from 'react-router-dom';
 
@@ -132,14 +131,6 @@ const EventsPage = () => {
             className="flex flex-col md:flex-row items-center gap-10 md:gap-16 bg-white rounded-2xl px-8 md:px-14 py-10 md:py-14 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08),0_1px_4px_-1px_rgba(0,0,0,0.04)]"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative flex-shrink-0 w-56 h-56 md:w-72 md:h-72">
-              <div className="w-full h-full rounded-full overflow-hidden">
-                <img src={communityImg} alt="Community" className="w-full h-full object-cover object-center" />
-              </div>
-              <span className="absolute -top-2 -right-2 w-10 h-10 rounded-full" style={{ background: 'radial-gradient(circle at 35% 30%, #fde68a, #d97706 55%, #92400e)' }} />
-              <span className="absolute -bottom-2 -left-2 w-6 h-6 rounded-full blur-[2px] opacity-60" style={{ background: 'radial-gradient(circle at 35% 35%, #fef3c7, #f59e0b 55%, #b45309)' }} />
-            </div>
-
             <div className="flex flex-col justify-center max-w-lg">
               <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-amber-600 mb-3">{tLogin.badge}</p>
               <h2 className="text-2xl md:text-3xl font-serif text-gray-900 leading-snug mb-4">{tLogin.title}</h2>
@@ -152,11 +143,17 @@ const EventsPage = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
             </div>
+
+            <div className="relative flex-shrink-0 w-56 h-56 md:w-72 md:h-72 ml-auto">
+              <div className="w-full h-full rounded-full overflow-hidden">
+                <img src={communityImg} alt="Community" className="w-full h-full object-cover object-center" />
+              </div>
+              <span className="absolute -top-2 -right-2 w-10 h-10 rounded-full" style={{ background: 'radial-gradient(circle at 35% 30%, #fde68a, #d97706 55%, #92400e)' }} />
+              <span className="absolute -bottom-2 -left-2 w-6 h-6 rounded-full blur-[2px] opacity-60" style={{ background: 'radial-gradient(circle at 35% 35%, #fef3c7, #f59e0b 55%, #b45309)' }} />
+            </div>
           </motion.div>
         </div>
       </div>
-
-      <ManifestoStrip />
 
       <div className="bg-gradient-to-br from-white via-emerald-50 to-green-100">
         <SubscribeForm />

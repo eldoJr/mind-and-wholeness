@@ -40,21 +40,21 @@ export default function HelpPage() {
 
   return (
     <motion.div
-      className="min-h-screen bg-gradient-to-b from-amber-100/60 via-orange-50/50 to-amber-50/30"
+      className="min-h-screen bg-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
       {/* Hero */}
-      <div className="border-b border-amber-200/60 bg-gradient-to-b from-amber-100/70 to-amber-50/30">
+      <div className="border-b border-gray-100 bg-white">
         <div className="max-w-3xl mx-auto px-6 py-20 text-center">
           <motion.div
             initial={{ y: 16, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.15 }}
           >
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-amber-50 mb-6">
-              <HelpCircle className="w-7 h-7 text-amber-700" />
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gray-50 mb-6">
+              <HelpCircle className="w-7 h-7 text-[#0a2540]" />
             </div>
             <h1 className="text-4xl md:text-5xl font-serif text-gray-900 mb-4">
               {t.title}
@@ -71,7 +71,7 @@ export default function HelpPage() {
                 placeholder={t.searchPlaceholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 rounded-xl bg-gray-50 text-gray-900 text-sm placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-300/40 focus:border-amber-400/50 transition-all"
+                className="w-full pl-11 pr-4 py-3 rounded-xl bg-gray-50 text-gray-900 text-sm placeholder-gray-400 border border-gray-200 focus:outline-none focus:border-gray-400 transition-all"
               />
             </div>
           </motion.div>
@@ -96,10 +96,10 @@ export default function HelpPage() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.15 + i * 0.05 }}
-              className="group flex items-start gap-4 p-5 rounded-xl border border-gray-100 hover:border-amber-200 hover:bg-amber-50/50 transition-all cursor-default"
+              className="group flex items-start gap-4 p-5 rounded-xl border border-gray-100 hover:border-gray-300 hover:bg-gray-50 transition-all cursor-default"
             >
-              <div className="shrink-0 w-10 h-10 rounded-xl bg-gray-50 group-hover:bg-amber-100 flex items-center justify-center transition-colors">
-                <cat.icon className="w-5 h-5 text-gray-400 group-hover:text-amber-700 transition-colors" />
+              <div className="shrink-0 w-10 h-10 rounded-xl bg-gray-50 group-hover:bg-gray-100 flex items-center justify-center transition-colors">
+                <cat.icon className="w-5 h-5 text-gray-400 group-hover:text-[#0a2540] transition-colors" />
               </div>
               <div>
                 <h3 className="text-sm font-medium text-gray-900 mb-1">{cat.title}</h3>
@@ -112,7 +112,7 @@ export default function HelpPage() {
         {/* FAQ */}
         <div className="mb-20">
           <div className="text-center mb-10">
-            <p className="text-xs font-serif tracking-[0.25em] text-amber-700 uppercase mb-2">FAQ</p>
+            <p className="text-xs font-serif tracking-[0.25em] text-emerald-600 uppercase mb-2">FAQ</p>
             <h2 className="text-3xl font-serif text-gray-900">{t.faqTitle}</h2>
           </div>
 
@@ -122,7 +122,7 @@ export default function HelpPage() {
                 key={idx}
                 className={`rounded-xl border transition-colors ${
                   openFaq === idx
-                    ? 'border-amber-200 bg-amber-50/50'
+                    ? 'border-gray-200 bg-gray-50'
                     : 'border-gray-100 hover:border-gray-200'
                 }`}
               >
@@ -133,7 +133,7 @@ export default function HelpPage() {
                   <span className="text-sm text-gray-800 pr-4">{faq.q}</span>
                   <ChevronDown
                     className={`w-4 h-4 text-gray-300 shrink-0 transition-transform duration-200 ${
-                      openFaq === idx ? 'rotate-180 text-amber-700' : ''
+                      openFaq === idx ? 'rotate-180 text-[#0a2540]' : ''
                     }`}
                   />
                 </button>
@@ -173,7 +173,7 @@ export default function HelpPage() {
           <p className="text-gray-500 text-sm mb-6 max-w-sm mx-auto">{t.stillNeedHelpDesc}</p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-6 py-2.5 bg-amber-700 text-white text-sm font-medium rounded-xl hover:bg-amber-800 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#0a2540] text-white text-sm font-medium rounded-full hover:bg-[#0d2f50] transition-colors"
           >
             {t.contactUs}
             <ArrowRight className="w-4 h-4" />
@@ -182,10 +182,10 @@ export default function HelpPage() {
 
         {/* Footer nav */}
         <div className="mt-16 pt-8 border-t border-gray-100 flex justify-between items-center text-sm text-gray-400">
-          <Link to="/privacy" className="hover:text-amber-700 transition-colors">
+          <Link to="/privacy" className="hover:text-[#0a2540] transition-colors">
             Privacy Policy
           </Link>
-          <Link to="/" className="hover:text-amber-700 transition-colors">
+          <Link to="/" className="hover:text-[#0a2540] transition-colors">
             Back to Home
           </Link>
         </div>

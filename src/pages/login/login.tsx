@@ -52,7 +52,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-emerald-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-white px-4">
       <div className="w-full max-w-md">
         <AnimatePresence mode="wait">
           {forgotMode ? (
@@ -89,11 +89,11 @@ const Login: React.FC = () => {
                       <input
                         type="email" id="reset-email" value={email} onChange={(e) => setEmail(e.target.value)}
                         placeholder={t.emailPlaceholder}
-                        className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                        className="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:border-gray-400 transition-all"
                         required
                       />
                     </div>
-                    <button type="submit" disabled={loading} className="w-full bg-gray-900 text-white text-sm font-semibold py-3 rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50">
+                    <button type="submit" disabled={loading} className="w-full bg-[#0a2540] text-white text-sm font-medium py-3 rounded-full hover:bg-[#0d2f50] transition-colors disabled:opacity-50">
                       {loading ? 'Sending...' : 'Send reset link'}
                     </button>
                   </form>
@@ -118,7 +118,7 @@ const Login: React.FC = () => {
                 <div>
                   <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-1.5">{t.email}</label>
                   <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t.emailPlaceholder}
-                    className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" required />
+                    className="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:border-gray-400 transition-all" required />
                 </div>
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
@@ -128,9 +128,9 @@ const Login: React.FC = () => {
                     </button>
                   </div>
                   <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder={t.passwordPlaceholder || 'Enter your password'}
-                    className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" required minLength={6} />
+                    className="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:border-gray-400 transition-all" required minLength={6} />
                 </div>
-                <button type="submit" disabled={loading} className="w-full bg-gray-900 text-white text-sm font-semibold py-3 rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50">
+                <button type="submit" disabled={loading} className="w-full bg-[#0a2540] text-white text-sm font-medium py-3 rounded-full hover:bg-[#0d2f50] transition-colors disabled:opacity-50">
                   {loading ? (t.signingIn || 'Signing in...') : t.signIn}
                 </button>
               </form>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Send, MapPin, Phone, CheckCircle2, Loader2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SubscribeForm } from '../components/ui';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../utils/translations';
 
@@ -69,7 +70,7 @@ export default function ContactSection() {
 
       {/* Two-column layout */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
-        <div className="grid lg:grid-cols-5 gap-0 rounded-3xl overflow-hidden shadow-[0_8px_48px_-8px_rgba(0,0,0,0.12)]">
+        <div className="grid lg:grid-cols-5 gap-0 overflow-hidden">
 
           {/* Left panel — dark */}
           <motion.div
@@ -239,6 +240,7 @@ export default function ContactSection() {
 
         </div>
       </div>
+      <SubscribeForm />
     </motion.div>
   );
 }

@@ -274,32 +274,34 @@ export function Hero() {
               </motion.button>
             </Link>
             
-            <motion.button
-              variants={{
-                hidden: { opacity: 0, x: -20, filter: 'blur(8px)' },
-                visible: { 
-                  opacity: 1, 
-                  x: 0,
-                  filter: 'blur(0px)',
-                  transition: { 
-                    duration: 0.6,
-                    delay: 0.1,
-                    ease: [0.16, 1, 0.3, 1] 
+            <Link to="/stories" className="w-full sm:w-auto">
+              <motion.button
+                variants={{
+                  hidden: { opacity: 0, x: -20, filter: 'blur(8px)' },
+                  visible: { 
+                    opacity: 1, 
+                    x: 0,
+                    filter: 'blur(0px)',
+                    transition: { 
+                      duration: 0.6,
+                      delay: 0.1,
+                      ease: [0.16, 1, 0.3, 1] 
+                    }
                   }
-                }
-              }}
-              whileHover={{ 
-                scale: 1.05,
-                backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                borderColor: 'rgba(255, 255, 255, 0.4)',
-                transition: { duration: 0.2 }
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3 bg-white/10 backdrop-blur-md border border-white/25 hover:bg-white/20 hover:border-white/40 text-white font-medium rounded-full transition-all duration-200 text-sm tracking-wide"
-            >
-              <Play className="w-4 h-4 sm:w-5 sm:h-5" />
-              {t.watchStories}
-            </motion.button>
+                }}
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                  borderColor: 'rgba(255, 255, 255, 0.4)',
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3 bg-white/10 backdrop-blur-md border border-white/25 hover:bg-white/20 hover:border-white/40 text-white font-medium rounded-full transition-all duration-200 text-sm tracking-wide"
+              >
+                <Play className="w-4 h-4 sm:w-5 sm:h-5" />
+                {t.watchStories}
+              </motion.button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

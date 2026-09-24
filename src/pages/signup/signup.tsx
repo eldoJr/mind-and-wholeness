@@ -68,7 +68,7 @@ const Signup: React.FC = () => {
 
   if (success) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-emerald-50 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-white px-4">
         <div className="w-full max-w-md text-center">
           <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <svg className="w-8 h-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
@@ -84,7 +84,7 @@ const Signup: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-emerald-50 px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-white px-4 py-12">
       <div className="w-full max-w-md">
         <h1 className="text-4xl font-bold text-gray-900 mb-2">
           {t.createTitle}<br />{t.createTitle2}
@@ -113,28 +113,28 @@ const Signup: React.FC = () => {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label htmlFor="firstName" className="block text-sm font-semibold text-gray-900 mb-1.5">{t.firstName}</label>
-              <input type="text" id="firstName" name="firstName" value={form.firstName} onChange={handleChange} placeholder={t.firstNamePlaceholder} className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" required />
+              <input type="text" id="firstName" name="firstName" value={form.firstName} onChange={handleChange} placeholder={t.firstNamePlaceholder} className="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:border-gray-400 transition-all" required />
             </div>
             <div>
               <label htmlFor="lastName" className="block text-sm font-semibold text-gray-900 mb-1.5">{t.lastName}</label>
-              <input type="text" id="lastName" name="lastName" value={form.lastName} onChange={handleChange} placeholder={t.lastNamePlaceholder} className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" required />
+              <input type="text" id="lastName" name="lastName" value={form.lastName} onChange={handleChange} placeholder={t.lastNamePlaceholder} className="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:border-gray-400 transition-all" required />
             </div>
           </div>
 
           <div>
             <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-1.5">{t.email}</label>
-            <input type="email" id="email" name="email" value={form.email} onChange={handleChange} placeholder={t.emailPlaceholder} className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" required />
+            <input type="email" id="email" name="email" value={form.email} onChange={handleChange} placeholder={t.emailPlaceholder} className="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:border-gray-400 transition-all" required />
           </div>
 
           <div>
             <label htmlFor="confirmEmail" className="block text-sm font-semibold text-gray-900 mb-1.5">{t.confirmEmail}</label>
-            <input type="email" id="confirmEmail" name="confirmEmail" value={form.confirmEmail} onChange={handleChange} placeholder={t.confirmEmailPlaceholder} className={`w-full px-3 py-3 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent ${emailError ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-gray-900'}`} required />
+            <input type="email" id="confirmEmail" name="confirmEmail" value={form.confirmEmail} onChange={handleChange} placeholder={t.confirmEmailPlaceholder} className={`w-full px-4 py-3 text-sm border rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:border-gray-400 transition-all ${emailError ? 'border-red-300' : 'border-gray-200'}`} required />
             {emailError && <p className="text-xs text-red-600 mt-1">{emailError}</p>}
           </div>
 
           <div>
             <label htmlFor="password" className="block text-sm font-semibold text-gray-900 mb-1.5">{t.password || 'Password'}</label>
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder={t.passwordPlaceholder || 'Create a password (min 6 characters)'} className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" required minLength={6} />
+            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder={t.passwordPlaceholder || 'Create a password (min 6 characters)'} className="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:border-gray-400 transition-all" required minLength={6} />
           </div>
 
           <div>
@@ -153,7 +153,7 @@ const Signup: React.FC = () => {
           <div>
             <label htmlFor="healingJourney" className="block text-base font-semibold text-gray-900 mb-2">{t.healingJourney}</label>
             <div className="border-t border-gray-300 mb-3"></div>
-            <select id="healingJourney" name="healingJourney" value={form.healingJourney} onChange={handleChange} className="w-full px-3 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent" required>
+            <select id="healingJourney" name="healingJourney" value={form.healingJourney} onChange={handleChange} className="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:border-gray-400 transition-all" required>
               <option value="">{t.selectStage}</option>
               {HEALING_JOURNEY_OPTIONS.map((option) => (
                 <option key={option} value={option}>{option}</option>
@@ -193,7 +193,7 @@ const Signup: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gray-900 text-white text-sm font-semibold py-3 rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50"
+            className="w-full bg-[#0a2540] text-white text-sm font-medium py-3 rounded-full hover:bg-[#0d2f50] transition-colors disabled:opacity-50"
           >
             {loading ? (t.creatingAccount || 'Creating account...') : t.createAccount}
           </button>

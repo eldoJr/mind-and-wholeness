@@ -20,7 +20,7 @@ export const SubscribeForm = ({ title, description }: SubscribeFormProps) => {
   return (
     <section className="py-16 pb-16 px-4 sm:px-6">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 bg-white rounded-2xl shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08),0_1px_4px_-1px_rgba(0,0,0,0.04)] px-8 md:px-16 py-10 md:py-14">
+        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 px-8 md:px-16 py-10 md:py-14">
 
           {/* Image */}
           <div className="relative flex-shrink-0 w-64 h-64 md:w-80 md:h-80">

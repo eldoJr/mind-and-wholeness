@@ -95,7 +95,7 @@ export default function SubscribePage() {
                 transition={{ delay: 0.2 + i * 0.08 }}
                 className="flex gap-3.5"
               >
-                <div className="shrink-0 w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center">
+                <div className="shrink-0 w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center">
                   <b.icon className="w-4.5 h-4.5 text-emerald-600" />
                 </div>
                 <div>
@@ -111,24 +111,43 @@ export default function SubscribePage() {
             initial={{ y: 24, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.35 }}
-            className="md:col-span-3 bg-white rounded-2xl p-8 border border-gray-100 shadow-sm"
+            className="md:col-span-3 bg-white p-8 border border-gray-100"
           >
-            <AnimatePresence mode="wait">
-              {isSuccess ? (
+<AnimatePresence>
+              {isSuccess && (
                 <motion.div
-                  key="success"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  key="modal"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="text-center py-10"
+                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-4"
+                  onClick={() => setIsSuccess(false)}
                 >
-                  <div className="w-14 h-14 bg-emerald-100 mx-auto mb-5 rounded-full flex items-center justify-center">
-                    <CheckCircle2 className="w-7 h-7 text-emerald-600" />
-                  </div>
-                  <h3 className="text-2xl font-serif text-gray-900 mb-2">{t.thankYou}</h3>
-                  <p className="text-gray-500 text-sm">{t.thankYouDesc}</p>
+                  <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.9, opacity: 0 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                    className="bg-white rounded-2xl p-10 max-w-sm w-full text-center shadow-xl"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="w-16 h-16 bg-emerald-100 mx-auto mb-5 rounded-full flex items-center justify-center">
+                      <CheckCircle2 className="w-8 h-8 text-emerald-600" />
+                    </div>
+                    <h3 className="text-2xl font-serif text-gray-900 mb-2">{t.thankYou}</h3>
+                    <p className="text-gray-500 text-sm mb-6">{t.thankYouDesc}</p>
+                    <button
+                      onClick={() => setIsSuccess(false)}
+                      className="px-6 py-2.5 bg-[#0a2540] text-white text-sm font-medium rounded-full hover:bg-[#0d2f50] transition-colors"
+                    >
+                      Close
+                    </button>
+                  </motion.div>
                 </motion.div>
-              ) : (
+              )}
+            </AnimatePresence>
+
+            <AnimatePresence mode="wait">
                 <motion.form
                   key="form"
                   initial={{ opacity: 0 }}
@@ -138,7 +157,7 @@ export default function SubscribePage() {
                   className="space-y-5"
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center">
+                    <div className="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center">
                       <Mail className="w-4.5 h-4.5 text-emerald-600" />
                     </div>
                     <h3 className="text-lg font-serif text-gray-900">{t.breadcrumbSubscribe}</h3>
@@ -153,10 +172,10 @@ export default function SubscribePage() {
                         setFormData((p) => ({ ...p, name: e.target.value }));
                         setErrors((p) => ({ ...p, name: '' }));
                       }}
-                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition-colors ${
+                      className={`w-full px-4 py-3 rounded-xl border text-sm bg-gray-50 focus:bg-white focus:outline-none transition-all ${
                         errors.name
-                          ? 'border-red-300 focus:border-red-400'
-                          : 'border-gray-200 focus:border-emerald-400/50'
+                          ? 'border-red-300'
+                          : 'border-gray-200 focus:border-gray-400'
                       }`}
                     />
                     {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
@@ -171,10 +190,10 @@ export default function SubscribePage() {
                         setFormData((p) => ({ ...p, email: e.target.value }));
                         setErrors((p) => ({ ...p, email: '' }));
                       }}
-                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition-colors ${
+                      className={`w-full px-4 py-3 rounded-xl border text-sm bg-gray-50 focus:bg-white focus:outline-none transition-all ${
                         errors.email
-                          ? 'border-red-300 focus:border-red-400'
-                          : 'border-gray-200 focus:border-emerald-400/50'
+                          ? 'border-red-300'
+                          : 'border-gray-200 focus:border-gray-400'
                       }`}
                     />
                     {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
@@ -183,7 +202,7 @@ export default function SubscribePage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3 bg-emerald-600 text-white text-sm font-medium rounded-xl hover:bg-emerald-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                    className="w-full py-3 bg-[#0a2540] text-white text-sm font-medium rounded-full hover:bg-[#0d2f50] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
@@ -197,17 +216,16 @@ export default function SubscribePage() {
 
                   <p className="text-xs text-gray-400 text-center">{t.promise}</p>
                 </motion.form>
-              )}
             </AnimatePresence>
           </motion.div>
         </div>
 
         {/* Footer nav */}
         <div className="mt-16 pt-8 border-t border-gray-100 flex justify-between items-center text-sm text-gray-400">
-          <Link to="/contact" className="hover:text-emerald-600 transition-colors">
+          <Link to="/contact" className="hover:text-[#0a2540] transition-colors">
             Contact Us
           </Link>
-          <Link to="/" className="hover:text-emerald-600 transition-colors">
+          <Link to="/" className="hover:text-[#0a2540] transition-colors">
             Back to Home
           </Link>
         </div>

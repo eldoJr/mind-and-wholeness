@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Instagram, Linkedin } from 'lucide-react';
-import authorImg from "../../../assets/images/lilian.jpeg";
+import authorImg from "../../../assets/images/lili.jpeg";
 import { useLanguage } from '../../../context/LanguageContext';
 import { translations } from '../../../utils/translations';
 

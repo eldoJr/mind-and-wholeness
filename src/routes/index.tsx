@@ -101,7 +101,8 @@ export const router = createBrowserRouter([
         element: <StoriesPage />,
       },
       {
-        element: <ArticlesSection />
+        path: "/programs/articles",
+        element: <ArticlesSection />,
       },
       {
         path: "/programs/institute",

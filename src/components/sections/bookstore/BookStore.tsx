@@ -5,7 +5,8 @@ import AboutAuthor from './AboutAuthor';
 import { SubscribeForm } from '../../ui';
 import ShoppingCartPanel from './ShoppingCart';
 import book1 from '/src/assets/images/book1.png';
-import instituteImg from '/src/assets/images/Institute.jpg';
+import instituteImg from '/src/assets/images/institute.png';
+import bookBg from '/src/assets/images/bookbg.png';
 import { useLanguage } from '../../../context/LanguageContext';
 import { translations } from '../../../utils/translations';
 
@@ -66,9 +67,33 @@ export default function BookStore() {
 
       <motion.div className="min-h-screen bg-white" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
 
-        {/* Hero — deep forest green */}
-        <div style={{ background: `linear-gradient(135deg, #1a4a3a 0%, ${GREEN} 50%, #1e5c42 100%)` }} className="overflow-hidden">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
+        {/* Hero — bookbg image */}
+        <div className="overflow-hidden relative" style={{ backgroundImage: `url(${bookBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          {/* SVG water ripple layer */}
+          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.55 }}>
+            <filter id="water">
+              <feTurbulence type="turbulence" baseFrequency="0.012 0.018" numOctaves="6" seed="3" result="noise" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="120" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+              <feColorMatrix type="saturate" values="1.6" in="displaced" result="saturated" />
+              <feBlend in="saturated" in2="SourceGraphic" mode="overlay" />
+            </filter>
+            <rect width="100%" height="100%" fill="url(#wg)" filter="url(#water)" />
+            <defs>
+              <radialGradient id="wg" cx="40%" cy="35%" r="75%">
+                <stop offset="0%" stopColor="#1a6b4a" />
+                <stop offset="35%" stopColor="#0d4a32" />
+                <stop offset="65%" stopColor="#083d28" />
+                <stop offset="100%" stopColor="#041a10" />
+              </radialGradient>
+            </defs>
+          </svg>
+          {/* Iridescent shimmer spots */}
+          <div className="absolute inset-0" style={{
+            background: 'radial-gradient(ellipse 60% 40% at 70% 20%, rgba(0,180,120,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 20% 70%, rgba(0,120,100,0.15) 0%, transparent 60%), radial-gradient(ellipse 50% 35% at 50% 50%, rgba(10,80,50,0.12) 0%, transparent 70%)',
+          }} />
+          {/* Dark overlay for depth */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(4,20,12,0.45) 0%, rgba(4,20,12,0.2) 50%, rgba(4,20,12,0.55) 100%)' }} />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
 
               {/* Left text */}

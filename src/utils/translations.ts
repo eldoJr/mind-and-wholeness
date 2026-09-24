@@ -229,8 +229,8 @@ export const translations = {
       bookstore: {
         subtitle: 'Transformative Resources',
         title: 'BOOKSTORE',
-        description: 'Discover books designed to guide you toward wholeness, clarity, and purposeful living',
-        featuredBook: 'Featured Book',
+        description: 'A place where knowledge is encapsulated within pages and waiting to make its acquaintance with your being.',
+        featuredBook: 'Our Books',
         bookTitle: 'Power That Brings Growth',
         bookAuthor: 'By Lilian Mussa Titus',
         bookDesc: 'A transformative guide that explores the inner power each person carries and how to channel it toward lasting personal growth. This book walks you through practical principles for overcoming limitations, renewing your mindset, and stepping into the fullness of your purpose.',

@@ -4,7 +4,8 @@ import { ArrowRight } from 'lucide-react';
 import InstituteSeries from './InstituteSeries';
 import InstituteFacts from './InstituteFacts';
 import { SubscribeForm } from '../../ui';
-import instituteImg from '../../../assets/images/Institute.jpg';
+import instituteImg from '../../../assets/images/instimg.png';
+import instBg from '../../../assets/images/instBg.png';
 import { useLanguage } from '../../../context/LanguageContext';
 import { translations } from '../../../utils/translations';
 
@@ -39,8 +40,9 @@ const Institute: React.FC<InstituteProps> = ({ className = '' }) => {
       transition={{ duration: 0.6 }}
     >
       {/* Hero */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-[#0a2954] via-[#0d3568] to-[#10417c] py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="relative overflow-hidden py-20 md:py-28" style={{ backgroundImage: `url(${instBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="absolute inset-0 bg-[#0a2954]/60" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
 
             {/* Left text */}
@@ -101,11 +103,13 @@ const Institute: React.FC<InstituteProps> = ({ className = '' }) => {
                 <span className="absolute -top-4 right-8 w-8 h-8 rounded-full bg-blue-400/40" />
                 <span className="absolute top-10 -right-4 w-5 h-5 rounded-full bg-blue-300/30" />
                 <span className="absolute -bottom-3 left-10 w-6 h-6 rounded-full bg-blue-400/30" />
-                <img
-                  src={instituteImg}
-                  alt="Institute"
-                  className="w-full h-full object-cover rounded-full shadow-[0_8px_40px_-8px_rgba(0,0,0,0.4)]"
-                />
+                <div className="w-full h-full rounded-full overflow-hidden shadow-[0_8px_40px_-8px_rgba(0,0,0,0.4)]">
+                  <img
+                    src={instituteImg}
+                    alt="Institute"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
               </div>
             </motion.div>
           </div>

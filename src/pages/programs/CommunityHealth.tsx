@@ -334,7 +334,6 @@ export default function CommunityHealth() {
 
                 {/* Intro */}
                 <motion.p
-                  className="text-sm leading-relaxed mb-6"
                   className="text-sm leading-relaxed mb-6 text-gray-600"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -359,7 +358,6 @@ export default function CommunityHealth() {
                       {sec.items.map((item, ii) => (
                         <motion.li
                           key={ii}
-                          className="flex items-start gap-2.5 text-sm"
                           className="flex items-start gap-2.5 text-sm text-gray-600"
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
@@ -376,9 +374,8 @@ export default function CommunityHealth() {
                 {/* Closing */}
                 {((t.pillars && t.pillars[active]?.closing) || pillars[active].closing) && (
                   <motion.p
-                    className="text-sm leading-relaxed mt-4 pt-4 border-t"
                     className="text-sm leading-relaxed mt-4 pt-4 border-t text-gray-500"
-                  style={{ borderColor: 'rgba(0,0,0,0.08)' }}
+                    style={{ borderColor: 'rgba(0,0,0,0.08)' }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 0.4 }}

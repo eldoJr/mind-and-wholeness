@@ -23,6 +23,7 @@ interface CartItem {
 const GREEN = '#2d6a4f';
 const BROWN = '#5c3d2e';
 const TAN = '#c4a882';
+const NAV_BG = 'linear-gradient(135deg, #f8fafc 0%, #ecfdf5 100%)'; // from-slate-50 to-emerald-50
 
 export default function BookStore() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -65,7 +66,7 @@ export default function BookStore() {
         )}
       </button>
 
-      <motion.div className="min-h-screen bg-white" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+      <motion.div className="min-h-screen" style={{ background: NAV_BG }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
 
         {/* Hero — bookbg image */}
         <div className="overflow-hidden relative" style={{ backgroundImage: `url(${bookBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -156,8 +157,8 @@ export default function BookStore() {
           </div>
         </div>
 
-        {/* Featured book — same sandy tan as recommendations */}
-        <div id="books" style={{ background: 'linear-gradient(135deg, #f5ede0 0%, #ede0cc 50%, #f0e6d3 100%)' }}>
+        {/* Featured book */}
+        <div id="books" style={{ background: NAV_BG }}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24">
             <motion.div
               className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center"
@@ -207,8 +208,8 @@ export default function BookStore() {
           </div>
         </div>
 
-        {/* Recommendations — sandy tan */}
-        <div style={{ background: `linear-gradient(135deg, #f5ede0 0%, #ede0cc 50%, #f0e6d3 100%)` }}>
+        {/* Recommendations */}
+        <div style={{ background: NAV_BG }}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
             <motion.div
               initial={{ y: 20, opacity: 0 }}
@@ -270,7 +271,7 @@ export default function BookStore() {
         {/* About Author — back to green */}
         <AboutAuthor />
 
-        <div className="bg-gradient-to-br from-white via-emerald-50 to-green-100">
+        <div className="bg-gradient-to-br from-slate-50 to-emerald-50">
           <SubscribeForm />
         </div>
       </motion.div>

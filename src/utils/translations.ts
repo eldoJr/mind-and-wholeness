@@ -271,13 +271,13 @@ export const translations = {
         goHome: 'Go Home'
       },
       institute: {
-        learnGrow: 'Learn & Grow',
+        learnGrow: 'Become',
         title: 'Institute',
-        heroDesc: 'Discover transformative courses and programs designed to nurture your mind, body, and spirit through holistic education and spiritual development.',
+        heroDesc: 'A place where learning is more than reading and writing but we learn how to be the wisdom that has been made available to us from above.',
         typingText: 'Transform your life through learning...',
         welcomeTo: 'Welcome to the',
         welcomeTitle: 'Mind & Wholeness Institute',
-        welcomeDesc: 'Our institute offers comprehensive programs in mindfulness, spiritual growth, and holistic wellness. Join our community of learners committed to personal transformation and collective healing.',
+        welcomeDesc: 'Our institute is a place where learning is more than reading and writing but we learn how to be the wisdom that has been made available to us from above. The Word in itself is powerful, but we can only partake of such power when we come into agreement with it. With our courses, students learn many principles and understand how to put them in action.',
         instituteFacts: 'INSTITUTE FACTS',
         courses: 'COURSES',
         students: 'STUDENTS',

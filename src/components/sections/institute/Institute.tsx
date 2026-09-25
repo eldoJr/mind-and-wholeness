@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import InstituteSeries from './InstituteSeries';
@@ -16,22 +16,6 @@ interface InstituteProps {
 const Institute: React.FC<InstituteProps> = ({ className = '' }) => {
   const { language } = useLanguage();
   const t = translations[language].pages.institute;
-  const [typedText, setTypedText] = useState('');
-  const fullText = t.typingText;
-
-  useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index <= fullText.length) {
-        setTypedText(fullText.slice(0, index));
-        index++;
-      } else {
-        setTimeout(() => { index = 0; setTypedText(''); }, 2000);
-      }
-    }, 100);
-    return () => clearInterval(interval);
-  }, [fullText]);
-
   return (
     <motion.section
       className={`bg-white ${className}`}
@@ -64,9 +48,6 @@ const Institute: React.FC<InstituteProps> = ({ className = '' }) => {
               <p className="text-base text-white/80 max-w-lg leading-relaxed mb-4">
                 {t.heroDesc}
               </p>
-              <p className="text-sm text-blue-300/80 font-mono h-6 mb-8">
-                {typedText}<span className="animate-pulse">|</span>
-              </p>
               <motion.button
                 onClick={() => document.getElementById('welcome')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                 className="relative inline-flex items-center gap-2 px-7 py-3 rounded-full border border-white text-white text-sm font-medium overflow-hidden"
@@ -91,25 +72,54 @@ const Institute: React.FC<InstituteProps> = ({ className = '' }) => {
               </motion.button>
             </motion.div>
 
-            {/* Right circular image with dot accents */}
+            {/* Right image — Apple Intelligence style */}
             <motion.div
               className="w-full md:w-1/2 flex justify-center"
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.35 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <div className="relative w-72 h-72 md:w-96 md:h-96">
-                {/* Dot accents */}
-                <span className="absolute -top-4 right-8 w-8 h-8 rounded-full bg-blue-400/40" />
-                <span className="absolute top-10 -right-4 w-5 h-5 rounded-full bg-blue-300/30" />
-                <span className="absolute -bottom-3 left-10 w-6 h-6 rounded-full bg-blue-400/30" />
-                <div className="w-full h-full rounded-full overflow-hidden shadow-[0_8px_40px_-8px_rgba(0,0,0,0.4)]">
-                  <img
+              <div className="relative w-72 md:w-96">
+                {/* Ambient glow */}
+                <div className="absolute -inset-6 rounded-[2.5rem] blur-2xl opacity-40" style={{ background: 'radial-gradient(ellipse at center, #3b82f6 0%, #0a2954 60%, transparent 100%)' }} />
+
+                {/* Frosted glass frame */}
+                <div className="relative rounded-[2rem] overflow-hidden border border-white/20" style={{ background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(2px)' }}>
+
+                  {/* Inner highlight ring */}
+                  <div className="absolute inset-0 rounded-[2rem] border border-white/10 z-10 pointer-events-none" />
+
+                  {/* Image */}
+                  <motion.img
                     src={instituteImg}
                     alt="Institute"
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-80 md:h-[420px] object-cover object-top"
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
                   />
+
+                  {/* Bottom frosted label */}
+                  <div className="absolute bottom-0 left-0 right-0 px-5 py-4" style={{ background: 'linear-gradient(to top, rgba(10,41,84,0.85) 0%, transparent 100%)', backdropFilter: 'blur(8px)' }}>
+                    <p className="text-white/90 text-xs font-medium tracking-widest uppercase">Mind & Wholeness Institute</p>
+                  </div>
                 </div>
+
+                {/* Floating accent dots */}
+                <motion.span
+                  className="absolute -top-3 -right-3 w-5 h-5 rounded-full bg-blue-400/50 blur-[2px]"
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <motion.span
+                  className="absolute -bottom-4 left-8 w-3 h-3 rounded-full bg-blue-300/40 blur-[1px]"
+                  animate={{ y: [0, 5, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                />
+                <motion.span
+                  className="absolute top-1/2 -right-5 w-2 h-2 rounded-full bg-white/20"
+                  animate={{ y: [0, -4, 0] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                />
               </div>
             </motion.div>
           </div>

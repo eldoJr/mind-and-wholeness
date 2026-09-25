@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { ShoppingBag, Bell, ArrowRight, ShoppingCart } from 'lucide-react';
 import { useState } from 'react';
 import AboutAuthor from './AboutAuthor';
-import { SubscribeForm } from '../../ui';
 import ShoppingCartPanel from './ShoppingCart';
 import book1 from '/src/assets/images/book1.png';
 import instituteImg from '/src/assets/images/institute.png';
@@ -81,10 +80,10 @@ export default function BookStore() {
             <rect width="100%" height="100%" fill="url(#wg)" filter="url(#water)" />
             <defs>
               <radialGradient id="wg" cx="40%" cy="35%" r="75%">
-                <stop offset="0%" stopColor="#1a6b4a" />
-                <stop offset="35%" stopColor="#0d4a32" />
-                <stop offset="65%" stopColor="#083d28" />
-                <stop offset="100%" stopColor="#041a10" />
+                <stop offset="0%" stopColor="#2d8a62" />
+                <stop offset="35%" stopColor="#1a6b4a" />
+                <stop offset="65%" stopColor="#145c3e" />
+                <stop offset="100%" stopColor="#0d4a32" />
               </radialGradient>
             </defs>
           </svg>
@@ -93,7 +92,7 @@ export default function BookStore() {
             background: 'radial-gradient(ellipse 60% 40% at 70% 20%, rgba(0,180,120,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 20% 70%, rgba(0,120,100,0.15) 0%, transparent 60%), radial-gradient(ellipse 50% 35% at 50% 50%, rgba(10,80,50,0.12) 0%, transparent 70%)',
           }} />
           {/* Dark overlay for depth */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(4,20,12,0.45) 0%, rgba(4,20,12,0.2) 50%, rgba(4,20,12,0.55) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(4,20,12,0.2) 0%, rgba(4,20,12,0.05) 50%, rgba(4,20,12,0.25) 100%)' }} />
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
 
@@ -270,10 +269,6 @@ export default function BookStore() {
 
         {/* About Author — back to green */}
         <AboutAuthor />
-
-        <div className="bg-gradient-to-br from-slate-50 to-emerald-50">
-          <SubscribeForm />
-        </div>
       </motion.div>
     </>
   );

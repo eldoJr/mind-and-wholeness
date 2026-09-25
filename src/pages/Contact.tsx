@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Send, MapPin, Phone, CheckCircle2, Loader2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { SubscribeForm } from '../components/ui';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../utils/translations';
 
@@ -240,7 +239,6 @@ export default function ContactSection() {
 
         </div>
       </div>
-      <SubscribeForm />
     </motion.div>
   );
 }

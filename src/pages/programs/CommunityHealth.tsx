@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Heart, Users, Lightbulb, Shield, Smartphone, Building2, HandCoins } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { SubscribeForm } from '../../components/ui';
+
 import communityImg from '../../assets/images/community1.png';
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
@@ -485,7 +485,6 @@ export default function CommunityHealth() {
       </div>
 
       <div style={{ background: ACCENT }}>
-        <SubscribeForm />
       </div>
 
     </motion.div>

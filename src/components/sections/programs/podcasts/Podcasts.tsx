@@ -5,7 +5,6 @@ import { getRecentPodcasts } from '../../../../data/podcasts';
 import { PodcastCard } from '../../../ui';
 import PodcastSeries from './Series';
 import PodcastFacts from './PodcastFacts';
-import { SubscribeForm } from '../../../ui';
 import podcastImg from './../../../../assets/images/pod.jpg';
 import communityImg from './../../../../assets/images/community.png';
 import { useLanguage } from '../../../../context/LanguageContext';
@@ -166,10 +165,6 @@ const Podcasts: React.FC = () => {
             </div>
           </motion.div>
         </div>
-      </div>
-
-      <div className="bg-gradient-to-br from-white via-emerald-50 to-green-100">
-        <SubscribeForm />
       </div>
     </motion.section>
   );

@@ -7,7 +7,7 @@ import ctoImg from './../../../../assets/images/michael.jpeg';
 import communityImg from './../../../../assets/images/community.png';
 import { useLanguage } from '../../../../context/LanguageContext';
 import { translations } from '../../../../utils/translations';
-import { SubscribeForm } from '../../../ui';
+
 
 const HostPodcastPage = () => {
   const { language } = useLanguage();
@@ -242,7 +242,6 @@ const HostPodcastPage = () => {
       </div>
 
       <div className="bg-gradient-to-br from-white via-emerald-50 to-green-100">
-        <SubscribeForm />
       </div>
     </motion.section>
   );

@@ -1,5 +1,5 @@
 import { BookOpen, Clock, ArrowRight } from 'lucide-react';
-import { SubscribeForm } from '../../../ui';
+
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../../../context/LanguageContext';
 import { translations } from '../../../../utils/translations';
@@ -153,7 +153,6 @@ const ArticlesSection = () => {
       </div>
 
       <div className="bg-gradient-to-br from-white via-emerald-50 to-green-100">
-        <SubscribeForm />
       </div>
     </motion.main>
   );

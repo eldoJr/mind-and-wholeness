@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { SubscribeForm } from '../../../ui';
 import ListEvents from './ListEvents';
 import { useLanguage } from '../../../../context/LanguageContext';
 import { translations } from '../../../../utils/translations';
@@ -153,10 +152,6 @@ const EventsPage = () => {
             </div>
           </motion.div>
         </div>
-      </div>
-
-      <div className="bg-gradient-to-br from-white via-emerald-50 to-green-100">
-        <SubscribeForm />
       </div>
     </motion.div>
   );

@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import InstituteSeries from './InstituteSeries';
 import InstituteFacts from './InstituteFacts';
-import { SubscribeForm } from '../../ui';
 import instituteImg from '../../../assets/images/instimg.png';
 import instBg from '../../../assets/images/instBg.png';
 import { useLanguage } from '../../../context/LanguageContext';
@@ -152,8 +151,6 @@ const Institute: React.FC<InstituteProps> = ({ className = '' }) => {
       </div>
 
       <InstituteSeries />
-
-      <SubscribeForm />
     </motion.section>
   );
 };

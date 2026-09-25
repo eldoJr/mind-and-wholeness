@@ -1,6 +1,6 @@
 import { Circle } from 'lucide-react';
 import { getMeditationsByTopic } from '../../../../../data/meditations';
-import { Breadcrumb, PageHeader, MeditationCard, Container, SubscribeForm } from '../../../../ui';
+import { Breadcrumb, PageHeader, MeditationCard, Container } from '../../../../ui';
 
 const HealingMeditations = () => {
   const meditations = getMeditationsByTopic('healing');
@@ -43,11 +43,6 @@ const HealingMeditations = () => {
             ))}
           </div>
         </div>
-
-        <SubscribeForm 
-          variant="detailed"
-          description="Sign-up to receive the Daily Meditations, featuring reflections on the wisdom and practices of the Christian contemplative tradition."
-        />
       </Container>
     </section>
   );

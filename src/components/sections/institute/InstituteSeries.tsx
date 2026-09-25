@@ -23,13 +23,12 @@ const ClassCard = () => {
     <motion.div
       onMouseMove={handleMouse}
       onMouseLeave={() => { x.set(0); y.set(0); }}
-      style={{ rotateX: springX, rotateY: springY, transformPerspective: 1000 }}
+      style={{ rotateX: springX, rotateY: springY, transformPerspective: 1000, height: '480px' }}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
       className="group relative rounded-3xl overflow-hidden cursor-pointer"
-      style={{ height: '480px' } as React.CSSProperties}
     >
       {/* Image */}
       <motion.img

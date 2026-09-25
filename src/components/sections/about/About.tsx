@@ -1,9 +1,9 @@
-import ceoImg from "/src/assets/images/lilian.jpeg";
+import ceoImg from "/src/assets/images/ceo1.png";
 import liliImg from "/src/assets/images/lili.jpeg";
 import michaelImg from "/src/assets/images/michael.jpeg";
 import viviImg from "/src/assets/images/vivi.jpeg";
 import { useState } from "react";
-import { ChevronDown, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronDown, ChevronRight, ArrowRight, Instagram, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../../context/LanguageContext';
@@ -65,16 +65,21 @@ const AboutSection = () => {
         );
       case "beliefs":
         return (
-          <div className="mt-8">
-            <p className="text-sm text-gray-600 mb-8 max-w-3xl leading-relaxed">{t.beliefsDesc}</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {[t.belief1, t.belief2, t.belief3, t.belief4, t.belief5, t.belief6, t.belief7, t.belief8].map((belief, i) => (
-                <div key={i} className="flex items-start gap-3 py-3 border-b border-gray-100">
-                  <span className="mt-1 w-5 h-5 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                  </span>
-                  <p className="text-sm text-gray-700 leading-relaxed">{belief}</p>
-                </div>
+          <div className="mt-8 max-w-2xl">
+            <p className="text-base text-gray-500 mb-10 leading-relaxed">{t.beliefsDesc}</p>
+            <div className="space-y-0">
+              {[t.belief1, t.belief2, t.belief3, t.belief4, t.belief5, t.belief6].filter(Boolean).map((belief, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.07, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex items-center gap-5 py-4 border-b border-gray-100 group"
+                >
+                  <span className="text-[10px] font-semibold tracking-[0.25em] text-emerald-500/60 w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                  <p className="text-sm text-gray-700 leading-relaxed flex-1 group-hover:text-gray-900 transition-colors duration-200">{belief}</p>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/0 group-hover:bg-emerald-400 transition-all duration-300 shrink-0" />
+                </motion.div>
               ))}
             </div>
           </div>
@@ -279,20 +284,9 @@ const AboutSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
         >
-          <div className="flex flex-col lg:flex-row gap-14 items-center">
-            {/* Rectangle image */}
-            <div className="lg:w-5/12 w-full">
-              <div className="overflow-hidden rounded-2xl shadow-[0_8px_40px_-8px_rgba(0,0,0,0.18)]">
-                <img
-                  src={ceoImg}
-                  alt="Lilian Titus"
-                  className="w-full aspect-[3/4] object-cover"
-                />
-              </div>
-            </div>
-
+          <div className="flex flex-col lg:flex-row gap-14 items-start">
             {/* Text */}
-            <div className="lg:w-7/12 w-full space-y-5">
+            <div className="lg:w-1/2 w-full space-y-5">
               <div className="flex items-center gap-3">
                 <span className="w-6 h-px bg-emerald-700" />
                 <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-700">{t.helloIm}</span>
@@ -307,10 +301,33 @@ const AboutSection = () => {
                 <p className="text-sm">{t.ceoBio3}</p>
                 <p className="text-sm">{t.ceoBio4}</p>
               </div>
-              <button className="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 text-sm font-medium group mt-2">
-                {t.readMore}
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
+              <div className="flex gap-4 mt-2">
+                <a
+                  href="https://www.instagram.com/liliantitus_1?igsh=MXdsbXU2NjUxMXJ6bA=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-emerald-700 transition-colors duration-300"
+                >
+                  <Instagram size={20} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-emerald-700 transition-colors duration-300"
+                >
+                  <Linkedin size={20} />
+                </a>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div className="lg:w-5/12 w-full max-w-xs lg:max-w-sm mx-auto lg:mx-0">
+              <img
+                src={ceoImg}
+                alt="Lilian Titus"
+                className="w-full rounded-2xl"
+              />
             </div>
           </div>
         </motion.div>

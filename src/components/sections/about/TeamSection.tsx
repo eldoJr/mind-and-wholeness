@@ -65,8 +65,7 @@ const TeamSection = () => {
             <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-700">{t.breadcrumbTeam}</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-serif text-gray-900 mb-5 max-w-xl leading-tight">{t.title}</h1>
-          <p className="text-base text-gray-600 max-w-3xl leading-relaxed mb-3">{t.subtitle}</p>
-          <p className="text-sm text-gray-500 max-w-4xl leading-relaxed">{t.description}</p>
+          <p className="text-base text-gray-600 max-w-3xl leading-relaxed">Meet the leadership team behind Mind and Wholeness</p>
         </motion.div>
 
         {/* Meet the team label */}

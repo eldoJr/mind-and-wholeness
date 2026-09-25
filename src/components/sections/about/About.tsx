@@ -51,12 +51,12 @@ const AboutSection = () => {
                 { title: t.valueGrowth, desc: t.valueGrowthDesc },
                 { title: t.valueCompassion, desc: t.valueCompassionDesc },
               ].map((v, i) => (
-                <div key={i} className="p-5 rounded-2xl border border-gray-100 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.1)] transition-shadow duration-300">
+                <div key={i} className="p-5 rounded-2xl border border-emerald-100/60 bg-gradient-to-br from-slate-50 to-emerald-50 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.1)] transition-shadow duration-300">
                   <h4 className="text-sm font-semibold text-gray-900 mb-2">{v.title}</h4>
                   <p className="text-sm text-gray-600 leading-relaxed">{v.desc}</p>
                 </div>
               ))}
-              <div className="p-5 rounded-2xl border border-gray-100 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] md:col-span-2">
+              <div className="p-5 rounded-2xl border border-emerald-100/60 bg-gradient-to-br from-slate-50 to-emerald-50 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] md:col-span-2">
                 <h4 className="text-sm font-semibold text-gray-900 mb-2">{t.valueLeadership}</h4>
                 <p className="text-sm text-gray-600 leading-relaxed">{t.valueLeadershipDesc}</p>
               </div>
@@ -239,6 +239,19 @@ const AboutSection = () => {
           </button>
         </motion.div>
 
+        {/* Mission Statement */}
+        <motion.div
+          className="mb-14 py-10 px-8 rounded-2xl bg-gradient-to-br from-slate-50 to-emerald-50 border border-emerald-100/60"
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <p className="text-gray-700 text-base sm:text-lg leading-relaxed max-w-4xl">
+            Mind and Wholeness is a movement that restores people from brokenness to wholeness. We do this by nurturing the spirit, renewing the mind, and cultivating healthy lives through transformational programs, authentic community, and practical education. The Wholeness Institute extends this mission by equipping leaders, families, and professionals with the knowledge and tools to multiply that transformation in society.
+          </p>
+        </motion.div>
+
         {/* Tabs */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -276,6 +289,80 @@ const AboutSection = () => {
           </motion.div>
         </motion.div>
 
+        {/* Our Philosophy */}
+        <motion.div
+          className="py-16 mt-4 border-t border-gray-100"
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-6 h-px bg-emerald-700" />
+            <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-700">Our Philosophy</span>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl text-gray-900 leading-tight mb-6 max-w-2xl">We believe true transformation is holistic.</h2>
+          <p className="text-gray-500 text-base leading-relaxed max-w-2xl mb-10">
+            A person cannot truly flourish if only one part of life is healthy. Wholeness involves three connected dimensions — and when these are nurtured together, people move from surviving to living with purpose. This is the foundation of everything we do.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[{ label: 'Spirit', desc: 'Connecting to God and eternal purpose — the source of identity, meaning, and inner peace.' }, { label: 'Soul', desc: 'The mind, will, and emotions — renewed through truth, healing, and intentional growth.' }, { label: 'Body', desc: 'Physical health and vitality — honoured as the vessel through which we live and serve.' }].map((item, i) => (
+              <motion.div
+                key={i}
+                className="p-7 rounded-2xl border border-gray-100 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.1)] transition-shadow duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-600 mb-3 block">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="font-serif text-2xl text-gray-900 mb-3">{item.label}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* What Makes Us Different */}
+        <motion.div
+          className="py-16 border-t border-gray-100"
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-6 h-px bg-emerald-700" />
+            <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-700">What Makes Us Different</span>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl text-gray-900 leading-tight mb-10 max-w-2xl">One journey. Every dimension.</h2>
+          <div className="flex flex-col lg:flex-row gap-12 items-start">
+            <div className="flex-1 space-y-4">
+              {['Many organizations focus only on inspiration.', 'Others focus only on education.', 'Others focus only on fitness.', 'Others focus only on church.'].map((line, i) => (
+                <motion.div
+                  key={i}
+                  className="flex items-center gap-5 py-4 border-b border-gray-100 group"
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07, duration: 0.4 }}
+                >
+                  <span className="text-[10px] font-semibold tracking-[0.25em] text-gray-300 w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                  <p className="text-sm text-gray-500 leading-relaxed flex-1">{line}</p>
+                </motion.div>
+              ))}
+            </div>
+            <div className="flex-1 lg:pl-12 lg:border-l border-gray-100">
+              <p className="text-base text-gray-700 leading-relaxed mb-6">
+                Mind and Wholeness brings all of these together into one journey of holistic transformation.
+              </p>
+              <p className="text-base font-serif text-gray-900 text-xl leading-snug">
+                We don't simply host events.<br />We build people.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* CEO Section */}
         <motion.div
           className="py-20 mt-8 border-t border-gray-100"
@@ -284,7 +371,7 @@ const AboutSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
         >
-          <div className="flex flex-col lg:flex-row gap-14 items-start">
+          <div className="flex flex-col lg:flex-row gap-14 items-center">
             {/* Text */}
             <div className="lg:w-1/2 w-full space-y-5">
               <div className="flex items-center gap-3">
@@ -322,11 +409,12 @@ const AboutSection = () => {
             </div>
 
             {/* Image */}
-            <div className="lg:w-5/12 w-full max-w-xs lg:max-w-sm mx-auto lg:mx-0">
+            <div className="lg:w-5/12 w-full max-w-sm lg:max-w-md mx-auto lg:mx-0">
               <img
                 src={ceoImg}
                 alt="Lilian Titus"
-                className="w-full rounded-2xl"
+                className="w-full rounded-2xl object-cover object-bottom"
+                style={{ clipPath: 'inset(6% 0 0 0 round 1rem)' }}
               />
             </div>
           </div>

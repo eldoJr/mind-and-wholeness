@@ -67,7 +67,7 @@ export const translations = {
       quoteSource: '— Romans 12:2'
     },
     loginCTA: {
-      badge: 'Members Only',
+      badge: 'Join the Community',
       title: 'Your journey deserves a dedicated space.',
       subtitle: 'Sign in to access meditations, guides, and your personal dashboard.',
       cta: 'Create free account',
@@ -594,7 +594,7 @@ export const translations = {
       quoteSource: '— Romanos 12:2'
     },
     loginCTA: {
-      badge: 'Solo Miembros',
+      badge: 'Únete a la Comunidad',
       title: 'Tu camino merece un espacio dedicado.',
       subtitle: 'Inicia sesión para acceder a meditaciones, guías y tu panel personal.',
       cta: 'Crear cuenta gratis',
@@ -793,7 +793,7 @@ export const translations = {
       quoteSource: '— Romanos 12:2'
     },
     loginCTA: {
-      badge: 'Apenas Membros',
+      badge: 'Junte-se à Comunidade',
       title: 'Sua jornada merece um espaço dedicado.',
       subtitle: 'Entre para acessar meditações, guias e seu painel pessoal.',
       cta: 'Criar conta grátis',
@@ -992,7 +992,7 @@ export const translations = {
       quoteSource: '— Romains 12:2'
     },
     loginCTA: {
-      badge: 'Membres Uniquement',
+      badge: 'Rejoignez la Communauté',
       title: 'Votre parcours mérite un espace dédié.',
       subtitle: 'Connectez-vous pour accéder aux méditations, guides et votre tableau de bord.',
       cta: 'Créer un compte gratuit',
@@ -1191,7 +1191,7 @@ export const translations = {
       quoteSource: '— Römer 12:2'
     },
     loginCTA: {
-      badge: 'Nur Mitglieder',
+      badge: 'Der Gemeinschaft Beitreten',
       title: 'Ihre Reise verdient einen eigenen Raum.',
       subtitle: 'Melden Sie sich an, um auf Meditationen, Leitfäden und Ihr Dashboard zuzugreifen.',
       cta: 'Kostenloses Konto erstellen',
@@ -1390,7 +1390,7 @@ export const translations = {
       quoteSource: '— 罗马书 12:2'
     },
     loginCTA: {
-      badge: '仅限会员',
+      badge: '加入社区',
       title: '您的旅程将拥有一个专属空间。',
       subtitle: '登录以访问冥想、指南和您的个人面板。',
       cta: '免费创建账户',
@@ -1589,7 +1589,7 @@ export const translations = {
       quoteSource: '— रोमियों 12:2'
     },
     loginCTA: {
-      badge: 'सिर्फ सदस्य',
+      badge: 'समुदाय से जुड़ें',
       title: 'आपकी यात्रा एक समर्पित स्थान की हकदार है।',
       subtitle: 'ध्यान, मार्गदर्शिकाओं और अपने डैशबोर्ड तक पहुंचने के लिए साइन इन करें।',
       cta: 'मुफ्त खाता बनाएं',

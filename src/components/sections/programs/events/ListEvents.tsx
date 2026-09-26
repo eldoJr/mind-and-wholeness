@@ -21,23 +21,13 @@ const ListEvents = () => {
           <h2 className="font-serif text-4xl sm:text-5xl text-gray-900 leading-tight">{t.pastEvents}</h2>
         </motion.div>
 
-        <motion.div
-          className="flex flex-col sm:flex-row items-center gap-8 bg-white rounded-2xl px-8 py-10 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08),0_1px_4px_-1px_rgba(0,0,0,0.04)]"
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <div className="w-16 h-16 rounded-full bg-amber-50 flex items-center justify-center shrink-0">
-            <CalendarHeart className="w-8 h-8 text-amber-600" />
+        <div className="flex flex-col items-center justify-center py-20 gap-4">
+          <div className="h-16 w-16 rounded-2xl bg-amber-50 flex items-center justify-center">
+            <CalendarHeart size={28} className="text-amber-300" />
           </div>
-          <div className="flex-1 sm:text-left text-center">
-            <h3 className="text-xl font-serif text-gray-900 mb-2">{t.noPastEvents}</h3>
-            <p className="text-gray-500 text-sm leading-relaxed">{t.checkBackSoon}</p>
-          </div>
-          <div className="inline-flex items-center gap-2 shrink-0">
-            <span className="w-6 h-px bg-amber-300" />
-            <span className="text-xs tracking-widest uppercase text-amber-600 font-medium">{t.stayTuned}</span>
-            <span className="w-6 h-px bg-amber-300" />
-          </div>
-        </motion.div>
+          <p className="text-base font-serif font-semibold text-gray-500">{t.noPastEvents}</p>
+          <p className="text-sm text-gray-400">{t.checkBackSoon}</p>
+        </div>
       </div>
     </section>
   );

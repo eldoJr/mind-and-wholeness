@@ -66,8 +66,7 @@ const EventsPage = () => {
             <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-amber-600">{t.experienceGrowth}</p>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl text-gray-900 leading-tight mb-6 max-w-2xl">{t.transformJourney}</h2>
-          <p className="text-gray-500 text-base leading-relaxed max-w-2xl mb-3">{t.transformDesc}</p>
-          <p className="text-gray-400 text-sm leading-relaxed max-w-2xl">{t.transformDesc2}</p>
+          <p className="text-gray-500 text-base leading-relaxed max-w-2xl">{t.transformDesc}</p>
         </motion.div>
       </div>
 
@@ -127,23 +126,23 @@ const EventsPage = () => {
       <div className="bg-gradient-to-br from-slate-50 to-amber-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16">
           <motion.div
-            className="flex flex-col md:flex-row items-center gap-10 md:gap-16 bg-white rounded-2xl px-8 md:px-14 py-10 md:py-14 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08),0_1px_4px_-1px_rgba(0,0,0,0.04)]"
+            className="flex flex-col md:flex-row items-center gap-10 md:gap-16 bg-white rounded-2xl px-6 sm:px-8 md:px-14 py-10 md:py-14 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08),0_1px_4px_-1px_rgba(0,0,0,0.04)]"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="flex flex-col justify-center max-w-lg">
+            <div className="flex flex-col justify-center w-full md:max-w-lg text-center md:text-left items-center md:items-start">
               <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-amber-600 mb-3">{tLogin.badge}</p>
               <h2 className="text-2xl md:text-3xl font-serif text-gray-900 leading-snug mb-4">{tLogin.title}</h2>
               <p className="text-gray-500 text-sm leading-relaxed mb-8">{tLogin.subtitle}</p>
               <Link
                 to="/login"
-                className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full border border-gray-900 text-gray-900 text-sm font-medium tracking-wide hover:bg-gray-900 hover:text-white transition-all duration-200 w-fit"
+                className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full border border-gray-900 text-gray-900 text-sm font-medium tracking-wide hover:bg-gray-900 hover:text-white transition-all duration-200"
               >
                 {tLogin.cta}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
             </div>
 
-            <div className="relative flex-shrink-0 w-56 h-56 md:w-72 md:h-72 ml-auto">
+            <div className="relative flex-shrink-0 w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 mx-auto md:ml-auto md:mr-0">
               <div className="w-full h-full rounded-full overflow-hidden">
                 <img src={communityImg} alt="Community" className="w-full h-full object-cover object-center" />
               </div>

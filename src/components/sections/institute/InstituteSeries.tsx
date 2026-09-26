@@ -2,6 +2,7 @@ import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { Bell, Users, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../../../context/LanguageContext';
 import { translations } from '../../../utils/translations';
+import { Link } from 'react-router-dom';
 import instBg from '../../../assets/images/instBg.png';
 import class1 from '../../../assets/images/class1.png';
 
@@ -31,6 +32,8 @@ const ClassCard = () => {
       className="group relative rounded-3xl overflow-hidden cursor-pointer"
     >
       {/* Image */}
+      <Link to="/programs/institute/understanding-faith" className="absolute inset-0 z-10" aria-label="View course" />
+      {/* Image */}
       <motion.img
         src={class1}
         alt="Understanding Faith"
@@ -42,14 +45,7 @@ const ClassCard = () => {
       {/* Base gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
 
-      {/* Badge */}
-      <div className="absolute top-5 left-5">
-        <span className="text-[10px] font-semibold tracking-[0.25em] uppercase bg-[#0a2954]/80 backdrop-blur-md text-white border border-white/20 rounded-full px-3 py-1.5">
-          Available
-        </span>
-      </div>
 
-      {/* Arrow icon top right */}
       <motion.div
         className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center"
         initial={{ opacity: 0, scale: 0.8 }}

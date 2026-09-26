@@ -1,7 +1,5 @@
 import ceoImg from "/src/assets/images/ceo1.png";
-import liliImg from "/src/assets/images/lili.jpeg";
-import michaelImg from "/src/assets/images/michael.jpeg";
-import viviImg from "/src/assets/images/vivi.jpeg";
+import aboutBG from "/src/assets/images/aboutBG.png";
 import { useState } from "react";
 import { ChevronDown, ChevronRight, ArrowRight, Instagram, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -22,16 +20,16 @@ const AboutSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-8">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-6 h-px bg-emerald-700" />
-                <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-700">{t.visionTitle}</span>
+                <span className="w-6 h-px bg-amber-400" />
+                <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-amber-500">{t.visionTitle}</span>
               </div>
               <p className="text-sm text-gray-500 italic mb-3 leading-relaxed">{t.visionQuote}</p>
               <p className="text-sm text-gray-700 leading-relaxed">{t.visionDesc}</p>
             </div>
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-6 h-px bg-emerald-700" />
-                <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-700">{t.missionTitle}</span>
+                <span className="w-6 h-px bg-amber-400" />
+                <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-amber-500">{t.missionTitle}</span>
               </div>
               <p className="text-sm text-gray-500 italic mb-3 leading-relaxed">{t.missionQuote}</p>
               <p className="text-sm text-gray-700 leading-relaxed">{t.missionDesc}</p>
@@ -51,12 +49,12 @@ const AboutSection = () => {
                 { title: t.valueGrowth, desc: t.valueGrowthDesc },
                 { title: t.valueCompassion, desc: t.valueCompassionDesc },
               ].map((v, i) => (
-                <div key={i} className="p-5 rounded-2xl border border-emerald-100/60 bg-gradient-to-br from-slate-50 to-emerald-50 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.1)] transition-shadow duration-300">
+                <div key={i} className="p-5 rounded-2xl border border-amber-100/60 bg-gradient-to-br from-amber-50 to-yellow-50 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.1)] transition-shadow duration-300">
                   <h4 className="text-sm font-semibold text-gray-900 mb-2">{v.title}</h4>
                   <p className="text-sm text-gray-600 leading-relaxed">{v.desc}</p>
                 </div>
               ))}
-              <div className="p-5 rounded-2xl border border-emerald-100/60 bg-gradient-to-br from-slate-50 to-emerald-50 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] md:col-span-2">
+              <div className="p-5 rounded-2xl border border-amber-100/60 bg-gradient-to-br from-amber-50 to-yellow-50 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] md:col-span-2">
                 <h4 className="text-sm font-semibold text-gray-900 mb-2">{t.valueLeadership}</h4>
                 <p className="text-sm text-gray-600 leading-relaxed">{t.valueLeadershipDesc}</p>
               </div>
@@ -76,9 +74,9 @@ const AboutSection = () => {
                   transition={{ delay: i * 0.07, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   className="flex items-center gap-5 py-4 border-b border-gray-100 group"
                 >
-                  <span className="text-[10px] font-semibold tracking-[0.25em] text-emerald-500/60 w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="text-[10px] font-semibold tracking-[0.25em] text-amber-400/80 w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
                   <p className="text-sm text-gray-700 leading-relaxed flex-1 group-hover:text-gray-900 transition-colors duration-200">{belief}</p>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/0 group-hover:bg-emerald-400 transition-all duration-300 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400/0 group-hover:bg-amber-400 transition-all duration-300 shrink-0" />
                 </motion.div>
               ))}
             </div>
@@ -98,31 +96,32 @@ const AboutSection = () => {
     >
       {/* ── Hero ── */}
       <div className="relative overflow-hidden bg-[#0a2540]">
-        {/* subtle grain overlay */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url(/src/assets/images/noise.png)', backgroundSize: '200px' }} />
+        <div className="absolute inset-0">
+          <img src={aboutBG} alt="" className="w-full h-full object-cover" />
+        </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-24 sm:py-32">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 md:py-28">
           <div className="flex flex-col lg:flex-row items-center gap-16">
 
             {/* Left — text */}
             <div className="flex-1 min-w-0">
               {/* eyebrow */}
               <motion.div
-                className="flex items-center gap-3 mb-6"
+                className="flex items-center gap-3 mb-3"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.15 }}
               >
-                <span className="w-8 h-px bg-blue-300" />
-                <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-blue-300">{t.breadcrumbAbout}</span>
+                <span className="w-8 h-px bg-amber-400" />
+                <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-amber-300">{t.breadcrumbAbout}</span>
               </motion.div>
 
               {/* headline — word-by-word stagger */}
-              <div className="overflow-hidden mb-6">
+              <div className="overflow-hidden mb-4">
                 {t.title.split(' ').map((word: string, i: number) => (
                   <motion.span
                     key={i}
-                    className="inline-block mr-3 font-serif text-5xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight"
+                    className="inline-block mr-3 font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-tight tracking-tight"
                     initial={{ y: 60, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.25 + i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -134,7 +133,7 @@ const AboutSection = () => {
 
               {/* thin rule */}
               <motion.div
-                className="w-16 h-px bg-blue-400/50 mb-6"
+                className="w-16 h-px bg-amber-400/50 mb-4"
                 initial={{ scaleX: 0, opacity: 0 }}
                 animate={{ scaleX: 1, opacity: 1 }}
                 transition={{ delay: 0.55, duration: 0.5 }}
@@ -142,7 +141,7 @@ const AboutSection = () => {
               />
 
               <motion.p
-                className="text-white/65 text-base max-w-lg leading-relaxed mb-10"
+                className="text-white/65 text-sm max-w-lg leading-relaxed mb-7"
                 initial={{ y: 16, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6 }}
@@ -173,27 +172,7 @@ const AboutSection = () => {
               </motion.button>
             </div>
 
-            {/* Right — mosaic of 3 portraits */}
-            <motion.div
-              className="flex-shrink-0 flex gap-4 items-end"
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {/* tall card */}
-              <div className="w-36 h-52 rounded-2xl overflow-hidden shadow-[0_8px_32px_-4px_rgba(0,0,0,0.5)] ring-1 ring-white/10">
-                <img src={liliImg} alt="" className="w-full h-full object-cover" />
-              </div>
-              {/* two stacked cards */}
-              <div className="flex flex-col gap-4">
-                <div className="w-28 h-36 rounded-2xl overflow-hidden shadow-[0_8px_32px_-4px_rgba(0,0,0,0.5)] ring-1 ring-white/10">
-                  <img src={michaelImg} alt="" className="w-full h-full object-cover" />
-                </div>
-                <div className="w-28 h-28 rounded-2xl overflow-hidden shadow-[0_8px_32px_-4px_rgba(0,0,0,0.5)] ring-1 ring-white/10">
-                  <img src={viviImg} alt="" className="w-full h-full object-cover" />
-                </div>
-              </div>
-            </motion.div>
+            {/* Right — mosaic removed */}
 
           </div>
         </div>
@@ -232,7 +211,7 @@ const AboutSection = () => {
           </div>
           <button
             onClick={() => setExpanded(!expanded)}
-            className="mt-4 flex items-center gap-2 text-emerald-700 hover:text-emerald-900 text-sm font-medium transition-colors"
+            className="mt-4 flex items-center gap-2 text-amber-500 hover:text-amber-600 text-sm font-medium transition-colors"
           >
             {expanded ? t.readLess : t.readMore}
             <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`} />
@@ -241,7 +220,7 @@ const AboutSection = () => {
 
         {/* Mission Statement */}
         <motion.div
-          className="mb-14 py-10 px-8 rounded-2xl bg-gradient-to-br from-slate-50 to-emerald-50 border border-emerald-100/60"
+          className="mb-14 py-10 px-8 rounded-2xl bg-gradient-to-br from-amber-50 to-yellow-50 border border-amber-100/60"
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -269,8 +248,8 @@ const AboutSection = () => {
                 onClick={() => setActiveTab(tab.key)}
                 className={`pb-3 text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 border-b-2 bg-transparent ${
                   activeTab === tab.key
-                    ? "text-gray-900 border-gray-900"
-                    : "text-gray-400 border-transparent hover:text-gray-600 hover:border-gray-300"
+                    ? "text-amber-500 border-amber-500"
+                    : "text-gray-400 border-transparent hover:text-gray-600 hover:border-amber-300"
                 }`}
               >
                 {tab.label}
@@ -298,8 +277,8 @@ const AboutSection = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-6 h-px bg-emerald-700" />
-            <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-700">Our Philosophy</span>
+            <span className="w-6 h-px bg-amber-400" />
+            <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-amber-500">Our Philosophy</span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl text-gray-900 leading-tight mb-6 max-w-2xl">We believe true transformation is holistic.</h2>
           <p className="text-gray-500 text-base leading-relaxed max-w-2xl mb-10">
@@ -315,7 +294,7 @@ const AboutSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-600 mb-3 block">{String(i + 1).padStart(2, '0')}</span>
+                <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-amber-500 mb-3 block">{String(i + 1).padStart(2, '0')}</span>
                 <h3 className="font-serif text-2xl text-gray-900 mb-3">{item.label}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
               </motion.div>
@@ -332,8 +311,8 @@ const AboutSection = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-6 h-px bg-emerald-700" />
-            <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-700">What Makes Us Different</span>
+            <span className="w-6 h-px bg-amber-400" />
+            <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-amber-500">What Makes Us Different</span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl text-gray-900 leading-tight mb-10 max-w-2xl">One journey. Every dimension.</h2>
           <div className="flex flex-col lg:flex-row gap-12 items-start">
@@ -375,8 +354,8 @@ const AboutSection = () => {
             {/* Text */}
             <div className="lg:w-1/2 w-full space-y-5">
               <div className="flex items-center gap-3">
-                <span className="w-6 h-px bg-emerald-700" />
-                <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-700">{t.helloIm}</span>
+                <span className="w-6 h-px bg-amber-400" />
+                <span className="text-[10px] font-semibold tracking-[0.35em] uppercase text-amber-500">{t.helloIm}</span>
               </div>
               <h2 className="text-5xl sm:text-6xl font-serif text-gray-900 leading-tight">
                 LILIAN<br />TITUS
@@ -393,7 +372,7 @@ const AboutSection = () => {
                   href="https://www.instagram.com/liliantitus_1?igsh=MXdsbXU2NjUxMXJ6bA=="
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-emerald-700 transition-colors duration-300"
+                  className="text-gray-400 hover:text-amber-500 transition-colors duration-300"
                 >
                   <Instagram size={20} />
                 </a>
@@ -401,7 +380,7 @@ const AboutSection = () => {
                   href="https://www.linkedin.com/in/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-emerald-700 transition-colors duration-300"
+                  className="text-gray-400 hover:text-amber-500 transition-colors duration-300"
                 >
                   <Linkedin size={20} />
                 </a>

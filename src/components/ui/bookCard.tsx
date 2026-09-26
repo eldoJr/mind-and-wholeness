@@ -1,73 +1,95 @@
-import { ShoppingCart, BookOpen, Star } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ShoppingCart, ArrowRight, Tag } from 'lucide-react';
 import type { Book } from '../../data/books';
-import { Tag } from './Tag';
-import { Button } from './Button';
 
 interface BookCardProps {
   book: Book;
-  onAddToCart?: (id: number) => void;
+  onAddToCart?: (book: Book) => void;
+  variant?: 'grid' | 'featured';
+  index?: number;
 }
 
-export const BookCard = ({ book, onAddToCart }: BookCardProps) => (
-  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-    {book.image && (
-      <img 
-        src={book.image} 
-        alt={book.title}
-        className="w-full h-64 object-cover"
-      />
-    )}
-    
-    <div className="p-6">
-      <div className="flex justify-between items-start mb-4">
-        <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-          book.category === 'spirituality' ? 'bg-purple-100 text-purple-700' :
-          book.category === 'healing' ? 'bg-green-100 text-green-700' :
-          book.category === 'meditation' ? 'bg-blue-100 text-blue-700' :
-          book.category === 'relationships' ? 'bg-pink-100 text-pink-700' :
-          'bg-orange-100 text-orange-700'
-        }`}>
-          {book.category.charAt(0).toUpperCase() + book.category.slice(1)}
-        </span>
-        <div className="flex items-center gap-1">
-          {book.featured && <Star className="w-4 h-4 text-yellow-500 fill-current" />}
-          {!book.inStock && (
-            <span className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full">
-              Out of Stock
+export const BookCard = ({ book, onAddToCart, variant = 'grid', index = 0 }: BookCardProps) => {
+  if (variant === 'featured') {
+    return (
+      <motion.div
+        className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center"
+        initial={{ y: 30, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        {/* Book image */}
+        <div className="w-full lg:w-2/5 flex justify-center">
+          <div className="relative group">
+            <div className="absolute -inset-6 rounded-3xl opacity-20 blur-xl bg-emerald-300" />
+            <div className="relative bg-white rounded-2xl overflow-hidden shadow-[0_8px_40px_-8px_rgba(45,106,79,0.25)] max-w-xs group-hover:-translate-y-2 transition-transform duration-500">
+              <img src={book.image} alt={book.title} className="w-full h-auto object-contain" />
+            </div>
+          </div>
+        </div>
+
+        {/* Details */}
+        <div className="flex-1 space-y-6">
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="block w-6 h-px bg-emerald-700" />
+              <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-700">{book.category}</p>
+            </div>
+            <h2 className="font-serif text-4xl sm:text-5xl leading-tight mb-3 text-emerald-900">{book.title}</h2>
+            <p className="text-sm tracking-wide text-emerald-700/60">{book.author}</p>
+          </div>
+          <p className="text-sm leading-relaxed text-gray-600">{book.description}</p>
+          <div className="flex flex-wrap gap-2">
+            {book.tags.map((tag) => (
+              <span key={tag} className="inline-flex items-center gap-1 text-xs bg-emerald-50 text-emerald-700 border border-emerald-100 px-3 py-1 rounded-full">
+                <Tag size={10} /> {tag}
+              </span>
+            ))}
+          </div>
+          <div className="flex items-baseline gap-3">
+            <span className="font-serif text-4xl text-emerald-900">${book.price}</span>
+            {book.altPrice && <span className="text-sm text-emerald-700/50">/ {book.altPrice}</span>}
+          </div>
+          {book.available ? (
+            <button
+              onClick={() => onAddToCart?.(book)}
+              className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-medium tracking-wide text-white bg-emerald-700 hover:bg-emerald-800 transition-all duration-200"
+            >
+              <ShoppingCart className="w-4 h-4" />
+              Add to Cart
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+            </button>
+          ) : (
+            <span className="inline-flex items-center px-7 py-3 rounded-full text-sm font-medium text-emerald-700/50 border border-emerald-200">
+              Coming Soon
             </span>
           )}
         </div>
-      </div>
+      </motion.div>
+    );
+  }
 
-      <h3 className="text-xl font-bold text-gray-800 mb-1">{book.title}</h3>
-      <p className="text-gray-500 text-sm mb-3">by {book.author}</p>
-      <p className="text-gray-600 mb-4">{book.description}</p>
-
-      <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-        <div className="flex items-center gap-1">
-          <BookOpen className="w-4 h-4" />
-          <span>{book.pages} pages</span>
+  // Grid variant
+  return (
+    <motion.div
+      className="group cursor-pointer"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      onClick={() => book.available && onAddToCart?.(book)}
+    >
+      <div className="relative rounded-2xl overflow-hidden shadow-[0_4px_24px_-4px_rgba(0,0,0,0.12)] group-hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.18)] group-hover:-translate-y-1 transition-all duration-300 bg-white">
+        <div className="absolute top-3 left-3 z-10">
+          <span className={`text-[10px] font-semibold tracking-[0.2em] uppercase px-2.5 py-1 rounded-full text-white ${book.available ? 'bg-emerald-700' : 'bg-emerald-900'}`}>
+            {book.available ? 'Available' : 'Coming Soon'}
+          </span>
         </div>
-        <span>Published {new Date(book.publishDate).toLocaleDateString()}</span>
+        <img src={book.image} alt={book.title} className="w-full h-56 object-contain p-2 group-hover:scale-105 transition-transform duration-300" />
       </div>
-
-      <div className="flex flex-wrap gap-2 mb-4">
-        {book.tags.slice(0, 3).map((tag, index) => (
-          <Tag key={index} variant="emerald">{tag}</Tag>
-        ))}
-      </div>
-
-      <div className="flex justify-between items-center">
-        <span className="text-2xl font-bold text-emerald-600">${book.price}</span>
-        <Button 
-          onClick={() => onAddToCart?.(book.id)}
-          disabled={!book.inStock}
-          className="flex items-center gap-2"
-        >
-          <ShoppingCart className="w-4 h-4" />
-          {book.inStock ? 'Add to Cart' : 'Out of Stock'}
-        </Button>
-      </div>
-    </div>
-  </div>
-);
+      <p className="mt-3 text-sm font-serif font-medium text-emerald-900">{book.title}</p>
+      <p className="text-sm font-semibold text-emerald-700">{book.available ? `$${book.price}.00` : '—'}</p>
+    </motion.div>
+  );
+};

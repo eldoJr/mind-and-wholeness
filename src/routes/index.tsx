@@ -31,6 +31,18 @@ import HelpPage from "../pages/Help";
 import SubscribePage from "../pages/Subscribe";
 import CommunityHealth from "../pages/programs/CommunityHealth";
 import StoriesPage from "../pages/Stories";
+import AdminProtectedRoute from "../admin/components/layout/AdminProtectedRoute";
+import AdminLayout from "../admin/components/layout/AdminLayout";
+import Dashboard from "../admin/pages/dashboard/Dashboard";
+import Users from "../admin/pages/users/Users";
+import Content from "../admin/pages/content/Content";
+import Settings from "../admin/pages/settings/Settings";
+import AddCourse from "../admin/pages/courses/AddCourse";
+import AddPodcast from "../admin/pages/podcasts/AddPodcast";
+import AddBook from "../admin/pages/books/AddBook";
+import AddArticle from "../admin/pages/articles/AddArticle";
+
+import CoursePage from "../pages/institute/course/CoursePage";
 
 export const router = createBrowserRouter([
   {
@@ -109,6 +121,10 @@ export const router = createBrowserRouter([
         element: <InstitutePage />,
       },
       {
+        path: "/programs/institute/:slug",
+        element: <CoursePage />,
+      },
+      {
         path: "/bookstore/bookstore",
         element: <BookStore />
       },
@@ -155,6 +171,24 @@ export const router = createBrowserRouter([
       {
         path: "*",
         element: <NotFound />,
+      },
+    ],
+  },
+  {
+    element: <AdminProtectedRoute />,
+    children: [
+      {
+        element: <AdminLayout />,
+        children: [
+          { path: "/admin", element: <Dashboard /> },
+          { path: "/admin/users", element: <Users /> },
+          { path: "/admin/content", element: <Content /> },
+          { path: "/admin/settings", element: <Settings /> },
+          { path: "/admin/courses/add", element: <AddCourse /> },
+          { path: "/admin/podcasts/add", element: <AddPodcast /> },
+          { path: "/admin/books/add", element: <AddBook /> },
+          { path: "/admin/articles/add", element: <AddArticle /> },
+        ],
       },
     ],
   },

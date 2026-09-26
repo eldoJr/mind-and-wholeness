@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
-import { ShoppingBag, Bell, ArrowRight, ShoppingCart } from 'lucide-react';
+import { ShoppingBag, Bell, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import AboutAuthor from './AboutAuthor';
 import ShoppingCartPanel from './ShoppingCart';
-import book1 from '/src/assets/images/book1.png';
-import instituteImg from '/src/assets/images/institute.png';
+import { BookCard } from '../../ui/bookCard';
+import type { Book } from '../../../data/books';
+import { useBookStore } from '../../../admin/context/BookStore';
 import bookBg from '/src/assets/images/bookbg.png';
 import { useLanguage } from '../../../context/LanguageContext';
 import { translations } from '../../../utils/translations';
@@ -18,23 +19,19 @@ interface CartItem {
   image: string;
 }
 
-// Color palette from reference image
-const GREEN = '#2d6a4f';
-const BROWN = '#5c3d2e';
-const TAN = '#c4a882';
-const NAV_BG = 'linear-gradient(135deg, #f8fafc 0%, #ecfdf5 100%)'; // from-slate-50 to-emerald-50
-
 export default function BookStore() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const { language } = useLanguage();
   const t = translations[language].pages.bookstore;
+  const { books } = useBookStore();
+  const featuredBook = books.find((b) => b.featured) ?? books[0];
 
-  const addToCart = (book: Omit<CartItem, 'quantity'>) => {
+  const addToCart = (book: Book) => {
     setCartItems(prev => {
       const existing = prev.find(item => item.id === book.id);
       if (existing) return prev.map(item => item.id === book.id ? { ...item, quantity: item.quantity + 1 } : item);
-      return [...prev, { ...book, quantity: 1 }];
+      return [...prev, { id: book.id, title: book.title, author: book.author, price: book.price, quantity: 1, image: book.image }];
     });
     setIsCartOpen(true);
   };
@@ -54,220 +51,95 @@ export default function BookStore() {
       {/* Floating cart */}
       <button
         onClick={() => setIsCartOpen(true)}
-        className="fixed bottom-8 right-8 w-14 h-14 text-white rounded-full shadow-2xl transition-all z-40 flex items-center justify-center"
-        style={{ background: GREEN }}
+        className="fixed bottom-8 right-8 w-14 h-14 bg-emerald-700 hover:bg-emerald-800 text-white rounded-full shadow-2xl transition-all z-40 flex items-center justify-center"
       >
         <ShoppingBag className="w-5 h-5" />
         {cartItemCount > 0 && (
-          <span className="absolute -top-1.5 -right-1.5 w-5 h-5 text-white text-xs font-bold flex items-center justify-center rounded-full" style={{ background: BROWN }}>
+          <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-emerald-900 text-white text-xs font-bold flex items-center justify-center rounded-full">
             {cartItemCount}
           </span>
         )}
       </button>
 
-      <motion.div className="min-h-screen" style={{ background: NAV_BG }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+      <motion.div className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
 
-        {/* Hero — bookbg image */}
-        <div className="overflow-hidden relative" style={{ backgroundImage: `url(${bookBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-          {/* SVG water ripple layer */}
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.55 }}>
-            <filter id="water">
-              <feTurbulence type="turbulence" baseFrequency="0.012 0.018" numOctaves="6" seed="3" result="noise" />
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="120" xChannelSelector="R" yChannelSelector="G" result="displaced" />
-              <feColorMatrix type="saturate" values="1.6" in="displaced" result="saturated" />
-              <feBlend in="saturated" in2="SourceGraphic" mode="overlay" />
-            </filter>
-            <rect width="100%" height="100%" fill="url(#wg)" filter="url(#water)" />
-            <defs>
-              <radialGradient id="wg" cx="40%" cy="35%" r="75%">
-                <stop offset="0%" stopColor="#2d8a62" />
-                <stop offset="35%" stopColor="#1a6b4a" />
-                <stop offset="65%" stopColor="#145c3e" />
-                <stop offset="100%" stopColor="#0d4a32" />
-              </radialGradient>
-            </defs>
-          </svg>
-          {/* Iridescent shimmer spots */}
-          <div className="absolute inset-0" style={{
-            background: 'radial-gradient(ellipse 60% 40% at 70% 20%, rgba(0,180,120,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 20% 70%, rgba(0,120,100,0.15) 0%, transparent 60%), radial-gradient(ellipse 50% 35% at 50% 50%, rgba(10,80,50,0.12) 0%, transparent 70%)',
-          }} />
-          {/* Dark overlay for depth */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(4,20,12,0.2) 0%, rgba(4,20,12,0.05) 50%, rgba(4,20,12,0.25) 100%)' }} />
-          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
-            <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-
-              {/* Left text */}
-              <motion.div className="w-full md:w-1/2" initial={{ y: -16, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="block w-6 h-px" style={{ background: TAN }} />
-                  <p className="text-[10px] font-semibold tracking-[0.35em] uppercase" style={{ color: TAN }}>{t.subtitle}</p>
-                </div>
-                <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight mb-5">{t.title}</h1>
-                <p className="text-white/70 text-base max-w-xl leading-relaxed mb-8">{t.description}</p>
-                <motion.a
-                  href="#books"
-                  onClick={e => {
-                    e.preventDefault();
-                    document.getElementById('books')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }}
-                  className="relative inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-medium tracking-wide text-white border border-white/40 overflow-hidden group"
-                  whileHover={{ scale: 1.04, borderColor: 'rgba(255,255,255,0.9)' }}
-                  whileTap={{ scale: 0.96 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                >
-                  {/* sliding bg fill on hover */}
-                  <motion.span
-                    className="absolute inset-0 rounded-full"
-                    style={{ background: 'rgba(255,255,255,0)' }}
-                    whileHover={{ background: 'rgba(255,255,255,0.15)' }}
-                    transition={{ duration: 0.25 }}
-                  />
-                  <span className="relative z-10">{t.featuredBook}</span>
-                  <motion.span
-                    className="relative z-10"
-                    whileHover={{ x: 5 }}
-                    transition={{ type: 'spring', stiffness: 500, damping: 20 }}
-                  >
-                    <ArrowRight className="w-4 h-4" />
-                  </motion.span>
-                </motion.a>
-              </motion.div>
-
-              {/* Right circular image */}
-              <motion.div
-                className="w-full md:w-1/2 flex justify-center"
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.35 }}
+        {/* Hero */}
+        <div className="relative overflow-hidden">
+          <div className="absolute inset-0">
+            <img src={bookBg} alt="" className="w-full h-full object-cover" />
+          </div>
+          <div className="absolute inset-0 bg-[#1a4a3a]/80" />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-20 md:py-28">
+            <motion.div className="w-full md:w-1/2" initial={{ y: -16, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
+              <div className="flex items-center gap-3 mb-5">
+                <span className="block w-6 h-px bg-emerald-300" />
+                <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-300">{t.subtitle}</p>
+              </div>
+              <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight mb-5">{t.title}</h1>
+              <p className="text-white/70 text-base max-w-xl leading-relaxed mb-8">{t.description}</p>
+              <motion.a
+                href="#books"
+                onClick={e => { e.preventDefault(); document.getElementById('books')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
+                className="relative inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-medium tracking-wide text-white border border-white/40 overflow-hidden"
+                whileHover={{ scale: 1.04, borderColor: 'rgba(255,255,255,0.9)' }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 20 }}
               >
-                <div className="relative w-64 h-64 md:w-80 md:h-80">
-                  <span className="absolute -top-4 right-8 w-8 h-8 rounded-full" style={{ background: 'rgba(196,168,130,0.4)' }} />
-                  <span className="absolute top-10 -right-4 w-5 h-5 rounded-full" style={{ background: 'rgba(196,168,130,0.3)' }} />
-                  <span className="absolute -bottom-3 left-10 w-6 h-6 rounded-full" style={{ background: 'rgba(196,168,130,0.3)' }} />
-                  <img
-                    src={instituteImg}
-                    alt="Institute"
-                    className="w-full h-full object-cover rounded-full shadow-[0_8px_40px_-8px_rgba(0,0,0,0.4)]"
-                  />
-                </div>
-              </motion.div>
-
-            </div>
+                <motion.span className="absolute inset-0 rounded-full" style={{ background: 'rgba(255,255,255,0)' }} whileHover={{ background: 'rgba(255,255,255,0.15)' }} transition={{ duration: 0.25 }} />
+                <span className="relative z-10">{t.featuredBook}</span>
+                <motion.span className="relative z-10" whileHover={{ x: 5 }} transition={{ type: 'spring', stiffness: 500, damping: 20 }}>
+                  <ArrowRight className="w-4 h-4" />
+                </motion.span>
+              </motion.a>
+            </motion.div>
           </div>
         </div>
 
         {/* Featured book */}
-        <div id="books" style={{ background: NAV_BG }}>
+        <div id="books" className="bg-gradient-to-br from-slate-50 to-emerald-50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24">
-            <motion.div
-              className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center"
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              {/* Book image */}
-              <div className="w-full lg:w-2/5 flex justify-center">
-                <div className="relative group">
-                  <div className="absolute -inset-6 rounded-3xl opacity-30 blur-xl" style={{ background: TAN }} />
-                  <div className="relative bg-white rounded-2xl overflow-hidden shadow-[0_8px_40px_-8px_rgba(92,61,46,0.25)] max-w-xs group-hover:-translate-y-2 transition-transform duration-500">
-                    <img src={book1} alt={t.bookTitle} className="w-full h-auto object-contain" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Book details */}
-              <div className="flex-1 space-y-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="block w-6 h-px" style={{ background: BROWN }} />
-                    <p className="text-[10px] font-semibold tracking-[0.35em] uppercase" style={{ color: BROWN }}>{t.featuredBook}</p>
-                  </div>
-                  <h2 className="font-serif text-4xl sm:text-5xl leading-tight mb-3" style={{ color: BROWN }}>{t.bookTitle}</h2>
-                  <p className="text-sm tracking-wide" style={{ color: `${BROWN}99` }}>{t.bookAuthor}</p>
-                </div>
-                <p className="text-sm leading-relaxed" style={{ color: `${BROWN}cc` }}>{t.bookDesc}</p>
-                <div className="flex items-baseline gap-3">
-                  <span className="font-serif text-4xl" style={{ color: BROWN }}>$10</span>
-                  <span className="text-sm" style={{ color: `${BROWN}80` }}>/ ₹600</span>
-                </div>
-                <button
-                  onClick={() => addToCart({ id: 1, title: t.bookTitle, author: 'Lilian Mussa Titus', price: 10, image: book1 })}
-                  className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-medium tracking-wide transition-all duration-200 text-white"
-                  style={{ background: GREEN }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#1a4a3a'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = GREEN; }}
-                >
-                  <ShoppingCart className="w-4 h-4" />
-                  {t.addToCart}
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-                </button>
-              </div>
-            </motion.div>
+            <BookCard variant="featured" book={featuredBook} onAddToCart={addToCart} />
           </div>
         </div>
 
         {/* Recommendations */}
-        <div style={{ background: NAV_BG }}>
+        <div className="bg-gradient-to-br from-slate-50 to-emerald-50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mb-10"
-            >
+            <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-10">
               <div className="flex items-center gap-3 mb-4">
-                <span className="block w-6 h-px" style={{ background: BROWN }} />
-                <p className="text-[10px] font-semibold tracking-[0.35em] uppercase" style={{ color: BROWN }}>{t.recommendations}</p>
+                <span className="block w-6 h-px bg-emerald-700" />
+                <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-700">{t.recommendations}</p>
               </div>
-              <h2 className="font-serif text-4xl sm:text-5xl leading-tight" style={{ color: BROWN }}>{t.recommendations}</h2>
-              <p className="text-sm mt-2" style={{ color: `${BROWN}99` }}>{t.recommendationsDesc}</p>
+              <h2 className="font-serif text-4xl sm:text-5xl leading-tight text-emerald-900">{t.recommendations}</h2>
+              <p className="text-sm mt-2 text-emerald-700/60">{t.recommendationsDesc}</p>
             </motion.div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-              {/* Available */}
-              <motion.div
-                className="group cursor-pointer"
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
-                onClick={() => addToCart({ id: 1, title: t.bookTitle, author: 'Lilian Mussa Titus', price: 10, image: book1 })}
-              >
-                <div className="relative rounded-2xl overflow-hidden shadow-[0_4px_24px_-4px_rgba(0,0,0,0.15)] group-hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.2)] group-hover:-translate-y-1 transition-all duration-300 bg-white">
-                  <div className="absolute top-3 left-3 z-10">
-                    <span className="text-[10px] font-semibold tracking-[0.2em] uppercase px-2.5 py-1 rounded-full text-white" style={{ background: GREEN }}>{t.available}</span>
-                  </div>
-                  <img src={book1} alt={t.bookTitle} className="w-full h-56 object-contain p-2 group-hover:scale-105 transition-transform duration-300" />
-                </div>
-                <p className="mt-3 text-sm font-serif font-medium" style={{ color: BROWN }}>{t.bookTitle}</p>
-                <p className="text-sm font-semibold" style={{ color: GREEN }}>$10.00</p>
-              </motion.div>
-
-              {/* Coming soon */}
+              {books.map((book, i) => (
+                <BookCard key={book.id} book={book} onAddToCart={addToCart} variant="grid" index={i} />
+              ))}
+              {/* Coming soon placeholders */}
               {[t.hint1, t.hint2, t.hint3].map((hint, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: (i + 1) * 0.08 }}
-                >
-                  <div className="relative rounded-2xl overflow-hidden shadow-[0_4px_24px_-4px_rgba(0,0,0,0.1)] h-56 flex items-center justify-center" style={{ background: `linear-gradient(135deg, #e8d5bc, #d4b896)` }}>
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: (i + 1) * 0.08 }}>
+                  <div className="relative rounded-2xl overflow-hidden shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08)] h-56 flex items-center justify-center bg-gradient-to-br from-emerald-50 to-emerald-100">
                     <div className="absolute top-3 left-3 z-10">
-                      <span className="text-[10px] font-semibold tracking-[0.2em] uppercase px-2.5 py-1 rounded-full text-white" style={{ background: BROWN }}>{t.comingSoon}</span>
+                      <span className="text-[10px] font-semibold tracking-[0.2em] uppercase px-2.5 py-1 rounded-full text-white bg-emerald-900">{t.comingSoon}</span>
                     </div>
                     <div className="text-center px-4">
-                      <div className="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.4)' }}>
-                        <Bell className="w-5 h-5" style={{ color: BROWN }} />
+                      <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-white/60 flex items-center justify-center">
+                        <Bell className="w-5 h-5 text-emerald-700" />
                       </div>
-                      <p className="text-xs italic" style={{ color: BROWN }}>{t.stayTuned}</p>
+                      <p className="text-xs italic text-emerald-800">{t.stayTuned}</p>
                     </div>
                   </div>
-                  <p className="mt-3 text-sm font-serif italic" style={{ color: `${BROWN}99` }}>{hint}</p>
-                  <p className="text-sm" style={{ color: `${BROWN}60` }}>—</p>
+                  <p className="mt-3 text-sm font-serif italic text-emerald-800/60">{hint}</p>
+                  <p className="text-sm text-emerald-700/40">—</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* About Author — back to green */}
         <AboutAuthor />
       </motion.div>
     </>

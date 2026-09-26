@@ -1,21 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { getRecentPodcasts } from '../../../../data/podcasts';
+import { Mic2, ArrowRight } from 'lucide-react';
 import { PodcastCard } from '../../../ui';
 import PodcastSeries from './Series';
 import PodcastFacts from './PodcastFacts';
-import podcastImg from './../../../../assets/images/pod.jpg';
+import podBG from './../../../../assets/images/podBG.png';
 import communityImg from './../../../../assets/images/community.png';
 import { useLanguage } from '../../../../context/LanguageContext';
 import { translations } from '../../../../utils/translations';
 import { Link } from 'react-router-dom';
+import { usePodcastStore } from '../../../../admin/context/PodcastStore';
 
 const Podcasts: React.FC = () => {
   const { language } = useLanguage();
   const t = translations[language].pages.podcasts;
   const tLogin = translations[language].loginCTA;
-  const recentEpisodes = getRecentPodcasts(3);
+  const { podcasts } = usePodcastStore();
 
   return (
     <motion.section
@@ -25,8 +25,12 @@ const Podcasts: React.FC = () => {
       transition={{ duration: 0.6 }}
     >
       {/* Hero */}
-      <div className="bg-gradient-to-br from-[#360d19] via-[#4a1523] to-[#651d31] overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 md:py-28">
+      <div className="relative bg-gradient-to-br from-[#360d19] via-[#4a1523] to-[#651d31] overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={podBG} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-[#360d19]/60" />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 md:py-28">
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
 
             {/* Left text */}
@@ -68,24 +72,7 @@ const Podcasts: React.FC = () => {
               </motion.button>
             </motion.div>
 
-            {/* Right circular image */}
-            <motion.div
-              className="w-full md:w-1/2 flex justify-center"
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.35 }}
-            >
-              <div className="relative w-64 h-64 md:w-80 md:h-80">
-                <span className="absolute -top-4 right-8 w-8 h-8 rounded-full" style={{ background: 'rgba(253,164,175,0.35)' }} />
-                <span className="absolute top-10 -right-4 w-5 h-5 rounded-full" style={{ background: 'rgba(253,164,175,0.25)' }} />
-                <span className="absolute -bottom-3 left-10 w-6 h-6 rounded-full" style={{ background: 'rgba(253,164,175,0.25)' }} />
-                <img
-                  src={podcastImg}
-                  alt="Podcast"
-                  className="w-full h-full object-cover rounded-full shadow-[0_8px_40px_-8px_rgba(0,0,0,0.4)]"
-                />
-              </div>
-            </motion.div>
+            {/* Right image removed */}
 
           </div>
         </div>
@@ -108,26 +95,37 @@ const Podcasts: React.FC = () => {
           <p className="text-gray-500 text-base leading-relaxed max-w-2xl">{t.welcomeDesc}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {recentEpisodes.map((episode, index) => (
-            <motion.div
-              key={episode.id}
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-            >
-              <PodcastCard podcast={episode} onPlay={() => {}} />
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="mt-10 flex justify-center">
-          <button className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full border border-gray-900 text-gray-900 text-sm font-medium tracking-wide hover:bg-gray-900 hover:text-white transition-all duration-200">
-            {t.viewMore}
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-          </button>
-        </div>
+        {podcasts.length > 0 ? (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {podcasts.map((episode, index) => (
+                <motion.div
+                  key={episode.id}
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
+                  <PodcastCard podcast={episode} onPlay={() => {}} />
+                </motion.div>
+              ))}
+            </div>
+            <div className="mt-10 flex justify-center">
+              <button className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full border border-gray-900 text-gray-900 text-sm font-medium tracking-wide hover:bg-gray-900 hover:text-white transition-all duration-200">
+                {t.viewMore}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+              </button>
+            </div>
+          </>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-20 gap-4">
+            <div className="h-16 w-16 rounded-2xl bg-rose-50 flex items-center justify-center">
+              <Mic2 size={28} className="text-rose-300" />
+            </div>
+            <p className="text-base font-serif font-semibold text-gray-500">No episodes yet</p>
+            <p className="text-sm text-gray-400">Podcast episodes will appear here once published.</p>
+          </div>
+        )}
 
         <PodcastFacts />
       </div>

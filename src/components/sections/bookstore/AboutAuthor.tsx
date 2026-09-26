@@ -30,8 +30,8 @@ export default function AboutAuthor() {
           <div className="lg:w-1/2 w-full space-y-6">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <span className="block w-6 h-px bg-amber-300" />
-                <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-amber-300">{t.meetAuthor}</p>
+                <span className="block w-6 h-px bg-emerald-400" />
+                <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-400">{t.meetAuthor}</p>
               </div>
               <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-white leading-tight mb-3">
                 {t.authorName}<br />{t.authorLastName}

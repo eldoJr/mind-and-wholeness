@@ -1,14 +1,17 @@
 import React from 'react';
 import { useLanguage } from '../../../context/LanguageContext';
 import { translations } from '../../../utils/translations';
+import { courses } from '../../../pages/institute/course/data';
 
 const InstituteFacts: React.FC = () => {
   const { language } = useLanguage();
   const t = translations[language].pages.institute;
 
+  const totalStudents = courses.reduce((acc, c) => acc + c.students, 0);
+
   const facts = [
-    { number: '--+', label: t.courses },
-    { number: '---+', label: t.students },
+    { number: `${courses.length}+`, label: t.courses },
+    { number: `${totalStudents}+`, label: t.students },
     { number: 'Certified', label: t.programs },
   ];
 

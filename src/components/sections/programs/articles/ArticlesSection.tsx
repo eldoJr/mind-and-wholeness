@@ -1,10 +1,10 @@
-import { BookOpen, Clock, ArrowRight } from 'lucide-react';
+import { BookOpen, ArrowRight } from 'lucide-react';
 
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../../../context/LanguageContext';
 import { translations } from '../../../../utils/translations';
 import communityImg from '../../../../assets/images/community.png';
-import presenceImg from '../../../../assets/images/presence.jpg';
+import bookBg from '../../../../assets/images/bookbg.png';
 import { Link } from 'react-router-dom';
 
 const ArticlesSection = () => {
@@ -20,90 +20,101 @@ const ArticlesSection = () => {
       transition={{ duration: 0.6 }}
     >
       {/* Hero */}
-      <div className="bg-emerald-900 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
-          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-
-            {/* Left text */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={bookBg} alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute inset-0 bg-[#1a4a3a]/80" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-20 md:py-28">
+          <div className="flex flex-col items-start">
             <motion.div
-              className="w-full md:w-1/2"
-              initial={{ y: -16, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.15, duration: 0.6 }}
+              className="flex items-center gap-3 mb-3"
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.15 }}
             >
-              <div className="flex items-center gap-3 mb-5">
-                <span className="block w-6 h-px bg-emerald-400" />
-                <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-300">{t.subtitle}</p>
-              </div>
-              <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight mb-5">{t.title}</h1>
-              <p className="text-white/70 text-base max-w-xl leading-relaxed mb-8">{t.description}</p>
-              <motion.button
-                onClick={() => document.getElementById('articles-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                className="relative inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-medium tracking-wide text-white border border-white/40 overflow-hidden"
-                whileHover={{ scale: 1.04, borderColor: 'rgba(255,255,255,0.9)' }}
-                whileTap={{ scale: 0.96 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              >
+              <span className="w-8 h-px bg-emerald-300" />
+              <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-emerald-300">{t.subtitle}</span>
+            </motion.div>
+
+            <div className="overflow-hidden mb-4">
+              {t.title.split(' ').map((word: string, i: number) => (
                 <motion.span
-                  className="absolute inset-0 rounded-full"
-                  style={{ background: 'rgba(255,255,255,0)' }}
-                  whileHover={{ background: 'rgba(255,255,255,0.12)' }}
-                  transition={{ duration: 0.25 }}
-                />
-                <span className="relative z-10">{t.subtitle}</span>
-                <motion.span
-                  className="relative z-10"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+                  key={i}
+                  className="inline-block mr-3 font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-tight tracking-tight"
+                  initial={{ y: 60, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.25 + i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <ArrowRight className="w-4 h-4" />
+                  {word}
                 </motion.span>
-              </motion.button>
-            </motion.div>
+              ))}
+            </div>
 
-            {/* Right circular image */}
             <motion.div
-              className="w-full md:w-1/2 flex justify-center"
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.35 }}
-            >
-              <div className="relative w-64 h-64 md:w-80 md:h-80">
-                <span className="absolute -top-4 right-8 w-8 h-8 rounded-full" style={{ background: 'rgba(167,243,208,0.35)' }} />
-                <span className="absolute top-10 -right-4 w-5 h-5 rounded-full" style={{ background: 'rgba(167,243,208,0.25)' }} />
-                <span className="absolute -bottom-3 left-10 w-6 h-6 rounded-full" style={{ background: 'rgba(167,243,208,0.25)' }} />
-                <img
-                  src={presenceImg}
-                  alt="Articles"
-                  className="w-full h-full object-cover rounded-full shadow-[0_8px_40px_-8px_rgba(0,0,0,0.4)]"
-                />
-              </div>
-            </motion.div>
+              className="w-16 h-px bg-emerald-300/50 mb-4"
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ delay: 0.55, duration: 0.5 }}
+              style={{ transformOrigin: 'left' }}
+            />
 
+            <motion.p
+              className="text-white/65 text-sm max-w-lg leading-relaxed mb-7"
+              initial={{ y: 16, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              {t.description}
+            </motion.p>
+
+            <motion.button
+              onClick={() => document.getElementById('articles-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+              className="relative inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-medium tracking-wide text-white border border-white/30 overflow-hidden"
+              initial={{ y: 16, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.7 }}
+              whileHover={{ scale: 1.04, borderColor: 'rgba(255,255,255,0.9)' }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <motion.span
+                className="absolute inset-0 rounded-full"
+                style={{ background: 'rgba(255,255,255,0)' }}
+                whileHover={{ background: 'rgba(255,255,255,0.12)' }}
+                transition={{ duration: 0.25 }}
+              />
+              <span className="relative z-10">{t.subtitle}</span>
+              <motion.span className="relative z-10" whileHover={{ x: 5 }} transition={{ type: 'spring', stiffness: 500, damping: 20 }}>
+                <ArrowRight className="w-4 h-4" />
+              </motion.span>
+            </motion.button>
           </div>
         </div>
       </div>
 
-      {/* Coming Soon card */}
+      {/* Empty state / content */}
       <div id="articles-content" className="mx-auto max-w-7xl px-4 sm:px-6 py-16">
         <motion.div
-          className="flex flex-col sm:flex-row items-center gap-8 bg-white rounded-2xl px-8 py-10 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08),0_1px_4px_-1px_rgba(0,0,0,0.04)]"
-          initial={{ y: 24, opacity: 0 }}
+          className="mb-12"
+          initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.35, duration: 0.6 }}
         >
-          <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
-            <BookOpen className="w-8 h-8 text-emerald-600" />
+          <div className="flex items-center gap-3 mb-5">
+            <span className="block w-6 h-px bg-emerald-500" />
+            <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-600">{t.subtitle}</p>
           </div>
-          <div className="flex-1 sm:text-left text-center">
-            <h2 className="text-xl font-serif text-gray-900 mb-2">{t.comingSoonTitle}</h2>
-            <p className="text-gray-500 text-sm leading-relaxed">{t.comingSoonDesc}</p>
-          </div>
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-emerald-200 bg-emerald-50 shrink-0">
-            <Clock className="w-4 h-4 text-emerald-600 animate-pulse" />
-            <span className="text-xs text-emerald-800 font-medium">{t.inDevelopment}</span>
-          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl text-gray-900 leading-tight mb-5 max-w-2xl">{t.title}</h2>
+          <p className="text-gray-500 text-base leading-relaxed max-w-2xl">{t.description}</p>
         </motion.div>
+
+        <div className="flex flex-col items-center justify-center py-20 gap-4">
+          <div className="h-16 w-16 rounded-2xl bg-emerald-50 flex items-center justify-center">
+            <BookOpen size={28} className="text-emerald-300" />
+          </div>
+          <p className="text-base font-serif font-semibold text-gray-500">{t.comingSoonTitle}</p>
+          <p className="text-sm text-gray-400">{t.comingSoonDesc}</p>
+        </div>
       </div>
 
       {/* Community CTA — image left, text right */}
